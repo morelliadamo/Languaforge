@@ -10,4 +10,6 @@ public interface UserService {
     User findUserById(Long id);
     User updateUser(User user, Long id);
     void deleteUserById(Long id);
+
+    String encodePassword(String password);
 }
