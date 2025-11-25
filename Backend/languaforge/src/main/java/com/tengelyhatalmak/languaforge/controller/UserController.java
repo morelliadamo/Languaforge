@@ -47,6 +47,13 @@ public class UserController {
         return userService.saveUser(user);
     }
 
+    @PatchMapping("/restoreUser/{id}")
+    public User restoreUser(@PathVariable Long id){
+        User user = userService.findUserById(id);
+        user.setDeleted(false);
+        return userService.saveUser(user);
+    }
+    
     @DeleteMapping("/hardDeleteUser/{id}")
     public String hardDeleteUser(@PathVariable Long id) {
         userService.deleteUserById(id);

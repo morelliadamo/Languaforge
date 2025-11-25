@@ -3,6 +3,7 @@ package com.tengelyhatalmak.languaforge.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -50,7 +51,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String encodePassword(String password) {
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        Argon2PasswordEncoder passwordEncoder = new Argon2PasswordEncoder(5, 64, 2, 5, 2);
         return passwordEncoder.encode(password);
     }
 
