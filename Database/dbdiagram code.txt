@@ -1,0 +1,222 @@
+Table user {
+  id int [pk, increment]
+  username varchar(255) [not null, unique]
+  email varchar(255) [not null, unique]
+  password_hash varchar(255)
+  role_id int [not null, default: 1]
+  created_at timestamp [default: `now()`]
+  last_login timestamp
+  is_anonymized boolean [default: false]
+  anonymized_at timestamp
+  is_deleted boolean [default: false]
+  deleted_at timestamp
+}
+
+Table role {
+  id int [pk, increment]
+  name varchar(50) [not null, unique]
+  description varchar(255)
+  created_at timestamp [default: `now()`]
+  is_deleted boolean [default: false]
+  deleted_at timestamp
+}
+
+Table course {
+  id int [pk, increment]
+  title varchar(255) [not null]
+  description text
+  created_at timestamp [default: `now()`]
+  is_deleted boolean [default: false]
+  deleted_at timestamp
+}
+
+Table unit {
+  id int [pk, increment]
+  course_id int [not null]
+  title varchar(255) [not null]
+  order_index int
+  created_at timestamp [default: `now()`]
+  is_deleted boolean [default: false]
+  deleted_at timestamp
+}
+
+Table lesson {
+  id int [pk, increment]
+  unit_id int [not null]
+  title varchar(255) [not null]
+  order_index int
+  created_at timestamp [default: `now()`]
+  is_deleted boolean [default: false]
+  deleted_at timestamp
+}
+
+Table lesson_content {
+  id int [pk, increment]
+  lesson_id int [not null]
+  content_type enum('text','video','audio','quiz') [not null]
+  content text
+  order_index int
+  created_at timestamp [default: `now()`]
+  is_deleted boolean [default: false]
+  deleted_at timestamp
+}
+
+Table lesson_progress {
+  id int [pk, increment]
+  user_id int [not null]
+  lesson_id int [not null]
+  progress int [not null, default: 0]
+  updated_at timestamp [default: `now()`]
+  is_deleted boolean [default: false]
+  deleted_at timestamp
+  Indexes {
+    (user_id, lesson_id) [unique]
+  }
+}
+
+Table score {
+  id int [pk, increment]
+  user_id int [not null]
+  lesson_id int [not null]
+  score int [not null]
+  created_at timestamp [default: `now()`]
+  is_deleted boolean [default: false]
+  deleted_at timestamp
+}
+
+Table streak {
+  id int [pk, increment]
+  user_id int [not null, unique]
+  current_streak int [not null, default: 0]
+  longest_streak int [not null, default: 0]
+  updated_at timestamp [default: `now()`]
+  is_deleted boolean [default: false]
+  deleted_at timestamp
+}
+
+Table achievement {
+  id int [pk, increment]
+  name varchar(255) [not null]
+  description text
+  icon_url varchar(255)
+  created_at timestamp [default: `now()`]
+  is_deleted boolean [default: false]
+  deleted_at timestamp
+}
+
+Table user_achievement {
+  id int [pk, increment]
+  user_id int [not null]
+  achievement_id int [not null]
+  earned_at timestamp [default: `now()`]
+  is_deleted boolean [default: false]
+  deleted_at timestamp
+  Indexes {
+    (user_id, achievement_id) [unique]
+  }
+}
+
+Table leaderboard {
+  id int [pk, increment]
+  user_id int [not null]
+  course_id int [not null]
+  points int [not null, default: 0]
+  updated_at timestamp [default: `now()`]
+  is_deleted boolean [default: false]
+  deleted_at timestamp
+}
+
+Table friend {
+  id int [pk, increment]
+  user_id int [not null]
+  friend_id int [not null]
+  status enum('pending','accepted','blocked') [default: 'pending']
+  created_at timestamp [default: `now()`]
+  is_deleted boolean [default: false]
+  deleted_at timestamp
+  Indexes {
+    (user_id, friend_id) [unique]
+  }
+}
+
+Table login {
+  id int [pk, increment]
+  user_id int [not null]
+  login_time timestamp [default: `now()`]
+  device_info varchar(255)
+  ip_address varchar(45)
+  session_token varchar(255) [unique]
+  expires_at timestamp
+  is_anonymized boolean [default: false]
+  anonymized_at timestamp
+  is_deleted boolean [default: false]
+  deleted_at timestamp
+}
+
+Table pricing {
+  id int [pk, increment]
+  name varchar(255) [not null]
+  price decimal(10,2) [not null]
+  billing_cycle enum('monthly','yearly') [not null]
+  created_at timestamp [default: `now()`]
+  is_deleted boolean [default: false]
+  deleted_at timestamp
+}
+
+Table subscription {
+  id int [pk, increment]
+  user_id int [not null]
+  pricing_id int [not null]
+  status enum('active','canceled','expired') [default: 'active']
+  start_date timestamp [not null]
+  end_date timestamp
+  auto_renew boolean [default: true]
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  is_deleted boolean [default: false]
+  deleted_at timestamp
+}
+
+Table review {
+  id int [pk, increment]
+  user_id int [not null]
+  course_id int [not null]
+  rating int [not null]
+  comment text
+  created_at timestamp [default: `now()`]
+  is_deleted boolean [default: false]
+  deleted_at timestamp
+}
+
+Ref: user.role_id > role.id
+
+Ref: unit.course_id > course.id
+
+Ref: lesson.unit_id > unit.id
+
+Ref: lesson_content.lesson_id > lesson.id
+
+Ref: lesson_progress.user_id > user.id
+Ref: lesson_progress.lesson_id > lesson.id
+
+Ref: score.user_id > user.id
+Ref: score.lesson_id > lesson.id
+
+Ref: streak.user_id > user.id
+
+Ref: user_achievement.user_id > user.id
+Ref: user_achievement.achievement_id > achievement.id
+
+Ref: leaderboard.user_id > user.id
+Ref: leaderboard.course_id > course.id
+
+Ref: friend.user_id > user.id
+Ref: friend.friend_id > user.id
+
+Ref: login.user_id > user.id
+
+Ref: subscription.user_id > user.id
+Ref: subscription.pricing_id > pricing.id
+
+Ref: review.user_id > user.id
+Ref: review.course_id > course.id
