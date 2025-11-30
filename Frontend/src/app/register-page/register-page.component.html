@@ -7,32 +7,37 @@
     <h3 class="text-[20px] text-center mb-[60px] text-gray-500">
       Start your language learning journey today!
     </h3>
-      
-    <div
+
+    <form [formGroup]="registerForm"
+          (ngSubmit)="onSubmit()"
       id="registerForm"
       class="flex flex-col items-center justify-center space-y-4"
     >
       <input
         type="text"
-        placeholder="Full Name"
+        formControlName="username"
+        placeholder="Username"
         class="border-[1px] border-zinc-300 p-2 w-[300px] rounded-xl"
       />
       <input
         type="email"
+        formControlName="email"
         placeholder="Email Address"
         class="border-[1px] border-zinc-300 p-2 w-[300px] rounded-xl"
       />
       <input
         type="password"
+        formControlName="password"
         placeholder="Password"
         class="border-[1px] border-zinc-300 p-2 w-[300px] rounded-xl"
       />
       <input
         type="password"
+        formControlName="confirmPassword"
         placeholder="Confirm Password"
         class="border-[1px] border-zinc-300 p-2 w-[300px] rounded-xl"
       />
-      <select class="border-[1px] border-zinc-300 p-2 w-[310px] mt-4 mb-4 rounded-xl">
+      <select formControlName="nativeLanguage" class="border-[1px] border-zinc-300 p-2 w-[310px] mt-4 mb-4 rounded-xl">
         <option value="" disabled selected>Native Language</option>
         <option value="english">English</option>
         <option value="spanish">Spanish</option>
@@ -43,7 +48,7 @@
         <option value="italian">Italian</option>
         <option value="hungarian">Hungarian</option>
       </select>
-      <select class="border-[1px] border-zinc-300 p-2 w-[310px] mt-4 mb-4 rounded-xl">
+      <select formControlName="languageToLearn" class="border-[1px] border-zinc-300 p-2 w-[310px] mt-4 mb-4 rounded-xl">
         <option value="" disabled selected>Language To Learn</option>
         <option value="english">English</option>
         <option value="spanish">Spanish</option>
@@ -58,7 +63,7 @@
       <button class="bg-[#0f0f0f] text-white p-2 w-[150px] mt-4 mb-4 rounded-xl">
         Register
       </button>
-    </div>
+    </form>
   </div>
   <br>
 </div>

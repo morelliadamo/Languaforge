@@ -1,6 +1,7 @@
 package com.tengelyhatalmak.languaforge.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import com.tengelyhatalmak.languaforge.util.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +30,15 @@ public class UserController {
     }
 
     @PostMapping("/createUser")
-    public User createUser(@RequestBody User user) {
-        user.setPasswordHash(userService.encodePassword(user.getPasswordHash()));
+    public User createUser(@RequestBody Map<String, String> requestBody) {
+        User user = new User();
+        user.setUsername(requestBody.get("username"));
+        user.setEmail(requestBody.get("email"));
+        user.setPasswordHash(userService.encodePassword(requestBody.get("password")));
+
         System.out.println("Creating user with encoded password: " + user.getPasswordHash());
         return userService.saveUser(user);
     }
-
     @PutMapping("/updateUser/{id}")
     public User updateUser(@RequestBody User user, @PathVariable Long id) {
         return userService.updateUser(user, id);
@@ -53,17 +57,10 @@ public class UserController {
         user.setDeleted(false);
         return userService.saveUser(user);
     }
-    
+
     @DeleteMapping("/hardDeleteUser/{id}")
     public String hardDeleteUser(@PathVariable Long id) {
         userService.deleteUserById(id);
         return "User with id " + id + " has been deleted";
     }
-
-
-
-
-
-
-
 }

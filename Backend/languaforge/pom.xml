@@ -11,7 +11,7 @@
   </parent>
   <groupId>com.tengelyhatalmak</groupId>
   <artifactId>languaforge</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.2-SNAPSHOT</version>
   <name>languaforge</name>
   <description>Backend</description>
   <url/>
@@ -31,6 +31,8 @@
   </scm>
   <properties>
     <java.version>25</java.version>
+      <maven.compiler.release>25</maven.compiler.release>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
   <dependencies>
@@ -106,7 +108,9 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.14.1</version>
         <configuration>
+            <release>25</release>
           <annotationProcessorPaths>
             <path>
               <groupId>org.projectlombok</groupId>
