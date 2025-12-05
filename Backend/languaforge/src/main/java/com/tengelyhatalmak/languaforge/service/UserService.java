@@ -7,9 +7,9 @@ import com.tengelyhatalmak.languaforge.model.User;
 public interface UserService {
     User saveUser(User user);
     List<User> findAllUsers();
-    User findUserById(Long id);
-    User updateUser(User user, Long id);
-    void deleteUserById(Long id);
+    User findUserById(Integer id);
+    User updateUser(User user, Integer id);
+    void deleteUserById(Integer id);
 
     String encodePassword(String password);
 }

@@ -5,18 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d2c999d-83de-43e1-bfea-cc149e1b02b0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Backend.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/languaforge/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/languaforge/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/languaforge/src/main/java/com/tengelyhatalmak/languaforge/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/languaforge/src/main/java/com/tengelyhatalmak/languaforge/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/languaforge/src/main/java/com/tengelyhatalmak/languaforge/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/languaforge/src/main/java/com/tengelyhatalmak/languaforge/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/languaforge/src/main/java/com/tengelyhatalmak/languaforge/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/languaforge/src/main/java/com/tengelyhatalmak/languaforge/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/languaforge/src/main/java/com/tengelyhatalmak/languaforge/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/languaforge/src/main/java/com/tengelyhatalmak/languaforge/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/languaforge/src/main/java/com/tengelyhatalmak/languaforge/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/languaforge/src/main/java/com/tengelyhatalmak/languaforge/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/languaforge/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/languaforge/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/.angular/cache/19.2.17/Frontend/.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/.angular/cache/19.2.17/Frontend/.tsbuildinfo" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,37 +39,50 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.LanguaforgeApplication.executor": "Run",
-    "Maven.languaforge [clean].executor": "Run",
-    "Maven.languaforge [compile].executor": "Run",
-    "Maven.languaforge [install].executor": "Run",
-    "Maven.languaforge [package].executor": "Run",
-    "Maven.languaforge [validate].executor": "Run",
-    "Maven.languaforge [verify].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found": "New/updated database configurations found",
-    "Notification.DoNotAsk-DatabaseConfigFileWatcher.found": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/1more/Documents/GitHub/nyelvtanuloProjekt/Backend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "com.github.copilot.settings.general.GeneralConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.LanguaforgeApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.languaforge [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.languaforge [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.languaforge [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.languaforge [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.languaforge [validate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.languaforge [verify].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;New/updated database configurations found&quot;,
+    &quot;Notification.DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/1more/Documents/GitHub/nyelvtanuloProjekt/Backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.github.copilot.settings.general.GeneralConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Backend" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Backend" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -96,6 +105,8 @@
       <workItem from="1764493055688" duration="1057000" />
       <workItem from="1764494159487" duration="1631000" />
       <workItem from="1764495803343" duration="435000" />
+      <workItem from="1764850351353" duration="713000" />
+      <workItem from="1764960688617" duration="15000" />
     </task>
     <servers />
   </component>

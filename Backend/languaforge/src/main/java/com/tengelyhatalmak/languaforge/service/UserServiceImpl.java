@@ -28,24 +28,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUserById(Long id) {
+    public User findUserById(Integer id) {
         return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
     }
 
     @Override
-    public User updateUser(User user, Long id) {
+    public User updateUser(User user, Integer id) {
         User existingUser = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
         existingUser.setUsername(user.getUsername());
         existingUser.setEmail(user.getEmail());
         existingUser.setPasswordHash(user.getPasswordHash());
-        existingUser.setRole(user.getRole());
+        existingUser.setRoleId(user.getRoleId());
         existingUser.setLastLogin(user.getLastLogin());
         existingUser.setAnonymized(user.isAnonymized());
         return userRepository.save(existingUser);
     }
 
     @Override
-    public void deleteUserById(Long id) {
+    public void deleteUserById(Integer id) {
         userRepository.deleteById(id);
     }
 
