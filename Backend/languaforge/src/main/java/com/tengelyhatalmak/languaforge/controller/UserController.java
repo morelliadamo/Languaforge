@@ -18,7 +18,6 @@ public class UserController {
 
     @GetMapping("/")
     public List<User> getAllUsers() {
-        System.out.println("user controller reached");
         return userService.findAllUsers();
     }
 
