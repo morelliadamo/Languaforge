@@ -1,6 +1,7 @@
 package com.tengelyhatalmak.languaforge.controller;
 
 import com.tengelyhatalmak.languaforge.model.Course;
+import com.tengelyhatalmak.languaforge.model.Unit;
 import com.tengelyhatalmak.languaforge.service.CourseService;
 import org.hibernate.annotations.CurrentTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,11 @@ public class CourseController {
     @GetMapping("/")
     public List<Course> getAllCourses() {
         return courseService.findAllCourses();
+    }
+
+    @GetMapping("/{id}/units")
+    public List<Unit> getAllUnitsByCourseId(@PathVariable Integer id) {
+        return courseService.findAllUnitsByCourseId(id);
     }
 
     @GetMapping("/{id}")

@@ -1,37 +1,38 @@
 package com.tengelyhatalmak.languaforge.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.FieldDefaults;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-@Table(name = "course")
+@Table(name = "unit")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Course {
+public class Unit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<Unit> units = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id", nullable = false, insertable = false, updatable = false)
+    @JsonBackReference
+    private Course course;
 
-    @Column(name="title", nullable = false, unique = true)
+    @Column(name = "course_id", nullable = false)
+    private String courseId;
+
+    @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "description", nullable = false)
-    private String description;
+    @Column(name = "order_index", nullable = false)
+    private Integer orderIndex;
 
     @Column(name = "created_at", nullable = false)
     private Timestamp createdAt;

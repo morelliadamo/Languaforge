@@ -1,6 +1,7 @@
 package com.tengelyhatalmak.languaforge.service;
 
 import com.tengelyhatalmak.languaforge.model.Course;
+import com.tengelyhatalmak.languaforge.model.Unit;
 import com.tengelyhatalmak.languaforge.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,13 @@ public class CourseServiceImpl implements CourseService{
     @Override
     public List<Course> findAllCourses() {
         return courseRepository.findAll();
+    }
+
+    @Override
+    public List<Unit> findAllUnitsByCourseId(Integer courseId) {
+        return courseRepository.findById(courseId)
+                .orElseThrow(() -> new RuntimeException("Course not found"))
+                .getUnits();
     }
 
     @Override
