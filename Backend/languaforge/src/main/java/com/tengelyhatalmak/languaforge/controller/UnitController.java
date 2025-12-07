@@ -19,7 +19,7 @@ public class UnitController {
     private UnitService unitService;
 
     @GetMapping("/")
-    public List<Unit> getUnits() {
+    public List<Unit> getALlUnits() {
         return unitService.findAllUnits();
     }
 

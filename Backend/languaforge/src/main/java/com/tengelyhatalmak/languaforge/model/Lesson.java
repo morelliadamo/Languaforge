@@ -1,5 +1,6 @@
 package com.tengelyhatalmak.languaforge.model;
 
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -12,11 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "unit")
+@Table(name = "lesson")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Unit {
+public class Lesson {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,17 +25,17 @@ public class Unit {
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "unit_id", nullable = false, insertable = false, updatable = false)
     @JsonBackReference
-    private Course course;
+    private Unit unit;
 
-    @Column(name = "course_id", nullable = false)
-    private Integer courseId;
 
-    @OneToMany(mappedBy = "unit", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "lesson", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
-    private List<Lesson> lessons = new ArrayList<>();
+    private List<Exercise> exercises = new ArrayList<>();
 
+    @Column(name = "unit_id", nullable = false)
+    private Integer unitId;
 
     @Column(name = "title", nullable = false)
     private String title;
