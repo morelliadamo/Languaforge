@@ -57,7 +57,7 @@ export class RegisterPageComponent {
         },
         error: (error: HttpErrorResponse) => {
           console.error("Registration failed!", error);
-          alert("Registration failed: " + error.error.message.toString());
+          alert("Registration failed:  " + error.error.message.toString());
         }
       });
     }
