@@ -1,6 +1,6 @@
 package com.tengelyhatalmak.languaforge.model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,7 +21,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(name = "username", unique = true, nullable = false)
     private String username;
@@ -29,37 +29,38 @@ public class User {
     @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "password_hash", nullable = false)
+    @Column(name = "password_hash")
     private String passwordHash;
 
-    @Column(name = "role")
-    private String role;
+    @Column(name = "role_id", nullable = false)
+    private Integer roleId = 1;
 
-    @Column(name = "created_at")
-    private Date createdAt;
+    @Column(name = "created_at", nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private Timestamp createdAt;
 
     @Column(name = "last_login")
-    private Date lastLogin;
+    private Timestamp lastLogin;
 
-    @Column(name = "is_anonymized")
-    private boolean isAnonymized;
+    @Column(name = "is_anonymized", nullable = false)
+    private boolean isAnonymized = false;
 
     @Column(name = "anonymized_at")
-    private Date anonymizedAt;
+    private Timestamp anonymizedAt;
 
-    @Column(name = "is_deleted")
-    private boolean isDeleted;
+//    TOD: soft deleted until email activation
+    @Column(name = "is_deleted", nullable = false)
+    private boolean isDeleted = false;
 
     @Column(name = "deleted_at")
-    private Date deletedAt;
+    private Timestamp deletedAt;
 
 
-    public User(String username, String email, String passwordHash, String role, Date createdAt, Date lastLogin, Boolean isAnonymized, Date anonymizedAt, Boolean isDeleted, Date deletedAt) {
+    public User(String username, String email, String passwordHash, Integer roleId, Timestamp createdAt, Timestamp lastLogin, Boolean isAnonymized, Timestamp anonymizedAt, Boolean isDeleted, Timestamp deletedAt) {
         this.username = username;
         this.email = email;
         this.passwordHash = passwordHash;
-        this.role = role;
-        this.createdAt = (createdAt != null) ? createdAt : new Date(System.currentTimeMillis());
+        this.roleId = (roleId != null) ? roleId : 1;
+        this.createdAt = createdAt;
         this.lastLogin = lastLogin;
         this.isAnonymized = (isAnonymized != null) ? isAnonymized : Boolean.FALSE;
         this.anonymizedAt = anonymizedAt;

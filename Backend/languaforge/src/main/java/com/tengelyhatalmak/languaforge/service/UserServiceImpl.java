@@ -3,6 +3,7 @@ package com.tengelyhatalmak.languaforge.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -27,30 +28,36 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUserById(Long id) {
+    public User findUserById(Integer id) {
         return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
     }
 
     @Override
-    public User updateUser(User user, Long id) {
+    public User findUserByUsername(String username) {
+        return userRepository.getUserByUsername(username).orElse(null);
+    }
+
+    @Override
+    public User updateUser(User user, Integer id) {
         User existingUser = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
         existingUser.setUsername(user.getUsername());
         existingUser.setEmail(user.getEmail());
         existingUser.setPasswordHash(user.getPasswordHash());
-        existingUser.setRole(user.getRole());
+        existingUser.setRoleId(user.getRoleId());
         existingUser.setLastLogin(user.getLastLogin());
         existingUser.setAnonymized(user.isAnonymized());
         return userRepository.save(existingUser);
     }
 
     @Override
-    public void deleteUserById(Long id) {
+    public void deleteUserById(Integer id) {
+        System.out.println("Deleting user with id: " + id);
         userRepository.deleteById(id);
     }
 
     @Override
     public String encodePassword(String password) {
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        Argon2PasswordEncoder passwordEncoder = new Argon2PasswordEncoder(5, 64, 2, 5, 2);
         return passwordEncoder.encode(password);
     }
 

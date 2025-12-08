@@ -7,8 +7,9 @@
     <h3 class="text-[20px] text-center mb-[60px] text-gray-500">
       Start your language learning journey today!
     </h3>
-      
-    <div
+
+    <form [formGroup]="registerForm"
+          (ngSubmit)="onSubmit()"
       id="registerForm"
       class="flex flex-col items-center justify-center space-y-4"
     >
@@ -17,7 +18,8 @@
       </h4>
       <input
         type="text"
-        placeholder="Full Name"
+        formControlName="username"
+        placeholder="Username"
         class="border-[1px] border-zinc-300 p-2 w-[300px] rounded-xl"
       />
       <h4 class="text-[10px] text-left font-bold mb-[6px] mt-[6px]">
@@ -25,6 +27,7 @@
       </h4>
       <input
         type="email"
+        formControlName="email"
         placeholder="Email Address"
         class="border-[1px] border-zinc-300 p-2 w-[300px] rounded-xl"
       />
@@ -33,6 +36,7 @@
       </h4>
       <input
         type="password"
+        formControlName="password"
         placeholder="Password"
         class="border-[1px] border-zinc-300 p-2 w-[300px] rounded-xl"
       />
@@ -41,14 +45,12 @@
       </h4>
       <input
         type="password"
+        formControlName="confirmPassword"
         placeholder="Confirm Password"
         class="border-[1px] border-zinc-300 p-2 w-[300px] rounded-xl"
       />
-      <h4 class="text-[10px] text-left font-bold mb-[6px] mt-[6px]">
-        Native Language
-      </h4>
-      <select class="border-[1px] border-zinc-300 p-2 w-[310px] mt-4 mb-4 rounded-xl">
-        <option value="" disabled selected>Select your native language</option>
+      <select formControlName="nativeLanguage" class="border-[1px] border-zinc-300 p-2 w-[310px] mt-4 mb-4 rounded-xl">
+        <option value="" disabled selected>Native Language</option>
         <option value="english">English</option>
         <option value="spanish">Spanish</option>
         <option value="french">French</option>
@@ -58,11 +60,8 @@
         <option value="italian">Italian</option>
         <option value="hungarian">Hungarian</option>
       </select>
-      <h4 class="text-[10px] text-left font-bold mb-[6px] mt-[6px]">
-        Language To Learn
-      </h4>
-      <select class="border-[1px] border-zinc-300 p-2 w-[310px] mt-4 mb-4 rounded-xl">
-        <option value="" disabled selected>Select language To learn</option>
+      <select formControlName="languageToLearn" class="border-[1px] border-zinc-300 p-2 w-[310px] mt-4 mb-4 rounded-xl">
+        <option value="" disabled selected>Language To Learn</option>
         <option value="english">English</option>
         <option value="spanish">Spanish</option>
         <option value="french">French</option>
@@ -80,10 +79,7 @@
       <button class="bg-[#0f0f0f] text-white p-2 w-[150px] mt-4 mb-4 rounded-xl">
         Create Account
       </button>
-      <h3 class="text-[20px] text-center mb-[60px] text-gray-500">
-        Already have an account? Sign in
-    </h3>
-    </div>
+    </form>
   </div>
   <br>
 </div>
