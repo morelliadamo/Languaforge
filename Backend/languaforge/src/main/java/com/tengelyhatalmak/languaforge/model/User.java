@@ -41,13 +41,19 @@ public class User {
     @Column(name = "last_login")
     private Timestamp lastLogin;
 
+    @Column(name = "activation_token")
+    private String activationToken;
+
+    @Column(name = "is_active")
+    private Boolean isActive = false;
+
+
     @Column(name = "is_anonymized", nullable = false)
     private boolean isAnonymized = false;
 
     @Column(name = "anonymized_at")
     private Timestamp anonymizedAt;
 
-//    TOD: soft deleted until email activation
     @Column(name = "is_deleted", nullable = false)
     private boolean isDeleted = false;
 

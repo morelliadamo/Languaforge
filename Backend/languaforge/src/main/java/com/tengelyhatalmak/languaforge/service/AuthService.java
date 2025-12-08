@@ -41,8 +41,10 @@ public class AuthService {
             userService.saveUser(user);
 
             String activationToken = UUID.randomUUID().toString();
+            user.setActivationToken(activationToken);
+            user.setIsActive(false);
+            userRepository.save(user);
 
-            // TODO: Save token to user or separate table
             emailService.sendActivationEmail(user.getEmail(), user.getUsername(), activationToken);
 
 
@@ -50,5 +52,20 @@ public class AuthService {
         }}
 
 
+    public ResponseEntity<?> activateUser(String token) {
+        User user = userRepository.findByActivationToken(token);
+        if (user == null) {
+            return new ResponseEntity<>("Invalid activation token", HttpStatus.BAD_REQUEST);
+        }
 
+        if (user.getIsActive()){
+            return new ResponseEntity<>("Account already activated", HttpStatus.BAD_REQUEST);
+        }
+
+        user.setIsActive(true);
+        user.setActivationToken(null);
+        userService.saveUser(user);
+
+        return new ResponseEntity<>("Account activated successfully", HttpStatus.OK);
+    }
 }
