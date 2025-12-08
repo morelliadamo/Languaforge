@@ -23,6 +23,8 @@ public class AuthController {
     @Transactional
     public ResponseEntity<User> registerUser(@RequestBody User user) {
         return authService.registerUser(user);
+
+
     }
 
 //    @PostMapping("/login")
