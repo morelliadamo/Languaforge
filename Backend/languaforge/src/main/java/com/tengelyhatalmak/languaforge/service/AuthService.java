@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 
 import java.net.http.HttpResponse;
@@ -38,4 +39,9 @@ public class AuthService {
             return new ResponseEntity<>(user, HttpStatus.CREATED);
         }}
 
+
+    public void sendActivationEmail(String toEmail, String username, String activationToken) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("languaforgenoreply@gmail.com");
+    }
 }
