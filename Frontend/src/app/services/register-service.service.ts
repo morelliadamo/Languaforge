@@ -9,7 +9,7 @@ import {RegisterResponse} from '../interfaces/RegisterResponse';
 })
 export class RegisterServiceService {
   private http = inject(HttpClient);
-  private url = "http://localhost:8080/users/createUser";
+  private url = "http://localhost:8080/auth/register";
   constructor() { };
 
   register(userData: RegisterRequest): Observable<RegisterResponse>{

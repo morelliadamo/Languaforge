@@ -8,6 +8,8 @@ public interface UserService {
     User saveUser(User user);
     List<User> findAllUsers();
     User findUserById(Integer id);
+    User findUserByUsername(String username);
+
     User updateUser(User user, Integer id);
     void deleteUserById(Integer id);
 

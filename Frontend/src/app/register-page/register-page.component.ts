@@ -3,8 +3,8 @@ import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import {FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule, AbstractControl, ValidationErrors} from '@angular/forms';
 import {RegisterServiceService} from '../services/register-service.service';
-import {log} from '@angular-devkit/build-angular/src/builders/ssr-dev-server';
 import { HttpErrorResponse } from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register-page',
@@ -18,7 +18,7 @@ export class RegisterPageComponent {
 
   registerService = inject(RegisterServiceService);
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
     this.registerForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(5)]],
       email: ['', [Validators.required, Validators.email]],
@@ -47,18 +47,17 @@ export class RegisterPageComponent {
       const userData = {
         username: formValue.username,
         email: formValue.email,
-        password: formValue.password
+        passwordHash: formValue.password
       };
 
       this.registerService.register(userData).subscribe({
         next: (response) => {
-          console.log(response);
+          console.log("Registration successful!", response);
+          this.router.navigate(["register/success"])
         },
         error: (error: HttpErrorResponse) => {
-          console.error(error);
-          if (error.error) {
-            console.error(error.error);
-          }
+          console.error("Registration failed!", error);
+          alert("Registration failed: " + error.error.message.toString());
         }
       });
     }
