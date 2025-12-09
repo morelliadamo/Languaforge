@@ -2,12 +2,8 @@ package com.tengelyhatalmak.languaforge.model;
 
 import java.sql.Timestamp;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -31,6 +27,12 @@ public class User {
 
     @Column(name = "password_hash")
     private String passwordHash;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "role_id", nullable = false, insertable = false, updatable = false)
+    @JsonBackReference
+    private Role role;
 
     @Column(name = "role_id", nullable = false)
     private Integer roleId = 1;

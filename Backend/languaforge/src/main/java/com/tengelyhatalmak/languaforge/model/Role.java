@@ -1,6 +1,6 @@
 package com.tengelyhatalmak.languaforge.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,36 +13,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "unit")
+@Table(name = "role")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Unit {
+public class Role {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_id", nullable = false, insertable = false, updatable = false)
-    @JsonBackReference
-    private Course course;
-
-    @Column(name = "course_id", nullable = false)
-    private Integer courseId;
-
-    @OneToMany(mappedBy = "unit", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
-    private List<Lesson> lessons = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
 
 
-    @Column(name = "title", nullable = false)
-    private String title;
 
-    @Column(name = "order_index", nullable = false)
-    private Integer orderIndex;
+
+    @Column(name = "name", nullable = false, unique = true)
+    private String name;
+
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "created_at", nullable = false)
     private Timestamp createdAt;
@@ -52,5 +47,8 @@ public class Unit {
 
     @Column(name = "deleted_at")
     private Timestamp deletedAt;
+
+
+
 
 }
