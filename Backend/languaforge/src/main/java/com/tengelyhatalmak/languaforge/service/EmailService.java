@@ -14,9 +14,9 @@ public class EmailService {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("languaforgenoreply@gmail.com");
         message.setTo(toEmail);
-        message.setSubject("Activate your LanguageForge account!");
+        message.setSubject("Activate your LanguaForge account!");
         message.setText("Dear " + username + ",\n\n" +
-                "Thank you for registering at LanguageForge! Please activate your account by clicking the link below:\n" +
+                "Thank you for registering at LanguaForge! Please activate your account by clicking the link below:\n" +
                 "http://localhost:8080/auth/activate?token=" + activationToken + "\n\n" +
                 "Best regards,\n" +
                 "The LanguageForge Team");

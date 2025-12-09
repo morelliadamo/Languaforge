@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {HeaderComponent} from '../header/header.component';
 import {FooterComponent} from '../footer/footer.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-succesful-register',
@@ -12,5 +13,12 @@ import {FooterComponent} from '../footer/footer.component';
   styleUrl: './succesful-register.component.css'
 })
 export class SuccesfulRegisterComponent {
+  email: string = "";
+
+  constructor(private router: Router) {
+    this.email = this.router.getCurrentNavigation()?.extras?.state?.['email'] || "";
+  }
+
+  ngOnInit() {}
 
 }
