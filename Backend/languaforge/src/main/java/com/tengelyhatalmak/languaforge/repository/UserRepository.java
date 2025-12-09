@@ -11,4 +11,5 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Procedure("get_user_by_username")
     Optional<User> getUserByUsername(String username);
 
+    User findByActivationToken(String activationToken);
 }
