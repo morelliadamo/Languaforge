@@ -11,5 +11,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Procedure("get_user_by_username")
     Optional<User> getUserByUsername(String username);
 
+
+    @Procedure("get_user_by_email")
+    Optional<User> getUserByEmail(String email);
+
     User findByActivationToken(String activationToken);
 }

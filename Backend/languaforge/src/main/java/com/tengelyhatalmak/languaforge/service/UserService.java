@@ -14,4 +14,5 @@ public interface UserService {
     void deleteUserById(Integer id);
 
     String encodePassword(String password);
+    boolean checkPassword(String rawPassword, String encodedPassword);
 }

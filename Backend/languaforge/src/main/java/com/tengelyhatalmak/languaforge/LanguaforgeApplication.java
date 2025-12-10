@@ -14,22 +14,22 @@ import org.springframework.web.cors.CorsConfigurationSource;
 @SpringBootApplication
 public class LanguaforgeApplication {
 
-    @Configuration //for testing purposes only, to be removed later
-    public class SecurityConfig {
-
-
-        @Bean
-        public SecurityFilterChain securityFilterChain(HttpSecurity http, CorsConfigurationSource corsConfigurationSource) throws Exception {
-            http
-                    .cors(cors ->cors.configurationSource(corsConfigurationSource))
-                    .csrf(csrf -> csrf.disable())
-                    .authorizeHttpRequests(auth -> auth
-                            .anyRequest().permitAll()
-                    );
-
-            return http.build();
-        }
-    }
+//    @Configuration //for testing purposes only, to be removed later
+//    public class SecurityConfig {
+//
+//
+//        @Bean
+//        public SecurityFilterChain securityFilterChain(HttpSecurity http, CorsConfigurationSource corsConfigurationSource) throws Exception {
+//            http
+//                    .cors(cors ->cors.configurationSource(corsConfigurationSource))
+//                    .csrf(csrf -> csrf.disable())
+//                    .authorizeHttpRequests(auth -> auth
+//                            .anyRequest().permitAll()
+//                    );
+//
+//            return http.build();
+//        }
+//    }
 
 
 	public static void main(String[] args) {

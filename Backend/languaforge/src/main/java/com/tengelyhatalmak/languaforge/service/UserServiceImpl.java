@@ -14,6 +14,9 @@ import com.tengelyhatalmak.languaforge.repository.UserRepository;
 @Service
 public class UserServiceImpl implements UserService {
 
+    private final PasswordEncoder passwordEncoder = new Argon2PasswordEncoder(5, 64, 2, 5, 2);
+
+
     @Autowired
     private UserRepository userRepository;
 
@@ -57,8 +60,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String encodePassword(String password) {
-        Argon2PasswordEncoder passwordEncoder = new Argon2PasswordEncoder(5, 64, 2, 5, 2);
         return passwordEncoder.encode(password);
+    }
+
+    @Override
+    public boolean checkPassword(String rawPassword, String encodedPassword) {
+        return passwordEncoder.matches(rawPassword, encodedPassword);
     }
 
 }

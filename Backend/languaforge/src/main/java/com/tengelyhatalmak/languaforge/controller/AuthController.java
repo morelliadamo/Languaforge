@@ -1,6 +1,8 @@
 package com.tengelyhatalmak.languaforge.controller;
 
 
+import com.tengelyhatalmak.languaforge.dto.LoginRequestDTO;
+import com.tengelyhatalmak.languaforge.dto.RefreshTokenRequestDTO;
 import com.tengelyhatalmak.languaforge.model.User;
 import com.tengelyhatalmak.languaforge.service.AuthService;
 import jakarta.transaction.Transactional;
@@ -26,8 +28,13 @@ public class AuthController {
     public ResponseEntity<?> activateUser(@RequestParam String token) {
         return authService.activateUser(token);
     }
-//    @PostMapping("/login")
-//    public ResponseEntity<String> loginUser(@RequestBody User user) {
-//
-//    }
+    @PostMapping("/login")
+    public ResponseEntity<?> loginUser(@RequestBody LoginRequestDTO loginRequest) {
+            return authService.loginUser(loginRequest);
+    }
+
+    @PostMapping("/refresh")
+    public ResponseEntity<?> refreshToken(@RequestBody RefreshTokenRequestDTO refreshTokenRequest){
+        return authService.refreshToken(refreshTokenRequest.getRefreshToken());
+    }
 }
