@@ -1,0 +1,29 @@
+<app-header></app-header>
+<div class="bg-[#fafafa] min-h-screen p-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-8">
+      <h1 class="text-gray-600 text-2xl font-semibold mb-2">
+        {{ courseTitle }}
+      </h1>
+      <h2 class="text-gray-500 text-lg">{{ courseDescription }}</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <app-unit-card [unitColor]="'#f0f0f0'"></app-unit-card>
+      <app-unit-card [unitColor]="'#f23f21'"></app-unit-card>
+      <app-unit-card [unitTitle]="'Word matching'"></app-unit-card>
+      <app-unit-card
+        [unitColor]="'red'"
+        [unitDifficulty]="'Excruciating!!!'"
+        [unitProgress]="67"
+        [unitDescription]="'SIX SEVEEEEEEN'"
+        [unitTaskCount]="67"
+        [unitTitle]="'SIX SEVEN'"
+        [unitIcon]="'sixSevenKid.jpg'"
+      ></app-unit-card>
+      <app-unit-card [unitDescription]="'Lorem ipsum'"></app-unit-card>
+      <app-unit-card></app-unit-card>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
