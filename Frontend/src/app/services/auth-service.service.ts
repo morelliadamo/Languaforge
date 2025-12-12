@@ -55,4 +55,20 @@ export class AuthServiceService {
   isLoggedIn(): boolean {
     return this.isAuthenticatedSubject.value;
   }
+
+
+  getUserName(): string | null {
+    const token = this.getAccesToken();
+    if (!token) {
+      return null;
+    }
+
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload.username || payload.sub || null;
+    } catch (error) {
+      console.error('Error decoding token:', error);
+      return null;
+    }
+  }
 }

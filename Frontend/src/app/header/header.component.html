@@ -12,6 +12,7 @@
   <h3 class="mr-[40px]">Login</h3>
 </a>
   <a
+    *ngIf="!isLoggedIn"
     href="/register"
     class="mr-[40px] bg-[#0f0f0f] text-[#f0f0f0] rounded-md hover:cursor-pointer hover:bg-[#3b3b3b] transition-all duration-300 flex items-center justify-center pb-4 pt-4 pl-2 pr-2 mb-1"
   >
@@ -24,4 +25,5 @@
     >
     Log out
   </h3>
+
 </nav>

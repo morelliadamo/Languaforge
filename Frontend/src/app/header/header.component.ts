@@ -2,6 +2,7 @@ import {Component, inject, Input} from '@angular/core';
 import {AuthServiceService} from '../services/auth-service.service';
 import {Router} from '@angular/router';
 import {NgIf} from '@angular/common';
+import {CourseLoaderServiceService} from '../services/course-loader-service.service';
 
 @Component({
   selector: 'app-header',
@@ -24,4 +25,7 @@ export class HeaderComponent {
 
     this.router.navigate(['/login']);
   }
+
+
+
 }
