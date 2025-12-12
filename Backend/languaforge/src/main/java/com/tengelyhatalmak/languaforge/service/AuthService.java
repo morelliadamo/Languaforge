@@ -7,6 +7,7 @@ import com.tengelyhatalmak.languaforge.repository.UserRepository;
 import com.tengelyhatalmak.languaforge.util.JWTUtil;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.bouncycastle.util.Times;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -105,9 +106,13 @@ public class AuthService {
         String accessToken = jwtUtil.generateAccessToken(user.getUsername());
         String refreshToken = jwtUtil.generateRefreshToken(user.getUsername());
 
+        user.setLastLogin(java.sql.Timestamp.valueOf(LocalDateTime.now()));
+        userService.saveUser(user);
         LoginResponseDTO response = new LoginResponseDTO(accessToken, refreshToken, user.getUsername());
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+
 
 
     @Transactional

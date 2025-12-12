@@ -1,5 +1,6 @@
 package com.tengelyhatalmak.languaforge.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -27,6 +28,11 @@ public class Course {
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<Unit> units = new ArrayList<>();
+
+
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference("course-userxcourse")
+    private List<UserXCourse> usersXCourse = new ArrayList<>();
 
     @Column(name="title", nullable = false, unique = true)
     private String title;

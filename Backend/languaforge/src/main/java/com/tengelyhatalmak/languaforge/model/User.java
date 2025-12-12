@@ -1,6 +1,8 @@
 package com.tengelyhatalmak.languaforge.model;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
@@ -33,6 +35,10 @@ public class User {
     @JoinColumn(name = "role_id", nullable = false, insertable = false, updatable = false)
     @JsonBackReference
     private Role role;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference("user-userxcourse")
+    private List<UserXCourse> userXCourses = new ArrayList<>();
 
     @Column(name = "role_id", nullable = false)
     private Integer roleId = 1;

@@ -51,4 +51,8 @@ export class AuthServiceService {
   private hasToken(): boolean {
     return !!localStorage.getItem(this.accessTokenKey);
   }
+
+  isLoggedIn(): boolean {
+    return this.isAuthenticatedSubject.value;
+  }
 }
