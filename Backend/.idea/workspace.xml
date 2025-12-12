@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d2c999d-83de-43e1-bfea-cc149e1b02b0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/languaforge/src/main/java/com/tengelyhatalmak/languaforge/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/languaforge/src/main/java/com/tengelyhatalmak/languaforge/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/languaforge/src/main/java/com/tengelyhatalmak/languaforge/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/languaforge/src/main/java/com/tengelyhatalmak/languaforge/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/languaforge/src/main/java/com/tengelyhatalmak/languaforge/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/languaforge/src/main/java/com/tengelyhatalmak/languaforge/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/languaforge/src/main/java/com/tengelyhatalmak/languaforge/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/languaforge/src/main/java/com/tengelyhatalmak/languaforge/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/languaforge/src/main/java/com/tengelyhatalmak/languaforge/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/languaforge/src/main/java/com/tengelyhatalmak/languaforge/service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/languaforge/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/languaforge/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/.angular/cache/19.2.17/Frontend/.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/.angular/cache/19.2.17/Frontend/.tsbuildinfo" afterDir="false" />
-    </list>
+    <list default="true" id="4d2c999d-83de-43e1-bfea-cc149e1b02b0" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -107,6 +98,7 @@
       <workItem from="1764495803343" duration="435000" />
       <workItem from="1764850351353" duration="713000" />
       <workItem from="1764960688617" duration="15000" />
+      <workItem from="1765551105868" duration="19000" />
     </task>
     <servers />
   </component>
