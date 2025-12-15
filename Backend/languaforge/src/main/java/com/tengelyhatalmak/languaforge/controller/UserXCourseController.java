@@ -1,6 +1,7 @@
 package com.tengelyhatalmak.languaforge.controller;
 
 import com.tengelyhatalmak.languaforge.model.Course;
+import com.tengelyhatalmak.languaforge.model.Unit;
 import com.tengelyhatalmak.languaforge.model.User;
 import com.tengelyhatalmak.languaforge.model.UserXCourse;
 import com.tengelyhatalmak.languaforge.service.UserXCourseService;
@@ -40,6 +41,21 @@ public class UserXCourseController {
     @GetMapping("/user/{userId}/courses")
     public List<Course> getCoursesByUserId(@PathVariable Integer userId) {
         return userXCourseService.findCoursesByUserId(userId);
+    }
+
+    @GetMapping("/user/{username}/course/{courseId}")
+    public List<Unit> getUnitsByUsernameAndCourseId(
+            @PathVariable String username,
+            @PathVariable Integer courseId) {
+        return userXCourseService.findUnitsByUsernameAndCourseId(username, courseId);
+    }
+
+    @GetMapping("/user/{username}/course/{courseId}/unit/{unitId}")
+    public Unit getUnitByUsernameAndCourseIdAndUnitId(
+            @PathVariable String username,
+            @PathVariable Integer courseId,
+            @PathVariable Integer unitId) {
+        return userXCourseService.findUnitByUsernameAndCourseIdAndUnitId(username, courseId, unitId);
     }
 
     @PostMapping("/enroll")

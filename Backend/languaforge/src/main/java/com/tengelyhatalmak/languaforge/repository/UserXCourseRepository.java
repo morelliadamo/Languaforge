@@ -1,8 +1,6 @@
 package com.tengelyhatalmak.languaforge.repository;
 
-import com.tengelyhatalmak.languaforge.model.Course;
-import com.tengelyhatalmak.languaforge.model.User;
-import com.tengelyhatalmak.languaforge.model.UserXCourse;
+import com.tengelyhatalmak.languaforge.model.*;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -22,4 +20,19 @@ public interface UserXCourseRepository extends JpaRepository<UserXCourse, Intege
 
     @Query("SELECT uc.course FROM UserXCourse uc WHERE uc.user.id = :userId")
     List<Course> getCoursesByUserId(@Param("userId") Integer userId);
+
+
+    @Query("SELECT u FROM Unit u WHERE u.course.id = :courseId AND " +
+            "EXISTS (SELECT uxc FROM UserXCourse uxc WHERE uxc.user.username = :username " +
+            "AND uxc.course.id = :courseId)")
+    List<Unit> findUnitsByUsernameAndCourseId(@Param("username")String username, @Param("courseId")Integer courseId);
+
+
+    @Query("SELECT u FROM Unit u WHERE u.id = :unitId AND u.course.id = :courseId AND " +
+            "EXISTS (SELECT uxc FROM UserXCourse uxc WHERE uxc.user.username = :username " +
+            "AND uxc.course.id = :courseId)")
+    Unit findUnitByUsernameAndCourseIdAndUnitId(@Param("username") String username,
+                                                  @Param("courseId") Integer courseId,
+                                                  @Param("unitId") Integer unitId);
+
 }

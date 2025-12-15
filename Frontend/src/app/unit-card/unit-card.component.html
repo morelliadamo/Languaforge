@@ -1,5 +1,6 @@
 <div
   class="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg cursor-pointer transition-shadow"
+  [routerLink]="['/my/courses', courseId, 'units', unit.id]"
 >
   <div class="flex items-start justify-between mb-4">
     <div
@@ -33,7 +34,7 @@
     <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
       {{ unitDifficulty }}
     </span>
-    <span class="text-xs text-gray-500">{{ unitTaskCount }} tasks</span>
+    <span class="text-xs text-gray-500">{{ unitLessonsCount }} lessons</span>
   </div>
 
   <div class="flex items-center justify-between mb-2">

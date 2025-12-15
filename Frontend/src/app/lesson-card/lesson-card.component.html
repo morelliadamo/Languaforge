@@ -1,0 +1,38 @@
+<div
+  class="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg cursor-pointer transition-shadow"
+>
+  <div class="flex items-start justify-between mb-4">
+    <div
+      class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-green-400 to-green-600"
+    >
+     
+    </div>
+
+    <svg
+      class="w-5 h-5 text-gray-400 flex-shrink-0"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M9 5l7 7-7 7"
+      ></path>
+    </svg>
+  </div>
+
+  <div class="flex items-center gap-2 mb-2">
+    <span class="text-xs font-semibold text-gray-400 uppercase">Lesson {{ lesson.orderIndex }}</span>
+  </div>
+
+  <h3 class="text-xl font-semibold text-gray-800 mb-4">{{ lesson.title }}</h3>
+
+  <div class="flex items-center gap-3">
+    <span class="px-3 py-1 bg-green-100 text-green-700 text-xs rounded-full font-medium">
+      {{ lesson.exercises.length }} exercises
+    </span>
+  </div>
+</div>
+

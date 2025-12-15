@@ -1,11 +1,10 @@
 package com.tengelyhatalmak.languaforge.service;
 
-import com.tengelyhatalmak.languaforge.model.Course;
-import com.tengelyhatalmak.languaforge.model.User;
-import com.tengelyhatalmak.languaforge.model.UserXCourse;
+import com.tengelyhatalmak.languaforge.model.*;
 import com.tengelyhatalmak.languaforge.repository.UserXCourseRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.ReadOnlyProperty;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,6 +34,18 @@ public class UserXCourseServiceImpl implements UserXCourseService{
     @Transactional
     public List<UserXCourse> findUserXCourseByUsername(String username) {
         return userXCourseRepository.getUserXCourseByUsername(username);
+    }
+
+    @Override
+    @Transactional
+    public List<Unit> findUnitsByUsernameAndCourseId(String username, Integer courseId) {
+        return userXCourseRepository.findUnitsByUsernameAndCourseId(username, courseId);
+    }
+
+    @Override
+    @Transactional
+    public Unit findUnitByUsernameAndCourseIdAndUnitId(String username, Integer courseId, Integer unitId) {
+        return userXCourseRepository.findUnitByUsernameAndCourseIdAndUnitId(username, courseId, unitId);
     }
 
     @Override

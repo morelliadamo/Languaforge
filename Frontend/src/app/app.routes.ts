@@ -7,6 +7,8 @@ import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.com
 import { CourseHubComponent } from './course-hub/course-hub.component';
 import { CourseContentComponent } from './course-content/course-content.component';
 import {noAuthGuard} from './guards/no-auth-guard';
+import {UnitHubComponent} from './unit-hub/unit-hub.component';
+import {LessonHubComponent} from './lesson-hub/lesson-hub.component';
 
 export const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -16,5 +18,6 @@ export const routes: Routes = [
   { path: 'login', component: LoginPageComponent, canActivate: [noAuthGuard] },
   { path: 'tos', component: TermsOfServiceComponent },
   { path: 'my/courses', component: CourseHubComponent },
-  { path: 'my/courses/1', component: CourseContentComponent },
+  { path: 'my/courses/:id', component: UnitHubComponent},
+  { path: 'my/courses/:courseId/units/:unitId', component: LessonHubComponent }
 ];

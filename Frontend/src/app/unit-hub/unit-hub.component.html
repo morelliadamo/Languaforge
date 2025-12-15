@@ -1,0 +1,17 @@
+<app-header></app-header>
+
+
+<app-unit-card [unitTitle]="unit.title"
+               [unitDescription]="'A unit in '+' '+unit.title"
+               [unitColor]="colorFromUnitName()"
+               [unitIcon]="'sixSevenKid.jpg'"
+               [unitProgress]="0"
+               [unitLessonsCount]="unit.lessons.length"
+               [unitDifficulty]="'placeholder'"
+               [unit] = "unit"
+               [courseId]="courseId"
+               *ngFor="let unit of units"></app-unit-card>
+
+
+
+<app-footer></app-footer>

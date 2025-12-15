@@ -1,8 +1,6 @@
 package com.tengelyhatalmak.languaforge.service;
 
-import com.tengelyhatalmak.languaforge.model.Course;
-import com.tengelyhatalmak.languaforge.model.User;
-import com.tengelyhatalmak.languaforge.model.UserXCourse;
+import com.tengelyhatalmak.languaforge.model.*;
 
 import java.util.List;
 
@@ -11,9 +9,12 @@ public interface UserXCourseService {
     List<UserXCourse> findAllUserXCourses();
     UserXCourse findUserXCourseById(Integer id);
     List<UserXCourse> findUserXCourseByUsername(String username);
+    List<Unit> findUnitsByUsernameAndCourseId(String username, Integer courseId);
+    Unit findUnitByUsernameAndCourseIdAndUnitId(String username, Integer courseId, Integer unitId);
 
     List<User> findUsersByCourseId(Integer courseId);
     List<Course> findCoursesByUserId(Integer userId);
+
 
     UserXCourse updateUserXCourse(UserXCourse userXCourse, Integer id);
     void deleteUserXCourseById(Integer id);
