@@ -4,6 +4,7 @@ import com.tengelyhatalmak.languaforge.model.Course;
 import com.tengelyhatalmak.languaforge.model.User;
 import com.tengelyhatalmak.languaforge.model.UserXCourse;
 import com.tengelyhatalmak.languaforge.repository.UserXCourseRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +32,7 @@ public class UserXCourseServiceImpl implements UserXCourseService{
     }
 
     @Override
+    @Transactional
     public List<UserXCourse> findUserXCourseByUsername(String username) {
         return userXCourseRepository.getUserXCourseByUsername(username);
     }

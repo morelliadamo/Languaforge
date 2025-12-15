@@ -27,7 +27,6 @@ public class UserXCourseController {
         return userXCourseService.findUserXCourseById(id);
     }
 
-    @Transactional
     @GetMapping("/user/{username}")
     public List<UserXCourse> getUserXCourseByUsername(@PathVariable String username) {
         return userXCourseService.findUserXCourseByUsername(username);
