@@ -1,0 +1,54 @@
+<app-header></app-header>
+
+<div id="lesson-container">
+  <div id="lesson-header">
+    <h1>{{ lesson?.title || "Lesson" }}</h1>
+    <p>Exercise {{ currentExerciseIndex + 1 }} of {{ exercises.length }}</p>
+  </div>
+
+  <div id="exercises-container">
+    <div class="exercise-item" *ngIf="getCurrentExercise()">
+      <!-- choice ex. -->
+      <div
+        *ngIf="getCurrentExercise().exerciseType === 'choice'"
+        class="multiple-choice"
+      >
+        <p class="question">
+          {{ getCurrentExercise().exerciseContent.description }}
+        </p>
+        <div class="options">
+          <button
+            *ngFor="let answer of getCurrentExercise().exerciseContent.answers"
+            class="option-btn"
+          >
+            {{ answer }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="navigation-buttons">
+      <button
+        (click)="previousExercise()"
+        [disabled]="isFirstExercise()"
+        class="nav-btn"
+      >
+        Previous
+      </button>
+
+      <button
+        (click)="nextExercise()"
+        *ngIf="!isLastExercise()"
+        class="nav-btn"
+      >
+        Next
+      </button>
+
+      <button *ngIf="isLastExercise()" class="nav-btn finish-btn">
+        Finish
+      </button>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

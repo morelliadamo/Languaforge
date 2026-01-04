@@ -1,9 +1,10 @@
 <app-header></app-header>
 
-
 <div *ngFor="let lesson of lessons">
-    <app-lesson-card [lesson]="lesson"></app-lesson-card>
+  <app-lesson-card
+    [lesson]="lesson"
+    (click)="onLessonClick(lesson, lesson.exercises)"
+  ></app-lesson-card>
 </div>
-
 
 <app-footer></app-footer>

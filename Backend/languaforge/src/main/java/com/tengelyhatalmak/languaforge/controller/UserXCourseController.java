@@ -1,9 +1,6 @@
 package com.tengelyhatalmak.languaforge.controller;
 
-import com.tengelyhatalmak.languaforge.model.Course;
-import com.tengelyhatalmak.languaforge.model.Unit;
-import com.tengelyhatalmak.languaforge.model.User;
-import com.tengelyhatalmak.languaforge.model.UserXCourse;
+import com.tengelyhatalmak.languaforge.model.*;
 import com.tengelyhatalmak.languaforge.service.UserXCourseService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +54,15 @@ public class UserXCourseController {
             @PathVariable Integer unitId) {
         return userXCourseService.findUnitByUsernameAndCourseIdAndUnitId(username, courseId, unitId);
     }
+
+//    @GetMapping("/user/{username}/course/{courseId}/unit/{unitId}/lesson/{lessonId}")
+//    public Lesson getLessonByUsernameAndCourseIdAndUnitIdAndLessonId(
+//            @PathVariable String username,
+//            @PathVariable Integer courseId,
+//            @PathVariable Integer unitId,
+//            @PathVariable Integer lessonId) {
+//        return userXCourseService.findLessonByUsernameAndCourseIdAndUnitIdAndLessonId(username, courseId, unitId, lessonId);
+//    }
 
     @PostMapping("/enroll")
     public UserXCourse enrollUserInCourse(@RequestBody UserXCourse userXCourse) {
