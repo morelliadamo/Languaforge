@@ -1,9 +1,0 @@
-<app-header></app-header>
-
-<div *ngFor="let userCourse of userCourses">
-  <a [routerLink]="['/my/courses', userCourse.course.id]">
-    <app-course-card [userCourse]="userCourse"></app-course-card>
-  </a>
-</div>
-
-<app-footer></app-footer>
