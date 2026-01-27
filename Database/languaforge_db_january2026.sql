@@ -2,10 +2,10 @@
 -- version 5.1.2
 -- https://www.phpmyadmin.net/
 --
--- Gép: localhost:3306
--- Létrehozás ideje: 2026. Jan 04. 13:01
--- Kiszolgáló verziója: 5.7.24
--- PHP verzió: 8.3.1
+-- Host: localhost:3306
+-- Generation Time: Jan 27, 2026 at 12:38 PM
+-- Server version: 5.7.24
+-- PHP Version: 8.1.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,12 +18,12 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Adatbázis: `languaforge_db`
+-- Database: `languaforge_db_january2026`
 --
 
 DELIMITER $$
 --
--- Eljárások
+-- Procedures
 --
 CREATE DEFINER=`root`@`localhost` PROCEDURE `anonymize_due_users` ()   BEGIN
   DECLARE done INT DEFAULT 0;
@@ -454,7 +454,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `achievement`
+-- Table structure for table `achievement`
 --
 
 CREATE TABLE `achievement` (
@@ -468,7 +468,7 @@ CREATE TABLE `achievement` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- A tábla adatainak kiíratása `achievement`
+-- Dumping data for table `achievement`
 --
 
 INSERT INTO `achievement` (`id`, `name`, `description`, `icon_url`, `created_at`, `is_deleted`, `deleted_at`) VALUES
@@ -476,7 +476,7 @@ INSERT INTO `achievement` (`id`, `name`, `description`, `icon_url`, `created_at`
 (2, 'Streak Starter', 'Maintained a 3-day learning streak', 'https://example.com/icons/streak.png', '2025-11-19 11:27:56', 0, NULL);
 
 --
--- Eseményindítók `achievement`
+-- Triggers `achievement`
 --
 DELIMITER $$
 CREATE TRIGGER `achievement_before_update_set_deleted_at` BEFORE UPDATE ON `achievement` FOR EACH ROW BEGIN
@@ -490,7 +490,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `course`
+-- Table structure for table `course`
 --
 
 CREATE TABLE `course` (
@@ -503,16 +503,16 @@ CREATE TABLE `course` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- A tábla adatainak kiíratása `course`
+-- Dumping data for table `course`
 --
 
 INSERT INTO `course` (`id`, `title`, `description`, `created_at`, `is_deleted`, `deleted_at`) VALUES
-(1, 'Spanish for Beginners', 'Learn basic Spanish vocabulary and grammar', '2025-11-19 11:27:56', 0, '2025-12-05 19:57:31'),
+(1, 'Spanish for Beginners', 'Learn basic Spanish vocabulary and grammar', '2025-11-19 11:27:56', 0, NULL),
 (2, 'French Essentials', 'Master essential French phrases and expressions', '2025-11-19 11:27:56', 0, NULL),
 (3, 'Magyar-Angol alapok', 'Tanuld meg az angol nyelv alapjait!', '2025-12-05 19:09:46', 0, NULL);
 
 --
--- Eseményindítók `course`
+-- Triggers `course`
 --
 DELIMITER $$
 CREATE TRIGGER `course_before_update_set_deleted_at` BEFORE UPDATE ON `course` FOR EACH ROW BEGIN
@@ -526,7 +526,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `exercise`
+-- Table structure for table `exercise`
 --
 
 CREATE TABLE `exercise` (
@@ -540,7 +540,7 @@ CREATE TABLE `exercise` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- A tábla adatainak kiíratása `exercise`
+-- Dumping data for table `exercise`
 --
 
 INSERT INTO `exercise` (`id`, `lesson_id`, `exercise_content`, `exercise_type`, `is_deleted`, `deleted_at`, `created_at`) VALUES
@@ -550,13 +550,13 @@ INSERT INTO `exercise` (`id`, `lesson_id`, `exercise_content`, `exercise_type`, 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `friend`
+-- Table structure for table `friendship`
 --
 
-CREATE TABLE `friend` (
+CREATE TABLE `friendship` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `friend_id` int(11) NOT NULL,
+  `user1_id` int(11) NOT NULL,
+  `user2_id` int(11) NOT NULL,
   `status` enum('pending','accepted','blocked') DEFAULT 'pending',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
@@ -564,10 +564,10 @@ CREATE TABLE `friend` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Eseményindítók `friend`
+-- Triggers `friendship`
 --
 DELIMITER $$
-CREATE TRIGGER `friend_before_update_set_deleted_at` BEFORE UPDATE ON `friend` FOR EACH ROW BEGIN
+CREATE TRIGGER `friend_before_update_set_deleted_at` BEFORE UPDATE ON `friendship` FOR EACH ROW BEGIN
   IF OLD.is_deleted = 0 AND NEW.is_deleted = 1 THEN
     SET NEW.deleted_at = IF(NEW.deleted_at IS NULL, NOW(), NEW.deleted_at);
   END IF;
@@ -578,7 +578,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `leaderboard`
+-- Table structure for table `leaderboard`
 --
 
 CREATE TABLE `leaderboard` (
@@ -592,7 +592,7 @@ CREATE TABLE `leaderboard` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Eseményindítók `leaderboard`
+-- Triggers `leaderboard`
 --
 DELIMITER $$
 CREATE TRIGGER `leaderboard_before_update_set_deleted_at` BEFORE UPDATE ON `leaderboard` FOR EACH ROW BEGIN
@@ -606,7 +606,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `lesson`
+-- Table structure for table `lesson`
 --
 
 CREATE TABLE `lesson` (
@@ -620,17 +620,17 @@ CREATE TABLE `lesson` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- A tábla adatainak kiíratása `lesson`
+-- Dumping data for table `lesson`
 --
 
 INSERT INTO `lesson` (`id`, `unit_id`, `title`, `order_index`, `created_at`, `is_deleted`, `deleted_at`) VALUES
 (1, 1, 'Colors and numbers - Színek és számok', 1, '2025-12-07 12:29:22', 0, NULL),
 (2, 1, 'Animals - Állatok', 2, '2025-12-07 12:29:22', 0, NULL),
 (3, 1, 'Objects - Tárgyak', 3, '2025-12-07 12:29:22', 0, NULL),
-(4, 2, 'Testing testing tests - tesztelős tesztek tesztelése', NULL, '2025-12-15 17:34:12', 0, NULL);
+(4, 2, 'Complete the sentences - Mondatok kiegésztése', NULL, '2025-12-15 17:34:12', 0, NULL);
 
 --
--- Eseményindítók `lesson`
+-- Triggers `lesson`
 --
 DELIMITER $$
 CREATE TRIGGER `lesson_before_update_set_deleted_at` BEFORE UPDATE ON `lesson` FOR EACH ROW BEGIN
@@ -644,7 +644,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `lesson_content`
+-- Table structure for table `lesson_content`
 --
 
 CREATE TABLE `lesson_content` (
@@ -659,7 +659,7 @@ CREATE TABLE `lesson_content` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Eseményindítók `lesson_content`
+-- Triggers `lesson_content`
 --
 DELIMITER $$
 CREATE TRIGGER `lesson_content_before_update_set_deleted_at` BEFORE UPDATE ON `lesson_content` FOR EACH ROW BEGIN
@@ -673,7 +673,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `lesson_progress`
+-- Table structure for table `lesson_progress`
 --
 
 CREATE TABLE `lesson_progress` (
@@ -687,7 +687,7 @@ CREATE TABLE `lesson_progress` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Eseményindítók `lesson_progress`
+-- Triggers `lesson_progress`
 --
 DELIMITER $$
 CREATE TRIGGER `lesson_progress_before_update_set_deleted_at` BEFORE UPDATE ON `lesson_progress` FOR EACH ROW BEGIN
@@ -701,7 +701,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `login`
+-- Table structure for table `login`
 --
 
 CREATE TABLE `login` (
@@ -719,7 +719,7 @@ CREATE TABLE `login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Eseményindítók `login`
+-- Triggers `login`
 --
 DELIMITER $$
 CREATE TRIGGER `login_before_update_set_deleted_at` BEFORE UPDATE ON `login` FOR EACH ROW BEGIN
@@ -733,7 +733,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `pricing`
+-- Table structure for table `pricing`
 --
 
 CREATE TABLE `pricing` (
@@ -747,7 +747,7 @@ CREATE TABLE `pricing` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- A tábla adatainak kiíratása `pricing`
+-- Dumping data for table `pricing`
 --
 
 INSERT INTO `pricing` (`id`, `name`, `price`, `billing_cycle`, `created_at`, `is_deleted`, `deleted_at`) VALUES
@@ -756,7 +756,7 @@ INSERT INTO `pricing` (`id`, `name`, `price`, `billing_cycle`, `created_at`, `is
 (3, 'Pro Yearly', '99.99', 'yearly', '2025-11-26 09:20:25', 0, NULL);
 
 --
--- Eseményindítók `pricing`
+-- Triggers `pricing`
 --
 DELIMITER $$
 CREATE TRIGGER `pricing_before_update_set_deleted_at` BEFORE UPDATE ON `pricing` FOR EACH ROW BEGIN
@@ -770,7 +770,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `review`
+-- Table structure for table `review`
 --
 
 CREATE TABLE `review` (
@@ -785,7 +785,7 @@ CREATE TABLE `review` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Eseményindítók `review`
+-- Triggers `review`
 --
 DELIMITER $$
 CREATE TRIGGER `review_before_update_set_deleted_at` BEFORE UPDATE ON `review` FOR EACH ROW BEGIN
@@ -799,7 +799,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `role`
+-- Table structure for table `role`
 --
 
 CREATE TABLE `role` (
@@ -812,7 +812,7 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- A tábla adatainak kiíratása `role`
+-- Dumping data for table `role`
 --
 
 INSERT INTO `role` (`id`, `name`, `description`, `created_at`, `is_deleted`, `deleted_at`) VALUES
@@ -821,7 +821,7 @@ INSERT INTO `role` (`id`, `name`, `description`, `created_at`, `is_deleted`, `de
 (3, 'moderator', 'Content moderator', '2025-11-26 09:20:25', 0, NULL);
 
 --
--- Eseményindítók `role`
+-- Triggers `role`
 --
 DELIMITER $$
 CREATE TRIGGER `role_before_update_set_deleted_at` BEFORE UPDATE ON `role` FOR EACH ROW BEGIN
@@ -835,7 +835,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `score`
+-- Table structure for table `score`
 --
 
 CREATE TABLE `score` (
@@ -849,7 +849,7 @@ CREATE TABLE `score` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Eseményindítók `score`
+-- Triggers `score`
 --
 DELIMITER $$
 CREATE TRIGGER `score_before_update_set_deleted_at` BEFORE UPDATE ON `score` FOR EACH ROW BEGIN
@@ -863,7 +863,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `streak`
+-- Table structure for table `streak`
 --
 
 CREATE TABLE `streak` (
@@ -877,7 +877,7 @@ CREATE TABLE `streak` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Eseményindítók `streak`
+-- Triggers `streak`
 --
 DELIMITER $$
 CREATE TRIGGER `streak_before_update_set_deleted_at` BEFORE UPDATE ON `streak` FOR EACH ROW BEGIN
@@ -891,7 +891,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `subscription`
+-- Table structure for table `subscription`
 --
 
 CREATE TABLE `subscription` (
@@ -909,7 +909,7 @@ CREATE TABLE `subscription` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Eseményindítók `subscription`
+-- Triggers `subscription`
 --
 DELIMITER $$
 CREATE TRIGGER `subscription_before_update_set_deleted_at` BEFORE UPDATE ON `subscription` FOR EACH ROW BEGIN
@@ -923,7 +923,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `unit`
+-- Table structure for table `unit`
 --
 
 CREATE TABLE `unit` (
@@ -937,7 +937,7 @@ CREATE TABLE `unit` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- A tábla adatainak kiíratása `unit`
+-- Dumping data for table `unit`
 --
 
 INSERT INTO `unit` (`id`, `course_id`, `title`, `order_index`, `created_at`, `is_deleted`, `deleted_at`) VALUES
@@ -945,7 +945,7 @@ INSERT INTO `unit` (`id`, `course_id`, `title`, `order_index`, `created_at`, `is
 (2, 3, 'Basic sentences - Alapvető mondatok', 2, '2025-12-07 12:26:05', 0, NULL);
 
 --
--- Eseményindítók `unit`
+-- Triggers `unit`
 --
 DELIMITER $$
 CREATE TRIGGER `unit_before_update_set_deleted_at` BEFORE UPDATE ON `unit` FOR EACH ROW BEGIN
@@ -959,7 +959,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -979,7 +979,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- A tábla adatainak kiíratása `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `password_hash`, `role_id`, `created_at`, `last_login`, `is_anonymized`, `anonymized_at`, `is_deleted`, `deleted_at`, `activation_token`, `is_active`) VALUES
@@ -997,7 +997,7 @@ INSERT INTO `user` (`id`, `username`, `email`, `password_hash`, `role_id`, `crea
 (422, 'test45678', 'dorek46596@alexida.com', '$argon2id$v=19$m=5,t=2,p=2$vk/nDa4$9Bm8TpB+d7IPADvb63Y4eZWZQXyG/tN8JfC+FAg0N0PTDRokYtcnVh+cDHPCmkiao0D4DAnQy+xriNczEwakQg', 1, '2025-12-12 22:11:45', '2025-12-15 16:29:28', 0, NULL, 0, NULL, NULL, 1);
 
 --
--- Eseményindítók `user`
+-- Triggers `user`
 --
 DELIMITER $$
 CREATE TRIGGER `user_before_insert_set_defaults` BEFORE INSERT ON `user` FOR EACH ROW BEGIN
@@ -1018,7 +1018,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `user_achievement`
+-- Table structure for table `user_achievement`
 --
 
 CREATE TABLE `user_achievement` (
@@ -1031,7 +1031,7 @@ CREATE TABLE `user_achievement` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Eseményindítók `user_achievement`
+-- Triggers `user_achievement`
 --
 DELIMITER $$
 CREATE TRIGGER `user_achievement_before_update_set_deleted_at` BEFORE UPDATE ON `user_achievement` FOR EACH ROW BEGIN
@@ -1045,7 +1045,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `user_course`
+-- Table structure for table `user_course`
 --
 
 CREATE TABLE `user_course` (
@@ -1058,7 +1058,7 @@ CREATE TABLE `user_course` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- A tábla adatainak kiíratása `user_course`
+-- Dumping data for table `user_course`
 --
 
 INSERT INTO `user_course` (`id`, `user_id`, `course_id`, `enrolled_at`, `progress`, `completed_at`) VALUES
@@ -1066,39 +1066,39 @@ INSERT INTO `user_course` (`id`, `user_id`, `course_id`, `enrolled_at`, `progres
 (2, 421, 2, '2025-12-15 09:57:43', 0, NULL);
 
 --
--- Indexek a kiírt táblákhoz
+-- Indexes for dumped tables
 --
 
 --
--- A tábla indexei `achievement`
+-- Indexes for table `achievement`
 --
 ALTER TABLE `achievement`
   ADD PRIMARY KEY (`id`);
 
 --
--- A tábla indexei `course`
+-- Indexes for table `course`
 --
 ALTER TABLE `course`
   ADD PRIMARY KEY (`id`);
 
 --
--- A tábla indexei `exercise`
+-- Indexes for table `exercise`
 --
 ALTER TABLE `exercise`
   ADD PRIMARY KEY (`id`),
   ADD KEY `exercise_FK_1` (`lesson_id`);
 
 --
--- A tábla indexei `friend`
+-- Indexes for table `friendship`
 --
-ALTER TABLE `friend`
+ALTER TABLE `friendship`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `idx_friend_unique` (`user_id`,`friend_id`),
-  ADD KEY `idx_friend_status` (`user_id`,`status`),
-  ADD KEY `friend_friend_id` (`friend_id`);
+  ADD UNIQUE KEY `idx_friend_unique` (`user1_id`,`user2_id`),
+  ADD KEY `idx_friend_status` (`user1_id`,`status`),
+  ADD KEY `friend_friend_id` (`user2_id`);
 
 --
--- A tábla indexei `leaderboard`
+-- Indexes for table `leaderboard`
 --
 ALTER TABLE `leaderboard`
   ADD PRIMARY KEY (`id`),
@@ -1107,7 +1107,7 @@ ALTER TABLE `leaderboard`
   ADD KEY `idx_leaderboard_points` (`course_id`,`points`);
 
 --
--- A tábla indexei `lesson`
+-- Indexes for table `lesson`
 --
 ALTER TABLE `lesson`
   ADD PRIMARY KEY (`id`),
@@ -1115,7 +1115,7 @@ ALTER TABLE `lesson`
   ADD KEY `idx_lesson_order` (`unit_id`,`order_index`);
 
 --
--- A tábla indexei `lesson_content`
+-- Indexes for table `lesson_content`
 --
 ALTER TABLE `lesson_content`
   ADD PRIMARY KEY (`id`),
@@ -1123,7 +1123,7 @@ ALTER TABLE `lesson_content`
   ADD KEY `idx_lesson_content_order` (`lesson_id`,`order_index`);
 
 --
--- A tábla indexei `lesson_progress`
+-- Indexes for table `lesson_progress`
 --
 ALTER TABLE `lesson_progress`
   ADD PRIMARY KEY (`id`),
@@ -1131,7 +1131,7 @@ ALTER TABLE `lesson_progress`
   ADD KEY `lp_lesson_id` (`lesson_id`);
 
 --
--- A tábla indexei `login`
+-- Indexes for table `login`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`id`),
@@ -1140,13 +1140,13 @@ ALTER TABLE `login`
   ADD KEY `idx_login_activity` (`login_time`,`user_id`);
 
 --
--- A tábla indexei `pricing`
+-- Indexes for table `pricing`
 --
 ALTER TABLE `pricing`
   ADD PRIMARY KEY (`id`);
 
 --
--- A tábla indexei `review`
+-- Indexes for table `review`
 --
 ALTER TABLE `review`
   ADD PRIMARY KEY (`id`),
@@ -1154,14 +1154,14 @@ ALTER TABLE `review`
   ADD KEY `review_course_id` (`course_id`);
 
 --
--- A tábla indexei `role`
+-- Indexes for table `role`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`);
 
 --
--- A tábla indexei `score`
+-- Indexes for table `score`
 --
 ALTER TABLE `score`
   ADD PRIMARY KEY (`id`),
@@ -1169,14 +1169,14 @@ ALTER TABLE `score`
   ADD KEY `score_lesson_id` (`lesson_id`);
 
 --
--- A tábla indexei `streak`
+-- Indexes for table `streak`
 --
 ALTER TABLE `streak`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `streak_user_id_unique` (`user_id`);
 
 --
--- A tábla indexei `subscription`
+-- Indexes for table `subscription`
 --
 ALTER TABLE `subscription`
   ADD PRIMARY KEY (`id`),
@@ -1185,7 +1185,7 @@ ALTER TABLE `subscription`
   ADD KEY `idx_subscription_active` (`status`,`end_date`);
 
 --
--- A tábla indexei `unit`
+-- Indexes for table `unit`
 --
 ALTER TABLE `unit`
   ADD PRIMARY KEY (`id`),
@@ -1193,7 +1193,7 @@ ALTER TABLE `unit`
   ADD KEY `idx_unit_order` (`course_id`,`order_index`);
 
 --
--- A tábla indexei `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
@@ -1203,7 +1203,7 @@ ALTER TABLE `user`
   ADD KEY `idx_user_deletion` (`is_deleted`,`deleted_at`);
 
 --
--- A tábla indexei `user_achievement`
+-- Indexes for table `user_achievement`
 --
 ALTER TABLE `user_achievement`
   ADD PRIMARY KEY (`id`),
@@ -1211,7 +1211,7 @@ ALTER TABLE `user_achievement`
   ADD KEY `ua_achievement_id` (`achievement_id`);
 
 --
--- A tábla indexei `user_course`
+-- Indexes for table `user_course`
 --
 ALTER TABLE `user_course`
   ADD PRIMARY KEY (`id`),
@@ -1219,220 +1219,220 @@ ALTER TABLE `user_course`
   ADD KEY `fk_user_course_course` (`course_id`);
 
 --
--- A kiírt táblák AUTO_INCREMENT értéke
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT a táblához `achievement`
+-- AUTO_INCREMENT for table `achievement`
 --
 ALTER TABLE `achievement`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT a táblához `course`
+-- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT a táblához `exercise`
+-- AUTO_INCREMENT for table `exercise`
 --
 ALTER TABLE `exercise`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT a táblához `friend`
+-- AUTO_INCREMENT for table `friendship`
 --
-ALTER TABLE `friend`
+ALTER TABLE `friendship`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT a táblához `leaderboard`
+-- AUTO_INCREMENT for table `leaderboard`
 --
 ALTER TABLE `leaderboard`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT a táblához `lesson`
+-- AUTO_INCREMENT for table `lesson`
 --
 ALTER TABLE `lesson`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT a táblához `lesson_content`
+-- AUTO_INCREMENT for table `lesson_content`
 --
 ALTER TABLE `lesson_content`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT a táblához `lesson_progress`
+-- AUTO_INCREMENT for table `lesson_progress`
 --
 ALTER TABLE `lesson_progress`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT a táblához `login`
+-- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT a táblához `pricing`
+-- AUTO_INCREMENT for table `pricing`
 --
 ALTER TABLE `pricing`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT a táblához `review`
+-- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT a táblához `role`
+-- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT a táblához `score`
+-- AUTO_INCREMENT for table `score`
 --
 ALTER TABLE `score`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT a táblához `streak`
+-- AUTO_INCREMENT for table `streak`
 --
 ALTER TABLE `streak`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT a táblához `subscription`
+-- AUTO_INCREMENT for table `subscription`
 --
 ALTER TABLE `subscription`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT a táblához `unit`
+-- AUTO_INCREMENT for table `unit`
 --
 ALTER TABLE `unit`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT a táblához `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=423;
 
 --
--- AUTO_INCREMENT a táblához `user_achievement`
+-- AUTO_INCREMENT for table `user_achievement`
 --
 ALTER TABLE `user_achievement`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT a táblához `user_course`
+-- AUTO_INCREMENT for table `user_course`
 --
 ALTER TABLE `user_course`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- Megkötések a kiírt táblákhoz
+-- Constraints for dumped tables
 --
 
 --
--- Megkötések a táblához `exercise`
+-- Constraints for table `exercise`
 --
 ALTER TABLE `exercise`
   ADD CONSTRAINT `exercise_FK_1` FOREIGN KEY (`lesson_id`) REFERENCES `lesson` (`id`);
 
 --
--- Megkötések a táblához `friend`
+-- Constraints for table `friendship`
 --
-ALTER TABLE `friend`
-  ADD CONSTRAINT `friend_ibfk_friend` FOREIGN KEY (`friend_id`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `friend_ibfk_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+ALTER TABLE `friendship`
+  ADD CONSTRAINT `friendship_ibfk_friend` FOREIGN KEY (`user2_id`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `friendship_ibfk_user` FOREIGN KEY (`user1_id`) REFERENCES `user` (`id`);
 
 --
--- Megkötések a táblához `leaderboard`
+-- Constraints for table `leaderboard`
 --
 ALTER TABLE `leaderboard`
   ADD CONSTRAINT `leaderboard_ibfk_course` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`),
   ADD CONSTRAINT `leaderboard_ibfk_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
--- Megkötések a táblához `lesson`
+-- Constraints for table `lesson`
 --
 ALTER TABLE `lesson`
   ADD CONSTRAINT `lesson_ibfk_unit` FOREIGN KEY (`unit_id`) REFERENCES `unit` (`id`);
 
 --
--- Megkötések a táblához `lesson_content`
+-- Constraints for table `lesson_content`
 --
 ALTER TABLE `lesson_content`
   ADD CONSTRAINT `lesson_content_ibfk_lesson` FOREIGN KEY (`lesson_id`) REFERENCES `lesson` (`id`);
 
 --
--- Megkötések a táblához `lesson_progress`
+-- Constraints for table `lesson_progress`
 --
 ALTER TABLE `lesson_progress`
   ADD CONSTRAINT `lesson_progress_ibfk_lesson` FOREIGN KEY (`lesson_id`) REFERENCES `lesson` (`id`),
   ADD CONSTRAINT `lesson_progress_ibfk_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
--- Megkötések a táblához `login`
+-- Constraints for table `login`
 --
 ALTER TABLE `login`
   ADD CONSTRAINT `login_ibfk_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
--- Megkötések a táblához `review`
+-- Constraints for table `review`
 --
 ALTER TABLE `review`
   ADD CONSTRAINT `review_ibfk_course` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`),
   ADD CONSTRAINT `review_ibfk_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
--- Megkötések a táblához `score`
+-- Constraints for table `score`
 --
 ALTER TABLE `score`
   ADD CONSTRAINT `score_ibfk_lesson` FOREIGN KEY (`lesson_id`) REFERENCES `lesson` (`id`),
   ADD CONSTRAINT `score_ibfk_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
--- Megkötések a táblához `streak`
+-- Constraints for table `streak`
 --
 ALTER TABLE `streak`
   ADD CONSTRAINT `streak_ibfk_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
--- Megkötések a táblához `subscription`
+-- Constraints for table `subscription`
 --
 ALTER TABLE `subscription`
   ADD CONSTRAINT `subscription_ibfk_pricing` FOREIGN KEY (`pricing_id`) REFERENCES `pricing` (`id`),
   ADD CONSTRAINT `subscription_ibfk_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
--- Megkötések a táblához `unit`
+-- Constraints for table `unit`
 --
 ALTER TABLE `unit`
   ADD CONSTRAINT `unit_ibfk_course` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`);
 
 --
--- Megkötések a táblához `user`
+-- Constraints for table `user`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `user_ibfk_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`);
 
 --
--- Megkötések a táblához `user_achievement`
+-- Constraints for table `user_achievement`
 --
 ALTER TABLE `user_achievement`
   ADD CONSTRAINT `user_achievement_ibfk_achievement` FOREIGN KEY (`achievement_id`) REFERENCES `achievement` (`id`),
   ADD CONSTRAINT `user_achievement_ibfk_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
--- Megkötések a táblához `user_course`
+-- Constraints for table `user_course`
 --
 ALTER TABLE `user_course`
   ADD CONSTRAINT `fk_user_course_course` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -1440,7 +1440,7 @@ ALTER TABLE `user_course`
 
 DELIMITER $$
 --
--- Események
+-- Events
 --
 CREATE DEFINER=`root`@`localhost` EVENT `anonymize_old_users_event` ON SCHEDULE EVERY 1 DAY STARTS '2025-11-19 11:27:56' ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
   CALL anonymize_due_users();
