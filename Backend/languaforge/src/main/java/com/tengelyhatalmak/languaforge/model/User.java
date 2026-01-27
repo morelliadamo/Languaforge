@@ -40,6 +40,10 @@ public class User {
     @JsonBackReference("user-userxcourse")
     private List<UserXCourse> userXCourses = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<UserXAchievement> achievementsOfUser = new ArrayList<>();
+
+
     @Column(name = "role_id", nullable = false)
     private Integer roleId = 1;
 

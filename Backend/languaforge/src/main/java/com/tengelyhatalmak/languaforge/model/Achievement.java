@@ -10,6 +10,8 @@ import org.bouncycastle.util.Times;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "achievement")
@@ -18,6 +20,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Achievement {
+
+
+    @OneToMany(mappedBy = "achievement", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<UserXAchievement> usersOfAchievement = new ArrayList<>();
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
