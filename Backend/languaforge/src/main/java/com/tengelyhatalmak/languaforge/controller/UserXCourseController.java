@@ -55,14 +55,7 @@ public class UserXCourseController {
         return userXCourseService.findUnitByUsernameAndCourseIdAndUnitId(username, courseId, unitId);
     }
 
-//    @GetMapping("/user/{username}/course/{courseId}/unit/{unitId}/lesson/{lessonId}")
-//    public Lesson getLessonByUsernameAndCourseIdAndUnitIdAndLessonId(
-//            @PathVariable String username,
-//            @PathVariable Integer courseId,
-//            @PathVariable Integer unitId,
-//            @PathVariable Integer lessonId) {
-//        return userXCourseService.findLessonByUsernameAndCourseIdAndUnitIdAndLessonId(username, courseId, unitId, lessonId);
-//    }
+
 
     @PostMapping("/enroll")
     public UserXCourse enrollUserInCourse(@RequestBody UserXCourse userXCourse) {
