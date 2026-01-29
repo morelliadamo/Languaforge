@@ -22,10 +22,10 @@ public class LessonProgress {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-//
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "user_id", nullable = false)
-//    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @Column(name = "user_id", nullable = false)
     private Integer userId;
@@ -33,8 +33,14 @@ public class LessonProgress {
     @Column(name = "lesson_id", nullable = false)
     private Integer lessonId;
 
-    @Column(name = "progress", nullable = false)
-    private Double progress;
+    @Column(name = "exercise_count", nullable = false)
+    private Integer exerciseCount;
+
+    @Column(name = "completed_exercises", nullable = false)
+    private Integer completedExercises;
+
+    @Column(name = "updated_at")
+    private Timestamp updatedAt;
 
     @Column(name = "created_at", nullable = false)
     private Timestamp createdAt = Timestamp.valueOf(LocalDateTime.now());
@@ -44,6 +50,11 @@ public class LessonProgress {
 
     @Column(name = "deleted_at")
     private Timestamp deletedAt;
+
+
+     public Boolean isLessonCompleted(){
+        return this.completedExercises.equals(this.exerciseCount);
+    }
 
 
 

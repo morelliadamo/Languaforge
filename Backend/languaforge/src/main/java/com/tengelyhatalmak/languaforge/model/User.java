@@ -48,14 +48,25 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     private List<Score> scores = new ArrayList<>();
 
+    public void removeScore(Score score){
+        this.scores.remove(score);
+        score.setUser(null);
+    }
+
     public void addScore(Score score){
         this.scores.add(score);
         score.setUser(this);
     }
 
-    public void removeScore(Score score){
-        this.scores.remove(score);
-        score.setUser(null);
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+    private List<LessonProgress> lessonProgresses = new ArrayList<>();
+
+    public void progressLesson(LessonProgress lessonProgress){
+        lessonProgress.setCompletedExercises(lessonProgress.getCompletedExercises()+1);
+    }
+
+    public void deProgressLesson(LessonProgress lessonProgress){
+        lessonProgress.setCompletedExercises(lessonProgress.getCompletedExercises()-1);
     }
 
 
