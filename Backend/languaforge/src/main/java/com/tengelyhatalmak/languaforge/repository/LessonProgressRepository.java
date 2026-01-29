@@ -10,4 +10,7 @@ import java.util.List;
 public interface LessonProgressRepository extends JpaRepository<LessonProgress, Integer> {
     @Query("SELECT lp FROM LessonProgress lp WHERE lp.userId = :userId")
     public List<LessonProgress> findLessonProgressesByUserId(@Param("userId")Integer userId);
+
+    @Query("SELECT lp FROM LessonProgress lp WHERE lp.userId = :userId AND lp.completedExercises = lp.exerciseCount")
+    public List<LessonProgress> findCompletedLessonProgressesByUserId(@Param("userId")Integer userId);
 }

@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-public class LessonProgressImpl implements LessonProgressService {
+public class LessonProgressServiceImpl implements LessonProgressService {
 
     @Autowired
     private LessonProgressRepository lessonProgressRepository;
@@ -35,6 +35,11 @@ public class LessonProgressImpl implements LessonProgressService {
     @Override
     public List<LessonProgress> findLessonProgressesByUserId(Integer userId) {
         return lessonProgressRepository.findLessonProgressesByUserId(userId);
+    }
+
+    @Override
+    public List<LessonProgress> findCompletedLessonProgressesByUserId(Integer userId) {
+        return lessonProgressRepository.findCompletedLessonProgressesByUserId(userId);
     }
 
     @Override

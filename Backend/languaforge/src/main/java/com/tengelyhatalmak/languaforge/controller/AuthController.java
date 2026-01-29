@@ -31,6 +31,7 @@ public class AuthController {
     public ResponseEntity<?> activateUser(@RequestParam String token) {
         return authService.activateUser(token);
     }
+
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody LoginRequestDTO loginRequest) {
             return authService.loginUser(loginRequest);
