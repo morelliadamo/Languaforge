@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,6 +16,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
     @Id
@@ -42,6 +44,19 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserXAchievement> achievementsOfUser = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+    private List<Score> scores = new ArrayList<>();
+
+    public void addScore(Score score){
+        this.scores.add(score);
+        score.setUser(this);
+    }
+
+    public void removeScore(Score score){
+        this.scores.remove(score);
+        score.setUser(null);
+    }
 
 
     @Column(name = "role_id", nullable = false)

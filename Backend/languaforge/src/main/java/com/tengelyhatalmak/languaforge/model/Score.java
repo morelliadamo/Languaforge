@@ -1,6 +1,5 @@
 package com.tengelyhatalmak.languaforge.model;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,39 +14,37 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "friendship")
-public class Friendship {
+@Table(name = "score")
+public class Score {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
-    @Column(name = "user1_id", nullable = false)
-    private Integer user1Id;
 
-    @Column(name = "user2_id", nullable = false)
-    private Integer user2Id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    public enum FriendshipStatus {
-        PENDING,
-        ACCEPTED,
-        REJECTED
-    }
 
-    @Column(name = "status", nullable = false)
-    @Enumerated(EnumType.STRING)
-    private FriendshipStatus status = FriendshipStatus.PENDING;
+    @Column(name = "user_id", nullable = false)
+    private Integer userId;
+
+    @Column(name = "lesson_id", nullable = false)
+    private Integer lessonId;
+
+    @Column(name = "score", nullable = false)
+    private Integer score;
 
     @Column(name = "created_at", nullable = false)
     private Timestamp createdAt = Timestamp.valueOf(LocalDateTime.now());
-
 
     @Column(name = "is_deleted", nullable = false)
     private Boolean isDeleted = false;
 
     @Column(name = "deleted_at")
     private Timestamp deletedAt;
-
 
 
 }
