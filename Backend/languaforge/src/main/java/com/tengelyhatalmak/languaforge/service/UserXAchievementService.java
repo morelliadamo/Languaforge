@@ -17,6 +17,8 @@ public interface UserXAchievementService {
     List<Achievement> findAchievementsByUserId(Integer userId);
     List<Achievement> findAchievementsByUsername(String username);
 
+    Integer countUsersByAchievementId(Integer achievementId);
+
     UserXAchievement updateUserXAchievement(UserXAchievement userXAchievement, Integer id);
 
     UserXAchievement softDeleteUserXAchievement(Integer id);

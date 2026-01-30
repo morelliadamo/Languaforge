@@ -26,4 +26,8 @@ public interface UserXAchievementRepository extends JpaRepository<UserXAchieveme
 
     @Query("SELECT DISTINCT uxa.achievement FROM UserXAchievement uxa JOIN uxa.user u WHERE u.username = :username AND uxa.isDeleted = false")
     List<Achievement> findAchievementsByUsername(@Param("username") String username);
+
+
+    @Query("SELECT COUNT(uxa) FROM UserXAchievement uxa WHERE uxa.achievementId = :achievementId AND uxa.isDeleted = false")
+    Integer countUserXAchievementByAchievementId(@Param("achievementId") Integer achievementId);
 }

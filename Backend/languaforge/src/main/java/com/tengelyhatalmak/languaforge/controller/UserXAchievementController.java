@@ -37,6 +37,11 @@ public class UserXAchievementController {
         return userXAchievementService.findUsersByAchievementName(achievementName);
     }
 
+    @GetMapping("/achievement/{achievementId}/count")
+    public Integer countUsersByAchievementId(@PathVariable Integer achievementId){
+        return userXAchievementService.countUsersByAchievementId(achievementId);
+    }
+
     @PostMapping("/createUserXAchievement")
     public UserXAchievement createUserXAchievement(UserXAchievement userXAchievement){
         return userXAchievementService.saveUserXAchievement(userXAchievement);
