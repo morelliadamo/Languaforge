@@ -1,60 +1,50 @@
 <app-header></app-header>
-<app-welcome-div></app-welcome-div>
-<h2 class="text-[25px] text-center mt-[60px] mb-[60px]">
-  Why Choose LanguaForge?
+<!--<app-welcome-div></app-welcome-div> -->
+<h2 class="text-[30px] text-sky-500 text-left font-bold mt-[60px] mb-[60px] m-[60px]">
+  Welcome back! 🎉
 </h2>
+<div class="grid grid-cols-3">
 
-<div id="cardsDiv" class="grid grid-cols-3 grid-rows-2 mx-[20vh]">
+<div id="cardsDiv" class="col-span-2 grid grid-cols-4 grid-rows-1 mx-[20vh]">
+  <app-card
+    class="ml-13 mr-5 "
+    [imageSrc]="'asdads.png'"
+    [title]="'Card Title'"
+    [description]="
+      'Card '
+    "
+  ></app-card>
   <app-card
     class="ml-13 mr-5"
     [imageSrc]="'asdads.png'"
     [title]="'Card Title'"
     [description]="
-      'Card description goes here. Lorem ipsum dolor sit amet. Consectetur adipiscing elit.'
+      'Card '
     "
   ></app-card>
   <app-card
-    class="ml-15 mr-5"
+    class="ml-13 mr-5"
     [imageSrc]="'asdads.png'"
     [title]="'Card Title'"
     [description]="
-      'Card description goes here. Lorem ipsum dolor sit amet. Consectetur adipiscing elit.'
+      'Card '
     "
   ></app-card>
   <app-card
-    class="ml-15 mr-5"
+    class="ml-13 mr-5"
     [imageSrc]="'asdads.png'"
     [title]="'Card Title'"
     [description]="
-      'Card description goes here. Lorem ipsum dolor sit amet. Consectetur adipiscing elit.'
-    "
-  ></app-card>
-  <app-card
-    class="ml-15 mr-5"
-    [imageSrc]="'asdads.png'"
-    [title]="'Card Title'"
-    [description]="
-      'Card description goes here. Lorem ipsum dolor sit amet. Consectetur adipiscing elit.'
-    "
-  ></app-card>
-  <app-card
-    class="ml-15 mr-5"
-    [imageSrc]="'asdads.png'"
-    [title]="'Card Title'"
-    [description]="
-      'Card description goes here. Lorem ipsum dolor sit amet. Consectetur adipiscing elit.'
-    "
-  ></app-card>
-  <app-card
-    class="ml-15 mr-5"
-    [imageSrc]="'asdads.png'"
-    [title]="'Card Title'"
-    [description]="
-      'Card description goes here. Lorem ipsum dolor sit amet. Consectetur adipiscing elit.'
+      'Card '
     "
   ></app-card>
 </div>
+<div class="border-red-500 border-[2px] w-[400px] h-[300px] mt-[20vh] mr-[10vh] p-5 flex flex-col rounded-3xl">
+  <h3 class="text-xl font-bold m-[2px]">Continue Learning</h3>
+  
+</div>
 
+</div> 
 <div
   class="bg-[#E8EEFF] w-[100%] h-[700px] mt-[60px] pt-0 flex flex-col items-center justify-center"
 >
