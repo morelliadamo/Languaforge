@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ScoreRepository extends JpaRepository<Score, Integer> {
-    @Query("SELECT s.score FROM Score s WHERE s.userId = :userId")
+    @Query("SELECT s.score FROM Score s WHERE s.user.id = :userId")
     public List<Score> findScoresByUserId(@Param("userId") Integer userId);
 }
