@@ -34,12 +34,12 @@ public class LessonProgressServiceImpl implements LessonProgressService {
 
     @Override
     public List<LessonProgress> findLessonProgressesByUserId(Integer userId) {
-        return lessonProgressRepository.findLessonProgressesByUserId(userId);
+        return lessonProgressRepository.findByUserId(userId);
     }
 
     @Override
     public List<LessonProgress> findCompletedLessonProgressesByUserId(Integer userId) {
-        return lessonProgressRepository.findCompletedLessonProgressesByUserId(userId);
+        return lessonProgressRepository.findCompletedByUserId(userId);
     }
 
     @Override

@@ -57,6 +57,11 @@ public class UserXAchievementServiceImpl implements UserXAchievementService{
     }
 
     @Override
+    public Integer countUsersByAchievementId(Integer achievementId) {
+        return userXAchievementRepository.countUserXAchievementByAchievementId(achievementId);
+    }
+
+    @Override
     public UserXAchievement updateUserXAchievement(UserXAchievement userXAchievement, Integer id) {
         UserXAchievement existingUserXAchievement = userXAchievementRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("UserXAchievement not found"));
