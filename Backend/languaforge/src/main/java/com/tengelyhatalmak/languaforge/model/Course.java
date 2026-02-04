@@ -34,6 +34,10 @@ public class Course {
     @JsonBackReference("course-userxcourse")
     private List<UserXCourse> usersXCourse = new ArrayList<>();
 
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Review> reviews = new ArrayList<>();
+
+
     @Column(name="title", nullable = false, unique = true)
     private String title;
 
