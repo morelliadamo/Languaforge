@@ -53,6 +53,12 @@ public class LeaderboardController {
     }
 
 
+    @PostMapping("/createLeaderboard")
+    public Leaderboard createLeaderboard(@RequestBody Leaderboard leaderboard){
+        return leaderboardService.saveLeaderboard(leaderboard);
+    }
+
+
     @PutMapping("update/{id}")
     public Leaderboard updateLeaderboard(@RequestBody Leaderboard leaderboard, @PathVariable Integer id){
         return leaderboardService.updateLeaderboard(leaderboard, id);

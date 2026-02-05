@@ -18,4 +18,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     Optional<User> getUserByEmail(String email);
 
     User findByActivationToken(String activationToken);
+
+    @Procedure("anonymize_user")
+    void anonymizeUser(Integer userId);
+
 }
