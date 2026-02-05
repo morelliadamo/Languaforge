@@ -20,9 +20,20 @@ public class Leaderboard {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
+//
+//    @Column(name = "user_id", nullable = false)
+//    private Integer userId;
 
-    @Column(name = "user_id", nullable = false)
-    private Integer userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="user_id", nullable = false, insertable = false, updatable = false)
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="course_id", nullable = false, insertable = false, updatable = false)
+    private Course course;
+
+
+
 
     @Column(name = "course_id", nullable = false)
     private Integer courseId;

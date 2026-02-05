@@ -23,12 +23,10 @@ public class UserXCourse {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-//    @JsonManagedReference("user-userxcourse")
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id", nullable = false)
-//    @JsonManagedReference("course-userxcourse")
     private Course course;
 
     @Column(name = "enrolled_at", nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")

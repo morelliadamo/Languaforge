@@ -51,6 +51,12 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Leaderboard> leaderboardList = new ArrayList<>();
+
+
+
+
     public void removeScore(Score score){
         this.scores.remove(score);
         score.setUser(null);

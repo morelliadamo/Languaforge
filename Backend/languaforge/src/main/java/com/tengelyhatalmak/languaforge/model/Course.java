@@ -39,6 +39,9 @@ public class Course {
     private List<Review> reviews = new ArrayList<>();
 
 
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Leaderboard> leaderboardList;
+
     @Column(name="title", nullable = false, unique = true)
     private String title;
 

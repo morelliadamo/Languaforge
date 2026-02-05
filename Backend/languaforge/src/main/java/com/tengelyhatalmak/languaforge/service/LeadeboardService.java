@@ -19,5 +19,5 @@ public interface LeadeboardService {
     Leaderboard updateLeaderboard(Leaderboard leaderboard, Integer id);
 
     Leaderboard softDeleteLeaderboard(Integer id);
-    void deleteLeaderboard(Integer id);
+    void hardDeleteLeaderboard(Integer id);
 }

@@ -81,7 +81,7 @@ public class LearderboardServiceImpl implements LeadeboardService{
     }
 
     @Override
-    public void deleteLeaderboard(Integer id) {
+    public void hardDeleteLeaderboard(Integer id) {
         System.out.println("Deleting leaderboard with id: "+id);
 
         leaderboardRepository.deleteById(id);
