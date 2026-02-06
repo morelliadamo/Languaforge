@@ -57,7 +57,8 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<LoginData> loginDataList = new ArrayList<>();
 
-
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Streak streak;
 
     public void removeScore(Score score){
         this.scores.remove(score);

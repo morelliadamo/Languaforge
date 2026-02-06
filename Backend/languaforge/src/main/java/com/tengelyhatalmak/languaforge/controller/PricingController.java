@@ -2,7 +2,6 @@ package com.tengelyhatalmak.languaforge.controller;
 
 import com.tengelyhatalmak.languaforge.model.Pricing;
 import com.tengelyhatalmak.languaforge.service.PricingService;
-import com.tengelyhatalmak.languaforge.service.PricingServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
