@@ -9,6 +9,7 @@ import lombok.Setter;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "pricing")
@@ -48,6 +49,9 @@ public class Pricing {
     @Column(name = "deleted_at")
     private Timestamp deletedAt;
 
+
+    @OneToMany(mappedBy = "pricing", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Subscription> subscriptions;
 
 
 }
