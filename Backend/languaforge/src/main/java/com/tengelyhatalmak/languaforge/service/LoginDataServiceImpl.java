@@ -23,7 +23,7 @@ public class LoginDataServiceImpl implements LoginDataService{
     }
 
     @Override
-    public List<LoginData> findLoginDataByUserId(Integer userId) {
+    public List<LoginData> findLoginDatasByUserId(Integer userId) {
         return loginDataRepository.findLoginDatasByUserId(userId);
     }
 
@@ -99,8 +99,9 @@ public class LoginDataServiceImpl implements LoginDataService{
                 .orElseThrow(()-> new RuntimeException("LoginData not found"));
 
         loginDataToAnonymize.setIsAnonymized(true);
-        loginDataToAnonymize.setIpAddress("NULL");
-        loginDataToAnonymize.setDeviceInfo("NULL");
+        loginDataToAnonymize.setIpAddress(null);
+        loginDataToAnonymize.setDeviceInfo(null);
+        loginDataToAnonymize.setSessionToken(null);
         loginDataToAnonymize.setUser(null);
 
         return loginDataRepository.save(loginDataToAnonymize);

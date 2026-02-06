@@ -32,13 +32,13 @@ public class LoginData {
     @Column(name = "login_time", nullable = false)
     private Timestamp loginTime = Timestamp.valueOf(LocalDateTime.now());
 
-    @Column(name = "device_info", nullable = false)
+    @Column(name = "device_info")
     private String deviceInfo = logDeviceInfo();
 
-    @Column(name = "ip_address", nullable = false)
+    @Column(name = "ip_address")
     private String ipAddress;
 
-    @Column(name = "session_token", nullable = false,unique = true)
+    @Column(name = "session_token", unique = true)
     private String sessionToken;
 
 

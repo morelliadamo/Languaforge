@@ -8,7 +8,7 @@ public interface LoginDataService {
 
         LoginData findLoginDataById(Integer id);
 
-        List<LoginData> findLoginDataByUserId(Integer userId);
+        List<LoginData> findLoginDatasByUserId(Integer userId);
         List<LoginData> findLoginDatasByIpAddress(String ipAddress);
         List<LoginData> findLoginDataByUsername(String username);
         List<LoginData> findAllLoginDatas();
