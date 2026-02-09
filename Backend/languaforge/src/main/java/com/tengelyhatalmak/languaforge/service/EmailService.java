@@ -19,7 +19,7 @@ public class EmailService {
                 "Thank you for registering at LanguaForge! Please activate your account by clicking the link below:\n" +
                 "http://localhost:8080/auth/activate?token=" + activationToken + "\n\n" +
                 "Best regards,\n" +
-                "The LanguageForge Team");
+                "The LanguaForge Team");
 
         mailSender.send(message);
     }

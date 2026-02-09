@@ -6,11 +6,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Enumeration;
 
 @Entity
 @Table(name = "login")
@@ -36,13 +38,13 @@ public class LoginData {
     private String deviceInfo = logDeviceInfo();
 
     @Column(name = "ip_address")
-    private String ipAddress;
+    private String ipAddress = logIpAddress();
 
     @Column(name = "session_token", unique = true)
     private String sessionToken;
 
 
-    @Column(name = "expires_at", nullable = false)
+    @Column(name = "expires_at")
     private Timestamp expiresAt;
 
     @Column(name = "is_anonymized", nullable = false)
@@ -58,7 +60,7 @@ public class LoginData {
     private Timestamp deletedAt;
 
 
-    private String logDeviceInfo() {
+     public String logDeviceInfo() {
         StringBuilder deviceInfoBuilder = new StringBuilder();
 
         try {
@@ -73,6 +75,34 @@ public class LoginData {
         }
 
         return deviceInfoBuilder.toString();
+    }
+
+
+    public String logIpAddress() {
+        try {
+            Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
+
+            while (interfaces.hasMoreElements()) {
+                NetworkInterface ni = interfaces.nextElement();
+
+                if (!ni.isUp()) {
+                    continue;
+                }
+
+                Enumeration<InetAddress> addresses = ni.getInetAddresses();
+                while (addresses.hasMoreElements()) {
+                    InetAddress addr = addresses.nextElement();
+
+                    if (!addr.isLoopbackAddress()) {
+                        return "IP: " + addr.getHostAddress();
+                    }}
+            }
+            return "IP: " + InetAddress.getLocalHost().getHostAddress();
+
+
+        } catch (Exception e) {
+            return "Unknown IP";
+        }
     }
 
 }

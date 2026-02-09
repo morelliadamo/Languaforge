@@ -2,12 +2,14 @@ package com.tengelyhatalmak.languaforge.service;
 
 import com.tengelyhatalmak.languaforge.dto.LoginRequestDTO;
 import com.tengelyhatalmak.languaforge.dto.LoginResponseDTO;
+import com.tengelyhatalmak.languaforge.model.LoginData;
 import com.tengelyhatalmak.languaforge.model.User;
 import com.tengelyhatalmak.languaforge.repository.UserRepository;
 import com.tengelyhatalmak.languaforge.util.JWTUtil;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.bouncycastle.util.Times;
+import org.hibernate.mapping.Any;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,10 +26,13 @@ public class AuthService {
 
     private final UserRepository userRepository;
     private final UserService userService;
+    private final LoginDataService loginDataService;
     private final EmailService emailService;
     private final JWTUtil jwtUtil;
 
-    public ResponseEntity<User> registerUser(User user) {
+
+
+    public ResponseEntity registerUser(User user) {
         Optional<User> userByUsername;
         try {
             userByUsername = userRepository.getUserByUsername(user.getUsername());
@@ -36,8 +41,15 @@ public class AuthService {
         }
 
         if (userByUsername.isPresent()) {
-            return new ResponseEntity<User>(userByUsername.get(), HttpStatus.CONFLICT);
-        } else {
+            return new ResponseEntity<String>("This username is already in use, choose another one!", HttpStatus.CONFLICT);
+        }
+        else if(userRepository.getEmail(user.getEmail()) != null){
+            return new ResponseEntity<String>("This email address is already in use, choose another one!", HttpStatus.CONFLICT);
+        }
+        else if(user.getPasswordHash().length() < 8){
+            return new ResponseEntity<String>("This password is too short, please enter a longer one!", HttpStatus.BAD_REQUEST);
+        }
+        else {
             user.setPasswordHash(userService.encodePassword(user.getPasswordHash()));
             user.setCreatedAt(Timestamp.valueOf(LocalDateTime.now()));
             userService.saveUser(user);
@@ -108,6 +120,9 @@ public class AuthService {
 
         user.setLastLogin(java.sql.Timestamp.valueOf(LocalDateTime.now()));
         userService.saveUser(user);
+        LoginData loginDataOfUser = new LoginData();
+        loginDataOfUser.setUser(user);
+        loginDataService.saveLoginData(loginDataOfUser);
         LoginResponseDTO response = new LoginResponseDTO(accessToken, refreshToken, user.getUsername());
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

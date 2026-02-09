@@ -23,8 +23,10 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/register", "/auth/activate", "/auth/login", "/auth/refresh" ).permitAll()
-                        .requestMatchers("/userxcourses/**").authenticated().anyRequest().permitAll()
+//                        .requestMatchers("/auth/register", "/auth/activate", "/auth/login", "/auth/refresh" ).permitAll()
+//                        .requestMatchers("/userxcourses/**").authenticated().anyRequest().permitAll()
+                                .requestMatchers("/**").permitAll() //for testing only
+
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
