@@ -7,6 +7,8 @@ import java.util.List;
 public interface SubscriptionService {
     List<Subscription> findAllSubscriptions();
     Subscription findSubscriptionById(Integer id);
+    Subscription findSubscriptionByUserId(Integer userId);
+
 
     Subscription saveSubscription(Subscription subscription);
 

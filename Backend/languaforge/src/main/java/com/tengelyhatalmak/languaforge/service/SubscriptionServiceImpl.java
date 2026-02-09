@@ -32,6 +32,11 @@ public class SubscriptionServiceImpl implements SubscriptionService{
     }
 
     @Override
+    public Subscription findSubscriptionByUserId(Integer userId) {
+        return subscriptionRepository.findSubscriptionByUserId(userId);
+    }
+
+    @Override
     public Subscription saveSubscription(Subscription subscription) {
         return subscriptionRepository.save(subscription);
     }
