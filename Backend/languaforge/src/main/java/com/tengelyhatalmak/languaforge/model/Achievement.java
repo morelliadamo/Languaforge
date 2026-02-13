@@ -41,7 +41,7 @@ public class Achievement {
     private String iconUrl;
 
     @Column(name = "created_at", nullable = false)
-    private Timestamp createdAt = Timestamp.valueOf(LocalDateTime.now());
+    private Timestamp createdAt;
 
     @Column(name = "is_deleted")
     private Boolean isDeleted = false;
@@ -49,5 +49,16 @@ public class Achievement {
     @Column(name = "deleted_at")
     private Timestamp deletedAt;
 
+
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = Timestamp.valueOf(LocalDateTime.now());
+
+        if (isDeleted == null){
+            isDeleted = false;
+        }
+
+    }
 
 }

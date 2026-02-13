@@ -7,6 +7,8 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -56,8 +58,20 @@ public class AchievementServiceImpl implements AchievementService{
                 .orElseThrow(()->new RuntimeException("Achievement not found"));
 
         achievementToSoftDelete.setIsDeleted(true);
+        achievementToSoftDelete.setDeletedAt(Timestamp.valueOf(LocalDateTime.now()));
 
         return achievementRepository.save(achievementToSoftDelete);
 
+    }
+
+    @Override
+    public Achievement restoreAchievement(Integer id) {
+        Achievement achievement = achievementRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Achievement not found"));
+
+        achievement.setIsDeleted(false);
+        achievement.setDeletedAt(null);
+
+        return achievementRepository.save(achievement);
     }
 }

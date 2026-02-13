@@ -11,4 +11,6 @@ public interface AchievementService {
     Achievement updateAchievement(Achievement achievement, Integer id);
     void deleteAchievement(Integer id);
     Achievement softDeleteAchievement(Integer id);
+    Achievement restoreAchievement(Integer id);
+
 }

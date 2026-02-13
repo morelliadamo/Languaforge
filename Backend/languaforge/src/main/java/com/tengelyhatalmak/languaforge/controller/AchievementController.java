@@ -31,17 +31,23 @@ public class AchievementController {
         return achievementService.saveAchievement(achievement);
     }
 
+    @PatchMapping("/softDeleteAchievement/{id}")
+    public Achievement softDeleteAchievement(@PathVariable Integer id){
+        return achievementService.softDeleteAchievement(id);
+    }
+
+
+    @PatchMapping("/restoreAchievement/{id}")
+    public Achievement restoreAchievement(@PathVariable Integer id){
+        return achievementService.restoreAchievement(id);
+    }
+
     @PutMapping("/updateAchievement/{id}")
     public Achievement updateAchievement(@RequestBody Achievement achievement, @PathVariable Integer id){
         return achievementService.updateAchievement(achievement, id);
     }
 
-    @PatchMapping("/softDeleteAchievement")
-    public Achievement softDeleteAchievement(@PathVariable Integer id){
-        return achievementService.softDeleteAchievement(id);
-    }
-
-    @DeleteMapping("/hardDeleteAchievement")
+    @DeleteMapping("/hardDeleteAchievement/{id}")
     public void hardDeleteAchievement(@PathVariable Integer id){
         achievementService.deleteAchievement(id);
     }
