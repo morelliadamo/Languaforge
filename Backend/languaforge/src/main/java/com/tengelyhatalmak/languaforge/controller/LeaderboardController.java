@@ -64,12 +64,12 @@ public class LeaderboardController {
         return leaderboardService.updateLeaderboard(leaderboard, id);
     }
 
-    @PatchMapping("/softDelete/{id}")
+    @PatchMapping("/softDeleteLeaderboard/{id}")
     public Leaderboard softDeleteLeaderboard(@PathVariable Integer id){
         return leaderboardService.softDeleteLeaderboard(id);
     }
 
-    @DeleteMapping("/hardDelete/{id}")
+    @DeleteMapping("/hardDeleteLeaderboard/{id}")
     public void hardDeleteLeaderboard(@PathVariable Integer id){
         leaderboardService.hardDeleteLeaderboard(id);
     }

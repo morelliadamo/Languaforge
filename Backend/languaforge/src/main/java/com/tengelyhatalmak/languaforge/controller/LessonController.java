@@ -37,16 +37,12 @@ public class LessonController {
 
     @PatchMapping("/softDeleteLesson/{id}")
     public Lesson softDeleteLesson(@PathVariable Integer id){
-        Lesson lesson = lessonService.findLessonById(id);
-        lesson.setIsDeleted(true);
-        return lessonService.saveLesson(lesson);
+        return lessonService.softDeleteLesson(id);
     }
 
     @PatchMapping("/restoreLesson/{id}")
     public Lesson restoreLesson(@PathVariable Integer id){
-        Lesson lesson = lessonService.findLessonById(id);
-        lesson.setIsDeleted(false);
-        return lessonService.saveLesson(lesson);
+        return lessonService.restoreLesson(id);
     }
 
     @DeleteMapping("/hardDeleteLesson/{id}")

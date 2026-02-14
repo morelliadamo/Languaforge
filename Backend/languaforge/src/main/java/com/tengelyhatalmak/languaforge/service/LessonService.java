@@ -8,9 +8,15 @@ import java.util.List;
 
 public interface LessonService {
     Lesson saveLesson(Lesson lesson);
+
     List<Lesson> findAllLessons();
 // TODO    List<Lesson> findAllExercisesByLessonId(Integer lessonId);
     Lesson findLessonById(Integer id);
+
     Lesson updateLesson(Lesson lesson, Integer id);
+
+    Lesson softDeleteLesson(Integer id);
+    Lesson restoreLesson(Integer id);
     void deleteLessonById(Integer id);
+
 }
