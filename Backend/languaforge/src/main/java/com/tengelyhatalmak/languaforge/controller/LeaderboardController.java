@@ -59,7 +59,7 @@ public class LeaderboardController {
     }
 
 
-    @PutMapping("update/{id}")
+    @PutMapping("updateLeaderboard/{id}")
     public Leaderboard updateLeaderboard(@RequestBody Leaderboard leaderboard, @PathVariable Integer id){
         return leaderboardService.updateLeaderboard(leaderboard, id);
     }

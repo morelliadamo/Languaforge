@@ -12,7 +12,7 @@ public interface LeaderboardRepository extends JpaRepository<Leaderboard, Intege
     @Query("SELECT l FROM Leaderboard l WHERE l.course.id = :courseId ORDER BY l.points DESC LIMIT 1")
     Leaderboard findHighestPointsLeaderboardByCourseId(Integer courseId);
 
-    @Query("SELECT l FROM Leaderboard l WHERE l.points = MAX(l.points)")
+    @Query("SELECT l FROM Leaderboard l ORDER BY l.points DESC LIMIT 1")
     Leaderboard findHighestPointsLeaderboardOverall();
 
     List<Leaderboard> findLeaderboardByCourseId(Integer courseId);

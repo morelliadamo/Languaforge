@@ -1,7 +1,11 @@
 package com.tengelyhatalmak.languaforge.service;
 
+import com.tengelyhatalmak.languaforge.model.Course;
 import com.tengelyhatalmak.languaforge.model.Leaderboard;
+import com.tengelyhatalmak.languaforge.model.User;
+import com.tengelyhatalmak.languaforge.repository.CourseRepository;
 import com.tengelyhatalmak.languaforge.repository.LeaderboardRepository;
+import com.tengelyhatalmak.languaforge.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +19,26 @@ public class LearderboardServiceImpl implements LeadeboardService{
     @Autowired
     private LeaderboardRepository leaderboardRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private CourseRepository courseRepository;
+
+
+
+
 
     @Override
     public Leaderboard saveLeaderboard(Leaderboard leaderboard) {
+        User user = userRepository.findById(leaderboard.getUserId())
+                .orElseThrow(() -> new RuntimeException("User not found with id: " + leaderboard.getUserId()));
+        leaderboard.setUser(user);
+
+        Course course = courseRepository.findById(leaderboard.getCourseId())
+                .orElseThrow(() -> new RuntimeException("Course not found with id: " + leaderboard.getCourseId()));
+        leaderboard.setCourse(course);
+
         return leaderboardRepository.save(leaderboard);
     }
 

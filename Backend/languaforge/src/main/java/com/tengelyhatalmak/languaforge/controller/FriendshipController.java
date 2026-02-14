@@ -35,7 +35,7 @@ public class FriendshipController {
         return friendshipService.updateFriendship(friendship, friendshipId);
     }
 
-    @DeleteMapping("/softDeleteFriendship/{friendshipId}")
+    @PatchMapping("/softDeleteFriendship/{friendshipId}")
     public Friendship softDeleteFriendship(@PathVariable Integer friendshipId){
         return friendshipService.softDeleteFriendshipById(friendshipId);
     }
