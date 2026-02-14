@@ -2,8 +2,6 @@ package com.tengelyhatalmak.languaforge.model;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonRawValue;
-import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,6 +11,7 @@ import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "exercise")
@@ -37,8 +36,7 @@ public class Exercise {
 
     @Column(name = "exercise_content", nullable = false)
     @JdbcTypeCode(SqlTypes.JSON)
-    @JsonRawValue
-    private JsonNode exerciseContent;
+    private ExerciseContent exerciseContent;
 
     @Column(name = "exercise_type", nullable = false)
     private String exerciseType;
@@ -49,7 +47,17 @@ public class Exercise {
     @Column(name = "deleted_at")
     private Timestamp deletedAt;
 
+
     @Column(name = "created_at", nullable = false)
     private Timestamp createdAt;
 
+    @PrePersist
+    protected void onCreate() {
+        if (createdAt == null) {
+            createdAt = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
+        }
+        if (isDeleted == null) {
+            isDeleted = false;
+        }
+    }
 }

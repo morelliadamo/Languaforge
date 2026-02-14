@@ -9,7 +9,7 @@ public interface AchievementService {
     List<Achievement> findAllAchievements();
     Achievement findAchievementById(Integer id);
     Achievement updateAchievement(Achievement achievement, Integer id);
-    void deleteAchievement(Integer id);
+    void hardDeleteAchievement(Integer id);
     Achievement softDeleteAchievement(Integer id);
     Achievement restoreAchievement(Integer id);
 

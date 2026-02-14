@@ -29,7 +29,7 @@ public class ExerciseLogicController {
 
     private static final String FASTAPI_URL = "http://localhost:8000/transcribe";
 
-    @PostMapping("/evaluate")
+    @PostMapping("/evaluateSpeech")
     public ResponseEntity<?> evaluatePronunciation(
             @RequestParam String expectedText,
             @RequestPart MultipartFile audioFile) throws IOException {

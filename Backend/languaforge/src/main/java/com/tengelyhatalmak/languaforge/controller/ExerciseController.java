@@ -37,16 +37,12 @@ public class ExerciseController {
 
     @PatchMapping("/softDeleteExercise/{id}")
     public Exercise softDeleteExercise(@PathVariable Integer id){
-        Exercise exercise = exerciseService.findExerciseById(id);
-        exercise.setIsDeleted(true);
-        return exerciseService.saveExercise(exercise);
+        return exerciseService.softDeleteExerciseById(id);
     }
 
     @PatchMapping("/restoreExercise/{id}")
     public Exercise restoreExercise(@PathVariable Integer id){
-        Exercise exercise = exerciseService.findExerciseById(id);
-        exercise.setIsDeleted(false);
-        return exerciseService.saveExercise(exercise);
+        return exerciseService.restoreExerciseById(id);
     }
 
     @DeleteMapping("/hardDeleteExercise/{id}")

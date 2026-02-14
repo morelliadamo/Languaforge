@@ -49,7 +49,7 @@ public class AchievementController {
 
     @DeleteMapping("/hardDeleteAchievement/{id}")
     public void hardDeleteAchievement(@PathVariable Integer id){
-        achievementService.deleteAchievement(id);
+        achievementService.hardDeleteAchievement(id);
     }
 
 }
