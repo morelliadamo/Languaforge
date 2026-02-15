@@ -1,5 +1,6 @@
 package com.tengelyhatalmak.languaforge.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,9 +28,13 @@ public class LoginData {
     @Column(name = "id")
     private Integer id;
 
+    @JsonIgnoreProperties({"leaderboardList", "scores", "reviews", "achievementsOfUser", "userXCourses", "loginDataList", "lessonProgresses", "streak"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @Column(name = "user_id", insertable=false, updatable=false)
+    private Integer userId;
 
     @Column(name = "login_time", nullable = false)
     private Timestamp loginTime = Timestamp.valueOf(LocalDateTime.now());
@@ -94,10 +99,10 @@ public class LoginData {
                     InetAddress addr = addresses.nextElement();
 
                     if (!addr.isLoopbackAddress()) {
-                        return "IP: " + addr.getHostAddress();
+                        return addr.getHostAddress();
                     }}
             }
-            return "IP: " + InetAddress.getLocalHost().getHostAddress();
+            return InetAddress.getLocalHost().getHostAddress();
 
 
         } catch (Exception e) {

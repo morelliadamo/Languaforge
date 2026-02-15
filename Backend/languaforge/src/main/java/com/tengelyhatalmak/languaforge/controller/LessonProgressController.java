@@ -41,7 +41,7 @@ public class LessonProgressController {
         return lessonProgressService.saveLessonProgress(lessonProgress);
     }
 
-    @PutMapping("/updateLessonprogress/{id}")
+    @PutMapping("/updateLessonProgress/{id}")
     public LessonProgress updateLessonProgress(@RequestBody LessonProgress lessonProgress, @PathVariable Integer id){
         return lessonProgressService.updateLessonProgress(lessonProgress, id);
     }

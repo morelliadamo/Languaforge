@@ -8,6 +8,8 @@ import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -87,6 +89,7 @@ public class LoginDataServiceImpl implements LoginDataService{
                 .orElseThrow(()-> new RuntimeException("LoginData not found"));
 
         loginDataToSoftDelete.setIsDeleted(true);
+        loginDataToSoftDelete.setDeletedAt(Timestamp.valueOf(LocalDateTime.now()));
 
         return loginDataRepository.save(loginDataToSoftDelete);
 
@@ -102,7 +105,7 @@ public class LoginDataServiceImpl implements LoginDataService{
         loginDataToAnonymize.setIpAddress(null);
         loginDataToAnonymize.setDeviceInfo(null);
         loginDataToAnonymize.setSessionToken(null);
-        loginDataToAnonymize.setUser(null);
+        
 
         return loginDataRepository.save(loginDataToAnonymize);
     }

@@ -26,17 +26,17 @@ public class LoginDataController {
         return loginDataService.findLoginDataById(id);
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping("/uid/{userId}")
     public List<LoginData> getLoginDatasByUserId(@PathVariable Integer userId){
         return loginDataService.findLoginDatasByUserId(userId);
     }
 
-    @GetMapping("/{ipAddress}")
+    @GetMapping("/ip/{ipAddress}")
     public List<LoginData> getLoginDataById(@PathVariable String ipAddress){
         return loginDataService.findLoginDatasByIpAddress(ipAddress);
     }
 
-    @GetMapping("/{username}")
+    @GetMapping("/uname/{username}")
     public List<LoginData> getLoginDatasByUsername(@PathVariable String username){
         return loginDataService.findLoginDataByUsername(username);
     }

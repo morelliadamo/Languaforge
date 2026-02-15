@@ -1,11 +1,14 @@
 package com.tengelyhatalmak.languaforge.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.tengelyhatalmak.languaforge.repository.LessonRepository;
 import jakarta.persistence.*;
 import jdk.jfr.Percentage;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -18,17 +21,21 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class LessonProgress {
 
+
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
+    @JsonIgnoreProperties({"leaderboardList", "scores", "lessonProgresses", "streak","role"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-//    @Column(name = "user_id", nullable = false)
-//    private Integer userId;
+    @Column(name = "user_id", nullable = false, insertable = false, updatable = false)
+    private Integer userId;
 
     @Column(name = "lesson_id", nullable = false)
     private Integer lessonId;
@@ -56,6 +63,17 @@ public class LessonProgress {
         return this.completedExercises.equals(this.exerciseCount);
     }
 
+
+
+    @PrePersist
+    public void onCreate() {
+        if (createdAt == null) {
+            createdAt = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
+        }
+        if (isDeleted == null) {
+            isDeleted = false;
+        }
+    }
 
 
 }
