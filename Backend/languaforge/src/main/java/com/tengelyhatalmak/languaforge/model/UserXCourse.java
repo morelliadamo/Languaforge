@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "user_course")
@@ -37,4 +38,10 @@ public class UserXCourse {
 
     @Column(name = "completed_at")
     private Timestamp completedAt;
+
+
+    public UserXCourse(User user, Course course) {
+        this.user = user;
+        this.course = course;
+    }
 }

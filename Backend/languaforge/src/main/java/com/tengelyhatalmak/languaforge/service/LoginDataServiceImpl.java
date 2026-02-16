@@ -105,7 +105,7 @@ public class LoginDataServiceImpl implements LoginDataService{
         loginDataToAnonymize.setIpAddress(null);
         loginDataToAnonymize.setDeviceInfo(null);
         loginDataToAnonymize.setSessionToken(null);
-        
+
 
         return loginDataRepository.save(loginDataToAnonymize);
     }

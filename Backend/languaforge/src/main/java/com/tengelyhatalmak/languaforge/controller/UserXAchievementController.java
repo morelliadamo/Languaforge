@@ -23,17 +23,17 @@ public class UserXAchievementController {
     }
 
     @GetMapping("/{id}")
-    public UserXAchievement getUserXAchievementById(Integer id){
+    public UserXAchievement getUserXAchievementById(@PathVariable Integer id){
         return userXAchievementService.findUserXAchievementById(id);
     }
 
     @GetMapping("/user/{username}")
-    public List<Achievement> getAchievementsByUserName(String username){
+    public List<Achievement> getAchievementsByUserName(@PathVariable String username){
         return userXAchievementService.findAchievementsByUsername(username);
     }
 
     @GetMapping("/achievement/{achievementName}")
-    public List<User> getUsersByAchievementName(String achievementName){
+    public List<User> getUsersByAchievementName(@PathVariable String achievementName){
         return userXAchievementService.findUsersByAchievementName(achievementName);
     }
 

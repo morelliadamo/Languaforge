@@ -18,7 +18,7 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
     Integer countReviewsByUser(User user);
     Integer countReviewsByCourse(Course course);
 
-    @Query("SELECT AVG(r.rating) FROM Review r WHERE r.course.id = :courseId")
+    @Query("SELECT AVG(r.rating) FROM Review r WHERE r.course.id = :courseId AND r.isDeleted = false")
     Float averageRatingByCourse(Integer courseId);
 
 }

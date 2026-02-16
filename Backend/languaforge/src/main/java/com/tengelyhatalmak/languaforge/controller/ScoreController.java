@@ -22,12 +22,12 @@ public class ScoreController {
     }
 
     @GetMapping("/{id}")
-    public Score getScoreById(Integer id){
+    public Score getScoreById(@PathVariable Integer id){
         return scoreService.findScoreById(id);
     }
 
     @GetMapping("/user/{userId}")
-    public List<Score> getScoresByUserId(Integer userId){
+    public List<Score> getScoresByUserId(@PathVariable Integer userId){
         return scoreService.findScoresByUserId(userId);
     }
 

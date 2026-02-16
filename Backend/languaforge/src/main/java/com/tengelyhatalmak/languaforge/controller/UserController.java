@@ -5,6 +5,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
+import com.tengelyhatalmak.languaforge.model.UserXCourse;
+import com.tengelyhatalmak.languaforge.service.CourseService;
+import com.tengelyhatalmak.languaforge.service.UserXCourseService;
+import org.bouncycastle.util.Times;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +23,13 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserXCourseService userXCourseService;
+
+
+    @Autowired
+    private CourseService courseService;
 
     @GetMapping("/")
     public List<User> getAllUsers() {
@@ -36,8 +47,7 @@ public class UserController {
         user.setUsername(requestBody.get("username"));
         user.setEmail(requestBody.get("email"));
         user.setPasswordHash(userService.encodePassword(requestBody.get("passwordHash")));
-
-        System.out.println("Creating user with encoded password: " + user.getPasswordHash());
+        user.getUserXCourses().add(userXCourseService.saveUserXCourse(new UserXCourse(user, courseService.findCourseById(3)))); //Currently only course with id 3 is available
         return userService.saveUser(user);
     }
     @PutMapping("/updateUser/{id}")

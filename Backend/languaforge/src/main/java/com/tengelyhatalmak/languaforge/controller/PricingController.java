@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pricing")
+@RequestMapping("/pricings")
 public class PricingController {
 
     @Autowired
@@ -31,8 +31,8 @@ public class PricingController {
     }
 
     @PatchMapping("/softDeletePricing/{id}")
-    public Pricing softDeletePricing(@RequestBody Pricing pricing){
-        return pricingService.savePricing(pricing);
+    public Pricing softDeletePricing(@PathVariable Integer id){
+        return pricingService.softDeletePricing(id);
     }
 
     @PutMapping("/updatePricing/{id}")

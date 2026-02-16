@@ -1,7 +1,9 @@
 package com.tengelyhatalmak.languaforge.service;
 
+import com.tengelyhatalmak.languaforge.model.Course;
 import com.tengelyhatalmak.languaforge.model.Review;
 import com.tengelyhatalmak.languaforge.model.User;
+import com.tengelyhatalmak.languaforge.repository.CourseRepository;
 import com.tengelyhatalmak.languaforge.repository.ReviewRepository;
 import com.tengelyhatalmak.languaforge.repository.UserRepository;
 import jakarta.persistence.Access;
@@ -19,9 +21,29 @@ public class ReviewServiceImpl implements ReviewService{
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private CourseRepository courseRepository;
+
 
     @Override
     public Review saveReview(Review review) {
+        if(review.getUserId() == null) {
+            throw new RuntimeException("User information is required to save a review");
+        }
+
+         User user = userRepository.findById(review.getUserId())
+                .orElseThrow(() -> new RuntimeException("User not found with id: " + review.getUserId()));
+
+        if(review.getCourseId() == null) {
+            throw new RuntimeException("Course information is required to save a review");
+        }
+
+        Course course = courseRepository.findById(review.getCourseId())
+                .orElseThrow(() -> new RuntimeException("Course not found with id: " + review.getCourseId()));
+
+        review.setUser(user);
+        review.setCourse(course);
+
         return reviewRepository.save(review);
     }
 
