@@ -1,6 +1,7 @@
 package com.tengelyhatalmak.languaforge.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -28,6 +29,7 @@ public class Role {
 
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
+    @JsonIgnoreProperties({"role", "reviews", "courses", "scores", "achievementsOfUser", "userXCourses", "loginDataList", "lessonProgresses", "streak", "leaderboardList", "followers"})
     private List<User> users = new ArrayList<>();
 
 

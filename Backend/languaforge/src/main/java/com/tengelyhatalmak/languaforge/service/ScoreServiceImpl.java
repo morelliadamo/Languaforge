@@ -2,9 +2,12 @@ package com.tengelyhatalmak.languaforge.service;
 
 import com.tengelyhatalmak.languaforge.model.Score;
 import com.tengelyhatalmak.languaforge.repository.ScoreRepository;
+import com.tengelyhatalmak.languaforge.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -13,8 +16,15 @@ public class ScoreServiceImpl implements ScoreService{
     @Autowired
     private ScoreRepository scoreRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @Override
     public Score saveScore(Score score) {
+        score.setUser(userRepository.findById(score.getUserId())
+                .orElseThrow(()-> new RuntimeException("User not found with id: " + score.getUserId())));
+
+
         return scoreRepository.save(score);
     }
 
@@ -50,6 +60,7 @@ public class ScoreServiceImpl implements ScoreService{
                 .orElseThrow(() -> new RuntimeException("Score not found"));
 
         scoreToSoftDelete.setIsDeleted(true);
+        scoreToSoftDelete.setDeletedAt(Timestamp.valueOf(LocalDateTime.now()));
 
         return scoreRepository.save(scoreToSoftDelete);
     }

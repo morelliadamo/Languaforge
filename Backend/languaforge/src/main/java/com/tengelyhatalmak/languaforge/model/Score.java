@@ -1,5 +1,6 @@
 package com.tengelyhatalmak.languaforge.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,7 +26,11 @@ public class Score {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnoreProperties({"leaderboardList", "scores", "reviews", "achievementsOfUser", "userXCourses", "loginDataList", "lessonProgresses", "streak","role"})
     private User user;
+
+    @Column(name = "user_id", nullable = false, insertable = false, updatable = false)
+    private Integer userId;
 
     @Column(name = "lesson_id", nullable = false)
     private Integer lessonId;
@@ -41,6 +46,18 @@ public class Score {
 
     @Column(name = "deleted_at")
     private Timestamp deletedAt;
+
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = Timestamp.valueOf(LocalDateTime.now());
+
+        if (isDeleted == null) {
+            isDeleted = false;
+            deletedAt = null;
+        }
+
+    }
 
 
 }
