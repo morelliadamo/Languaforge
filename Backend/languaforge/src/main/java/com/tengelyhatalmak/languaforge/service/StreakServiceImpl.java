@@ -18,6 +18,7 @@ public class StreakServiceImpl implements StreakService{
 
     @Override
     public Streak saveStreak(Streak streak) {
+
         return streakRepository.save(streak);
     }
 

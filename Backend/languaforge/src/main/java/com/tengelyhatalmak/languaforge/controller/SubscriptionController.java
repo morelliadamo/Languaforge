@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/subscription")
+@RequestMapping("/subscriptions")
 public class SubscriptionController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class SubscriptionController {
         return subscriptionService.findSubscriptionById(id);
     }
 
-    @GetMapping("/user/{userId}/subscription")
+    @GetMapping("/user/{userId}")
     public Subscription getSubscriptionByUserId(@PathVariable Integer userId){
         return subscriptionService.findSubscriptionByUserId(userId);
     }

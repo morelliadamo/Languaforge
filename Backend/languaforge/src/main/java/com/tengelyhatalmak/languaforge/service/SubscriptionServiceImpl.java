@@ -2,7 +2,9 @@ package com.tengelyhatalmak.languaforge.service;
 
 
 import com.tengelyhatalmak.languaforge.model.Subscription;
+import com.tengelyhatalmak.languaforge.repository.PricingRepository;
 import com.tengelyhatalmak.languaforge.repository.SubscriptionRepository;
+import com.tengelyhatalmak.languaforge.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,13 @@ public class SubscriptionServiceImpl implements SubscriptionService{
 
     @Autowired
     private SubscriptionRepository subscriptionRepository;
+
+
+    @Autowired
+    private PricingRepository pricingRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
 
 
@@ -38,6 +47,45 @@ public class SubscriptionServiceImpl implements SubscriptionService{
 
     @Override
     public Subscription saveSubscription(Subscription subscription) {
+
+        subscription.setCreatedAt(Timestamp.valueOf(LocalDateTime.now()));
+        subscription.setUpdatedAt(Timestamp.valueOf(LocalDateTime.now()));
+        subscription.setStatus(Subscription.Status.active);
+        subscription.setIsDeleted(false);
+
+        if (subscription.getPricingId() == null) {
+            throw new RuntimeException("Pricing information is required to save a subscription");
+        } else if(subscription.getUserId() == null) {
+            throw new RuntimeException("User information is required to save a subscription");
+        }
+
+        if(subscription.getAutoRenew() == null) {
+            subscription.setAutoRenew(false);
+        }
+
+        if(subscription.getPricingId() == 2) {
+            subscription.setAutoRenew(true);
+            subscription.setEndDate(Timestamp.valueOf(
+                    LocalDateTime.now().plusMonths(1))
+            );
+            subscription.setPricing(pricingRepository.findById(subscription.getPricingId())
+                    .orElseThrow(() -> new RuntimeException("Pricing not found with id: " + subscription.getPricingId())));
+        } else if(subscription.getPricingId() == 3) {
+            subscription.setAutoRenew(true);
+            subscription.setEndDate(Timestamp.valueOf(
+                    LocalDateTime.now().plusMonths(12))
+            );
+            subscription.setPricing(pricingRepository.findById(subscription.getPricingId())
+                    .orElseThrow(() -> new RuntimeException("Pricing not found with id: " + subscription.getPricingId())));
+        } else {
+            subscription.setPricing(pricingRepository.findById(1).orElseThrow(()-> new RuntimeException("Pricing not found with id: 1")));
+        }
+
+        subscription.setStartDate(Timestamp.valueOf(LocalDateTime.now()));
+
+
+        subscription.setUser(userRepository.findById(subscription.getUserId()).orElseThrow(()-> new RuntimeException("User not found with id: " + subscription.getUserId())));
+
         return subscriptionRepository.save(subscription);
     }
 
@@ -48,7 +96,6 @@ public class SubscriptionServiceImpl implements SubscriptionService{
 
         existingSubscription.setUpdatedAt(Timestamp.valueOf(LocalDateTime.now()));
         existingSubscription.setAutoRenew(subscription.getAutoRenew());
-        existingSubscription.setPricing(subscription.getPricing());
         existingSubscription.setStatus(subscription.getStatus());
 
         return subscriptionRepository.save(existingSubscription);

@@ -7,9 +7,16 @@ import java.util.List;
 
 public interface UnitService {
     Unit saveUnit(Unit unit);
+
     List<Unit> findAllUnits();
     Unit findUnitById(Integer id);
+
     Unit updateUnit(Unit unit, Integer id);
+
+    Unit softDeleteUnit(Integer id);
+    Unit restoreUnit(Integer id);
     void deleteUnitById(Integer id);
+
+
     void deleteUnitsByCourseId(Integer courseId);
 }

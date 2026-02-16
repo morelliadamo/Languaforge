@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -42,16 +43,12 @@ public class UnitController {
 
     @PatchMapping("/softDeleteUnit/{id}")
     public Unit softDeleteUnit(@PathVariable Integer id){
-        Unit unit = unitService.findUnitById(id);
-        unit.setIsDeleted(true);
-        return unitService.saveUnit(unit);
+        return unitService.softDeleteUnit(id);
     }
 
     @PatchMapping("/restoreUnit/{id}")
     public Unit restoreUnit(@PathVariable Integer id){
-        Unit unit = unitService.findUnitById(id);
-        unit.setIsDeleted(false);
-        return unitService.saveUnit(unit);
+        return unitService.restoreUnit(id);
     }
 
     @DeleteMapping("/hardDeleteUnit/{id}")
