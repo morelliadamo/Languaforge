@@ -5,6 +5,7 @@ import com.tengelyhatalmak.languaforge.model.User;
 import com.tengelyhatalmak.languaforge.model.UserXAchievement;
 import com.tengelyhatalmak.languaforge.service.UserXAchievementService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,9 +28,10 @@ public class UserXAchievementController {
         return userXAchievementService.findUserXAchievementById(id);
     }
 
-    @GetMapping("/user/{username}")
-    public List<Achievement> getAchievementsByUserName(@PathVariable String username){
-        return userXAchievementService.findAchievementsByUsername(username);
+
+    @GetMapping("/user/{userId}")
+    public List<Achievement> getAchievementsByUserId(@PathVariable Integer userId){
+        return userXAchievementService.findAchievementsByUserId(userId);
     }
 
     @GetMapping("/achievement/{achievementName}")
@@ -43,8 +45,16 @@ public class UserXAchievementController {
     }
 
     @PostMapping("/createUserXAchievement")
-    public UserXAchievement createUserXAchievement(UserXAchievement userXAchievement){
-        return userXAchievementService.saveUserXAchievement(userXAchievement);
+    public ResponseEntity<UserXAchievement> createUserAchievement(@RequestBody UserXAchievement request) {
+        if (request.getAchievementId() == null) {
+            throw new IllegalArgumentException("achievementId is required");
+        }
+        if (request.getUserId() == null) {
+            throw new IllegalArgumentException("userId is required");
+        }
+
+        UserXAchievement saved = userXAchievementService.saveUserXAchievement(request);
+        return ResponseEntity.ok(saved);
     }
 
     @PutMapping("/updateUserXAchievement/{id}")

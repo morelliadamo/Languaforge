@@ -4,7 +4,10 @@ import com.tengelyhatalmak.languaforge.dto.LoginRequestDTO;
 import com.tengelyhatalmak.languaforge.dto.LoginResponseDTO;
 import com.tengelyhatalmak.languaforge.model.LoginData;
 import com.tengelyhatalmak.languaforge.model.User;
+import com.tengelyhatalmak.languaforge.model.UserXCourse;
+import com.tengelyhatalmak.languaforge.repository.CourseRepository;
 import com.tengelyhatalmak.languaforge.repository.UserRepository;
+import com.tengelyhatalmak.languaforge.repository.UserXCourseRepository;
 import com.tengelyhatalmak.languaforge.util.JWTUtil;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +32,9 @@ public class AuthService {
     private final LoginDataService loginDataService;
     private final EmailService emailService;
     private final JWTUtil jwtUtil;
+    private final UserXCourseRepository userXCourseRepository;
+    private final CourseRepository courseRepository;
+
 
 
 
@@ -52,8 +58,7 @@ public class AuthService {
         else {
             user.setPasswordHash(userService.encodePassword(user.getPasswordHash()));
             user.setCreatedAt(Timestamp.valueOf(LocalDateTime.now()));
-            userService.saveUser(user);
-
+            userXCourseRepository.save(new UserXCourse(user, courseRepository.findById(3).orElseThrow(()->new RuntimeException("No course with id 3")))); //temporary, only course with id of 3 available currently
             String activationToken = UUID.randomUUID().toString();
             user.setActivationToken(activationToken);
             user.setIsActive(false);

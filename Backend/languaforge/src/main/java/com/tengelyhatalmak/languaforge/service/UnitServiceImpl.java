@@ -5,6 +5,8 @@ import com.tengelyhatalmak.languaforge.repository.UnitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static java.util.Locale.filter;
@@ -36,6 +38,29 @@ public class UnitServiceImpl implements UnitService{
         existingUnit.setTitle(unit.getTitle());
         existingUnit.setOrderIndex(unit.getOrderIndex());
         return unitRepository.save(existingUnit);
+    }
+
+    @Override
+    public Unit softDeleteUnit(Integer id) {
+        Unit unit = unitRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Unit not found with id: " + id));
+
+        unit.setIsDeleted(true);
+        unit.setDeletedAt(Timestamp.valueOf(LocalDateTime.now()));
+
+        return unitRepository.save(unit);
+    }
+
+
+    @Override
+    public Unit restoreUnit(Integer id) {
+        Unit unit = unitRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Unit not found with id: " + id));
+
+        unit.setIsDeleted(false);
+        unit.setDeletedAt(null);
+
+        return unitRepository.save(unit);
     }
 
     @Override

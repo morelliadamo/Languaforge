@@ -41,12 +41,12 @@ public class StreakController {
         return streakService.changeStreakFreezeState(id);
     }
 
-    @PatchMapping("/softDelete/{id}")
+    @PatchMapping("/softDeleteStreak/{id}")
     public Streak softDeleteStreak(@PathVariable Integer id) {
         return streakService.softDeleteStreak(id);
     }
 
-    @DeleteMapping("/hardDelete/{id}")
+    @DeleteMapping("/hardDeleteStreak/{id}")
     public void hardDeleteStreak(@PathVariable Integer id) {
         streakService.hardDeleteStreak(id);
     }

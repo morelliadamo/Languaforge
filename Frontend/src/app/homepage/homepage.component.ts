@@ -11,6 +11,7 @@ import { FriendActivityComponent } from '../friend-activity/friend-activity.comp
     WelcomeDivComponent,
     CardComponent,
     FooterComponent,
+    FriendActivityComponent,
   ],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.css',

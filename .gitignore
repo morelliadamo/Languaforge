@@ -1,2 +1,7 @@
 Backend/languaforge/microservice/.venv/Lib/site-packages/torch/lib/torch_cpu.dll
 Backend/languaforge/microservice/.venv/Lib/site-packages/llvmlite/binding/llvmlite.dll
+/Frontend/.angular/cache
+/Frontend/.angular/cache
+/Frontend/.angular
+Backend/languaforge/microservice/.venv/Lib/
+
