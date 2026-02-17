@@ -4,22 +4,25 @@
 </div>
 
 <app-header></app-header>
-<div class="bg-gray-200 min-h-screen pt-[10%]">
+
+<div class="bg-gray-200 min-h-screen pt-8 sm:pt-12 lg:pt-16 px-4 sm:px-6">
   <div
-    class="flex flex-col items-center justify-center w-[40%] ml-[30%] bg-white p-10 rounded-3xl shadow-md"
+    class="flex flex-col items-center justify-center w-full max-w-[45%] mx-auto bg-white p-6 sm:p-8 lg:p-10 rounded-3xl shadow-md"
   >
-    <img src="Languaforge.png" class="ml-[20%] mr-[20%] h-24 object-center" />
-    <h1 class="text-[35px] font-bold text-center mt-[60px] text-sky-500">
+    <img src="Languaforge.png" class="h-20 sm:h-24 object-center" />
+    <h1
+      class="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mt-10 sm:mt-12 lg:mt-14 text-sky-500"
+    >
       LanguaForge
     </h1>
     <h3
-      class="text-[15px] text-center mb-[60px] text-gray-500 italic font-semibold"
+      class="text-sm sm:text-base text-center mb-10 sm:mb-12 lg:mb-14 text-gray-500 italic font-semibold"
     >
       "Forge Your Language Skills."
     </h3>
 
-    <h2 class="text-[25px] font-bold text-left mt-[6px]">
-      Create Your Account
+    <h2 class="text-xl sm:text-2xl font-bold text-left mt-2">
+      Fiók létrehozása
     </h2>
 
     <form
@@ -32,41 +35,45 @@
       <input
         type="text"
         formControlName="username"
-        placeholder="Username *"
-        class="border-[1px] border-zinc-300 p-2 w-[300px] rounded-xl"
+        placeholder="Felhasználónév *"
+        class="border-[1px] border-zinc-300 p-2 w-full max-w-xs rounded-xl"
       />
       <br />
       <input
         type="email"
         formControlName="email"
         placeholder="Email *"
-        class="border-[1px] border-zinc-300 p-2 w-[300px] rounded-xl"
+        class="border-[1px] border-zinc-300 p-2 w-full max-w-xs rounded-xl"
       />
       <br />
       <input
         type="password"
         formControlName="password"
-        placeholder="Password *"
-        class="border-[1px] border-zinc-300 p-2 w-[300px] rounded-xl"
+        placeholder="Jelszó *"
+        class="border-[1px] border-zinc-300 p-2 w-full max-w-xs rounded-xl"
       />
       <br />
       <input
         type="password"
         formControlName="confirmPassword"
-        placeholder="Confirm Password *"
-        class="border-[1px] border-zinc-300 p-2 w-[300px] rounded-xl"
+        placeholder="Jelszó újra *"
+        class="border-[1px] border-zinc-300 p-2 w-full max-w-xs rounded-xl"
       />
 
       <button
         id="registerBtn"
-        class="bg-sky-500 text-white p-2 w-[150px] mt-4 mb-4 rounded-xl hover:cursor-pointer"
+        class="bg-sky-500 text-white p-2 w-36 sm:w-40 mt-4 mb-4 rounded-xl hover:cursor-pointer hover:bg-sky-600 transition-colors"
         type="submit"
       >
-        Create Account
+        Regisztráció
       </button>
-      <h4 class="text-[15px] text-center mb-[60px] text-gray-500">
-        Already have an account?
-        <a routerLink="/login" class="text-sky-500"><b>Sign In</b></a>
+      <h4
+        class="text-sm sm:text-base text-center mb-10 sm:mb-12 lg:mb-14 text-gray-500"
+      >
+        Már van fiókod?
+        <a routerLink="/login" class="text-sky-500 hover:underline"
+          ><b>Bejelentkezés</b></a
+        >
       </h4>
     </form>
   </div>

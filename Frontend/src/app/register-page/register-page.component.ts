@@ -12,7 +12,7 @@ import {
 } from '@angular/forms';
 import { RegisterServiceService } from '../services/register-service.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
 
 @Component({
@@ -23,6 +23,7 @@ import { NgIf } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     NgIf,
+    RouterLink,
   ],
   templateUrl: './register-page.component.html',
   styleUrl: './register-page.component.css',
@@ -79,7 +80,7 @@ export class RegisterPageComponent {
           console.log('Registration successful!', response);
           this.isLoading = false;
           this.router.navigate(['register/success'], {
-            state: { email: formValue.email },
+            state: { email: formValue.email, fromRegistration: true },
           });
         },
         error: (error: HttpErrorResponse) => {

@@ -6,13 +6,7 @@ import { FooterComponent } from '../footer/footer.component';
 import { FriendActivityComponent } from '../friend-activity/friend-activity.component';
 @Component({
   selector: 'app-homepage',
-  imports: [
-    HeaderComponent,
-    WelcomeDivComponent,
-    CardComponent,
-    FooterComponent,
-    FriendActivityComponent,
-  ],
+  imports: [HeaderComponent, WelcomeDivComponent, FooterComponent],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.css',
 })
