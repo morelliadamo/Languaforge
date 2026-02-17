@@ -11,10 +11,9 @@ import com.tengelyhatalmak.languaforge.repository.UserXCourseRepository;
 import com.tengelyhatalmak.languaforge.util.JWTUtil;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.bouncycastle.util.Times;
-import org.hibernate.mapping.Any;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -58,11 +57,12 @@ public class AuthService {
         else {
             user.setPasswordHash(userService.encodePassword(user.getPasswordHash()));
             user.setCreatedAt(Timestamp.valueOf(LocalDateTime.now()));
-            userXCourseRepository.save(new UserXCourse(user, courseRepository.findById(3).orElseThrow(()->new RuntimeException("No course with id 3")))); //temporary, only course with id of 3 available currently
             String activationToken = UUID.randomUUID().toString();
             user.setActivationToken(activationToken);
             user.setIsActive(false);
             userRepository.save(user);
+            userXCourseRepository.save(new UserXCourse(user, courseRepository.findById(3).orElseThrow(()->new RuntimeException("No course with id 3")))); //temporary, only course with id of 3 available currently
+
 
             emailService.sendActivationEmail(user.getEmail(), user.getUsername(), activationToken);
 
@@ -85,7 +85,146 @@ public class AuthService {
         user.setActivationToken(null);
         userService.saveUser(user);
 
-        return new ResponseEntity<>("Account activated successfully", HttpStatus.OK);
+        return ResponseEntity.ok()
+                .contentType(MediaType.TEXT_HTML)
+                .body(buildSuccessPage(user.getUsername()));
+    }
+
+
+    private String buildSuccessPage(String username) {
+        return """
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Languaforge Account Activated</title>
+                    <style>
+                        * {
+                            margin: 0;
+                            padding: 0;
+                            box-sizing: border-box;
+                        }
+
+                        body {
+                            background-color: #e5e7eb; /* bg-gray-200 */
+                            min-height: 100vh;
+                            padding-top: 10%;
+                            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+                        }
+
+                        .container {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            width: 40%;
+                            margin-left: 30%;
+                            background-color: white;
+                            padding: 2.5rem; /* p-10 = 40px = 2.5rem */
+                            border-radius: 1.5rem; /* rounded-3xl */
+                            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+                        }
+
+                        .logo {
+                            margin-left: 20%;
+                            margin-right: 20%;
+                            height: 6rem; /* h-24 = 96px = 6rem */
+                            object-position: center;
+                        }
+
+                        h1 {
+                            font-size: 35px;
+                            font-weight: bold;
+                            text-align: center;
+                            margin-top: 60px;
+                            color: #0ea5e9; /* text-sky-500 */
+                        }
+
+                        .tagline {
+                            font-size: 15px;
+                            text-align: center;
+                            margin-bottom: 60px;
+                            color: #6b7280; /* text-gray-500 */
+                            font-style: italic;
+                            font-weight: 600; /* font-semibold */
+                        }
+
+                        h2 {
+                            font-size: 25px;
+                            font-weight: bold;
+                            text-align: center;
+                            margin-top: 6px;
+                            color: #10b981; /* green for success */
+                        }
+
+                        .success-message {
+                            font-size: 16px;
+                            text-align: center;
+                            color: #6b7280; /* text-gray-500 */
+                            margin-top: 20px;
+                            line-height: 1.5;
+                        }
+
+                        .username {
+                            color: #0ea5e9; /* text-sky-500 */
+                            font-weight: bold;
+                        }
+
+                        .button {
+                            background-color: #0ea5e9; /* bg-sky-500 */
+                            color: white;
+                            padding: 0.5rem; /* p-2 = 8px = 0.5rem */
+                            width: 150px;
+                            margin-top: 2rem;
+                            margin-bottom: 1rem;
+                            border-radius: 0.75rem; /* rounded-xl */
+                            border: none;
+                            font-size: 16px;
+                            font-weight: 500;
+                            cursor: pointer;
+                            text-decoration: none;
+                            display: inline-block;
+                            text-align: center;
+                            transition: background-color 0.2s;
+                        }
+
+                        .button:hover {
+                            background-color: #0284c7; /* darker sky-500 on hover */
+                        }
+
+                        .checkmark {
+                            font-size: 60px;
+                            color: #10b981; /* green */
+                            margin-bottom: 20px;
+                        }
+
+                        @media (max-width: 768px) {
+                            .container {
+                                width: 90%;
+                                margin-left: 5%;
+                                padding: 1.5rem;
+                            }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="container">
+                        <div class="checkmark">✓</div>
+                        <h1>LanguaForge</h1>
+                        <p class="tagline">"Forge Your Language Skills."</p>
+                        <h2>Fiók sikeresen aktiválva!</h2>
+                        <p class="success-message">
+                            Szuper vagy <span class="username">""" + username + """
+                            </span>! A fiókodat sikeresen aktiváltad!
+                            <br><br>
+                            Most már be tudsz jelentkezni és elkezdheted a nyelvtudásod kovácsolását.
+                        </p>
+                        <a href="http://localhost:4200/login" class="button">Bejelentkezés</a>
+                    </div>
+                </body>
+                </html>
+                """;
     }
 
 
