@@ -5,7 +5,7 @@
 
 <app-header></app-header>
 
-<div class="bg-gray-200 min-h-screen pt-8 sm:pt-12 lg:pt-16 px-4 sm:px-6">
+<div class="bg-gray-200 min-h-screen pt-8 sm:pt-12 lg:pt-16 px-4 sm:px-6 ">
   <div
     class="flex flex-col items-center justify-center w-full max-w-[45%] mx-auto bg-white p-6 sm:p-8 lg:p-10 rounded-3xl shadow-md"
   >
@@ -25,50 +25,51 @@
       Fiók létrehozása
     </h2>
 
+    
     <form
       [formGroup]="registerForm"
       (ngSubmit)="register()"
       id="registerForm"
-      class="flex flex-col items-center justify-center space-y-4"
+      class="flex flex-col items-center justify-center space-y-4 "
     >
       <br />
       <input
         type="text"
         formControlName="username"
         placeholder="Felhasználónév *"
-        class="border-[1px] border-zinc-300 p-2 w-full max-w-xs rounded-xl"
+        class="border-[1px] border-zinc-300 p-2 w-full max-w-xs rounded-xl sm:w-40 md:w-60 lg:w-80 xl:w-96"
       />
       <br />
       <input
         type="email"
         formControlName="email"
         placeholder="Email *"
-        class="border-[1px] border-zinc-300 p-2 w-full max-w-xs rounded-xl"
+        class="border-[1px] border-zinc-300 p-2 w-full max-w-xs rounded-xl sm:w-40 md:w-60 lg:w-80 xl:w-96"
       />
       <br />
       <input
         type="password"
         formControlName="password"
         placeholder="Jelszó *"
-        class="border-[1px] border-zinc-300 p-2 w-full max-w-xs rounded-xl"
+        class="border-[1px] border-zinc-300 p-2 w-full max-w-xs rounded-xl sm:w-40 md:w-60 lg:w-80 xl:w-96"
       />
       <br />
       <input
         type="password"
         formControlName="confirmPassword"
         placeholder="Jelszó újra *"
-        class="border-[1px] border-zinc-300 p-2 w-full max-w-xs rounded-xl"
+        class="border-[1px] border-zinc-300 p-2 w-full max-w-xs rounded-xl sm:w-40 md:w-60 lg:w-80 xl:w-96"
       />
 
       <button
         id="registerBtn"
-        class="bg-sky-500 text-white p-2 w-36 sm:w-40 mt-4 mb-4 rounded-xl hover:cursor-pointer hover:bg-sky-600 transition-colors"
+        class="bg-sky-500 text-white p-2 w-36 mt-4 mb-4 rounded-xl hover:cursor-pointer hover:bg-sky-600 transition-colors sm:w-40 md:w-60 lg:w-80 xl:w-96"
         type="submit"
       >
         Regisztráció
       </button>
       <h4
-        class="text-sm sm:text-base text-center mb-10 sm:mb-12 lg:mb-14 text-gray-500"
+        class="text-sm sm:text-base text-center mb-10 sm:mb-12 lg:mb-14 text-gray-500 sm:w-40 md:w-60 lg:w-80 xl:w-96"
       >
         Már van fiókod?
         <a routerLink="/login" class="text-sky-500 hover:underline"

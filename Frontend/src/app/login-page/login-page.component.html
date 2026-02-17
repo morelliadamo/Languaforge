@@ -10,7 +10,7 @@
     <h3
       class="text-[15px] text-center mb-[60px] text-gray-500 italic font-semibold"
     >
-      "Forge Your English Skills."
+      "Forge Your Language Skills."
     </h3>
     <h2 class="text-3xl font-bold">Welcome Back</h2>
     <br />
@@ -24,7 +24,7 @@
       </div>
 
       <!-- Social Buttons -->
-      <div class="flex gap-6 mb-4 items-center justify-center w-full">
+      <div class="flex gap-6 mb-4 items-center justify-center w-full sm:w-40 md:w-60 lg:w-80 xl:w-96">
         <!-- Google -->
         <button
           class="flex-1 flex items-center justify-center gap-3 border border-gray-300 rounded-xl py-4 hover:bg-gray-50 transition"
@@ -71,7 +71,8 @@
         type="text"
         formControlName="emailOrUsername"
         placeholder="Email *"
-        class="border-[1px] border-zinc-300 p-2 w-md rounded-xl"
+        class="border-[1px] border-zinc-300 p-2 w-md-flex rounded-xl sm:w-40 md:w-60 lg:w-80 xl:w-96"
+
       />
       <div
         *ngIf="
@@ -88,7 +89,7 @@
         type="password"
         formControlName="password"
         placeholder="Password *"
-        class="border-[1px] border-zinc-300 p-2 w-md rounded-xl"
+        class="border-[1px] border-zinc-300 p-2 w-md-flex rounded-xl sm:w-40 md:w-60 lg:w-80 xl:w-96"
       />
       <div
         *ngIf="
@@ -112,7 +113,7 @@
       <button
         type="submit"
         [disabled]="loginForm.invalid || isLoading"
-        class="bg-sky-500 text-white p-2 w-md mt-4 mb-4 rounded-xl hover:cursor-pointer"
+        class="bg-sky-500 text-white p-2 w-md-flex mt-4 mb-4 rounded-xl hover:cursor-pointer sm:w-40 md:w-60 lg:w-80 xl:w-96"
       >
         {{ isLoading ? "Logging In..." : "Log In" }}
       </button>
