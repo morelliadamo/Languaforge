@@ -1,36 +1,52 @@
-import {Component, inject} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
-import {FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule, AbstractControl, ValidationErrors} from '@angular/forms';
-import {RegisterServiceService} from '../services/register-service.service';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormsModule,
+  ReactiveFormsModule,
+  AbstractControl,
+  ValidationErrors,
+} from '@angular/forms';
+import { RegisterServiceService } from '../services/register-service.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import {Router} from '@angular/router';
-import {NgIf} from '@angular/common';
+import { Router } from '@angular/router';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-register-page',
-  imports: [HeaderComponent, FooterComponent, FormsModule, ReactiveFormsModule, NgIf],
+  imports: [
+    HeaderComponent,
+    FooterComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    NgIf,
+  ],
   templateUrl: './register-page.component.html',
   styleUrl: './register-page.component.css',
 })
 export class RegisterPageComponent {
-
   registerForm: FormGroup;
 
   registerService = inject(RegisterServiceService);
 
   isLoading: boolean = false;
 
-
-  constructor(private fb: FormBuilder, private router: Router) {
-    this.registerForm = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(5)]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', [Validators.required]],
-      nativeLanguage: ['', [Validators.required]],
-      languageToLearn: ['', [Validators.required]],
-    }, { validators: this.passwordMatchValidator })
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+  ) {
+    this.registerForm = this.fb.group(
+      {
+        username: ['', [Validators.required, Validators.minLength(5)]],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(8)]],
+        confirmPassword: ['', [Validators.required]],
+      },
+      { validators: this.passwordMatchValidator },
+    );
   }
 
   passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
@@ -41,10 +57,12 @@ export class RegisterPageComponent {
       return null;
     }
 
-    return password.value === confirmPassword.value ? null : { passwordMismatch: true };
+    return password.value === confirmPassword.value
+      ? null
+      : { passwordMismatch: true };
   }
 
-  onSubmit() {
+  register() {
     if (this.registerForm.valid) {
       const formValue = this.registerForm.value;
 
@@ -53,25 +71,22 @@ export class RegisterPageComponent {
       const userData = {
         username: formValue.username,
         email: formValue.email,
-        passwordHash: formValue.password
+        passwordHash: formValue.password,
       };
-
-
-
-
 
       this.registerService.register(userData).subscribe({
         next: (response) => {
-          console.log("Registration successful!", response);
+          console.log('Registration successful!', response);
           this.isLoading = false;
-          this.router.navigate(["register/success"],
-            { state: { email: formValue.email } });
+          this.router.navigate(['register/success'], {
+            state: { email: formValue.email },
+          });
         },
         error: (error: HttpErrorResponse) => {
-          console.error("Registration failed!", error);
-          alert("Registration failed:  " + error.error.message.toString());
+          console.error('Registration failed!', error);
+          alert('Registration failed:  ' + error.error.message.toString());
           this.isLoading = false;
-        }
+        },
       });
     }
   }

@@ -39,7 +39,7 @@ public class User {
     @JsonIgnoreProperties("users")
     private Role role;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     @JsonIgnoreProperties("user")
     private List<UserXCourse> userXCourses = new ArrayList<>();
 
