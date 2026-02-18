@@ -1,41 +1,52 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable, tap} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
-import {LoginRequest} from '../interfaces/LoginRequest';
-import {AuthResponse} from '../interfaces/AuthResponse';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { LoginRequest } from '../interfaces/LoginRequest';
+import { AuthResponse } from '../interfaces/AuthResponse';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthServiceService {
   private readonly apiUrl = 'http://localhost:8080/auth';
-  private readonly accessTokenKey = "access_token";
-  private readonly refreshTokenKey = "refresh_token";
+  private readonly accessTokenKey = 'access_token';
+  private readonly refreshTokenKey = 'refresh_token';
+  private readonly userIdKey = 'user_id';
 
-  private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.hasToken());
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(
+    this.hasToken(),
+  );
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   login(credentials: LoginRequest): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiUrl}/login`, credentials)
-      .pipe(tap(response => this.storeTokens(response)));
+    return this.http
+      .post<AuthResponse>(`${this.apiUrl}/login`, credentials)
+      .pipe(tap((response) => this.storeTokens(response)));
   }
 
-  refreshToken(): Observable<AuthResponse>{
+  refreshToken(): Observable<AuthResponse> {
     const refreshToken = this.getRefreshToken();
-    return this.http.post<AuthResponse>(`${this.apiUrl}/refresh`, { refreshToken })
-      .pipe(tap(response => this.storeTokens(response)));
+    return this.http
+      .post<AuthResponse>(`${this.apiUrl}/refresh`, { refreshToken })
+      .pipe(tap((response) => this.storeTokens(response)));
   }
 
-  logout(): void{
+  logout(): void {
     localStorage.removeItem(this.accessTokenKey);
     localStorage.removeItem(this.refreshTokenKey);
+    localStorage.removeItem(this.userIdKey);
     this.isAuthenticatedSubject.next(false);
   }
 
   getAccesToken(): string | null {
     return localStorage.getItem(this.accessTokenKey);
+  }
+
+  getCurrentUserId(): number | null {
+    const userId = localStorage.getItem(this.userIdKey);
+    return userId ? Number(userId) : null;
   }
 
   getRefreshToken(): string | null {
@@ -45,6 +56,12 @@ export class AuthServiceService {
   private storeTokens(response: AuthResponse): void {
     localStorage.setItem(this.accessTokenKey, response.accessToken);
     localStorage.setItem(this.refreshTokenKey, response.refreshToken);
+
+    // Store user ID if it's in the response
+    if (response.userId) {
+      localStorage.setItem(this.userIdKey, response.userId.toString());
+    }
+
     this.isAuthenticatedSubject.next(true);
   }
 
@@ -55,7 +72,6 @@ export class AuthServiceService {
   isLoggedIn(): boolean {
     return this.isAuthenticatedSubject.value;
   }
-
 
   getUserName(): string | null {
     const token = this.getAccesToken();

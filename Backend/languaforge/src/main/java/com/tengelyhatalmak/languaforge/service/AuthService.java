@@ -267,7 +267,7 @@ public class AuthService {
         LoginData loginDataOfUser = new LoginData();
         loginDataOfUser.setUser(user);
         loginDataService.saveLoginData(loginDataOfUser);
-        LoginResponseDTO response = new LoginResponseDTO(accessToken, refreshToken, user.getUsername());
+        LoginResponseDTO response = new LoginResponseDTO(accessToken, refreshToken, user.getUsername(), user.getId());
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
@@ -283,6 +283,6 @@ public class AuthService {
         String username = jwtUtil.extractUsername(refreshToken);
         String newAccessToken = jwtUtil.generateAccessToken(username);
 
-        return new ResponseEntity<>(new LoginResponseDTO(newAccessToken, refreshToken, username), HttpStatus.OK);
+        return new ResponseEntity<>(new LoginResponseDTO(newAccessToken, refreshToken, username, userRepository.getUserByUsername(username).get().getId()), HttpStatus.OK);
     }
 }
