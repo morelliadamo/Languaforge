@@ -1,4 +1,4 @@
-import {Unit} from './Unit';
+import { Unit } from './Unit';
 
 export interface Course {
   id: number;
@@ -8,4 +8,6 @@ export interface Course {
   createdAt: string;
   isDeleted: boolean;
   deletedAt: string | null;
+  difficulty: null | any;
+  reviews: null | any;
 }

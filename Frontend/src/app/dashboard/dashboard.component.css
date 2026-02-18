@@ -1,0 +1,28 @@
+.course-scroll-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: 8px 0;
+}
+
+.course-scroll-content {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  transition: transform 0.3s ease-in-out;
+}
+
+.course-card {
+  min-width: 320px;
+  max-width: 320px;
+  height: 240px;
+  flex-shrink: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .course-card {
+    min-width: 280px;
+    max-width: 280px;
+  }
+}
