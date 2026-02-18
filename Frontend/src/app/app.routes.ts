@@ -13,6 +13,7 @@ import { LessonHubComponent } from './lesson-hub/lesson-hub.component';
 import { LessonContentComponent } from './lesson-content/lesson-content.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { authGuard } from './guards/auth-guard';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 
 export const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -32,9 +33,11 @@ export const routes: Routes = [
     path: 'my/courses/:courseId/units/:unitId/lessons/:id',
     component: LessonContentComponent,
   },
+  
   {
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [authGuard],
   },
+  { path: 'profile', component: ProfilePageComponent, /*canActivate: [authGuard] */},
 ];
