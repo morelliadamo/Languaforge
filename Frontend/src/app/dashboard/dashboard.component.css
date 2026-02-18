@@ -5,11 +5,16 @@
   padding: 8px 0;
 }
 
-.course-scroll-content {
+.course-scroll-content,
+.progress-scroll-content {
   display: flex;
   gap: 1.5rem;
   width: max-content;
   transition: transform 0.3s ease-in-out;
+}
+
+.progress-scroll-content {
+  justify-content: center;
 }
 
 .course-card {
@@ -19,10 +24,21 @@
   flex-shrink: 0;
 }
 
-/* Responsive adjustments */
+.progress-card {
+  min-width: 450px;
+  max-width: 450px;
+  height: 260px;
+  flex-shrink: 0;
+}
+
 @media (max-width: 640px) {
   .course-card {
     min-width: 280px;
     max-width: 280px;
+  }
+
+  .progress-card {
+    min-width: 320px;
+    max-width: 320px;
   }
 }

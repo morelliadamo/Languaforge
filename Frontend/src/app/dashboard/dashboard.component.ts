@@ -10,6 +10,7 @@ import {
 } from '../interfaces/UserProfile';
 import { Course as LoadedCourse } from '../interfaces/Course';
 import { CourseLoaderServiceService } from '../services/course-loader-service.service';
+import { UtilService } from '../services/util.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,6 +22,7 @@ export class DashboardComponent {
   private userProfileDataService = inject(UserProfileDataService);
   private authService = inject(AuthServiceService);
   private courseService = inject(CourseLoaderServiceService);
+  private utilService = inject(UtilService);
 
   welcomeMessage: string = '';
   welcomeMessageList: string[] = [
@@ -29,6 +31,19 @@ export class DashboardComponent {
     'Már vártunk! 😺',
     'Helló tudás-kovács!',
     'Most tudás lesz a fejedbe verve! 💫🔨',
+    'Örülünk, hogy itt vagy!',
+    'Kezdődjön az agytorna! 🧠',
+    'Új nap, új tudás!',
+    'Vágjunk bele! 🚀',
+    'A tudás útja most folytatódik…',
+    'Készen áll az elméd? 🤓',
+    'Tanulás mód: BE 🔛',
+    'Helló! Ma is okosabbak leszünk!',
+    'Csapjunk bele a tudásba! ⚡',
+    'Jó látni téged újra!',
+    'Indulhat az észcsata! 🧩',
+    'Friss aggyal érkeztél? Akkor hajrá!',
+    'A tudás nem vár! 😉',
   ];
 
   currentStreak: string = '';
@@ -36,14 +51,17 @@ export class DashboardComponent {
   completedCourses: UserProfileCourse[] = [];
   achievements: Achievement[] = [];
 
-  isLessonInProgress: boolean = false;
+  isCourseInProgress: boolean = true;
   scrollPosition: number = 0;
+  scrollPositionInProgress: number = 0;
 
   availableCoursesToStart: LoadedCourse[] = [];
+  startedCourses: LoadedCourse[] = [];
 
   ngOnInit() {
-    console.log(this.authService.getCurrentUserId());
+    console.log();
 
+    // profile data
     this.userProfileDataService
       .getUserProfileData(Number(localStorage.getItem('user_id')))
       .subscribe((data) => {
@@ -57,6 +75,7 @@ export class DashboardComponent {
         console.log(data);
       });
 
+    //courses available to start
     this.courseService.loadAllCourses().subscribe((data) => {
       data.forEach((element) => {
         if (element.id < 10) {
@@ -66,13 +85,32 @@ export class DashboardComponent {
         } else {
           element.difficulty = 'Hard';
         }
-        this.availableCoursesToStart.push(element);
 
-        console.log(element);
-        console.log(this.availableCoursesToStart);
+        element.reviews = this.availableCoursesToStart.push(element);
+        element.color = this.utilService.stringToColor(element.title);
       });
     });
 
+    //started courses
+    this.courseService
+      .loadUserCoursesById(Number(this.authService.getCurrentUserId()))
+      .subscribe((data) => {
+        console.log(data);
+
+        this.startedCourses = data;
+        this.startedCourses.forEach((element) => {
+          if (element.id < 10) {
+            element.difficulty = 'Easy';
+          } else if (element.id > 10 && element.id < 50) {
+            element.difficulty = 'Intermediate';
+          } else {
+            element.difficulty = 'Hard';
+          }
+          element.color = this.utilService.stringToColor(element.title);
+        });
+      });
+
+    //randomized welcome message
     this.welcomeMessage =
       this.welcomeMessageList[
         Math.floor(Math.random() * this.welcomeMessageList.length)
@@ -109,6 +147,42 @@ export class DashboardComponent {
         this.scrollPosition + scrollAmount,
       );
       container.style.transform = `translateX(-${this.scrollPosition}px)`;
+    }
+  }
+
+  scrollLeftInProgress(): void {
+    const container = document.querySelector(
+      '.progress-scroll-content',
+    ) as HTMLElement;
+    if (container) {
+      const cardWidth = window.innerWidth <= 640 ? 320 : 450;
+      const gap = 24;
+      const scrollAmount = cardWidth + gap;
+
+      this.scrollPositionInProgress = Math.max(
+        0,
+        this.scrollPositionInProgress - scrollAmount,
+      );
+      container.style.transform = `translateX(-${this.scrollPositionInProgress}px)`;
+    }
+  }
+
+  scrollRightInProgress(): void {
+    const container = document.querySelector(
+      '.progress-scroll-content',
+    ) as HTMLElement;
+    if (container) {
+      const cardWidth = window.innerWidth <= 640 ? 320 : 450;
+      const gap = 24;
+      const scrollAmount = cardWidth + gap;
+      const maxScroll =
+        scrollAmount * this.startedCourses.length - scrollAmount;
+
+      this.scrollPositionInProgress = Math.min(
+        maxScroll,
+        this.scrollPositionInProgress + scrollAmount,
+      );
+      container.style.transform = `translateX(-${this.scrollPositionInProgress}px)`;
     }
   }
 }

@@ -10,7 +10,7 @@ import { Course } from '../interfaces/Course';
 })
 export class CourseLoaderServiceService {
   constructor(private http: HttpClient) {}
-  private apiUrl = 'http://localhost:8080/userxcourses';
+  private apiUrl = 'http://localhost:8080/userXcourses';
 
   loadUserCourses(username: string) {
     console.log('Loading courses for user:', username);
@@ -20,6 +20,18 @@ export class CourseLoaderServiceService {
       Authorization: `Bearer ${token}`,
     });
     return this.http.get<any[]>(`${this.apiUrl}/user/${username}`, { headers });
+  }
+
+  loadUserCoursesById(id: number) {
+    console.log('Loading courses for user ID:', id);
+    console.log(`${this.apiUrl}/user/${id}`);
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.get<any[]>(`${this.apiUrl}/user/${id}/courses`, {
+      headers,
+    });
   }
 
   loadCourseUnits(username: string, courseId: number) {

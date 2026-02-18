@@ -10,4 +10,6 @@ export interface Course {
   deletedAt: string | null;
   difficulty: null | any;
   reviews: null | any;
+  color: null | any;
+  progress?: number;
 }
