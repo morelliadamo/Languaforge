@@ -11,14 +11,21 @@ import {
 import { Course as LoadedCourse } from '../interfaces/Course';
 import { CourseLoaderServiceService } from '../services/course-loader-service.service';
 import { UtilService } from '../services/util.service';
+import { LoadingOverlayComponent } from '../loading-overlay/loading-overlay.component';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [FriendActivityComponent, HeaderComponent, FooterComponent],
+  imports: [
+    FriendActivityComponent,
+    HeaderComponent,
+    FooterComponent,
+    LoadingOverlayComponent,
+  ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent {
+  isLoading: boolean = true;
   private userProfileDataService = inject(UserProfileDataService);
   private authService = inject(AuthServiceService);
   private courseService = inject(CourseLoaderServiceService);
@@ -58,9 +65,11 @@ export class DashboardComponent {
   availableCoursesToStart: LoadedCourse[] = [];
   startedCourses: LoadedCourse[] = [];
 
-  ngOnInit() {
-    console.log();
+  // delay to ensure loading overlay appears
 
+  async ngOnInit() {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    this.isLoading = false;
     // profile data
     this.userProfileDataService
       .getUserProfileData(Number(localStorage.getItem('user_id')))

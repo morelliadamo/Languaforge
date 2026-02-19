@@ -1,6 +1,5 @@
 import { UserService } from './../services/user.service';
 import { Component, inject } from '@angular/core';
-import { Friendship } from '../interfaces/Friendship';
 import { FriendshipService } from '../services/friendship.service';
 import { UtilService } from '../services/util.service';
 import { User } from '../interfaces/User';
@@ -9,10 +8,11 @@ import { User } from '../interfaces/User';
   selector: 'app-friend-activity',
   standalone: true,
   templateUrl: './friend-activity.component.html',
+  imports: [],
 })
 export class FriendActivityComponent {
   private friendshipService = inject(FriendshipService);
-  private userService = inject(UserService);
+
   utilService = inject(UtilService);
 
   friends: User[] = [];
@@ -26,12 +26,5 @@ export class FriendActivityComponent {
           this.friends = friends;
         });
     }
-
-    for (let friend of this.friends) {
-      if (friend.id == Number(userId)) {
-        this.friends.splice(this.friends.indexOf(friend), 1);
-      }
-    }
-    console.log('________________' + this.friends);
   }
 }

@@ -1,3 +1,8 @@
+<app-loading-overlay
+  [isLoading]="isLoading"
+  [message]="'Betöltjük a műszerfalad...'"
+></app-loading-overlay>
+
 <div class="bg-gray-50">
   <app-header></app-header>
 
@@ -10,383 +15,389 @@
         {{ welcomeMessage }}
       </h2>
 
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12"
-      >
-        <!-- Day Streak -->
+      @if (!isLoading) {
         <div
-          class="flex items-center justify-between rounded-3xl bg-gradient-to-r from-pink-500 to-red-400 p-5 sm:p-6 shadow-lg hover:shadow-xl transition-shadow"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12"
         >
-          <div class="text-white">
-            <div class="text-3xl sm:text-4xl font-bold">
-              {{ currentStreak }}
-            </div>
-            <div
-              class="text-xs sm:text-sm flex items-center gap-1 font-semibold mt-1"
-            >
-              Jelenlegi sikersorozat <span>🔥</span>
-            </div>
-          </div>
-          <div class="text-white text-2xl sm:text-3xl opacity-80">🔥</div>
-        </div>
-
-        <!-- Best Streak -->
-        <div
-          class="flex items-center justify-between rounded-3xl bg-gradient-to-r from-teal-200 to-purple-200 p-5 sm:p-6 shadow-lg hover:shadow-xl transition-shadow"
-        >
-          <div class="text-gray-800">
-            <div class="text-3xl sm:text-4xl font-bold">
-              {{ longestStreak }}
-            </div>
-            <div class="text-xs sm:text-sm font-semibold mt-1">
-              Legjobb sikersorozat
-            </div>
-          </div>
-          <div class="text-gray-800 text-2xl sm:text-3xl opacity-70">⭐</div>
-        </div>
-
-        <!-- Courses Done -->
-        <div
-          class="flex items-center justify-between rounded-3xl bg-gradient-to-r from-sky-500 to-cyan-400 p-5 sm:p-6 shadow-lg hover:shadow-xl transition-shadow"
-        >
-          <div class="text-white">
-            <div class="text-3xl sm:text-4xl font-bold">
-              {{ completedCourses.length }}
-            </div>
-            <div class="text-xs sm:text-sm font-semibold mt-1">
-              Teljesített kurzus
-            </div>
-          </div>
-          <div class="text-white text-2xl sm:text-3xl opacity-80">🎓</div>
-        </div>
-
-        <!-- Badges Earned -->
-        <div
-          class="flex items-center justify-between rounded-3xl bg-gradient-to-r from-amber-200 to-slate-600 p-5 sm:p-6 shadow-lg hover:shadow-xl transition-shadow"
-        >
-          <div class="text-white">
-            <div class="text-3xl sm:text-4xl font-bold">
-              {{ achievements.length }}
-            </div>
-            <div class="text-xs sm:text-sm font-semibold mt-1">
-              Elért teljesítmény
-            </div>
-          </div>
-          <div class="text-white text-2xl sm:text-3xl opacity-80">🏆</div>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
-        @if (isCourseInProgress) {
-          <!-- Continue Learning Section -->
-          <div class="lg:col-span-2">
-            <div class="rounded-2xl bg-white p-6 sm:p-8 shadow-md">
-              <div class="flex items-center justify-between mb-6">
-                <h2 class="text-xl sm:text-2xl font-semibold text-gray-900">
-                  Folytasd a tanulást
-                </h2>
-                <div class="flex gap-2">
-                  @if (startedCourses.length < 2) {
-                    <button
-                      disabled
-                      class="p-2 rounded-lg bg-gray-200 text-gray-400 cursor-not-allowed"
-                      aria-label="Scroll left"
-                    >
-                      <svg
-                        class="w-5 h-5 text-gray-400"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M15 19l-7-7 7-7"
-                        />
-                      </svg>
-                    </button>
-                  } @else {
-                    <button
-                      (click)="scrollLeftInProgress()"
-                      class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
-                      aria-label="Scroll left"
-                    >
-                      <svg
-                        class="w-5 h-5 text-gray-700"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M15 19l-7-7 7-7"
-                        />
-                      </svg>
-                    </button>
-                  }
-
-                  @if (startedCourses.length < 2) {
-                    <button
-                      disabled
-                      class="p-2 rounded-lg bg-gray-200 text-gray-400 cursor-not-allowed"
-                      aria-label="Scroll right"
-                    >
-                      <svg
-                        class="w-5 h-5 text-gray-400"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </button>
-                  } @else {
-                    <button
-                      (click)="scrollRightInProgress()"
-                      class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
-                      aria-label="Scroll right"
-                    >
-                      <svg
-                        class="w-5 h-5 text-gray-700"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </button>
-                  }
-                </div>
+          <!-- Day Streak -->
+          <div
+            class="flex items-center justify-between rounded-3xl bg-gradient-to-r from-pink-500 to-red-400 p-5 sm:p-6 shadow-lg hover:shadow-xl transition-shadow"
+          >
+            <div class="text-white">
+              <div class="text-3xl sm:text-4xl font-bold">
+                {{ currentStreak }}
               </div>
+              <div
+                class="text-xs sm:text-sm flex items-center gap-1 font-semibold mt-1"
+              >
+                Jelenlegi sikersorozat <span>🔥</span>
+              </div>
+            </div>
+            <div class="text-white text-2xl sm:text-3xl opacity-80">🔥</div>
+          </div>
 
-              <div class="course-scroll-container">
-                <div class="progress-scroll-content">
-                  @if (startedCourses.length === 0 || !startedCourses) {
-                    <p class="text-gray-500 text-center py-8">
-                      Még nem kezdted el egyik kurzust sem! <br />
-                      Böngészd az elérhető kurzusokat alább!
-                    </p>
-                  }
-                  @for (course of startedCourses; track course.id) {
-                    <div
-                      [style]="{ 'background-color': course.color }"
-                      class="progress-card rounded-xl p-6 shadow-lg hover:shadow-xl transition-all"
-                    >
-                      <div
-                        class="flex flex-col justify-between h-full text-white"
+          <!-- Best Streak -->
+          <div
+            class="flex items-center justify-between rounded-3xl bg-gradient-to-r from-teal-200 to-purple-200 p-5 sm:p-6 shadow-lg hover:shadow-xl transition-shadow"
+          >
+            <div class="text-gray-800">
+              <div class="text-3xl sm:text-4xl font-bold">
+                {{ longestStreak }}
+              </div>
+              <div class="text-xs sm:text-sm font-semibold mt-1">
+                Legjobb sikersorozat
+              </div>
+            </div>
+            <div class="text-gray-800 text-2xl sm:text-3xl opacity-70">⭐</div>
+          </div>
+
+          <!-- Courses Done -->
+          <div
+            class="flex items-center justify-between rounded-3xl bg-gradient-to-r from-sky-500 to-cyan-400 p-5 sm:p-6 shadow-lg hover:shadow-xl transition-shadow"
+          >
+            <div class="text-white">
+              <div class="text-3xl sm:text-4xl font-bold">
+                {{ completedCourses.length }}
+              </div>
+              <div class="text-xs sm:text-sm font-semibold mt-1">
+                Teljesített kurzus
+              </div>
+            </div>
+            <div class="text-white text-2xl sm:text-3xl opacity-80">🎓</div>
+          </div>
+
+          <!-- Badges Earned -->
+          <div
+            class="flex items-center justify-between rounded-3xl bg-gradient-to-r from-amber-200 to-slate-600 p-5 sm:p-6 shadow-lg hover:shadow-xl transition-shadow"
+          >
+            <div class="text-white">
+              <div class="text-3xl sm:text-4xl font-bold">
+                {{ achievements.length }}
+              </div>
+              <div class="text-xs sm:text-sm font-semibold mt-1">
+                Elért teljesítmény
+              </div>
+            </div>
+            <div class="text-white text-2xl sm:text-3xl opacity-80">🏆</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+          @if (isCourseInProgress) {
+            <!-- Continue Learning Section -->
+            <div class="lg:col-span-2">
+              <div class="rounded-2xl bg-white p-6 sm:p-8 shadow-md">
+                <div class="flex items-center justify-between mb-6">
+                  <h2 class="text-xl sm:text-2xl font-semibold text-gray-900">
+                    Folytasd a tanulást
+                  </h2>
+                  <div class="flex gap-2">
+                    @if (startedCourses.length < 2) {
+                      <button
+                        disabled
+                        class="p-2 rounded-lg bg-gray-200 text-gray-400 cursor-not-allowed"
+                        aria-label="Scroll left"
                       >
-                        <div>
-                          <div class="flex items-start justify-between mb-3">
-                            <span
-                              class="px-3 py-1 bg-white/30 backdrop-blur-sm rounded-full text-xs font-semibold border border-white/40"
-                            >
-                              Folyamatban
-                            </span>
-                            <span class="text-2xl">📖</span>
-                          </div>
-                          <h3 class="text-xl font-bold mb-2">
-                            {{ course.title }}
-                          </h3>
-                          <p class="text-sm text-white/90 mb-3">
-                            {{ course.description }}
-                          </p>
+                        <svg
+                          class="w-5 h-5 text-gray-400"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M15 19l-7-7 7-7"
+                          />
+                        </svg>
+                      </button>
+                    } @else {
+                      <button
+                        (click)="scrollLeftInProgress()"
+                        class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
+                        aria-label="Scroll left"
+                      >
+                        <svg
+                          class="w-5 h-5 text-gray-700"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M15 19l-7-7 7-7"
+                          />
+                        </svg>
+                      </button>
+                    }
 
-                          <!-- Progress Info -->
-                          <div class="flex items-center gap-2 text-sm mb-3">
-                            <span class="flex items-center gap-1">
-                              <svg
-                                class="w-4 h-4"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
+                    @if (startedCourses.length < 2) {
+                      <button
+                        disabled
+                        class="p-2 rounded-lg bg-gray-200 text-gray-400 cursor-not-allowed"
+                        aria-label="Scroll right"
+                      >
+                        <svg
+                          class="w-5 h-5 text-gray-400"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </button>
+                    } @else {
+                      <button
+                        (click)="scrollRightInProgress()"
+                        class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
+                        aria-label="Scroll right"
+                      >
+                        <svg
+                          class="w-5 h-5 text-gray-700"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </button>
+                    }
+                  </div>
+                </div>
+
+                <div class="course-scroll-container">
+                  <div class="progress-scroll-content">
+                    @if (startedCourses.length === 0 || !startedCourses) {
+                      <p class="text-gray-500 text-center py-8">
+                        Még nem kezdted el egyik kurzust sem! <br />
+                        Böngészd az elérhető kurzusokat alább!
+                      </p>
+                    }
+                    @for (course of startedCourses; track course.id) {
+                      <div
+                        [style]="{ 'background-color': course.color }"
+                        class="progress-card rounded-xl p-6 shadow-lg hover:shadow-xl transition-all"
+                      >
+                        <div
+                          class="flex flex-col justify-between h-full text-white"
+                        >
+                          <div>
+                            <div class="flex items-start justify-between mb-3">
+                              <span
+                                class="px-3 py-1 bg-white/30 backdrop-blur-sm rounded-full text-xs font-semibold border border-white/40"
                               >
-                                <path
-                                  d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"
-                                />
-                              </svg>
-                              {{ course.units.length }} egység
-                            </span>
-                          </div>
-                        </div>
+                                Folyamatban
+                              </span>
+                              <span class="text-2xl">📖</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">
+                              {{ course.title }}
+                            </h3>
+                            <p class="text-sm text-white/90 mb-3">
+                              {{ course.description }}
+                            </p>
 
-                        <!-- Progress Bar -->
-                        <div class="mt-auto">
-                          <div
-                            class="flex items-center justify-between text-xs mb-2"
-                          >
-                            <span class="font-semibold">Haladás</span>
-                            <span>{{ course.progress || 0 }}%</span>
+                            <!-- Progress Info -->
+                            <div class="flex items-center gap-2 text-sm mb-3">
+                              <span class="flex items-center gap-1">
+                                <svg
+                                  class="w-4 h-4"
+                                  fill="currentColor"
+                                  viewBox="0 0 20 20"
+                                >
+                                  <path
+                                    d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"
+                                  />
+                                </svg>
+                                {{ course.units.length }} egység
+                              </span>
+                            </div>
                           </div>
-                          <div class="h-2 w-full rounded-full bg-white/30 mb-3">
+
+                          <!-- Progress Bar -->
+                          <div class="mt-auto">
                             <div
-                              class="h-2 rounded-full bg-white transition-all"
-                              [style.width.%]="course.progress || 0"
-                            ></div>
-                          </div>
-
-                          <button
-                            class="w-full px-4 py-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 hover:cursor-pointer rounded-lg font-semibold transition-all"
-                          >
-                            Folytatás
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  }
-                </div>
-              </div>
-            </div>
-          </div>
-        } @else {
-          <!-- If no course is started -->
-          <div class="lg:col-span-2">
-            <div class="rounded-2xl bg-white p-6 sm:p-8 shadow-md">
-              <div class="flex items-center justify-between mb-6">
-                <h2 class="text-xl sm:text-2xl font-semibold text-gray-900">
-                  Elérhető kurzusok
-                </h2>
-                <div class="flex gap-2">
-                  <button
-                    (click)="scrollLeft()"
-                    class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
-                    aria-label="Scroll left"
-                  >
-                    <svg
-                      class="w-5 h-5 text-gray-700"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M15 19l-7-7 7-7"
-                      />
-                    </svg>
-                  </button>
-                  <button
-                    (click)="scrollRight()"
-                    class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
-                    aria-label="Scroll right"
-                  >
-                    <svg
-                      class="w-5 h-5 text-gray-700"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-
-              <div class="course-scroll-container">
-                <div class="course-scroll-content">
-                  @if (
-                    availableCoursesToStart.length === 0 ||
-                    !availableCoursesToStart
-                  ) {
-                    <p class="text-gray-500 text-center py-8">
-                      Hiba csúszott a gépezetbe... <br />
-                      Látogass vissza később!
-                    </p>
-                  }
-                  @for (course of availableCoursesToStart; track course.id) {
-                    <div
-                      [style]="{ 'background-color': course.color }"
-                      class="course-card rounded-xl p-6 shadow-lg hover:shadow-xl transition-all"
-                    >
-                      <div
-                        class="flex flex-col justify-between h-full text-white"
-                      >
-                        <div>
-                          <div class="flex items-start justify-between mb-3">
-                            <span
-                              class="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-semibold"
+                              class="flex items-center justify-between text-xs mb-2"
                             >
-                              <!--based on IDs 1-10: easy 10-50: normal 50<: hard -->
-                              {{ course.difficulty }}
-                            </span>
-                            <span class="text-2xl">📚</span>
+                              <span class="font-semibold">Haladás</span>
+                              <span>{{ course.progress || 0 }}%</span>
+                            </div>
+                            <div
+                              class="h-2 w-full rounded-full bg-white/30 mb-3"
+                            >
+                              <div
+                                class="h-2 rounded-full bg-white transition-all"
+                                [style.width.%]="course.progress || 0"
+                              ></div>
+                            </div>
+
+                            <button
+                              class="w-full px-4 py-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 hover:cursor-pointer rounded-lg font-semibold transition-all"
+                            >
+                              Folytatás
+                            </button>
                           </div>
-                          <h3 class="text-xl font-bold mb-2">
-                            {{ course.title }}
-                          </h3>
-                          <p class="text-sm text-white/90 mb-4">
-                            {{ course.description }}
-                          </p>
-                        </div>
-                        <div class="flex items-center justify-between text-sm">
-                          <div class="flex flex-col gap-1">
-                            <span class="flex items-center gap-1">
-                              <svg
-                                class="w-4 h-4"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                              >
-                                <path
-                                  d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"
-                                />
-                              </svg>
-                              {{ course.units.length }} egység
-                            </span>
-                            <span class="flex items-center gap-1">
-                              <svg
-                                class="hover: pointer-none"
-                                class="w-4 h-4"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                              >
-                                <path
-                                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                />
-                              </svg>
-                              <a
-                                class="hover:font-bold hover:italic transition-all duration-200 hover:drop-shadow-md hover:cursor-pointer"
-                              >
-                                {{ course.reviews?.length || 0 }} értékelés
-                              </a>
-                            </span>
-                          </div>
-                          <button
-                            class="px-4 py-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-lg font-semibold transition-all"
-                          >
-                            Kezdés
-                          </button>
                         </div>
                       </div>
-                    </div>
-                  }
+                    }
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        }
+          } @else {
+            <!-- If no course is started -->
+            <div class="lg:col-span-2">
+              <div class="rounded-2xl bg-white p-6 sm:p-8 shadow-md">
+                <div class="flex items-center justify-between mb-6">
+                  <h2 class="text-xl sm:text-2xl font-semibold text-gray-900">
+                    Elérhető kurzusok
+                  </h2>
+                  <div class="flex gap-2">
+                    <button
+                      (click)="scrollLeft()"
+                      class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
+                      aria-label="Scroll left"
+                    >
+                      <svg
+                        class="w-5 h-5 text-gray-700"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M15 19l-7-7 7-7"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      (click)="scrollRight()"
+                      class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
+                      aria-label="Scroll right"
+                    >
+                      <svg
+                        class="w-5 h-5 text-gray-700"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
 
-        <!-- Friend Activity Section -->
-        <div class="lg:col-span-1">
-          <app-friend-activity></app-friend-activity>
+                <div class="course-scroll-container">
+                  <div class="course-scroll-content">
+                    @if (
+                      availableCoursesToStart.length === 0 ||
+                      !availableCoursesToStart
+                    ) {
+                      <p class="text-gray-500 text-center py-8">
+                        Hiba csúszott a gépezetbe... <br />
+                        Látogass vissza később!
+                      </p>
+                    }
+                    @for (course of availableCoursesToStart; track course.id) {
+                      <div
+                        [style]="{ 'background-color': course.color }"
+                        class="course-card rounded-xl p-6 shadow-lg hover:shadow-xl transition-all"
+                      >
+                        <div
+                          class="flex flex-col justify-between h-full text-white"
+                        >
+                          <div>
+                            <div class="flex items-start justify-between mb-3">
+                              <span
+                                class="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-semibold"
+                              >
+                                <!--based on IDs 1-10: easy 10-50: normal 50<: hard -->
+                                {{ course.difficulty }}
+                              </span>
+                              <span class="text-2xl">📚</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">
+                              {{ course.title }}
+                            </h3>
+                            <p class="text-sm text-white/90 mb-4">
+                              {{ course.description }}
+                            </p>
+                          </div>
+                          <div
+                            class="flex items-center justify-between text-sm"
+                          >
+                            <div class="flex flex-col gap-1">
+                              <span class="flex items-center gap-1">
+                                <svg
+                                  class="w-4 h-4"
+                                  fill="currentColor"
+                                  viewBox="0 0 20 20"
+                                >
+                                  <path
+                                    d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"
+                                  />
+                                </svg>
+                                {{ course.units.length }} egység
+                              </span>
+                              <span class="flex items-center gap-1">
+                                <svg
+                                  class="hover: pointer-none"
+                                  class="w-4 h-4"
+                                  fill="currentColor"
+                                  viewBox="0 0 20 20"
+                                >
+                                  <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                  />
+                                </svg>
+                                <a
+                                  class="hover:font-bold hover:italic transition-all duration-200 hover:drop-shadow-md hover:cursor-pointer"
+                                >
+                                  {{ course.reviews?.length || 0 }} értékelés
+                                </a>
+                              </span>
+                            </div>
+                            <button
+                              class="px-4 py-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-lg font-semibold transition-all"
+                            >
+                              Kezdés
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+
+          <!-- Friend Activity Section -->
+          <div class="lg:col-span-1">
+            <app-friend-activity></app-friend-activity>
+          </div>
         </div>
-      </div>
+      }
     </div>
   </div>
 
