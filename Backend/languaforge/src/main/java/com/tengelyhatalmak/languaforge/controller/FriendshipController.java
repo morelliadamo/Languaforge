@@ -1,6 +1,7 @@
 package com.tengelyhatalmak.languaforge.controller;
 
 import com.tengelyhatalmak.languaforge.model.Friendship;
+import com.tengelyhatalmak.languaforge.model.User;
 import com.tengelyhatalmak.languaforge.service.FriendshipService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,12 @@ public class FriendshipController {
     @GetMapping("user/{userId}")
     public List<Friendship> getAllFriendshipsByUserId(@PathVariable Integer userId){
         return friendshipService.findAllFriendshipsByUserId(userId);
+    }
+
+
+    @GetMapping("user/{userId}/friendsAsUsers")
+    public List<User> getAllFriendsAsUsersByUserId(@PathVariable Integer userId){
+        return friendshipService.findFriendsByUserId(userId);
     }
 
     @PutMapping("/updateFriendship/{friendshipId}")

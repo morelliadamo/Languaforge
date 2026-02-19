@@ -2,6 +2,7 @@ package com.tengelyhatalmak.languaforge.service;
 
 import com.tengelyhatalmak.languaforge.model.Exercise;
 import com.tengelyhatalmak.languaforge.model.Friendship;
+import com.tengelyhatalmak.languaforge.model.User;
 import jakarta.persistence.criteria.CriteriaBuilder;
 
 import java.util.List;
@@ -17,5 +18,6 @@ public interface FriendshipService {
     Friendship softDeleteFriendshipById(Integer id);
     void deleteFriendshipById(Integer id);
 
+    List<User> findFriendsByUserId(Integer userId);
 
 }

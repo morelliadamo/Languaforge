@@ -14,7 +14,7 @@
           <div
             class="flex h-10 w-10 items-center justify-center rounded-full text-lg text-white"
             [style.background-color]="
-              utilService.stringToColor(friend.user1_name || 'U')
+              utilService.stringToColor(friend.username || 'U')
             "
           >
             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
@@ -26,7 +26,9 @@
 
           <!-- Text -->
           <div>
-            <p class="text-sm font-semibold text-gray-900"></p>
+            <p class="text-sm font-semibold text-gray-900">
+              {{ friend.username }}
+            </p>
             <p class="text-xs text-gray-600"></p>
           </div>
         </div>
