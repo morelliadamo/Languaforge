@@ -31,26 +31,28 @@ export class DashboardComponent {
   private courseService = inject(CourseLoaderServiceService);
   private utilService = inject(UtilService);
 
+  private username = this.authService.getUserName();
+
   welcomeMessage: string = '';
   welcomeMessageList: string[] = [
-    'Üdv újra!',
-    'Szia, készen állsz a tanulásra?',
-    'Már vártunk! 😺',
-    'Helló tudás-kovács!',
-    'Most tudás lesz a fejedbe verve! 💫🔨',
-    'Örülünk, hogy itt vagy!',
-    'Kezdődjön az agytorna! 🧠',
-    'Új nap, új tudás!',
-    'Vágjunk bele! 🚀',
-    'A tudás útja most folytatódik…',
-    'Készen áll az elméd? 🤓',
-    'Tanulás mód: BE 🔛',
-    'Helló! Ma is okosabbak leszünk!',
-    'Csapjunk bele a tudásba! ⚡',
-    'Jó látni téged újra!',
-    'Indulhat az észcsata! 🧩',
-    'Friss aggyal érkeztél? Akkor hajrá!',
-    'A tudás nem vár! 😉',
+    `Üdv újra, ${this.username}!`,
+    `Szia, ${this.username}, készen állsz a tanulásra?`,
+    `Már vártunk, ${this.username}! 😺`,
+    `Helló tudás-kovács, ${this.username}!`,
+    `Most tudás lesz a fejedbe verve! 💫🔨`,
+    `Örülünk, hogy itt vagy, ${this.username}!`,
+    `Kezdődjön az agytorna! 🧠`,
+    `Új nap, új tudás, ${this.username}!`,
+    `Vágjunk bele, ${this.username}! 🚀`,
+    `A tudás útja most folytatódik, ${this.username}…`,
+    `Készen áll az elméd, ${this.username}? 🤓`,
+    `Tanulás mód: BE 🔛`,
+    `Helló, ${this.username}! Ma is okosabbak leszünk!`,
+    `Csapjunk bele a tudásba, ${this.username}! ⚡`,
+    `Jó látni téged újra, ${this.username}!`,
+    `Indulhat az észcsata, ${this.username}! 🧩`,
+    `Friss aggyal érkeztél, ${this.username}? Akkor hajrá!`,
+    `A tudás nem vár, ${this.username}! 😉`,
   ];
 
   currentStreak: string = '';
