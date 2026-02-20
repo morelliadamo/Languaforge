@@ -1,130 +1,121 @@
 <app-header></app-header>
 
-<div class="bg-gray-200 min-h-screen pt-8 sm:pt-12 lg:pt-16 px-4 sm:px-6 ">
-    <div class="flex flex-col items-center justify-center w-full max-w-[78%] mx-auto bg-white p-6 sm:p-8 lg:p-10 rounded-3xl shadow-md h-screen">
-        <div class="max-w-4xl mx-auto p-6">
-  <div class="bg-white rounded-2xl shadow-lg p-6">
+<div class="bg-gray-200 min-h-screen pt-8 sm:pt-12 lg:pt-16 px-4 sm:px-6">
+  <div
+    class="flex flex-col items-center justify-center w-full max-w-[78%] mx-auto bg-white p-6 sm:p-8 lg:p-10 rounded-3xl shadow-md h-screen"
+  >
+    <div class="max-w-4xl mx-auto p-6">
+      <div class="bg-white rounded-2xl shadow-lg p-6">
+        <!-- Header -->
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <!-- Avatar -->
+            <div class="relative">
+              <img
+                [src]="profile.avatar"
+                class="w-20 h-20 rounded-full object-cover"
+                alt="Profile picture"
+              />
 
-    <!-- Header -->
-    <div class="flex items-center justify-between">
-      <div class="flex items-center gap-4">
-        <!-- Avatar -->
-        <div class="relative">
-          <img
-            [src]="profile.avatar"
-            class="w-20 h-20 rounded-full object-cover"
-            alt="Profile picture"
-          />
+              <!-- Upload button (edit mode only) -->
+              <label
+                *ngIf="isEditing"
+                class="absolute bottom-0 right-0 bg-blue-500 text-white p-2 rounded-full cursor-pointer hover:bg-blue-600"
+              >
+                📷
+                <input
+                  type="file"
+                  accept="image/*"
+                  class="hidden"
+                  (change)="onAvatarChange($event)"
+                />
+              </label>
+            </div>
 
-          <!-- Upload button (edit mode only) -->
-          <label
-            *ngIf="isEditing"
-            class="absolute bottom-0 right-0 bg-blue-500 text-white p-2 rounded-full cursor-pointer hover:bg-blue-600"
-          >
-            📷
+            <div>
+              <h2 class="text-2xl font-semibold">
+                {{ profile.name }}
+              </h2>
+              <p class="text-gray-500">{{ profile.email }}</p>
+              <p class="text-gray-600 mt-1 max-w-xl">
+                {{ profile.bio }}
+              </p>
+            </div>
+          </div>
+
+          <!-- Edit Button -->
+          @if (!isEditing) {
+            <button
+              (click)="toggleEdit()"
+              class="border border-blue-500 text-blue-500 px-4 py-2 rounded-lg hover:bg-blue-50"
+            >
+              ✏️ Edit Profile
+            </button>
+          }
+        </div>
+
+        <!-- Edit Mode -->
+
+        @if (isEditing) {
+          <div class="mt-6 space-y-4">
             <input
-              type="file"
-              accept="image/*"
-              class="hidden"
-              (change)="onAvatarChange($event)"
+              type="text"
+              class="w-full border rounded-lg p-3 focus:outline-none focus:ring focus:ring-blue-200"
+              placeholder="Full name"
             />
-          </label>
+
+            <input
+              type="email"
+              class="w-full border rounded-lg p-3 focus:outline-none focus:ring focus:ring-blue-200"
+              placeholder="Email"
+            />
+
+            <textarea
+              rows="3"
+              class="w-full border rounded-lg p-3 focus:outline-none focus:ring focus:ring-blue-200"
+              placeholder="Bio"
+            ></textarea>
+
+            <div class="flex justify-end gap-3">
+              <button
+                (click)="toggleEdit()"
+                class="px-4 py-2 rounded-lg border"
+              >
+                Cancel
+              </button>
+              <button
+                (click)="saveChanges()"
+                class="px-4 py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600"
+              >
+                Save Changes
+              </button>
+            </div>
+          </div>
+        }
+        <!-- Stats -->
+        <div class="flex justify-around mt-8 text-center">
+          <div>
+            <p class="text-2xl font-bold text-blue-500">
+              {{ profile.streak }}
+            </p>
+            <p class="text-gray-500 text-sm">Current Streak</p>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-blue-500">
+              {{ profile.badges }}
+            </p>
+            <p class="text-gray-500 text-sm">Badges Earned</p>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-blue-500">
+              {{ profile.friends }}
+            </p>
+            <p class="text-gray-500 text-sm">Friends</p>
+          </div>
         </div>
-
-        <!-- Info -->
-        <div>
-          <h2 class="text-2xl font-semibold">
-            {{ profile.name }}
-          </h2>
-          <p class="text-gray-500">{{ profile.email }}</p>
-          <p class="text-gray-600 mt-1 max-w-xl">
-            {{ profile.bio }}
-          </p>
-        </div>
-      </div>
-
-      <!-- Edit Button -->
-      <button
-        *ngIf="!isEditing"
-        (click)="toggleEdit()"
-        class="border border-blue-500 text-blue-500 px-4 py-2 rounded-lg hover:bg-blue-50"
-      >
-        ✏️ Edit Profile
-      </button>
-    </div>
-
-    <!-- Edit Mode -->
-    <div *ngIf="isEditing" class="mt-6 space-y-4">
-      <input
-        type="text"
-        [(ngModel)]="profile.name"
-        class="w-full border rounded-lg p-3 focus:outline-none focus:ring focus:ring-blue-200"
-        placeholder="Full name"
-      />
-
-      <input
-        type="email"
-        [(ngModel)]="profile.email"
-        class="w-full border rounded-lg p-3 focus:outline-none focus:ring focus:ring-blue-200"
-        placeholder="Email"
-      />
-
-      <textarea
-        [(ngModel)]="profile.bio"
-        rows="3"
-        class="w-full border rounded-lg p-3 focus:outline-none focus:ring focus:ring-blue-200"
-        placeholder="Bio"
-      ></textarea>
-
-      <div class="flex justify-end gap-3">
-        <button
-          (click)="toggleEdit()"
-          class="px-4 py-2 rounded-lg border"
-        >
-          Cancel
-        </button>
-        <button
-          (click)="saveChanges()"
-          class="px-4 py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600"
-        >
-          Save Changes
-        </button>
       </div>
     </div>
-
-    <!-- Stats -->
-    <div class="flex justify-around mt-8 text-center">
-      <div>
-        <p class="text-2xl font-bold text-blue-500">
-          {{ profile.streak }}
-        </p>
-        <p class="text-gray-500 text-sm">Current Streak</p>
-      </div>
-      <div>
-        <p class="text-2xl font-bold text-blue-500">
-          {{ profile.badges }}
-        </p>
-        <p class="text-gray-500 text-sm">Badges Earned</p>
-      </div>
-      <div>
-        <p class="text-2xl font-bold text-blue-500">
-          {{ profile.friends }}
-        </p>
-        <p class="text-gray-500 text-sm">Friends</p>
-      </div>
-    </div>
-
   </div>
-</div>
-
-
-
-
-    </div>
-    <br>
+  <br />
 </div>
 <app-footer></app-footer>
-
-
-
-

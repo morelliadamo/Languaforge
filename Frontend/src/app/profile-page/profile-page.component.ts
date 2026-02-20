@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from "../header/header.component";
-import { FooterComponent } from "../footer/footer.component";
+import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-profile-page',
   imports: [HeaderComponent, FooterComponent],
   templateUrl: './profile-page.component.html',
-  styleUrl: './profile-page.component.css'
+  styleUrl: './profile-page.component.css',
 })
 export class ProfilePageComponent {
-isEditing = false;
+  isEditing = false;
 
   profile = {
     name: 'Katalin Magyar',
@@ -39,6 +39,4 @@ isEditing = false;
   saveChanges() {
     this.isEditing = false;
   }
-
-
 }

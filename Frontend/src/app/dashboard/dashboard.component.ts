@@ -7,11 +7,32 @@ import { UserProfileDataService } from '../services/user-profile-data.service';
 import {
   Achievement,
   Course as UserProfileCourse,
+  UserXCourse,
 } from '../interfaces/UserProfile';
 import { Course as LoadedCourse } from '../interfaces/Course';
 import { CourseLoaderServiceService } from '../services/course-loader-service.service';
 import { UtilService } from '../services/util.service';
 import { LoadingOverlayComponent } from '../loading-overlay/loading-overlay.component';
+import { LessonProgressService } from '../services/lesson-progress.service';
+
+// Heatmap interfaces
+interface HeatmapDay {
+  date: Date;
+  count: number;
+  dateString: string;
+}
+
+interface HeatmapWeek {
+  weekIndex: number;
+  days: HeatmapDay[];
+}
+
+interface HeatmapMonth {
+  name: string;
+  startWeek: number;
+  endWeek: number;
+  index: number;
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -30,6 +51,7 @@ export class DashboardComponent {
   private authService = inject(AuthServiceService);
   private courseService = inject(CourseLoaderServiceService);
   private utilService = inject(UtilService);
+  private lessonProgressService = inject(LessonProgressService);
 
   private username = this.authService.getUserName();
 
@@ -67,6 +89,12 @@ export class DashboardComponent {
   availableCoursesToStart: LoadedCourse[] = [];
   startedCourses: LoadedCourse[] = [];
 
+  // heatmap data
+  heatmapData: HeatmapWeek[] = [];
+  heatmapMonths: HeatmapMonth[] = [];
+  weekDays: string[] = ['Hé', 'Ke', 'Sze', 'Csü', 'Pé', 'Szo', 'Va'];
+  activityData: Map<string, number> = new Map();
+
   // delay to ensure loading overlay appears
 
   async ngOnInit() {
@@ -80,10 +108,6 @@ export class DashboardComponent {
         this.longestStreak = String(data.longestStreak);
         this.completedCourses = data.completedCourses;
         this.achievements = data.achievements;
-
-        console.log(this.achievements.length);
-
-        console.log(data);
       });
 
     //courses available to start
@@ -104,22 +128,40 @@ export class DashboardComponent {
 
     //started courses
     this.courseService
-      .loadUserCoursesById(Number(this.authService.getCurrentUserId()))
-      .subscribe((data) => {
-        console.log(data);
+      .loadUserXCoursesByUserId(Number(localStorage.getItem('user_id')))
+      .subscribe((userXCourses) => {
+        console.log(userXCourses);
 
-        this.startedCourses = data;
-        this.startedCourses.forEach((element) => {
-          if (element.id < 10) {
-            element.difficulty = 'Easy';
-          } else if (element.id > 10 && element.id < 50) {
-            element.difficulty = 'Intermediate';
+        this.startedCourses = userXCourses.map((userXCourse) => {
+          const course: LoadedCourse = {
+            ...userXCourse.course,
+            units: [],
+            progress: userXCourse.progress * 100,
+            difficulty: null,
+            reviews: null,
+            color: null,
+          };
+
+          // set difficulty based on course ID
+          if (course.id < 10) {
+            course.difficulty = 'Easy';
+          } else if (course.id > 10 && course.id < 50) {
+            course.difficulty = 'Intermediate';
           } else {
-            element.difficulty = 'Hard';
+            course.difficulty = 'Hard';
           }
-          element.color = this.utilService.stringToColor(element.title);
+
+          course.color = this.utilService.stringToColor(course.title);
+
+          return course;
         });
       });
+
+    // Initialize heatmap structure
+    this.generateHeatmapStructure();
+
+    // Load activity data from lesson progress API
+    this.loadActivityData();
 
     //randomized welcome message
     this.welcomeMessage =
@@ -195,5 +237,157 @@ export class DashboardComponent {
       );
       container.style.transform = `translateX(-${this.scrollPositionInProgress}px)`;
     }
+  }
+
+  // Heatmap methods
+  generateHeatmapStructure(): void {
+    const weeks: HeatmapWeek[] = [];
+    const months: HeatmapMonth[] = [];
+    const today = new Date();
+    const startDate = new Date(today);
+    startDate.setFullYear(startDate.getFullYear() - 1);
+
+    // Adjust to start from Sunday
+    const dayOfWeek = startDate.getDay();
+    startDate.setDate(startDate.getDate() - dayOfWeek);
+
+    let currentDate = new Date(startDate);
+    let weekIndex = 0;
+    let currentMonth = -1;
+    let monthStartWeek = 0;
+
+    while (currentDate <= today) {
+      const week: HeatmapDay[] = [];
+
+      for (let i = 0; i < 7; i++) {
+        const dateString = this.formatDate(currentDate);
+        const count = this.activityData.get(dateString) || 0;
+
+        week.push({
+          date: new Date(currentDate),
+          count: count,
+          dateString: dateString,
+        });
+
+        // Track months for labels
+        const month = currentDate.getMonth();
+        if (month !== currentMonth) {
+          if (currentMonth !== -1) {
+            months.push({
+              name: this.getMonthName(currentMonth),
+              startWeek: monthStartWeek,
+              endWeek: weekIndex - 1,
+              index: currentMonth,
+            });
+          }
+          currentMonth = month;
+          monthStartWeek = weekIndex;
+        }
+
+        currentDate.setDate(currentDate.getDate() + 1);
+      }
+
+      weeks.push({
+        weekIndex: weekIndex,
+        days: week,
+      });
+
+      weekIndex++;
+    }
+
+    // Add the last month
+    if (currentMonth !== -1) {
+      months.push({
+        name: this.getMonthName(currentMonth),
+        startWeek: monthStartWeek,
+        endWeek: weekIndex - 1,
+        index: currentMonth,
+      });
+    }
+
+    this.heatmapData = weeks;
+    this.heatmapMonths = months;
+  }
+
+  formatDate(date: Date): string {
+    return this.utilService.formatDate(date);
+  }
+
+  getMonthName(monthIndex: number): string {
+    const months = [
+      'Jan',
+      'Feb',
+      'Már',
+      'Ápr',
+      'Máj',
+      'Jún',
+      'Júl',
+      'Aug',
+      'Szep',
+      'Okt',
+      'Nov',
+      'Dec',
+    ];
+    return months[monthIndex];
+  }
+
+  getHeatmapCellClass(count: number): string {
+    if (count === 0) {
+      return 'bg-gray-100 border border-gray-200';
+    } else if (count <= 2) {
+      return 'bg-sky-200';
+    } else if (count <= 5) {
+      return 'bg-sky-400';
+    } else if (count <= 10) {
+      return 'bg-sky-600';
+    } else {
+      return 'bg-sky-800';
+    }
+  }
+
+  getHeatmapTooltip(day: HeatmapDay): string {
+    const dateStr = day.date.toLocaleDateString('hu-HU', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+
+    if (day.count === 0) {
+      return `${dateStr}: Nincs aktivitás`;
+    } else if (day.count === 1) {
+      return `${dateStr}: 1 tevékenység`;
+    } else {
+      return `${dateStr}: ${day.count} tevékenység`;
+    }
+  }
+
+  getTotalActivityCount(): number {
+    let total = 0;
+    this.activityData.forEach((count) => {
+      total += count;
+    });
+    return total;
+  }
+
+  // Load activity data from lesson progress API
+  loadActivityData(): void {
+    const userId = Number(localStorage.getItem('user_id'));
+
+    this.lessonProgressService.loadLessonProgressesByUserId(userId).subscribe({
+      next: (lessonProgresses) => {
+        console.log('Loaded lesson progresses:', lessonProgresses);
+
+        // Use util service to aggregate progress data by date
+        this.activityData =
+          this.utilService.aggregateLessonProgressByDate(lessonProgresses);
+
+        // Regenerate heatmap with real data
+        this.generateHeatmapStructure();
+      },
+      error: (error) => {
+        console.error('Error loading lesson progress data:', error);
+        // Keep heatmap visible but with no activity data
+      },
+    });
   }
 }

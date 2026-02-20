@@ -25,9 +25,14 @@ public class UserXCourseController {
         return userXCourseService.findUserXCourseById(id);
     }
 
-    @GetMapping("/user/{username}")
+    @GetMapping("/username/{username}")
     public List<UserXCourse> getUserXCourseByUsername(@PathVariable String username) {
         return userXCourseService.findUserXCourseByUsername(username);
+    }
+
+    @GetMapping("/userId/{userId}")
+    public List<UserXCourse> getUserXCoursesByUserId(@PathVariable Integer userId) {
+        return userXCourseService.findUserXCoursesByUserId(userId);
     }
 
     @GetMapping("/course/{courseId}/users")

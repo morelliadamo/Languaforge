@@ -66,26 +66,19 @@ public class LessonProgressServiceImpl implements LessonProgressService {
     @Override
     public LessonProgress updateLessonProgress(LessonProgress lessonProgress, Integer id) {
 
-        Lesson tempLesson= lessonRepository.findById(lessonProgress.getLessonId())
-                .orElseThrow(() -> new RuntimeException("Lesson not found with id: " + lessonProgress.getLessonId()));
-
-        lessonProgress.setExerciseCount(tempLesson.getExercises().size());
-
-        User tempUser = userRepository.findById(lessonProgress.getUserId())
-                .orElseThrow(() -> new RuntimeException("User not found with id: " + lessonProgress.getUserId()));
-
-        lessonProgress.setUser(tempUser);
-
-
         LessonProgress existingLessonProgress = lessonProgressRepository.findById(id)
-                .orElseThrow(()-> new RuntimeException("LessonProgress not found"));
+                .orElseThrow(() -> new RuntimeException("LessonProgress not found"));
 
         existingLessonProgress.setCompletedExercises(lessonProgress.getCompletedExercises());
+
+        if (existingLessonProgress.getCompletedExercises() >= existingLessonProgress.getExerciseCount()) {
+            existingLessonProgress.setCompletedAt(Timestamp.valueOf(LocalDateTime.now()));
+        }
         existingLessonProgress.setUpdatedAt(Timestamp.valueOf(LocalDateTime.now()));
 
         return lessonProgressRepository.save(existingLessonProgress);
-
     }
+
 
     @Override
     public Boolean isLessonCompleted(Integer id) {

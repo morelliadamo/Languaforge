@@ -29,7 +29,7 @@ public class LessonProgress {
     @Column(name = "id")
     private Integer id;
 
-    @JsonIgnoreProperties({"leaderboardList", "scores", "lessonProgresses", "streak","role"})
+    @JsonIgnoreProperties({"leaderboardList", "scores", "lessonProgresses", "reviews", "loginDataList", "streak","role"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -48,6 +48,9 @@ public class LessonProgress {
 
     @Column(name = "updated_at")
     private Timestamp updatedAt;
+
+    @Column(name = "completed_at")
+    private Timestamp completedAt;
 
     @Column(name = "created_at", nullable = false)
     private Timestamp createdAt = Timestamp.valueOf(LocalDateTime.now());

@@ -4,6 +4,7 @@ import { Unit } from '../interfaces/Unit';
 import { Observable } from 'rxjs';
 import { Lesson } from '../interfaces/Lesson';
 import { Course } from '../interfaces/Course';
+import { UserXCourse } from '../interfaces/UserProfile';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +23,7 @@ export class CourseLoaderServiceService {
     return this.http.get<any[]>(`${this.apiUrl}/user/${username}`, { headers });
   }
 
-  loadUserCoursesById(id: number) {
+  loadUserCoursesByUserId(id: number) {
     console.log('Loading courses for user ID:', id);
     console.log(`${this.apiUrl}/user/${id}`);
     const token = localStorage.getItem('access_token');
@@ -30,6 +31,17 @@ export class CourseLoaderServiceService {
       Authorization: `Bearer ${token}`,
     });
     return this.http.get<any[]>(`${this.apiUrl}/user/${id}/courses`, {
+      headers,
+    });
+  }
+
+  loadUserXCoursesByUserId(userId: number) {
+    console.log('Loading userXCourses for user ID:', userId);
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.get<UserXCourse[]>(`${this.apiUrl}/userId/${userId}`, {
       headers,
     });
   }
