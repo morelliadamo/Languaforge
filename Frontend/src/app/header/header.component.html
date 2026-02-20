@@ -1,30 +1,142 @@
-<nav
-  class="text-white font-bold h-[60px] w-[100%] bg-sky-500 flex p-3 shadow-sm"
+<!-- Backdrop -->
+<div
+  class="fixed inset-0 z-40 backdrop-blur-sm bg-black/30 transition-opacity duration-300"
+  [class.opacity-0]="!sidebarOpen"
+  [class.pointer-events-none]="!sidebarOpen"
+  (click)="closeSidebar()"
+></div>
+
+<!-- sidebar -->
+<div
+  class="sidebar fixed top-0 right-0 h-full w-64 bg-white z-50 shadow-xl flex flex-col p-6 gap-6"
+  [style.transform]="sidebarOpen ? 'translateX(0)' : 'translateX(100%)'"
 >
-  <!-- sidebar -->
-  <img src="Languaforge.png" class="ml-[20%] mr-0.5" />
-  <h2 class="mr-[40%] font-[400] text-xl">LanguaForge</h2>
+  <div class="flex items-center justify-between mb-2">
+    <div class="flex items-center gap-2">
+      <img src="Languaforge.png" class="h-7" />
+      <span class="text-sky-500 font-bold text-lg">LanguaForge</span>
+    </div>
+    <button
+      (click)="closeSidebar()"
+      class="text-gray-400 hover:text-gray-700 transition-colors"
+      aria-label="Close menu"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+  </div>
 
-  <a
-    *ngIf="!isLoggedIn"
-    href="/login"
-    class="mr-[40px] hover:cursor-pointer hover:underline transition-all duration-300"
-  >
-    <h3 class="mr-[40px]">Login</h3>
-  </a>
-  <a
-    *ngIf="!isLoggedIn"
-    href="/register"
-    class="mr-[40px] bg-[#0f0f0f] text-[#f0f0f0] rounded-md hover:cursor-pointer hover:bg-[#3b3b3b] transition-all duration-300 flex items-center justify-center pb-4 pt-4 pl-2 pr-2 mb-1"
-  >
-    <h3>Vágj bele</h3>
+  <hr class="border-gray-200" />
+
+  @if (!isLoggedIn) {
+    <a
+      href="/login"
+      (click)="closeSidebar()"
+      class="text-gray-700 font-semibold hover:text-sky-500 transition-colors duration-200"
+    >
+      Bejelentkezés
+    </a>
+    <a
+      href="/register"
+      (click)="closeSidebar()"
+      class="text-center bg-sky-500 text-white rounded-xl px-4 py-3 font-semibold hover:bg-sky-600 transition-colors duration-200"
+    >
+      Vágj bele
+    </a>
+  }
+
+  @if (router.getCurrentNavigation()?.finalUrl?.toString() !== "/profile") {
+    <button
+      [routerLink]="'/profile'"
+      class="text-left text-gray-700 font-semibold hover:text-sky-500 transition-colors duration-200 cursor-pointer"
+      (click)="closeSidebar()"
+    >
+      Profil
+    </button>
+    <hr class="border-gray-200" />
+  }
+
+  @if (router.getCurrentNavigation()?.finalUrl?.toString() !== "/courses") {
+    <button
+      [routerLink]="'/courses'"
+      class="text-left text-gray-700 font-semibold hover:text-sky-500 transition-colors duration-200 cursor-pointer"
+    >
+      Kurzusok
+    </button>
+    <hr class="border-gray-200" />
+  }
+
+  @if (router.getCurrentNavigation()?.finalUrl?.toString() !== "/store") {
+    <button
+      [routerLink]="'/store'"
+      class="text-left text-gray-700 font-semibold hover:text-amber-400 transition-colors duration-200 cursor-pointer"
+    >
+      Bolt
+    </button>
+    <hr class="border-gray-200" />
+  }
+
+  @if (router.getCurrentNavigation()?.finalUrl?.toString() !== "/store") {
+    <button
+      [routerLink]="'/dashboard'"
+      class="text-left text-gray-700 font-semibold hover:text-sky-500 transition-colors duration-200 cursor-pointer"
+    >
+      Tanulóközpont
+    </button>
+    <hr class="border-gray-200" />
+  }
+
+  @if (isLoggedIn) {
+    <button
+      (click)="logout()"
+      class="text-left text-gray-700 font-semibold hover:text-red-500 transition-colors duration-200 cursor-pointer"
+    >
+      Kijelentkezés
+    </button>
+  }
+
+  <hr class="border-gray-200" />
+</div>
+
+<!-- nav -->
+<nav
+  class="text-white font-bold h-[60px] w-full bg-sky-500 flex items-center justify-between px-6 shadow-sm relative z-30"
+>
+  <a href="/" class="flex items-center gap-2">
+    <img src="Languaforge.png" class="h-8" />
+    <span class="font-semibold text-xl tracking-wide">LanguaForge</span>
   </a>
 
-  <h3
-    *ngIf="isLoggedIn"
-    class="mr-[40px] hover:cursor-pointer hover:underline transition-all duration-300"
-    (click)="logout()"
+  <!-- hamburger menu -->
+  <button
+    class="flex flex-col justify-center items-center gap-1.5 w-8 h-8"
+    (click)="toggleSidebar()"
+    aria-label="Open menu"
   >
-    Kijelentkezés
-  </h3>
+    <span
+      class="block w-6 h-0.5 bg-white rounded transition-all duration-300"
+      [class.rotate-45]="sidebarOpen"
+      [class.translate-y-2]="sidebarOpen"
+    ></span>
+    <span
+      class="block w-6 h-0.5 bg-white rounded transition-all duration-300"
+      [class.opacity-0]="sidebarOpen"
+    ></span>
+    <span
+      class="block w-6 h-0.5 bg-white rounded transition-all duration-300"
+      [class.-rotate-45]="sidebarOpen"
+      [class.-translate-y-2]="sidebarOpen"
+    ></span>
+  </button>
 </nav>

@@ -421,26 +421,27 @@
             <!-- heatmap container -->
             <div class="overflow-x-auto">
               <div class="inline-block min-w-full">
-                <div class="flex gap-1">
-                  <!-- month labels -->
-                  <div class="flex flex-col justify-end pr-2">
-                    <div class="h-3"></div>
+                <div class="flex gap-2">
+                  <!-- day labels -->
+                  <div class="flex flex-col pt-[16px]">
                     @for (day of weekDays; track day) {
-                      <div class="h-3 text-[10px] text-gray-600 leading-3">
+                      <div
+                        class="h-3 text-[10px] text-gray-600 leading-3 mb-1 flex items-center justify-end pr-1"
+                      >
                         {{ day }}
                       </div>
                     }
                   </div>
 
+                  <!-- heatmap grid -->
                   <div class="flex-1">
+                    <!-- month labels row -->
                     <div class="flex gap-1 mb-1 h-3">
-                      @for (month of heatmapMonths; track month.index) {
-                        <div
-                          [style.grid-column-start]="month.startWeek + 1"
-                          [style.grid-column-end]="month.endWeek + 2"
-                          class="text-[10px] text-gray-600"
-                        >
-                          {{ month.name }}
+                      @for (week of heatmapData; track week.weekIndex) {
+                        <div class="w-3 text-[10px] text-gray-600 leading-3">
+                          @if (isFirstWeekOfMonth(week.weekIndex)) {
+                            {{ getMonthForWeek(week.weekIndex) }}
+                          }
                         </div>
                       }
                     </div>

@@ -369,7 +369,6 @@ export class DashboardComponent {
     return total;
   }
 
-  // Load activity data from lesson progress API
   loadActivityData(): void {
     const userId = Number(localStorage.getItem('user_id'));
 
@@ -377,17 +376,25 @@ export class DashboardComponent {
       next: (lessonProgresses) => {
         console.log('Loaded lesson progresses:', lessonProgresses);
 
-        // Use util service to aggregate progress data by date
         this.activityData =
           this.utilService.aggregateLessonProgressByDate(lessonProgresses);
 
-        // Regenerate heatmap with real data
         this.generateHeatmapStructure();
       },
       error: (error) => {
         console.error('Error loading lesson progress data:', error);
-        // Keep heatmap visible but with no activity data
       },
     });
+  }
+
+  isFirstWeekOfMonth(weekIndex: number): boolean {
+    return this.heatmapMonths.some((month) => month.startWeek === weekIndex);
+  }
+
+  getMonthForWeek(weekIndex: number): string {
+    const month = this.heatmapMonths.find(
+      (month) => month.startWeek === weekIndex,
+    );
+    return month ? month.name : '';
   }
 }
