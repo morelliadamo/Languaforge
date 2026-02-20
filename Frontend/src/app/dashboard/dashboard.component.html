@@ -1,6 +1,6 @@
 <app-loading-overlay
   [isLoading]="isLoading"
-  [message]="'Betöltjük a műszerfalad...'"
+  [message]="'Betöltjük a tanulóközpontodat...'"
 ></app-loading-overlay>
 
 <div class="bg-gray-50">
@@ -21,64 +21,78 @@
         >
           <!-- Day Streak -->
           <div
-            class="flex items-center justify-between rounded-3xl bg-gradient-to-r from-pink-500 to-red-400 p-5 sm:p-6 shadow-lg hover:shadow-xl transition-shadow"
+            class="flex items-center justify-between rounded-2xl bg-white p-5 sm:p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100"
           >
-            <div class="text-white">
-              <div class="text-3xl sm:text-4xl font-bold">
+            <div>
+              <div class="text-3xl sm:text-4xl font-bold text-gray-800">
                 {{ currentStreak }}
               </div>
-              <div
-                class="text-xs sm:text-sm flex items-center gap-1 font-semibold mt-1"
-              >
-                Jelenlegi sikersorozat <span>🔥</span>
+              <div class="text-xs sm:text-sm text-gray-500 font-medium mt-1">
+                Jelenlegi sikersorozat
               </div>
             </div>
-            <div class="text-white text-2xl sm:text-3xl opacity-80">🔥</div>
+            <div
+              class="w-12 h-12 rounded-xl bg-orange-50 flex items-center justify-center text-2xl"
+            >
+              🔥
+            </div>
           </div>
 
           <!-- Best Streak -->
           <div
-            class="flex items-center justify-between rounded-3xl bg-gradient-to-r from-teal-200 to-purple-200 p-5 sm:p-6 shadow-lg hover:shadow-xl transition-shadow"
+            class="flex items-center justify-between rounded-2xl bg-white p-5 sm:p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100"
           >
-            <div class="text-gray-800">
-              <div class="text-3xl sm:text-4xl font-bold">
+            <div>
+              <div class="text-3xl sm:text-4xl font-bold text-gray-800">
                 {{ longestStreak }}
               </div>
-              <div class="text-xs sm:text-sm font-semibold mt-1">
+              <div class="text-xs sm:text-sm text-gray-500 font-medium mt-1">
                 Legjobb sikersorozat
               </div>
             </div>
-            <div class="text-gray-800 text-2xl sm:text-3xl opacity-70">⭐</div>
+            <div
+              class="w-12 h-12 rounded-xl bg-yellow-50 flex items-center justify-center text-2xl"
+            >
+              ⭐
+            </div>
           </div>
 
           <!-- Courses Done -->
           <div
-            class="flex items-center justify-between rounded-3xl bg-gradient-to-r from-sky-500 to-cyan-400 p-5 sm:p-6 shadow-lg hover:shadow-xl transition-shadow"
+            class="flex items-center justify-between rounded-2xl bg-white p-5 sm:p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100"
           >
-            <div class="text-white">
-              <div class="text-3xl sm:text-4xl font-bold">
+            <div>
+              <div class="text-3xl sm:text-4xl font-bold text-gray-800">
                 {{ completedCourses.length }}
               </div>
-              <div class="text-xs sm:text-sm font-semibold mt-1">
+              <div class="text-xs sm:text-sm text-gray-500 font-medium mt-1">
                 Teljesített kurzus
               </div>
             </div>
-            <div class="text-white text-2xl sm:text-3xl opacity-80">🎓</div>
+            <div
+              class="w-12 h-12 rounded-xl bg-sky-50 flex items-center justify-center text-2xl"
+            >
+              🎓
+            </div>
           </div>
 
           <!-- Badges Earned -->
           <div
-            class="flex items-center justify-between rounded-3xl bg-gradient-to-r from-amber-200 to-slate-600 p-5 sm:p-6 shadow-lg hover:shadow-xl transition-shadow"
+            class="flex items-center justify-between rounded-2xl bg-white p-5 sm:p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100"
           >
-            <div class="text-white">
-              <div class="text-3xl sm:text-4xl font-bold">
+            <div>
+              <div class="text-3xl sm:text-4xl font-bold text-gray-800">
                 {{ achievements.length }}
               </div>
-              <div class="text-xs sm:text-sm font-semibold mt-1">
+              <div class="text-xs sm:text-sm text-gray-500 font-medium mt-1">
                 Elért teljesítmény
               </div>
             </div>
-            <div class="text-white text-2xl sm:text-3xl opacity-80">🏆</div>
+            <div
+              class="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center text-2xl"
+            >
+              🏆
+            </div>
           </div>
         </div>
 
