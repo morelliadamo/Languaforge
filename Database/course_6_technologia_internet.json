@@ -1,0 +1,469 @@
+{
+  "id": 12,
+  "title": "Magyar-Angol: Technológia és internet",
+  "description": "Tanulj meg angolul a modern technológiáról és az internetről!",
+  "createdAt": "2026-01-25T09:00:00.000Z",
+  "isDeleted": false,
+  "deletedAt": null,
+  "units": [
+    {
+      "id": 100,
+      "courseId": 12,
+      "title": "Devices - Eszközök",
+      "orderIndex": 1,
+      "createdAt": "2026-01-25T09:10:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "lessons": [
+        {
+          "id": 150,
+          "unitId": 100,
+          "title": "Hardware - Hardver",
+          "orderIndex": 1,
+          "createdAt": "2026-01-25T09:20:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 1000,
+              "lessonId": 150,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-25T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'keyboard'?",
+                "answers": ["egér", "billentyűzet", "monitor", "hangszóró"],
+                "correctAnswer": "billentyűzet"
+              }
+            },
+            {
+              "id": 1001,
+              "lessonId": 150,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-25T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'töltő'?",
+                "answers": ["adapter", "charger", "cable", "battery"],
+                "correctAnswer": "charger"
+              }
+            },
+            {
+              "id": 1002,
+              "lessonId": 150,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-25T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'hard drive'?",
+                "answers": ["processzor", "memória", "merevlemez", "grafikus kártya"],
+                "correctAnswer": "merevlemez"
+              }
+            },
+            {
+              "id": 1003,
+              "lessonId": 150,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-25T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'fülhallgató'?",
+                "answers": ["microphone", "speaker", "headphones", "webcam"],
+                "correctAnswer": "headphones"
+              }
+            },
+            {
+              "id": 1004,
+              "lessonId": 150,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-25T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'wireless'?",
+                "answers": ["vezetékes", "vezeték nélküli", "bluetooth", "hordozható"],
+                "correctAnswer": "vezeték nélküli"
+              }
+            }
+          ]
+        },
+        {
+          "id": 151,
+          "unitId": 100,
+          "title": "Software - Szoftver",
+          "orderIndex": 2,
+          "createdAt": "2026-01-25T09:20:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 1005,
+              "lessonId": 151,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-26T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'frissítés'?",
+                "answers": ["download", "upload", "update", "backup"],
+                "correctAnswer": "update"
+              }
+            },
+            {
+              "id": 1006,
+              "lessonId": 151,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-26T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'to install'?",
+                "answers": ["telepít", "töröl", "letölt", "frissít"],
+                "correctAnswer": "telepít"
+              }
+            },
+            {
+              "id": 1007,
+              "lessonId": 151,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-26T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'összeomlás' (rendszer)?",
+                "answers": ["freeze", "crash", "lag", "glitch"],
+                "correctAnswer": "crash"
+              }
+            },
+            {
+              "id": 1008,
+              "lessonId": 151,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-26T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'password'?",
+                "answers": ["felhasználónév", "jelszó", "biztonsági kód", "PIN"],
+                "correctAnswer": "jelszó"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 101,
+      "courseId": 12,
+      "title": "The Internet - Az internet",
+      "orderIndex": 2,
+      "createdAt": "2026-01-25T09:10:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "lessons": [
+        {
+          "id": 152,
+          "unitId": 101,
+          "title": "Browsing - Böngészés",
+          "orderIndex": 1,
+          "createdAt": "2026-01-29T09:00:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 1009,
+              "lessonId": 152,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-29T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'keresőmotor'?",
+                "answers": ["web browser", "search engine", "web server", "URL"],
+                "correctAnswer": "search engine"
+              }
+            },
+            {
+              "id": 1010,
+              "lessonId": 152,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-29T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'to bookmark'?",
+                "answers": ["letölt", "könyvjelzőz", "megoszt", "elment"],
+                "correctAnswer": "könyvjelzőz"
+              }
+            },
+            {
+              "id": 1011,
+              "lessonId": 152,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-29T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'sávszélesség'?",
+                "answers": ["connection", "bandwidth", "firewall", "proxy"],
+                "correctAnswer": "bandwidth"
+              }
+            }
+          ]
+        },
+        {
+          "id": 153,
+          "unitId": 101,
+          "title": "Social Media - Közösségi média",
+          "orderIndex": 2,
+          "createdAt": "2026-01-29T09:00.00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 1012,
+              "lessonId": 153,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-30T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'to follow'?",
+                "answers": ["lájkol", "követ", "megoszt", "megjegyzést ír"],
+                "correctAnswer": "követ"
+              }
+            },
+            {
+              "id": 1013,
+              "lessonId": 153,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-30T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'bejegyzés'?",
+                "answers": ["comment", "story", "post", "reel"],
+                "correctAnswer": "post"
+              }
+            },
+            {
+              "id": 1014,
+              "lessonId": 153,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-30T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'to go viral'?",
+                "answers": ["elterjed az interneten", "vírussal fertőzött", "törlésre kerül", "cenzúrázott lesz"],
+                "correctAnswer": "elterjed az interneten"
+              }
+            },
+            {
+              "id": 1015,
+              "lessonId": 153,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-30T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'profil'?",
+                "answers": ["feed", "timeline", "profile", "account"],
+                "correctAnswer": "profile"
+              }
+            }
+          ]
+        },
+        {
+          "id": 154,
+          "unitId": 101,
+          "title": "Online Safety - Online biztonság",
+          "orderIndex": 3,
+          "createdAt": "2026-01-29T09:00.00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 1016,
+              "lessonId": 154,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-31T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'phishing'?",
+                "answers": ["hackelés", "adathalászat", "vírusfertőzés", "jelszólopás"],
+                "correctAnswer": "adathalászat"
+              }
+            },
+            {
+              "id": 1017,
+              "lessonId": 154,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-31T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'biztonsági mentés'?",
+                "answers": ["recovery", "backup", "restore", "archive"],
+                "correctAnswer": "backup"
+              }
+            },
+            {
+              "id": 1018,
+              "lessonId": 154,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-31T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'two-factor authentication'?",
+                "answers": ["egyszerű jelszó", "kétlépéses hitelesítés", "biometrikus azonosítás", "titkosítás"],
+                "correctAnswer": "kétlépéses hitelesítés"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "courseId": 12,
+      "title": "Digital Communication - Digitális kommunikáció",
+      "orderIndex": 3,
+      "createdAt": "2026-01-25T09:10:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "lessons": [
+        {
+          "id": 155,
+          "unitId": 102,
+          "title": "Messaging - Üzenetküldés",
+          "orderIndex": 1,
+          "createdAt": "2026-02-03T09:00:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 1019,
+              "lessonId": 155,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-02-03T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'csatolmány'?",
+                "answers": ["link", "attachment", "embed", "file"],
+                "correctAnswer": "attachment"
+              }
+            },
+            {
+              "id": 1020,
+              "lessonId": 155,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-02-03T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'to mute a notification'?",
+                "answers": ["értesítést töröl", "értesítést elnémít", "értesítést bekapcsol", "értesítést továbbít"],
+                "correctAnswer": "értesítést elnémít"
+              }
+            },
+            {
+              "id": 1021,
+              "lessonId": 155,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-02-03T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'olvasott' (üzenet)?",
+                "answers": ["sent", "delivered", "seen / read", "pending"],
+                "correctAnswer": "seen / read"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "id": 100,
+      "userId": 1101,
+      "courseId": 12,
+      "rating": 5,
+      "comment": "Tökéletes IT szakembereknek! Sokat tanultam a szakmai szókincsből.",
+      "createdAt": "2026-02-10T10:00:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "user": {
+        "id": 1101,
+        "username": "TakacsBence99",
+        "email": "takacs.bence@example.com",
+        "role": { "id": 1, "name": "student" },
+        "createdAt": "2026-01-26T09:00:00.000Z",
+        "isActive": true,
+        "avatarUrl": null,
+        "bio": null,
+        "deleted": false,
+        "deletedAt": null,
+        "anonymized": false,
+        "anonymizedAt": null
+      }
+    },
+    {
+      "id": 101,
+      "userId": 1102,
+      "courseId": 12,
+      "rating": 5,
+      "comment": "The social media vocabulary section is very relevant and modern.",
+      "createdAt": "2026-02-17T15:00:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "user": {
+        "id": 1102,
+        "username": "HornyakLilla2004",
+        "email": "hornyak.lilla@example.com",
+        "role": { "id": 1, "name": "student" },
+        "createdAt": "2026-01-28T10:00:00.000Z",
+        "isActive": true,
+        "avatarUrl": null,
+        "bio": null,
+        "deleted": false,
+        "deletedAt": null,
+        "anonymized": false,
+        "anonymizedAt": null
+      }
+    },
+    {
+      "id": 102,
+      "userId": 1103,
+      "courseId": 12,
+      "rating": 4,
+      "comment": "Hasznos szókincs, de jó lenne még több programozással kapcsolatos szó.",
+      "createdAt": "2026-02-20T11:00:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "user": {
+        "id": 1103,
+        "username": "MeszarosAdrian87",
+        "email": "meszaros.adrian@example.com",
+        "role": { "id": 1, "name": "student" },
+        "createdAt": "2026-01-30T09:00:00.000Z",
+        "isActive": true,
+        "avatarUrl": null,
+        "bio": null,
+        "deleted": false,
+        "deletedAt": null,
+        "anonymized": false,
+        "anonymizedAt": null
+      }
+    }
+  ]
+}

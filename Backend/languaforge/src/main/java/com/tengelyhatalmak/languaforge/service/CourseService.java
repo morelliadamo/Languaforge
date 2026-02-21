@@ -11,6 +11,7 @@ public interface CourseService {
     List<Unit> findAllUnitsByCourseId(Integer courseId);
     Course findCourseById(Integer id);
     Course updateCourse(Course course, Integer id);
+
     void deleteCourseById(Integer id);
 
 }

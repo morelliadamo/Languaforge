@@ -1,0 +1,482 @@
+{
+  "id": 9,
+  "title": "Magyar-Angol: Vásárlás és pénzügyek",
+  "description": "Tanulj meg angolul vásárolni és pénzügyekről beszélni!",
+  "createdAt": "2026-01-18T09:00:00.000Z",
+  "isDeleted": false,
+  "deletedAt": null,
+  "units": [
+    {
+      "id": 70,
+      "courseId": 9,
+      "title": "Shopping - Vásárlás",
+      "orderIndex": 1,
+      "createdAt": "2026-01-18T09:10:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "lessons": [
+        {
+          "id": 120,
+          "unitId": 70,
+          "title": "In the Shop - Az üzletben",
+          "orderIndex": 1,
+          "createdAt": "2026-01-18T09:20:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 700,
+              "lessonId": 120,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-18T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'How much does it cost?'",
+                "answers": ["Hol kapható?", "Mennyibe kerül?", "Van kedvezmény?", "Mikor zár?"],
+                "correctAnswer": "Mennyibe kerül?"
+              }
+            },
+            {
+              "id": 701,
+              "lessonId": 120,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-18T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'pénztár'?",
+                "answers": ["entrance", "exit", "cashier", "fitting room"],
+                "correctAnswer": "cashier"
+              }
+            },
+            {
+              "id": 702,
+              "lessonId": 120,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-18T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'receipt'?",
+                "answers": ["árcímke", "nyugta", "garancia", "számla"],
+                "correctAnswer": "nyugta"
+              }
+            },
+            {
+              "id": 703,
+              "lessonId": 120,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-18T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'próbafülke'?",
+                "answers": ["changing room", "storage room", "showroom", "back room"],
+                "correctAnswer": "changing room"
+              }
+            },
+            {
+              "id": 704,
+              "lessonId": 120,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-18T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'sale'?",
+                "answers": ["raktárkészlet", "leárazás", "áremelés", "szállítás"],
+                "correctAnswer": "leárazás"
+              }
+            }
+          ]
+        },
+        {
+          "id": 121,
+          "unitId": 70,
+          "title": "Clothes - Ruházat",
+          "orderIndex": 2,
+          "createdAt": "2026-01-18T09:20:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 705,
+              "lessonId": 121,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-19T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'jacket'?",
+                "answers": ["nadrág", "kabát", "ing", "pulóver"],
+                "correctAnswer": "kabát"
+              }
+            },
+            {
+              "id": 706,
+              "lessonId": 121,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-19T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'cipő'?",
+                "answers": ["sock", "boot", "shoe", "sandal"],
+                "correctAnswer": "shoe"
+              }
+            },
+            {
+              "id": 707,
+              "lessonId": 121,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-19T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'gloves'?",
+                "answers": ["sapka", "sál", "kesztyű", "öv"],
+                "correctAnswer": "kesztyű"
+              }
+            },
+            {
+              "id": 708,
+              "lessonId": 121,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-19T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'szoknya'?",
+                "answers": ["blouse", "dress", "skirt", "trousers"],
+                "correctAnswer": "skirt"
+              }
+            }
+          ]
+        },
+        {
+          "id": 122,
+          "unitId": 70,
+          "title": "Sizes and Colours - Méretek és színek",
+          "orderIndex": 3,
+          "createdAt": "2026-01-18T09:20:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 709,
+              "lessonId": 122,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-20T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'Do you have this in a larger size?'",
+                "answers": ["Van kisebb méretben?", "Van nagyobb méretben?", "Van más színben?", "Van olcsóbb változatban?"],
+                "correctAnswer": "Van nagyobb méretben?"
+              }
+            },
+            {
+              "id": 710,
+              "lessonId": 122,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-20T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'szoros / szűk'?",
+                "answers": ["loose", "tight", "long", "short"],
+                "correctAnswer": "tight"
+              }
+            },
+            {
+              "id": 711,
+              "lessonId": 122,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-20T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'It fits perfectly.'?",
+                "answers": ["Túl nagy.", "Tökéletesen áll.", "Nem tetszik.", "Ki kell cserélni."],
+                "correctAnswer": "Tökéletesen áll."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 71,
+      "courseId": 9,
+      "title": "Money and Banking - Pénz és bankolás",
+      "orderIndex": 2,
+      "createdAt": "2026-01-18T09:10:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "lessons": [
+        {
+          "id": 123,
+          "unitId": 71,
+          "title": "Currency - Pénznem",
+          "orderIndex": 1,
+          "createdAt": "2026-01-22T09:00:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 712,
+              "lessonId": 123,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-22T09:10.00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'exchange rate'?",
+                "answers": ["bankszámla", "árfolyam", "kamat", "átutalás"],
+                "correctAnswer": "árfolyam"
+              }
+            },
+            {
+              "id": 713,
+              "lessonId": 123,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-22T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'bankjegy'?",
+                "answers": ["coin", "banknote", "card", "cheque"],
+                "correctAnswer": "banknote"
+              }
+            },
+            {
+              "id": 714,
+              "lessonId": 123,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-22T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'ATM'?",
+                "answers": ["bank", "bankfiók", "bankautomata", "pénzváltó"],
+                "correctAnswer": "bankautomata"
+              }
+            },
+            {
+              "id": 715,
+              "lessonId": 123,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-22T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'visszajáró'?",
+                "answers": ["payment", "tip", "change", "deposit"],
+                "correctAnswer": "change"
+              }
+            }
+          ]
+        },
+        {
+          "id": 124,
+          "unitId": 71,
+          "title": "Paying - Fizetés",
+          "orderIndex": 2,
+          "createdAt": "2026-01-22T09:00:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 716,
+              "lessonId": 124,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-23T09:00.00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'készpénzzel fizet'?",
+                "answers": ["pays by card", "pays in cash", "pays online", "pays by cheque"],
+                "correctAnswer": "pays in cash"
+              }
+            },
+            {
+              "id": 717,
+              "lessonId": 124,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-23T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'Can I pay by credit card?'",
+                "answers": ["Hitelkártyával fizetek.", "Elfogadnak hitelkártyát?", "Van önnek hitelkártyája?", "Melyik kártyát fogadják el?"],
+                "correctAnswer": "Elfogadnak hitelkártyát?"
+              }
+            },
+            {
+              "id": 718,
+              "lessonId": 124,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-23T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'borravaló'?",
+                "answers": ["fee", "fine", "tip", "tax"],
+                "correctAnswer": "tip"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 72,
+      "courseId": 9,
+      "title": "Restaurants - Étteremben",
+      "orderIndex": 3,
+      "createdAt": "2026-01-18T09:10:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "lessons": [
+        {
+          "id": 125,
+          "unitId": 72,
+          "title": "Ordering Food - Rendelés",
+          "orderIndex": 1,
+          "createdAt": "2026-01-26T09:00:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 719,
+              "lessonId": 125,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-26T09:10.00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'étlap'?",
+                "answers": ["bill", "menu", "order", "reservation"],
+                "correctAnswer": "menu"
+              }
+            },
+            {
+              "id": 720,
+              "lessonId": 125,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-26T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'I would like to make a reservation.'",
+                "answers": ["Rendelni szeretnék.", "Asztalt szeretnék foglalni.", "Kérem a számlát.", "Van szabad asztaluk?"],
+                "correctAnswer": "Asztalt szeretnék foglalni."
+              }
+            },
+            {
+              "id": 721,
+              "lessonId": 125,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-26T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'Kérem a számlát!'",
+                "answers": ["More water, please!", "The menu, please!", "The bill, please!", "A table for two, please!"],
+                "correctAnswer": "The bill, please!"
+              }
+            },
+            {
+              "id": 722,
+              "lessonId": 125,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-26T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'starter'?",
+                "answers": ["főfogás", "desszert", "előétel", "köret"],
+                "correctAnswer": "előétel"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "id": 70,
+      "userId": 801,
+      "courseId": 9,
+      "rating": 5,
+      "comment": "Nagyon praktikus! Azonnal tudtam használni Londonban.",
+      "createdAt": "2026-02-05T10:00:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "user": {
+        "id": 801,
+        "username": "GalAgnes1990",
+        "email": "gal.agnes@example.com",
+        "role": { "id": 1, "name": "student" },
+        "createdAt": "2026-01-14T09:00.00.000Z",
+        "isActive": true,
+        "avatarUrl": null,
+        "bio": null,
+        "deleted": false,
+        "deletedAt": null,
+        "anonymized": false,
+        "anonymizedAt": null
+      }
+    },
+    {
+      "id": 71,
+      "userId": 802,
+      "courseId": 9,
+      "rating": 4,
+      "comment": "Great course, the restaurant section is very helpful.",
+      "createdAt": "2026-02-14T13:00.00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "user": {
+        "id": 802,
+        "username": "BaloghRobert44",
+        "email": "balogh.robert@example.com",
+        "role": { "id": 1, "name": "student" },
+        "createdAt": "2026-01-16T11:00:00.000Z",
+        "isActive": true,
+        "avatarUrl": null,
+        "bio": null,
+        "deleted": false,
+        "deletedAt": null,
+        "anonymized": false,
+        "anonymizedAt": null
+      }
+    },
+    {
+      "id": 72,
+      "userId": 803,
+      "courseId": 9,
+      "rating": 5,
+      "comment": "A ruhavásárláshoz szükséges szavakat mind megtanultam!",
+      "createdAt": "2026-02-18T15:00:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "user": {
+        "id": 803,
+        "username": "FarkasSzilvia77",
+        "email": "farkas.szilvia@example.com",
+        "role": { "id": 1, "name": "student" },
+        "createdAt": "2026-01-18T10:00:00.000Z",
+        "isActive": true,
+        "avatarUrl": null,
+        "bio": null,
+        "deleted": false,
+        "deletedAt": null,
+        "anonymized": false,
+        "anonymizedAt": null
+      }
+    }
+  ]
+}

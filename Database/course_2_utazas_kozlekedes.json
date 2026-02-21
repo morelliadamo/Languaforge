@@ -1,0 +1,458 @@
+{
+  "id": 8,
+  "title": "Magyar-Angol: Utazás és közlekedés",
+  "description": "Tanulj meg angolul utazni és közlekedni!",
+  "createdAt": "2026-01-15T09:00:00.000Z",
+  "isDeleted": false,
+  "deletedAt": null,
+  "units": [
+    {
+      "id": 60,
+      "courseId": 8,
+      "title": "Transportation - Közlekedés",
+      "orderIndex": 1,
+      "createdAt": "2026-01-15T09:10:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "lessons": [
+        {
+          "id": 110,
+          "unitId": 60,
+          "title": "Vehicles - Járművek",
+          "orderIndex": 1,
+          "createdAt": "2026-01-15T09:20:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 600,
+              "lessonId": 110,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-15T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent ez a szó: train?",
+                "answers": ["busz", "vonat", "repülő", "hajó"],
+                "correctAnswer": "vonat"
+              }
+            },
+            {
+              "id": 601,
+              "lessonId": 110,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-15T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'repülőgép'?",
+                "answers": ["boat", "train", "airplane", "bicycle"],
+                "correctAnswer": "airplane"
+              }
+            },
+            {
+              "id": 602,
+              "lessonId": 110,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-15T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Mi a 'subway' magyar megfelelője?",
+                "answers": ["villamos", "metró", "busz", "trolibusz"],
+                "correctAnswer": "metró"
+              }
+            },
+            {
+              "id": 603,
+              "lessonId": 110,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-15T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'kerékpár'?",
+                "answers": ["motorcycle", "scooter", "bicycle", "car"],
+                "correctAnswer": "bicycle"
+              }
+            },
+            {
+              "id": 604,
+              "lessonId": 110,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-15T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent ez a szó: ferry?",
+                "answers": ["komp", "vitorlás", "csónak", "jacht"],
+                "correctAnswer": "komp"
+              }
+            }
+          ]
+        },
+        {
+          "id": 111,
+          "unitId": 60,
+          "title": "Directions - Irányok",
+          "orderIndex": 2,
+          "createdAt": "2026-01-15T09:20:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 605,
+              "lessonId": 111,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-16T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'balra'?",
+                "answers": ["straight", "right", "left", "back"],
+                "correctAnswer": "left"
+              }
+            },
+            {
+              "id": 606,
+              "lessonId": 111,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-16T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'Turn right at the corner.'?",
+                "answers": ["Menjen egyenesen a sarkon.", "Forduljon jobbra a sarkon.", "Forduljon balra a sarkon.", "Álljon meg a sarkon."],
+                "correctAnswer": "Forduljon jobbra a sarkon."
+              }
+            },
+            {
+              "id": 607,
+              "lessonId": 111,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-16T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mi a 'crossroads' magyar megfelelője?",
+                "answers": ["járda", "zebrán", "kereszteződés", "körforgalom"],
+                "correctAnswer": "kereszteződés"
+              }
+            },
+            {
+              "id": 608,
+              "lessonId": 111,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-16T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'egyenesen'?",
+                "answers": ["left", "right", "straight ahead", "behind"],
+                "correctAnswer": "straight ahead"
+              }
+            }
+          ]
+        },
+        {
+          "id": 112,
+          "unitId": 60,
+          "title": "At the Station - Az állomáson",
+          "orderIndex": 3,
+          "createdAt": "2026-01-15T09:20:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 609,
+              "lessonId": 112,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-17T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'platform'?",
+                "answers": ["jegypénztár", "váróterem", "peron", "kijárat"],
+                "correctAnswer": "peron"
+              }
+            },
+            {
+              "id": 610,
+              "lessonId": 112,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-17T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'jegy'?",
+                "answers": ["pass", "ticket", "receipt", "boarding pass"],
+                "correctAnswer": "ticket"
+              }
+            },
+            {
+              "id": 611,
+              "lessonId": 112,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-17T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'departure'?",
+                "answers": ["érkezés", "indulás", "késés", "törlés"],
+                "correctAnswer": "indulás"
+              }
+            },
+            {
+              "id": 612,
+              "lessonId": 112,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-17T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'késik a vonat'?",
+                "answers": ["the train is fast", "the train is delayed", "the train is cancelled", "the train is full"],
+                "correctAnswer": "the train is delayed"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 61,
+      "courseId": 8,
+      "title": "Travel - Utazás",
+      "orderIndex": 2,
+      "createdAt": "2026-01-15T09:10:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "lessons": [
+        {
+          "id": 113,
+          "unitId": 61,
+          "title": "At the Airport - A repülőtéren",
+          "orderIndex": 1,
+          "createdAt": "2026-01-20T09:00:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 613,
+              "lessonId": 113,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-20T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'check-in'?",
+                "answers": ["beszállás", "bejelentkezés", "csomagfelvétel", "vámvizsgálat"],
+                "correctAnswer": "bejelentkezés"
+              }
+            },
+            {
+              "id": 614,
+              "lessonId": 113,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-20T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'útlevél'?",
+                "answers": ["ID card", "passport", "visa", "permit"],
+                "correctAnswer": "passport"
+              }
+            },
+            {
+              "id": 615,
+              "lessonId": 113,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-20T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'baggage claim'?",
+                "answers": ["poggyász leadás", "csomagmegőrző", "csomagkiadó", "poggyász szállítás"],
+                "correctAnswer": "csomagkiadó"
+              }
+            },
+            {
+              "id": 616,
+              "lessonId": 113,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-20T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'kapu' (repülőtéren)?",
+                "answers": ["terminal", "gate", "runway", "lounge"],
+                "correctAnswer": "gate"
+              }
+            }
+          ]
+        },
+        {
+          "id": 114,
+          "unitId": 61,
+          "title": "Hotel - Szálloda",
+          "orderIndex": 2,
+          "createdAt": "2026-01-20T09:00:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 617,
+              "lessonId": 114,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-21T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'szoba foglalás'?",
+                "answers": ["room service", "room booking", "room key", "room number"],
+                "correctAnswer": "room booking"
+              }
+            },
+            {
+              "id": 618,
+              "lessonId": 114,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-21T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'Do you have a vacancy?'",
+                "answers": ["Van szabad parkolójuk?", "Van szabad szobájuk?", "Van étkezési lehetőség?", "Van WiFi?"],
+                "correctAnswer": "Van szabad szobájuk?"
+              }
+            },
+            {
+              "id": 619,
+              "lessonId": 114,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-21T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'kijelentkezés'?",
+                "answers": ["check-in", "check-out", "room service", "wake-up call"],
+                "correctAnswer": "check-out"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 62,
+      "courseId": 8,
+      "title": "Sightseeing - Városnézés",
+      "orderIndex": 3,
+      "createdAt": "2026-01-15T09:10:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "lessons": [
+        {
+          "id": 115,
+          "unitId": 62,
+          "title": "Landmarks - Nevezetességek",
+          "orderIndex": 1,
+          "createdAt": "2026-01-25T09:00:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 620,
+              "lessonId": 115,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-25T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'museum'?",
+                "answers": ["könyvtár", "múzeum", "galéria", "színház"],
+                "correctAnswer": "múzeum"
+              }
+            },
+            {
+              "id": 621,
+              "lessonId": 115,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-25T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'vár'?",
+                "answers": ["tower", "palace", "castle", "cathedral"],
+                "correctAnswer": "castle"
+              }
+            },
+            {
+              "id": 622,
+              "lessonId": 115,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-25T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'guided tour'?",
+                "answers": ["önálló séta", "idegenvezetős túra", "hajókirándulás", "busztúra"],
+                "correctAnswer": "idegenvezetős túra"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "id": 60,
+      "userId": 701,
+      "courseId": 8,
+      "rating": 5,
+      "comment": "Perfect for travel! Minden utazás előtt ajánlom.",
+      "createdAt": "2026-02-03T11:00:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "user": {
+        "id": 701,
+        "username": "PappErika79",
+        "email": "papp.erika@example.com",
+        "role": { "id": 1, "name": "student" },
+        "createdAt": "2026-01-10T09:00:00.000Z",
+        "isActive": true,
+        "avatarUrl": null,
+        "bio": null,
+        "deleted": false,
+        "deletedAt": null,
+        "anonymized": false,
+        "anonymizedAt": null
+      }
+    },
+    {
+      "id": 61,
+      "userId": 702,
+      "courseId": 8,
+      "rating": 4,
+      "comment": "Very useful vocabulary for my London trip!",
+      "createdAt": "2026-02-12T14:00:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "user": {
+        "id": 702,
+        "username": "NemethDavid03",
+        "email": "nemeth.david@example.com",
+        "role": { "id": 1, "name": "student" },
+        "createdAt": "2026-01-12T10:00:00.000Z",
+        "isActive": true,
+        "avatarUrl": null,
+        "bio": null,
+        "deleted": false,
+        "deletedAt": null,
+        "anonymized": false,
+        "anonymizedAt": null
+      }
+    }
+  ]
+}

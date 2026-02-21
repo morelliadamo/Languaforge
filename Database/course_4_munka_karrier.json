@@ -1,0 +1,495 @@
+{
+  "id": 10,
+  "title": "Magyar-Angol: Munka és karrier",
+  "description": "Sajátítsd el a munkahelyi angol kifejezéseket és karrierépítéshez szükséges szókincset!",
+  "createdAt": "2026-01-20T09:00:00.000Z",
+  "isDeleted": false,
+  "deletedAt": null,
+  "units": [
+    {
+      "id": 80,
+      "courseId": 10,
+      "title": "The Workplace - A munkahely",
+      "orderIndex": 1,
+      "createdAt": "2026-01-20T09:10:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "lessons": [
+        {
+          "id": 130,
+          "unitId": 80,
+          "title": "Job Titles - Munkakörök",
+          "orderIndex": 1,
+          "createdAt": "2026-01-20T09:20:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 800,
+              "lessonId": 130,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-20T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'accountant'?",
+                "answers": ["ügyvéd", "mérnök", "könyvelő", "orvos"],
+                "correctAnswer": "könyvelő"
+              }
+            },
+            {
+              "id": 801,
+              "lessonId": 130,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-20T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'tanár'?",
+                "answers": ["nurse", "teacher", "driver", "chef"],
+                "correctAnswer": "teacher"
+              }
+            },
+            {
+              "id": 802,
+              "lessonId": 130,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-20T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'software developer'?",
+                "answers": ["rendszergazda", "szoftverfejlesztő", "adatbázis-kezelő", "grafikus"],
+                "correctAnswer": "szoftverfejlesztő"
+              }
+            },
+            {
+              "id": 803,
+              "lessonId": 130,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-20T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'vezető / főnök'?",
+                "answers": ["employee", "colleague", "manager", "intern"],
+                "correctAnswer": "manager"
+              }
+            },
+            {
+              "id": 804,
+              "lessonId": 130,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-20T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'freelancer'?",
+                "answers": ["részmunkaidős dolgozó", "szabadúszó", "önkéntes", "gyakornokok"],
+                "correctAnswer": "szabadúszó"
+              }
+            }
+          ]
+        },
+        {
+          "id": 131,
+          "unitId": 80,
+          "title": "Office Vocabulary - Irodai szókincs",
+          "orderIndex": 2,
+          "createdAt": "2026-01-20T09:20:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 805,
+              "lessonId": 131,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-21T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'értekezlet'?",
+                "answers": ["conference", "meeting", "seminar", "workshop"],
+                "correctAnswer": "meeting"
+              }
+            },
+            {
+              "id": 806,
+              "lessonId": 131,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-21T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'spreadsheet'?",
+                "answers": ["bemutató", "táblázat", "szövegdokumentum", "adatbázis"],
+                "correctAnswer": "táblázat"
+              }
+            },
+            {
+              "id": 807,
+              "lessonId": 131,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-21T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'nyomtató'?",
+                "answers": ["scanner", "projector", "printer", "monitor"],
+                "correctAnswer": "printer"
+              }
+            },
+            {
+              "id": 808,
+              "lessonId": 131,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-21T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'overtime'?",
+                "answers": ["szabadság", "betegszabadság", "túlóra", "fizetett szabadnap"],
+                "correctAnswer": "túlóra"
+              }
+            }
+          ]
+        },
+        {
+          "id": 132,
+          "unitId": 80,
+          "title": "Emails and Communication - E-mailek és kommunikáció",
+          "orderIndex": 3,
+          "createdAt": "2026-01-20T09:20:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 809,
+              "lessonId": 132,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-22T09:00.00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'I am writing to inquire about...'?",
+                "answers": ["Értesítem, hogy...", "Azzal kapcsolatban írok, hogy...", "Visszaigazolom, hogy...", "Csatolom a következőt:"],
+                "correctAnswer": "Azzal kapcsolatban írok, hogy..."
+              }
+            },
+            {
+              "id": 810,
+              "lessonId": 132,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-22T09:00.00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'Üdvözlettel' (e-mail zárás)?",
+                "answers": ["Best regards,", "To whom it may concern,", "Dear Sir/Madam,", "I am writing to..."],
+                "correctAnswer": "Best regards,"
+              }
+            },
+            {
+              "id": 811,
+              "lessonId": 132,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-22T09:00.00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'Please find attached...'?",
+                "answers": ["Kérem, keresse meg...", "Csatoltan megtalálja...", "Kérem, vegye figyelembe...", "Visszajelzését várom..."],
+                "correctAnswer": "Csatoltan megtalálja..."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 81,
+      "courseId": 10,
+      "title": "Job Applications - Álláskeresés",
+      "orderIndex": 2,
+      "createdAt": "2026-01-20T09:10.00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "lessons": [
+        {
+          "id": 133,
+          "unitId": 81,
+          "title": "CV and Cover Letter - Önéletrajz és motivációs levél",
+          "orderIndex": 1,
+          "createdAt": "2026-01-24T09:00.00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 812,
+              "lessonId": 133,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-24T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'önéletrajz'?",
+                "answers": ["motivation letter", "CV / resume", "reference letter", "portfolio"],
+                "correctAnswer": "CV / resume"
+              }
+            },
+            {
+              "id": 813,
+              "lessonId": 133,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-24T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'work experience'?",
+                "answers": ["végzettség", "munkatapasztalat", "készségek", "referenciák"],
+                "correctAnswer": "munkatapasztalat"
+              }
+            },
+            {
+              "id": 814,
+              "lessonId": 133,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-24T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'fizetési elvárás'?",
+                "answers": ["salary expectation", "work hours", "job benefits", "notice period"],
+                "correctAnswer": "salary expectation"
+              }
+            },
+            {
+              "id": 815,
+              "lessonId": 133,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-24T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'references available upon request'?",
+                "answers": ["Referenciák mellékelve.", "Referenciák kérésre rendelkezésre állnak.", "Referenciák nem szükségesek.", "Referenciák hamarosan elkészülnek."],
+                "correctAnswer": "Referenciák kérésre rendelkezésre állnak."
+              }
+            }
+          ]
+        },
+        {
+          "id": 134,
+          "unitId": 81,
+          "title": "Job Interview - Állásinterjú",
+          "orderIndex": 2,
+          "createdAt": "2026-01-24T09:00.00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 816,
+              "lessonId": 134,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-25T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'What are your strengths?'",
+                "answers": ["Mik a gyengeségei?", "Mik az erősségei?", "Mit szeretne elérni?", "Miért hagyja el jelenlegi munkahelyét?"],
+                "correctAnswer": "Mik az erősségei?"
+              }
+            },
+            {
+              "id": 817,
+              "lessonId": 134,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-25T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'Mikor tudna kezdeni?'",
+                "answers": ["What is your experience?", "When can you start?", "Why do you want this job?", "Do you have any questions?"],
+                "correctAnswer": "When can you start?"
+              }
+            },
+            {
+              "id": 818,
+              "lessonId": 134,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-25T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'probationary period'?",
+                "answers": ["felmondási idő", "próbaidő", "szabadság", "munkaszüneti nap"],
+                "correctAnswer": "próbaidő"
+              }
+            },
+            {
+              "id": 819,
+              "lessonId": 134,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-25T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'csapatban dolgozni'?",
+                "answers": ["to work independently", "to work remotely", "to work as a team", "to work part-time"],
+                "correctAnswer": "to work as a team"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 82,
+      "courseId": 10,
+      "title": "Business Phrases - Üzleti kifejezések",
+      "orderIndex": 3,
+      "createdAt": "2026-01-20T09:10:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "lessons": [
+        {
+          "id": 135,
+          "unitId": 82,
+          "title": "Meetings and Presentations - Megbeszélések és prezentációk",
+          "orderIndex": 1,
+          "createdAt": "2026-01-28T09:00:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 820,
+              "lessonId": 135,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-28T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'napirendet megbeszéli'?",
+                "answers": ["to go through the agenda", "to take minutes", "to chair a meeting", "to skip the meeting"],
+                "correctAnswer": "to go through the agenda"
+              }
+            },
+            {
+              "id": 821,
+              "lessonId": 135,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-28T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'Let's wrap up.'?",
+                "answers": ["Kezdjük el.", "Folytassuk.", "Zárjuk le.", "Szünet következik."],
+                "correctAnswer": "Zárjuk le."
+              }
+            },
+            {
+              "id": 822,
+              "lessonId": 135,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-28T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'visszajelzést ad'?",
+                "answers": ["to ignore feedback", "to give feedback", "to request feedback", "to avoid feedback"],
+                "correctAnswer": "to give feedback"
+              }
+            },
+            {
+              "id": 823,
+              "lessonId": 135,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-28T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'action points'?",
+                "answers": ["eredmények", "teendők", "problémák", "célok"],
+                "correctAnswer": "teendők"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "id": 80,
+      "userId": 901,
+      "courseId": 10,
+      "rating": 5,
+      "comment": "Az állásinterjúhoz szükséges szókincset tökéletesen lefedte!",
+      "createdAt": "2026-02-07T10:00:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "user": {
+        "id": 901,
+        "username": "OlahPeter2002",
+        "email": "olah.peter@example.com",
+        "role": { "id": 1, "name": "student" },
+        "createdAt": "2026-01-19T09:00:00.000Z",
+        "isActive": true,
+        "avatarUrl": null,
+        "bio": null,
+        "deleted": false,
+        "deletedAt": null,
+        "anonymized": false,
+        "anonymizedAt": null
+      }
+    },
+    {
+      "id": 81,
+      "userId": 902,
+      "courseId": 10,
+      "rating": 5,
+      "comment": "Excellent business English content. Highly recommend for professionals.",
+      "createdAt": "2026-02-15T14:00:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "user": {
+        "id": 902,
+        "username": "SzentesiKlara88",
+        "email": "szentesi.klara@example.com",
+        "role": { "id": 1, "name": "student" },
+        "createdAt": "2026-01-21T11:00:00.000Z",
+        "isActive": true,
+        "avatarUrl": null,
+        "bio": null,
+        "deleted": false,
+        "deletedAt": null,
+        "anonymized": false,
+        "anonymizedAt": null
+      }
+    },
+    {
+      "id": 82,
+      "userId": 903,
+      "courseId": 10,
+      "rating": 4,
+      "comment": "Jó kurzus, de több e-mail sablon jól jönne.",
+      "createdAt": "2026-02-19T09:00.00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "user": {
+        "id": 903,
+        "username": "VeghZsolt71",
+        "email": "vegh.zsolt@example.com",
+        "role": { "id": 1, "name": "student" },
+        "createdAt": "2026-01-22T10:00:00.000Z",
+        "isActive": true,
+        "avatarUrl": null,
+        "bio": null,
+        "deleted": false,
+        "deletedAt": null,
+        "anonymized": false,
+        "anonymizedAt": null
+      }
+    }
+  ]
+}

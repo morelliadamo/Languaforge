@@ -1,0 +1,471 @@
+{
+  "id": 11,
+  "title": "Magyar-Angol: Család és kapcsolatok",
+  "description": "Tanulj meg angolul a családról és emberi kapcsolatokról beszélni!",
+  "createdAt": "2026-01-22T09:00:00.000Z",
+  "isDeleted": false,
+  "deletedAt": null,
+  "units": [
+    {
+      "id": 90,
+      "courseId": 11,
+      "title": "Family Members - Családtagok",
+      "orderIndex": 1,
+      "createdAt": "2026-01-22T09:10.00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "lessons": [
+        {
+          "id": 140,
+          "unitId": 90,
+          "title": "Immediate Family - Szűk család",
+          "orderIndex": 1,
+          "createdAt": "2026-01-22T09:20.00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 900,
+              "lessonId": 140,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-22T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'sibling'?",
+                "answers": ["szülő", "gyermek", "testvér", "nagyszülő"],
+                "correctAnswer": "testvér"
+              }
+            },
+            {
+              "id": 901,
+              "lessonId": 140,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-22T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'nagymama'?",
+                "answers": ["aunt", "mother-in-law", "grandmother", "godmother"],
+                "correctAnswer": "grandmother"
+              }
+            },
+            {
+              "id": 902,
+              "lessonId": 140,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-22T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'only child'?",
+                "answers": ["kisgyerek", "egyszülős gyermek", "egyke", "örökbe fogadott gyermek"],
+                "correctAnswer": "egyke"
+              }
+            },
+            {
+              "id": 903,
+              "lessonId": 140,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-22T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'iker'?",
+                "answers": ["triplet", "twin", "sibling", "cousin"],
+                "correctAnswer": "twin"
+              }
+            },
+            {
+              "id": 904,
+              "lessonId": 140,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-22T09:30:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'stepfather'?",
+                "answers": ["keresztapa", "mostohaapa", "apósa", "nevelőapa"],
+                "correctAnswer": "mostohaapa"
+              }
+            }
+          ]
+        },
+        {
+          "id": 141,
+          "unitId": 90,
+          "title": "Extended Family - Távolabbi rokonság",
+          "orderIndex": 2,
+          "createdAt": "2026-01-22T09:20:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 905,
+              "lessonId": 141,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-23T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'nephew'?",
+                "answers": ["unokaöcs", "unokahúg", "unokatestvér", "nagybácsi"],
+                "correctAnswer": "unokaöcs"
+              }
+            },
+            {
+              "id": 906,
+              "lessonId": 141,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-23T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'unokatestvér'?",
+                "answers": ["nephew", "niece", "cousin", "sibling"],
+                "correctAnswer": "cousin"
+              }
+            },
+            {
+              "id": 907,
+              "lessonId": 141,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-23T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'mother-in-law'?",
+                "answers": ["anyósa", "nevelőanya", "mostohaanya", "keresztanya"],
+                "correctAnswer": "anyósa"
+              }
+            },
+            {
+              "id": 908,
+              "lessonId": 141,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-23T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'nagybácsi'?",
+                "answers": ["godfather", "uncle", "brother-in-law", "grandfather"],
+                "correctAnswer": "uncle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 91,
+      "courseId": 11,
+      "title": "Relationships - Kapcsolatok",
+      "orderIndex": 2,
+      "createdAt": "2026-01-22T09:10:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "lessons": [
+        {
+          "id": 142,
+          "unitId": 91,
+          "title": "Friendship - Barátság",
+          "orderIndex": 1,
+          "createdAt": "2026-01-26T09:00:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 909,
+              "lessonId": 142,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-26T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'legjobb barát'?",
+                "answers": ["old friend", "best friend", "close friend", "childhood friend"],
+                "correctAnswer": "best friend"
+              }
+            },
+            {
+              "id": 910,
+              "lessonId": 142,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-26T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'to keep in touch'?",
+                "answers": ["kapcsolatot tart", "elhagy valakit", "megismerkedik valakivel", "elbúcsúzik"],
+                "correctAnswer": "kapcsolatot tart"
+              }
+            },
+            {
+              "id": 911,
+              "lessonId": 142,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-26T09:10.00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'megbízható'?",
+                "answers": ["jealous", "selfish", "trustworthy", "arrogant"],
+                "correctAnswer": "trustworthy"
+              }
+            },
+            {
+              "id": 912,
+              "lessonId": 142,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-26T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'acquaintance'?",
+                "answers": ["barát", "ismerős", "szomszéd", "kolléga"],
+                "correctAnswer": "ismerős"
+              }
+            }
+          ]
+        },
+        {
+          "id": 143,
+          "unitId": 91,
+          "title": "Emotions - Érzelmek",
+          "orderIndex": 2,
+          "createdAt": "2026-01-26T09:00.00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 913,
+              "lessonId": 143,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-27T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'anxious'?",
+                "answers": ["boldog", "szomorú", "szorongó", "mérges"],
+                "correctAnswer": "szorongó"
+              }
+            },
+            {
+              "id": 914,
+              "lessonId": 143,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-27T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'büszke'?",
+                "answers": ["ashamed", "proud", "nervous", "confused"],
+                "correctAnswer": "proud"
+              }
+            },
+            {
+              "id": 915,
+              "lessonId": 143,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-27T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'overwhelmed'?",
+                "answers": ["nyugodt", "elégedett", "leterhelt", "izgatott"],
+                "correctAnswer": "leterhelt"
+              }
+            },
+            {
+              "id": 916,
+              "lessonId": 143,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-27T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'meglepett'?",
+                "answers": ["bored", "relieved", "surprised", "frightened"],
+                "correctAnswer": "surprised"
+              }
+            }
+          ]
+        },
+        {
+          "id": 144,
+          "unitId": 91,
+          "title": "Describing People - Személyleírás",
+          "orderIndex": 3,
+          "createdAt": "2026-01-26T09:00:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 917,
+              "lessonId": 144,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-28T09:00.00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'outgoing'?",
+                "answers": ["zárkózott", "társaságkedvelő", "csendes", "félénk"],
+                "correctAnswer": "társaságkedvelő"
+              }
+            },
+            {
+              "id": 918,
+              "lessonId": 144,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-28T09:00.00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'szorgalmas'?",
+                "answers": ["lazy", "hardworking", "clumsy", "impatient"],
+                "correctAnswer": "hardworking"
+              }
+            },
+            {
+              "id": 919,
+              "lessonId": 144,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-28T09:00.00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'broad-minded'?",
+                "answers": ["szűklátókörű", "nyitott gondolkodású", "makacs", "beképzelt"],
+                "correctAnswer": "nyitott gondolkodású"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 92,
+      "courseId": 11,
+      "title": "Life Events - Életeseméyek",
+      "orderIndex": 3,
+      "createdAt": "2026-01-22T09:10:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "lessons": [
+        {
+          "id": 145,
+          "unitId": 92,
+          "title": "Celebrations - Ünnepek",
+          "orderIndex": 1,
+          "createdAt": "2026-01-30T09:00:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 920,
+              "lessonId": 145,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-30T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'esküvő'?",
+                "answers": ["engagement", "anniversary", "wedding", "baptism"],
+                "correctAnswer": "wedding"
+              }
+            },
+            {
+              "id": 921,
+              "lessonId": 145,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-30T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'Congratulations!'?",
+                "answers": ["Köszönöm!", "Gratulálok!", "Sajnálom!", "Sok szerencsét!"],
+                "correctAnswer": "Gratulálok!"
+              }
+            },
+            {
+              "id": 922,
+              "lessonId": 145,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-30T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'évforduló'?",
+                "answers": ["birthday", "holiday", "anniversary", "graduation"],
+                "correctAnswer": "anniversary"
+              }
+            },
+            {
+              "id": 923,
+              "lessonId": 145,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-01-30T09:10:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'to retire'?",
+                "answers": ["előléptet", "nyugdíjba vonul", "felmondást ad be", "kirúgják"],
+                "correctAnswer": "nyugdíjba vonul"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "id": 90,
+      "userId": 1001,
+      "courseId": 11,
+      "rating": 5,
+      "comment": "Nagyon tetszik, hogy a családi szókincset ilyen részletesen tárgyalja!",
+      "createdAt": "2026-02-08T10:00:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "user": {
+        "id": 1001,
+        "username": "SomogyvariNora93",
+        "email": "somogyvari.nora@example.com",
+        "role": { "id": 1, "name": "student" },
+        "createdAt": "2026-01-23T09:00:00.000Z",
+        "isActive": true,
+        "avatarUrl": null,
+        "bio": null,
+        "deleted": false,
+        "deletedAt": null,
+        "anonymized": false,
+        "anonymizedAt": null
+      }
+    },
+    {
+      "id": 91,
+      "userId": 1002,
+      "courseId": 11,
+      "rating": 4,
+      "comment": "The emotions section is really good. I learned a lot of new adjectives.",
+      "createdAt": "2026-02-16T14:00.00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "user": {
+        "id": 1002,
+        "username": "KovacsMarton85",
+        "email": "kovacs.marton@example.com",
+        "role": { "id": 1, "name": "student" },
+        "createdAt": "2026-01-25T10:00:00.000Z",
+        "isActive": true,
+        "avatarUrl": null,
+        "bio": null,
+        "deleted": false,
+        "deletedAt": null,
+        "anonymized": false,
+        "anonymizedAt": null
+      }
+    }
+  ]
+}

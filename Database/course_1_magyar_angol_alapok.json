@@ -1,0 +1,571 @@
+{
+  "id": 1,
+  "title": "Magyar-Angol alapok",
+  "description": "Tanuld meg az angol nyelv alapjait!",
+  "createdAt": "2025-12-05T19:09:46.000Z",
+  "isDeleted": false,
+  "deletedAt": null,
+  "units": [
+    {
+      "id": 1,
+      "courseId": 1,
+      "title": "Basic words - Alapvető szavak",
+      "orderIndex": 1,
+      "createdAt": "2025-12-07T12:26:05.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "lessons": [
+        {
+          "id": 1,
+          "unitId": 1,
+          "title": "Colors and numbers - Színek és számok",
+          "orderIndex": 1,
+          "createdAt": "2025-12-07T12:29:22.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 1,
+              "lessonId": 1,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-07T12:42:43.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent ez a szó: red?",
+                "answers": ["piros", "kék", "zöld", "sárga"],
+                "correctAnswer": "piros"
+              }
+            },
+            {
+              "id": 2,
+              "lessonId": 1,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-07T12:42:43.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: kék?",
+                "answers": ["red", "green", "yellow", "blue"],
+                "correctAnswer": "blue"
+              }
+            },
+            {
+              "id": 3,
+              "lessonId": 1,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2026-02-14T11:29:41.000Z",
+              "exerciseContent": {
+                "description": "Mi a CAT magyar megfelelője?",
+                "answers": ["macska", "kutya", "egér", "fácán"],
+                "correctAnswer": "macska"
+              }
+            },
+            {
+              "id": 4,
+              "lessonId": 1,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-07T12:42:43.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent ez a szó: green?",
+                "answers": ["piros", "kék", "zöld", "sárga"],
+                "correctAnswer": "zöld"
+              }
+            },
+            {
+              "id": 5,
+              "lessonId": 1,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-07T12:42:43.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: sárga?",
+                "answers": ["red", "green", "yellow", "blue"],
+                "correctAnswer": "yellow"
+              }
+            },
+            {
+              "id": 6,
+              "lessonId": 1,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-07T12:42:43.000Z",
+              "exerciseContent": {
+                "description": "What is the English word for 'fehér'?",
+                "answers": ["white", "black", "gray", "purple"],
+                "correctAnswer": "white"
+              }
+            },
+            {
+              "id": 7,
+              "lessonId": 1,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-07T12:42:43.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent ez a szó: one?",
+                "answers": ["egy", "kettő", "három", "négy"],
+                "correctAnswer": "egy"
+              }
+            },
+            {
+              "id": 8,
+              "lessonId": 1,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-07T12:42:43.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: öt?",
+                "answers": ["three", "four", "five", "six"],
+                "correctAnswer": "five"
+              }
+            },
+            {
+              "id": 9,
+              "lessonId": 1,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-07T12:42:43.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent ez a szó: ten?",
+                "answers": ["hat", "hét", "nyolc", "tíz"],
+                "correctAnswer": "tíz"
+              }
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "unitId": 1,
+          "title": "Animals - Állatok",
+          "orderIndex": 2,
+          "createdAt": "2025-12-07T12:29:22.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 10,
+              "lessonId": 2,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-07T13:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent ez a szó: dog?",
+                "answers": ["macska", "kutya", "ló", "tehén"],
+                "correctAnswer": "kutya"
+              }
+            },
+            {
+              "id": 11,
+              "lessonId": 2,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-07T13:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: ló?",
+                "answers": ["cow", "pig", "horse", "sheep"],
+                "correctAnswer": "horse"
+              }
+            },
+            {
+              "id": 12,
+              "lessonId": 2,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-07T13:00:00.000Z",
+              "exerciseContent": {
+                "description": "What is the Hungarian word for 'bird'?",
+                "answers": ["hal", "madár", "béka", "egér"],
+                "correctAnswer": "madár"
+              }
+            },
+            {
+              "id": 13,
+              "lessonId": 2,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-07T13:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent ez a szó: fish?",
+                "answers": ["hal", "madár", "nyúl", "kígyó"],
+                "correctAnswer": "hal"
+              }
+            },
+            {
+              "id": 14,
+              "lessonId": 2,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-07T13:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: nyúl?",
+                "answers": ["fox", "wolf", "rabbit", "bear"],
+                "correctAnswer": "rabbit"
+              }
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "unitId": 1,
+          "title": "Objects - Tárgyak",
+          "orderIndex": 3,
+          "createdAt": "2025-12-07T12:29:22.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 15,
+              "lessonId": 3,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-08T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent ez a szó: table?",
+                "answers": ["szék", "asztal", "ágy", "szekrény"],
+                "correctAnswer": "asztal"
+              }
+            },
+            {
+              "id": 16,
+              "lessonId": 3,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-08T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: könyv?",
+                "answers": ["pen", "book", "bag", "cup"],
+                "correctAnswer": "book"
+              }
+            },
+            {
+              "id": 17,
+              "lessonId": 3,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-08T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "What is 'telefon' in English?",
+                "answers": ["computer", "phone", "tablet", "camera"],
+                "correctAnswer": "phone"
+              }
+            },
+            {
+              "id": 18,
+              "lessonId": 3,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-08T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent ez a szó: door?",
+                "answers": ["ablak", "fal", "ajtó", "padló"],
+                "correctAnswer": "ajtó"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "courseId": 1,
+      "title": "Basic sentences - Alapvető mondatok",
+      "orderIndex": 2,
+      "createdAt": "2025-12-07T12:26:05.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "lessons": [
+        {
+          "id": 4,
+          "unitId": 2,
+          "title": "Greetings - Köszöntések",
+          "orderIndex": 1,
+          "createdAt": "2025-12-10T08:00:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 19,
+              "lessonId": 4,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-10T08:10:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'Jó reggelt!'?",
+                "answers": ["Good night!", "Good morning!", "Good evening!", "Goodbye!"],
+                "correctAnswer": "Good morning!"
+              }
+            },
+            {
+              "id": 20,
+              "lessonId": 4,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-10T08:10:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent ez a mondat: 'How are you?'",
+                "answers": ["Hogy hívnak?", "Hány éves vagy?", "Hogy vagy?", "Hol laksz?"],
+                "correctAnswer": "Hogy vagy?"
+              }
+            },
+            {
+              "id": 21,
+              "lessonId": 4,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-10T08:10:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'Viszontlátásra!'?",
+                "answers": ["Hello!", "Welcome!", "Goodbye!", "Please!"],
+                "correctAnswer": "Goodbye!"
+              }
+            },
+            {
+              "id": 22,
+              "lessonId": 4,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-10T08:10:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'My name is Anna.'?",
+                "answers": ["A barátom Anna.", "A nevem Anna.", "Anna tanár.", "Ismerem Annát."],
+                "correctAnswer": "A nevem Anna."
+              }
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "unitId": 2,
+          "title": "Introductions - Bemutatkozás",
+          "orderIndex": 2,
+          "createdAt": "2025-12-10T08:00:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 23,
+              "lessonId": 5,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-11T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: 'Hány éves vagy?'",
+                "answers": ["Where are you from?", "How old are you?", "What do you do?", "Do you speak English?"],
+                "correctAnswer": "How old are you?"
+              }
+            },
+            {
+              "id": 24,
+              "lessonId": 5,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-11T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent: 'I am from Hungary.'?",
+                "answers": ["Szeretek Magyarországon lakni.", "Magyarországról jövök.", "Ismerem Magyarországot.", "Magyarországra megyek."],
+                "correctAnswer": "Magyarországról jövök."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "courseId": 1,
+      "title": "Food and Drinks - Ételek és italok",
+      "orderIndex": 3,
+      "createdAt": "2025-12-15T10:00:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "lessons": [
+        {
+          "id": 6,
+          "unitId": 3,
+          "title": "Food - Ételek",
+          "orderIndex": 1,
+          "createdAt": "2025-12-15T10:10:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 25,
+              "lessonId": 6,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-15T10:20:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent ez a szó: bread?",
+                "answers": ["sajt", "kenyér", "hús", "tojás"],
+                "correctAnswer": "kenyér"
+              }
+            },
+            {
+              "id": 26,
+              "lessonId": 6,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-15T10:20:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: alma?",
+                "answers": ["banana", "apple", "orange", "grape"],
+                "correctAnswer": "apple"
+              }
+            },
+            {
+              "id": 27,
+              "lessonId": 6,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-15T10:20:00.000Z",
+              "exerciseContent": {
+                "description": "What is 'rizs' in English?",
+                "answers": ["pasta", "rice", "bread", "soup"],
+                "correctAnswer": "rice"
+              }
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "unitId": 3,
+          "title": "Drinks - Italok",
+          "orderIndex": 2,
+          "createdAt": "2025-12-15T10:10:00.000Z",
+          "isDeleted": false,
+          "deletedAt": null,
+          "exercises": [
+            {
+              "id": 28,
+              "lessonId": 7,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-16T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Mit jelent ez a szó: water?",
+                "answers": ["tej", "víz", "bor", "sör"],
+                "correctAnswer": "víz"
+              }
+            },
+            {
+              "id": 29,
+              "lessonId": 7,
+              "exerciseType": "choice",
+              "isDeleted": false,
+              "deletedAt": null,
+              "createdAt": "2025-12-16T09:00:00.000Z",
+              "exerciseContent": {
+                "description": "Hogy van ez angolul: tej?",
+                "answers": ["juice", "coffee", "milk", "tea"],
+                "correctAnswer": "milk"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "userId": 101,
+      "courseId": 1,
+      "rating": 5,
+      "comment": "Nagyon hasznos tanfolyam! Sokat tanultam belőle.",
+      "createdAt": "2026-01-10T14:22:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "user": {
+        "id": 101,
+        "username": "NagyPeter42",
+        "email": "nagy.peter@example.com",
+        "role": { "id": 1, "name": "student" },
+        "createdAt": "2025-11-30T10:00:00.000Z",
+        "isActive": true,
+        "avatarUrl": null,
+        "bio": null,
+        "deleted": false,
+        "deletedAt": null,
+        "anonymized": false,
+        "anonymizedAt": null
+      }
+    },
+    {
+      "id": 2,
+      "userId": 102,
+      "courseId": 1,
+      "rating": 4,
+      "comment": "Jó alapok, de több feladatot lehetne hozzáadni.",
+      "createdAt": "2026-01-15T09:40:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "user": {
+        "id": 102,
+        "username": "SzaboEva88",
+        "email": "szabo.eva@example.com",
+        "role": { "id": 1, "name": "student" },
+        "createdAt": "2025-12-01T11:00:00.000Z",
+        "isActive": true,
+        "avatarUrl": null,
+        "bio": null,
+        "deleted": false,
+        "deletedAt": null,
+        "anonymized": false,
+        "anonymizedAt": null
+      }
+    },
+    {
+      "id": 3,
+      "userId": 103,
+      "courseId": 1,
+      "rating": 5,
+      "comment": "Excellent course for beginners!",
+      "createdAt": "2026-01-20T16:00:00.000Z",
+      "isDeleted": false,
+      "deletedAt": null,
+      "user": {
+        "id": 103,
+        "username": "JohnSmith77",
+        "email": "john.smith@example.com",
+        "role": { "id": 1, "name": "student" },
+        "createdAt": "2025-12-10T08:30:00.000Z",
+        "isActive": true,
+        "avatarUrl": null,
+        "bio": null,
+        "deleted": false,
+        "deletedAt": null,
+        "anonymized": false,
+        "anonymizedAt": null
+      }
+    }
+  ]
+}
