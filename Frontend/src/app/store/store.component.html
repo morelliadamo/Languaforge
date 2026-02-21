@@ -1,0 +1,84 @@
+<app-header></app-header>
+
+<div class="bg-gray-50 min-h-screen">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16">
+    <div class="mb-8">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-2">Bolt 🛍️</h1>
+      <p class="text-gray-500 text-lg">Fejleszd a tanulási élményedet</p>
+    </div>
+
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-10"
+    >
+      @for (item of storeItems; track item.id) {
+        <div
+          class="relative bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col p-6"
+        >
+          @if (getBadge(item.type)) {
+            <span
+              class="absolute top-3 right-3 text-xs font-bold px-2 py-1 rounded-full {{
+                getBadgeClass(item.type)
+              }}"
+            >
+              {{ getBadge(item.type) }}
+            </span>
+          }
+
+          <div class="text-5xl mb-4">{{ getEmoji(item.type) }}</div>
+          <h3 class="text-lg font-semibold text-gray-800 mb-1">
+            {{ item.name }}
+          </h3>
+          <p class="text-sm text-gray-500 mb-5 flex-1">
+            {{ item.description }}
+          </p>
+
+          <div class="flex items-center justify-between mt-auto">
+            <span class="text-xl font-bold text-sky-500"
+              >{{ item.price }} HUF</span
+            >
+            <button
+              class="bg-sky-500 hover:bg-sky-600 active:scale-95 text-white text-sm font-semibold px-4 py-2 rounded-xl transition-all cursor-pointer"
+            >
+              Vásárlás
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div
+      class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 sm:p-8"
+    >
+      <h2 class="text-xl font-bold text-gray-800 mb-6">
+        Hogyan használd a tárgyakat?
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="flex flex-col gap-2">
+          <span class="text-4xl">❤️</span>
+          <h3 class="font-semibold text-gray-800">Szívek</h3>
+          <p class="text-sm text-gray-500">
+            Hibázás esetén a szívek segítenek folytatni a tanulást
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <span class="text-4xl">💡</span>
+          <h3 class="font-semibold text-gray-800">Tippek</h3>
+          <p class="text-sm text-gray-500">
+            Kérj segítséget a feladatoknál, ha elakadsz
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <span class="text-4xl">🧊</span>
+          <h3 class="font-semibold text-gray-800">Sikersorozat-fagyasztás</h3>
+          <p class="text-sm text-gray-500">
+            Védd meg a sikersorozatodat, ha kihagysz egy napot
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
