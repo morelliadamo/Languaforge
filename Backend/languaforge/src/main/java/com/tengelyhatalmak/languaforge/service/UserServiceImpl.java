@@ -46,10 +46,38 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() -> new RuntimeException("User not found"));
         existingUser.setUsername(user.getUsername());
         existingUser.setEmail(user.getEmail());
+        existingUser.setAvatarUrl(user.getAvatarUrl());
+        existingUser.setBio(user.getBio());
         existingUser.setPasswordHash(user.getPasswordHash());
         existingUser.setRoleId(user.getRoleId());
         existingUser.setLastLogin(user.getLastLogin());
         existingUser.setAnonymized(user.isAnonymized());
+        return userRepository.save(existingUser);
+    }
+
+    @Override
+    public User updateAvatarUrl(Integer id, String avatarUrl) {
+        User existingUser = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        existingUser.setAvatarUrl(avatarUrl);
+
+        return userRepository.save(existingUser);
+    }
+
+    @Override
+    public User updateProfileFields(Integer id, String username, String bio) {
+        User existingUser = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        if(username != null && !username.isBlank()) {
+            existingUser.setUsername(username);
+        }
+        if(bio != null ) {
+            existingUser.setBio(bio);
+        }
+
+
         return userRepository.save(existingUser);
     }
 

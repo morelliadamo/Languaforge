@@ -9,7 +9,7 @@ import { UserProfile } from '../interfaces/UserProfile';
 })
 export class UserProfileDataService {
   private readonly http = inject(HttpClient);
-  private readonly apiUrl = 'http://localhost:8080/users/';
+  private readonly apiUrl = 'http://localhost:8080/users';
 
   getUserProfileData(id: number): Observable<UserProfileData> {
     const token = localStorage.getItem('access_token');
@@ -17,10 +17,10 @@ export class UserProfileDataService {
       Authorization: `Bearer ${token}`,
     });
 
-    return this.http.get<UserProfile>(`${this.apiUrl}${id}`, { headers }).pipe(
+    return this.http.get<UserProfile>(`${this.apiUrl}/${id}`, { headers }).pipe(
       map((userProfile) => ({
-        currentStreak: userProfile.streak.currentStreak,
-        longestStreak: userProfile.streak.longestStreak,
+        currentStreak: userProfile.streak?.currentStreak || 0,
+        longestStreak: userProfile.streak?.longestStreak || 0,
         completedCourses: userProfile.userXCourses
           .filter((uxc) => uxc.completedAt !== null)
           .map((uxc) => uxc.course),
@@ -30,7 +30,42 @@ export class UserProfileDataService {
         achievementCount: userProfile.achievementsOfUser.filter(
           (a) => !a.isDeleted,
         ).length,
+        avatarUrl: userProfile.avatarUrl,
+        bio: userProfile.bio,
+        username: userProfile.username,
       })),
+    );
+  }
+
+  uploadAvatar(userId: number, file: File): Observable<{ avatarUrl: string }> {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    const formData = new FormData();
+    formData.append('avatar', file);
+
+    return this.http.post<{ avatarUrl: string }>(
+      `${this.apiUrl}/${userId}/avatar`,
+      formData,
+      { headers },
+    );
+  }
+
+  updateProfile(
+    userId: number,
+    data: { bio?: string; username?: string },
+  ): Observable<UserProfile> {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.patch<UserProfile>(
+      `${this.apiUrl}/updateUserProfile/${userId}`,
+      data,
+      { headers },
     );
   }
 }

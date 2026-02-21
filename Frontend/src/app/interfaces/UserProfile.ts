@@ -2,6 +2,8 @@ export interface UserProfile {
   id: number;
   username: string;
   email: string;
+  avatarUrl: string | null;
+  bio: string | null;
   roleId: number;
   role: Role;
   isActive: boolean;
@@ -13,7 +15,7 @@ export interface UserProfile {
   anonymizedAt: string | null;
   activationToken: string | null;
   passwordHash: string;
-  streak: Streak;
+  streak: Streak | null;
   userXCourses: UserXCourse[];
   achievementsOfUser: AchievementOfUser[];
   loginDataList: LoginData[];

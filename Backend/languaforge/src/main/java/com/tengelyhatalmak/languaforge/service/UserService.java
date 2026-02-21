@@ -11,6 +11,9 @@ public interface UserService {
     User findUserByUsername(String username);
 
     User updateUser(User user, Integer id);
+    User updateAvatarUrl(Integer id, String avatarUrl);
+    User updateProfileFields(Integer id, String username, String bio);
+
     void deleteUserById(Integer id);
 
     String encodePassword(String password);

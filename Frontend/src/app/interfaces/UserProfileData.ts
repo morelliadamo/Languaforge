@@ -80,4 +80,7 @@ export interface UserProfileData {
   completedCourses: Course[];
   achievements: Achievement[];
   achievementCount: number;
+  avatarUrl: string | null;
+  bio: string | null;
+  username: string;
 }

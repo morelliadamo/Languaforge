@@ -30,6 +30,12 @@ public class User {
     @Column(name = "email", nullable = false)
     private String email;
 
+    @Column(name = "avatar_url")
+    private String avatarUrl;
+
+    @Column(name = "bio")
+    private String bio;
+
     @Column(name = "password_hash")
     private String passwordHash;
 

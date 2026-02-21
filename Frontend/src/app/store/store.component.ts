@@ -26,11 +26,12 @@ export class StoreComponent {
       hearts5: '❤️',
       hearts10: '❤️❤️',
       hearts25: '❤️✨',
-      hints10: '💡',
-      hints25: '💡💡',
-      streak_freeze: '🧊',
+      hints5: '💡',
+      hints10: '💡💡',
+      hints25: '💡✨',
+      freeze: '🧊',
     };
-    return map[type] ?? '🎁';
+    return map[type] ?? 'missing icon!';
   }
 
   getBadge(type: string): string | null {

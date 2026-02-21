@@ -27,6 +27,7 @@ public class SecurityConfig {
 //                        .requestMatchers("/userxcourses/**").authenticated().anyRequest().permitAll()
                                 .requestMatchers("/**").permitAll() //for testing only
 
+
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);

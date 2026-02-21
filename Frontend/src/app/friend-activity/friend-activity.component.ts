@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { FriendshipService } from '../services/friendship.service';
 import { UtilService } from '../services/util.service';
 import { User } from '../interfaces/User';
+import { UserProfileDataService } from '../services/user-profile-data.service';
 
 @Component({
   selector: 'app-friend-activity',
@@ -12,6 +13,7 @@ import { User } from '../interfaces/User';
 })
 export class FriendActivityComponent {
   private friendshipService = inject(FriendshipService);
+  private userProfileDataService = inject(UserProfileDataService);
 
   utilService = inject(UtilService);
 
@@ -26,5 +28,17 @@ export class FriendActivityComponent {
           this.friends = friends;
         });
     }
+  }
+
+  getAvatar(friend: User): string {
+    return friend.avatarUrl && friend.avatarUrl.trim() !== ''
+      ? friend.avatarUrl
+      : this.utilService.getAvatarUrl(friend.username ?? 'U');
+  }
+
+  onAvatarError(event: Event, username: string) {
+    (event.target as HTMLImageElement).src = this.utilService.getAvatarUrl(
+      username ?? 'U',
+    );
   }
 }

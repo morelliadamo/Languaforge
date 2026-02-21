@@ -53,4 +53,8 @@ export class UtilService {
     const day = String(date.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
   }
+
+  getAvatarUrl(username: string): string {
+    return `https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(username)}`;
+  }
 }
