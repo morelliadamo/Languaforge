@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#f0fdf4"/>
+      <stop offset="100%" stop-color="#dcfce7"/>
+    </radialGradient>
+  </defs>
+  <circle cx="50" cy="50" r="48" fill="url(#bg)"/>
+  <!-- main bubble -->
+  <rect x="18" y="24" width="56" height="40" rx="12" fill="#4ade80"/>
+  <!-- tail -->
+  <polygon points="28,64 22,78 42,64" fill="#4ade80"/>
+  <!-- inner bubble lighter -->
+  <rect x="22" y="28" width="48" height="32" rx="9" fill="#86efac"/>
+  <!-- letters -->
+  <text x="35" y="50" text-anchor="middle" font-family="Arial" font-weight="900" font-size="18" fill="#14532d">A</text>
+  <text x="50" y="50" text-anchor="middle" font-family="Arial" font-weight="900" font-size="18" fill="#14532d">B</text>
+  <text x="65" y="50" text-anchor="middle" font-family="Arial" font-weight="900" font-size="18" fill="#14532d">C</text>
+  <!-- sparkle -->
+  <circle cx="76" cy="30" r="3" fill="#fbbf24"/>
+  <line x1="76" y1="23" x2="76" y2="27" stroke="#fbbf24" stroke-width="1.5"/>
+  <line x1="76" y1="33" x2="76" y2="37" stroke="#fbbf24" stroke-width="1.5"/>
+  <line x1="69" y1="30" x2="73" y2="30" stroke="#fbbf24" stroke-width="1.5"/>
+  <line x1="79" y1="30" x2="83" y2="30" stroke="#fbbf24" stroke-width="1.5"/>
+</svg>

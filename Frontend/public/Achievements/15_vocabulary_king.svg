@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#f0ecff"/>
+      <stop offset="100%" stop-color="#ddd6fe"/>
+    </radialGradient>
+    <linearGradient id="crown" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fde68a"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="48" fill="url(#bg)"/>
+  <!-- crown base band -->
+  <rect x="18" y="60" width="64" height="16" rx="3" fill="url(#crown)"/>
+  <!-- gems on band -->
+  <circle cx="32" cy="68" r="4" fill="#f87171"/>
+  <circle cx="50" cy="68" r="4" fill="#60a5fa"/>
+  <circle cx="68" cy="68" r="4" fill="#4ade80"/>
+  <!-- crown points -->
+  <polygon points="18,60 18,38 30,50 50,22 70,50 82,38 82,60" fill="url(#crown)"/>
+  <!-- crown point accents -->
+  <circle cx="50" cy="24" r="5" fill="#f87171"/>
+  <circle cx="18" cy="40" r="4" fill="#fbbf24"/>
+  <circle cx="82" cy="40" r="4" fill="#fbbf24"/>
+  <!-- inner shadow on crown -->
+  <path d="M18,60 L18,42 L28,52 L50,26 L72,52 L82,42 L82,60" fill="#b45309" opacity="0.15"/>
+  <!-- shine on top gem -->
+  <ellipse cx="48" cy="22" rx="2" ry="1" fill="white" opacity="0.7"/>
+</svg>

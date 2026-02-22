@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#f0fdf4"/>
+      <stop offset="100%" stop-color="#d1fae5"/>
+    </radialGradient>
+  </defs>
+  <circle cx="50" cy="50" r="48" fill="url(#bg)"/>
+  <!-- cabinet body -->
+  <rect x="20" y="22" width="60" height="58" rx="4" fill="#64748b"/>
+  <!-- drawer 1 -->
+  <rect x="24" y="26" width="52" height="16" rx="2" fill="#94a3b8"/>
+  <rect x="42" y="32" width="16" height="4" rx="2" fill="#475569"/>
+  <!-- drawer 2 -->
+  <rect x="24" y="46" width="52" height="16" rx="2" fill="#94a3b8"/>
+  <rect x="42" y="52" width="16" height="4" rx="2" fill="#475569"/>
+  <!-- drawer 3 -->
+  <rect x="24" y="66" width="52" height="10" rx="2" fill="#94a3b8"/>
+  <rect x="42" y="70" width="16" height="3" rx="1.5" fill="#475569"/>
+  <!-- label tabs sticking up from drawer 1 -->
+  <rect x="28" y="24" width="12" height="4" rx="1" fill="#fbbf24"/>
+  <rect x="44" y="24" width="12" height="4" rx="1" fill="#f87171"/>
+  <rect x="60" y="24" width="10" height="4" rx="1" fill="#60a5fa"/>
+  <!-- cards peeking out of drawer 1 (slightly open) -->
+  <rect x="26" y="27" width="48" height="12" rx="1" fill="#fff" opacity="0.85"/>
+  <line x1="30" y1="31" x2="50" y2="31" stroke="#d1d5db" stroke-width="1.5"/>
+  <line x1="30" y1="35" x2="44" y2="35" stroke="#d1d5db" stroke-width="1.5"/>
+  <!-- floor shadow -->
+  <ellipse cx="50" cy="82" rx="28" ry="4" fill="#64748b" opacity="0.2"/>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#fff7ed"/>
+      <stop offset="100%" stop-color="#ffedd5"/>
+    </radialGradient>
+  </defs>
+  <circle cx="50" cy="50" r="48" fill="url(#bg)"/>
+  <!-- outer flame -->
+  <path d="M50 14 C38 26 26 34 28 50 C30 64 38 74 50 76 C62 74 70 64 72 50 C74 34 62 26 50 14Z" fill="#f97316"/>
+  <!-- curl at base left -->
+  <path d="M34 60 C30 52 32 44 36 40 C34 48 36 56 40 60Z" fill="#ea580c"/>
+  <!-- mid flame -->
+  <path d="M50 24 C42 34 36 42 38 52 C40 60 44 66 50 68 C56 66 60 60 62 52 C64 42 58 34 50 24Z" fill="#fbbf24"/>
+  <!-- inner flame -->
+  <path d="M50 38 C46 44 44 50 46 56 C48 62 50 64 50 64 C50 64 52 62 54 56 C56 50 54 44 50 38Z" fill="#fef08a"/>
+  <!-- sparkles -->
+  <circle cx="32" cy="40" r="2.5" fill="#fbbf24"/>
+  <circle cx="68" cy="36" r="2" fill="#fbbf24"/>
+  <circle cx="28" cy="52" r="1.5" fill="#f97316"/>
+  <circle cx="72" cy="50" r="1.5" fill="#f97316"/>
+  <!-- streak number badge -->
+  <circle cx="68" cy="68" r="12" fill="#1e293b"/>
+  <text x="68" y="73" text-anchor="middle" font-family="Arial" font-weight="900" font-size="13" fill="#fbbf24">7</text>
+</svg>

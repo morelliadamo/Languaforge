@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#eef2ff"/>
+      <stop offset="100%" stop-color="#c7d2fe"/>
+    </radialGradient>
+  </defs>
+
+  <circle cx="50" cy="50" r="48" fill="url(#bg)"/>
+
+  <!-- LEFT WING — single clean shape, tips as simple points -->
+  <path d="M47 52
+           C42 48 34 42 22 36
+           C12 32 10 42 18 46
+           C24 48 30 50 36 52
+           C28 54 20 58 24 64
+           C30 61 38 57 46 58 Z"
+        fill="#78350f"/>
+  <!-- 4 feather tip slots cut in with a lighter shade -->
+  <path d="M22 36 L16 44" stroke="#92400e" stroke-width="2" stroke-linecap="round"/>
+  <path d="M28 39 L22 48" stroke="#92400e" stroke-width="2" stroke-linecap="round"/>
+  <path d="M34 43 L30 52" stroke="#92400e" stroke-width="2" stroke-linecap="round"/>
+  <path d="M20 58 L24 64" stroke="#92400e" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- RIGHT WING — mirror -->
+  <path d="M53 52
+           C58 48 66 42 78 36
+           C88 32 90 42 82 46
+           C76 48 70 50 64 52
+           C72 54 80 58 76 64
+           C70 61 62 57 54 58 Z"
+        fill="#78350f"/>
+  <path d="M78 36 L84 44" stroke="#92400e" stroke-width="2" stroke-linecap="round"/>
+  <path d="M72 39 L78 48" stroke="#92400e" stroke-width="2" stroke-linecap="round"/>
+  <path d="M66 43 L70 52" stroke="#92400e" stroke-width="2" stroke-linecap="round"/>
+  <path d="M80 58 L76 64" stroke="#92400e" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- BODY -->
+  <ellipse cx="50" cy="60" rx="9" ry="13" fill="#451a03"/>
+
+  <!-- TAIL — 3 clean fanned feathers -->
+  <path d="M45 70 L38 86 L50 79 L62 86 L55 70 Z" fill="#78350f"/>
+  <line x1="50" y1="72" x2="50" y2="86" stroke="#451a03" stroke-width="1.2"/>
+  <line x1="47" y1="71" x2="41" y2="84" stroke="#451a03" stroke-width="1.2"/>
+  <line x1="53" y1="71" x2="59" y2="84" stroke="#451a03" stroke-width="1.2"/>
+
+  <!-- WHITE HEAD — clean circle -->
+  <circle cx="50" cy="41" r="12" fill="white"/>
+
+  <!-- DARK COLLAR connecting head to body -->
+  <path d="M41 50 Q50 46 59 50 Q55 54 50 53 Q45 54 41 50Z" fill="#451a03"/>
+
+  <!-- BROW — single bold angled line over each eye for fierce look -->
+  <path d="M41 35 L46 33" stroke="#64748b" stroke-width="2" stroke-linecap="round"/>
+  <path d="M54 33 L59 35" stroke="#64748b" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- LEFT EYE -->
+  <circle cx="44" cy="40" r="4" fill="#fbbf24"/>
+  <circle cx="44" cy="40" r="2.4" fill="#1e293b"/>
+  <circle cx="45" cy="38.8" r="1" fill="white"/>
+
+  <!-- RIGHT EYE -->
+  <circle cx="56" cy="40" r="4" fill="#fbbf24"/>
+  <circle cx="56" cy="40" r="2.4" fill="#1e293b"/>
+  <circle cx="57" cy="38.8" r="1" fill="white"/>
+
+  <!-- BEAK — bold hooked shape -->
+  <path d="M46 44 Q50 43 54 44 Q55 47 53 49 Q51 51 50 51 Q49 51 47 49 Q45 47 46 44Z" fill="#fbbf24"/>
+  <!-- hook tip -->
+  <path d="M53 49 Q56 50 55 53 Q52 52 50 51Z" fill="#d97706"/>
+
+
+</svg>

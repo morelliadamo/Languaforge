@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#fffbea"/>
+      <stop offset="100%" stop-color="#fef3c7"/>
+    </radialGradient>
+    <radialGradient id="starglow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="100%" stop-color="#fef08a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="50" cy="50" r="48" fill="url(#bg)"/>
+  <!-- glow behind star -->
+  <circle cx="50" cy="50" r="32" fill="url(#starglow)"/>
+  <!-- outer 8-point star -->
+  <polygon points="50,16 55,38 68,26 60,46 82,46 64,56 76,72 56,64 58,86 50,68 42,86 44,64 24,72 36,56 18,46 40,46 32,26 45,38" fill="#fbbf24"/>
+  <!-- inner 5-point star -->
+  <polygon points="50,28 54,41 68,41 57,49 61,62 50,54 39,62 43,49 32,41 46,41" fill="#fef9c3"/>
+  <!-- center glow -->
+  <circle cx="50" cy="46" r="6" fill="white" opacity="0.8"/>
+  <!-- sparkles -->
+  <path d="M18 24 L19.5 20 L21 24 L25 25.5 L21 27 L19.5 31 L18 27 L14 25.5Z" fill="#fbbf24"/>
+  <path d="M76 18 L77 16 L78 18 L80 19 L78 20 L77 22 L76 20 L74 19Z" fill="#f59e0b"/>
+  <path d="M80 72 L81 70 L82 72 L84 73 L82 74 L81 76 L80 74 L78 73Z" fill="#fbbf24"/>
+</svg>

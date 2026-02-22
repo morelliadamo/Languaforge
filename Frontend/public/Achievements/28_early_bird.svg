@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#fef9c3"/>
+      <stop offset="100%" stop-color="#fed7aa"/>
+    </radialGradient>
+  </defs>
+  <circle cx="50" cy="50" r="48" fill="url(#bg)"/>
+  <!-- horizon line -->
+  <rect x="10" y="64" width="80" height="26" rx="0" fill="#86efac" opacity="0.5"/>
+  <!-- sun half risen -->
+  <clipPath id="horizon">
+    <rect x="0" y="0" width="100" height="64"/>
+  </clipPath>
+  <circle cx="50" cy="64" r="20" fill="#fbbf24" clip-path="url(#horizon)"/>
+  <!-- sun rays -->
+  <line x1="50" y1="38" x2="50" y2="30" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="66" y1="44" x2="72" y2="38" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="34" y1="44" x2="28" y2="38" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="72" y1="58" x2="80" y2="56" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="28" y1="58" x2="20" y2="56" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- bird (flying) -->
+  <path d="M62 28 C66 24 72 24 74 28" fill="none" stroke="#1e293b" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M76 26 C80 22 86 22 88 26" fill="none" stroke="#1e293b" stroke-width="2" stroke-linecap="round"/>
+  <path d="M50 32 C54 28 58 28 60 32" fill="none" stroke="#1e293b" stroke-width="2" stroke-linecap="round"/>
+  <!-- 8AM badge -->
+  <rect x="14" y="70" width="28" height="14" rx="7" fill="#f97316"/>
+  <text x="28" y="81" text-anchor="middle" font-family="Arial" font-weight="900" font-size="10" fill="white">8 AM</text>
+</svg>

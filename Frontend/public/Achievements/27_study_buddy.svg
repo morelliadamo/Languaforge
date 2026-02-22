@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#f0fdf4"/>
+      <stop offset="100%" stop-color="#dcfce7"/>
+    </radialGradient>
+  </defs>
+  <circle cx="50" cy="50" r="48" fill="url(#bg)"/>
+  <!-- book / table between them -->
+  <rect x="34" y="54" width="32" height="22" rx="3" fill="#fbbf24"/>
+  <rect x="34" y="54" width="32" height="5" rx="2" fill="#d97706"/>
+  <line x1="50" y1="54" x2="50" y2="76" stroke="#d97706" stroke-width="1.5"/>
+  <!-- person left -->
+  <circle cx="28" cy="36" r="10" fill="#fb923c"/>
+  <ellipse cx="28" cy="54" rx="10" ry="12" fill="#fb923c"/>
+  <!-- left arm on book -->
+  <path d="M30 52 C32 56 34 58 36 60" fill="none" stroke="#fb923c" stroke-width="5" stroke-linecap="round"/>
+  <!-- left person face -->
+  <circle cx="25" cy="34" r="1.5" fill="#7c2d12"/>
+  <circle cx="31" cy="34" r="1.5" fill="#7c2d12"/>
+  <path d="M25 39 Q28 42 31 39" fill="none" stroke="#7c2d12" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- person right -->
+  <circle cx="72" cy="36" r="10" fill="#60a5fa"/>
+  <ellipse cx="72" cy="54" rx="10" ry="12" fill="#60a5fa"/>
+  <!-- right arm on book -->
+  <path d="M70 52 C68 56 66 58 64 60" fill="none" stroke="#60a5fa" stroke-width="5" stroke-linecap="round"/>
+  <!-- right person face -->
+  <circle cx="69" cy="34" r="1.5" fill="#1e3a8a"/>
+  <circle cx="75" cy="34" r="1.5" fill="#1e3a8a"/>
+  <path d="M69 39 Q72 42 75 39" fill="none" stroke="#1e3a8a" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- heart between them -->
+  <path d="M50 48 C50 46 48 44 46 46 C44 48 46 51 50 54 C54 51 56 48 54 46 C52 44 50 46 50 48Z" fill="#f87171"/>
+</svg>

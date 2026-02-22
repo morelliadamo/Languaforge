@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#f0ecff"/>
+      <stop offset="100%" stop-color="#ede9fe"/>
+    </radialGradient>
+  </defs>
+  <circle cx="50" cy="50" r="48" fill="url(#bg)"/>
+  <!-- puzzle piece top-left (pink) -->
+  <path d="M20 20 L44 20 L44 32 Q48 28 52 32 L52 20 L52 20 L20 20 Z
+           M20 20 L20 44 L32 44 Q28 48 32 52 L20 52 L20 20Z" fill="#f9a8d4"/>
+  <!-- puzzle piece top-right (blue) -->
+  <path d="M52 20 L80 20 L80 52 L68 52 Q72 48 68 44 L80 44 L80 20
+           M52 20 L52 32 Q56 28 52 32 L52 44 L44 44 Q48 40 44 36 L44 20 L52 20Z" fill="#60a5fa"/>
+  <!-- puzzle piece bottom-left (green) -->
+  <path d="M20 52 L32 52 Q28 56 32 60 L20 60 L20 80 L52 80 L52 68 Q48 72 44 68 L44 80 L20 80
+           M20 52 L20 52Z" fill="#4ade80"/>
+  <!-- redo with cleaner shapes -->
+  <!-- clear background -->
+  <rect x="14" y="14" width="72" height="72" rx="4" fill="none"/>
+
+  <!-- top-left piece -->
+  <path d="M16,16 L44,16 L44,30
+           A6,6 0 0,1 56,30
+           L56,16 L56,16 L16,16 Z" fill="#f9a8d4" opacity="0"/>
+
+  <!-- 4 puzzle pieces, redrawn simply -->
+  <!-- TL: pink -->
+  <rect x="16" y="16" width="30" height="30" rx="2" fill="#f9a8d4"/>
+  <circle cx="46" cy="31" r="6" fill="#f9a8d4"/>
+  <circle cx="31" cy="46" r="6" fill="#f9a8d4"/>
+
+  <!-- TR: blue -->
+  <rect x="54" y="16" width="30" height="30" rx="2" fill="#60a5fa"/>
+  <circle cx="54" cy="31" r="6" fill="#60a5fa"/>
+  <circle cx="69" cy="46" r="6" fill="#60a5fa"/>
+
+  <!-- BL: green -->
+  <rect x="16" y="54" width="30" height="30" rx="2" fill="#4ade80"/>
+  <circle cx="46" cy="69" r="6" fill="#4ade80"/>
+  <circle cx="31" cy="54" r="6" fill="#4ade80"/>
+
+  <!-- BR: orange -->
+  <rect x="54" y="54" width="30" height="30" rx="2" fill="#fb923c"/>
+  <circle cx="54" cy="69" r="6" fill="#fb923c"/>
+  <circle cx="69" cy="54" r="6" fill="#fb923c"/>
+
+  <!-- center connector dots (overlap circles to show connect) -->
+  <circle cx="50" cy="50" r="8" fill="white"/>
+  <circle cx="50" cy="50" r="5" fill="#a78bfa"/>
+  <circle cx="50" cy="50" r="2.5" fill="white"/>
+</svg>

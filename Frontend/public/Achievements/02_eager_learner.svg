@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#e0f2fe"/>
+      <stop offset="100%" stop-color="#bae6fd"/>
+    </radialGradient>
+  </defs>
+  <circle cx="50" cy="50" r="48" fill="url(#bg)"/>
+  <!-- pencil body -->
+  <rect x="38" y="18" width="16" height="52" rx="2" fill="#fbbf24"/>
+  <!-- pencil top eraser band -->
+  <rect x="38" y="18" width="16" height="6" rx="2" fill="#d1d5db"/>
+  <!-- eraser -->
+  <rect x="38" y="18" width="16" height="4" rx="2" fill="#fca5a5"/>
+  <!-- pencil tip -->
+  <polygon points="38,70 54,70 46,84" fill="#fef3c7"/>
+  <polygon points="43,70 49,70 46,80" fill="#92400e"/>
+  <!-- writing lines -->
+  <line x1="28" y1="58" x2="35" y2="58" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="28" y1="64" x2="35" y2="64" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="28" y1="70" x2="35" y2="70" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- sparkle -->
+  <circle cx="68" cy="30" r="3" fill="#fbbf24"/>
+  <line x1="68" y1="23" x2="68" y2="27" stroke="#fbbf24" stroke-width="1.5"/>
+  <line x1="68" y1="33" x2="68" y2="37" stroke="#fbbf24" stroke-width="1.5"/>
+  <line x1="61" y1="30" x2="65" y2="30" stroke="#fbbf24" stroke-width="1.5"/>
+  <line x1="71" y1="30" x2="75" y2="30" stroke="#fbbf24" stroke-width="1.5"/>
+</svg>
