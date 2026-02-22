@@ -39,13 +39,13 @@ import { Course, Achievement } from './UserProfile';
 //   deletedAt: string | null;
 // }
 
-// export interface UserXCourse {
-//   id: number;
-//   enrolledAt: string;
-//   completedAt: string | null;
-//   progress: number;
-//   course: Course;
-// }
+export interface UserXCourse {
+  id: number;
+  enrolledAt: string;
+  completedAt: string | null;
+  progress: number;
+  course: Course;
+}
 
 // export interface Role {
 //   id: number;

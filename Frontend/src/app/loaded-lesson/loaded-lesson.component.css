@@ -1,0 +1,7 @@
+.answer-btn {
+  font-size: 0.95rem;
+}
+
+.answer-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}

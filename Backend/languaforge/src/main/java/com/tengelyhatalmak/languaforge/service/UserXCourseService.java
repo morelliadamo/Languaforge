@@ -15,6 +15,7 @@ public interface UserXCourseService {
     List<User> findUsersByCourseId(Integer courseId);
     List<Course> findCoursesByUserId(Integer userId);
     List<UserXCourse> findUserXCoursesByUserId(Integer userId);
+    UserXCourse findUserXCourseByUserIdAndCourseId(Integer userId, Integer courseId);
 
     UserXCourse updateUserXCourse(UserXCourse userXCourse, Integer id);
     void deleteUserXCourseById(Integer id);

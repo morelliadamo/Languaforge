@@ -61,7 +61,7 @@ public class AuthService {
             user.setActivationToken(activationToken);
             user.setIsActive(false);
             userRepository.save(user);
-            userXCourseRepository.save(new UserXCourse(user, courseRepository.findById(3).orElseThrow(()->new RuntimeException("No course with id 3")))); //temporary, only course with id of 3 available currently
+//            userXCourseRepository.save(new UserXCourse(user, courseRepository.findById(3).orElseThrow(()->new RuntimeException("No course with id 3")))); //temporary, only course with id of 3 available currently
 
 
             emailService.sendActivationEmail(user.getEmail(), user.getUsername(), activationToken);

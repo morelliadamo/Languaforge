@@ -1,12 +1,13 @@
-import {Exercise} from './Exercise';
+import { Exercise } from './Exercise';
 
 export interface Lesson {
   id: number;
-  exercises: Exercise[];
-  unitId: number;
+  courseId: number;
   title: string;
   orderIndex: number;
   createdAt: string;
   isDeleted: boolean;
   deletedAt: string | null;
+  exercises: Exercise[];
+  type: string | null;
 }

@@ -64,6 +64,11 @@ public class UserXCourseServiceImpl implements UserXCourseService{
     }
 
     @Override
+    public UserXCourse findUserXCourseByUserIdAndCourseId(Integer userId, Integer courseId) {
+        return userXCourseRepository.findUserXCoursesByUserIdAndCourseId(userId, courseId);
+    }
+
+    @Override
     public UserXCourse updateUserXCourse(UserXCourse userXCourse, Integer id) {
         UserXCourse existingUserXCourse = userXCourseRepository.findById(id).orElseThrow(() -> new RuntimeException("UserXCourse not found"));
         existingUserXCourse.setUser(userXCourse.getUser());

@@ -8,6 +8,7 @@ import { User } from '../interfaces/User';
 import { UserProfileDataService } from '../services/user-profile-data.service';
 import { FriendshipService } from '../services/friendship.service';
 import { AuthServiceService } from '../services/auth-service.service';
+import { LoadingOverlayComponent } from '../loading-overlay/loading-overlay.component';
 
 interface AchievementDisplay {
   icon: string;
@@ -18,7 +19,14 @@ interface AchievementDisplay {
 
 @Component({
   selector: 'app-profile-page',
-  imports: [HeaderComponent, FooterComponent, NgClass, FormsModule, DatePipe],
+  imports: [
+    HeaderComponent,
+    FooterComponent,
+    NgClass,
+    FormsModule,
+    DatePipe,
+    LoadingOverlayComponent,
+  ],
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.css',
 })
@@ -28,6 +36,7 @@ export class ProfilePageComponent implements OnInit {
   private userProfileDataService = inject(UserProfileDataService);
   private friendshipService = inject(FriendshipService);
 
+  isLoading = true;
   isEditing = false;
   activeTab: 'achievements' | 'friends' = 'achievements';
   isUploadingAvatar = false;
@@ -96,6 +105,11 @@ export class ProfilePageComponent implements OnInit {
               });
           });
         });
+
+      //delay to show loading overlay
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 1000);
     }
   }
 
@@ -187,7 +201,8 @@ export class ProfilePageComponent implements OnInit {
   }
 
   onFriendAvatarError(event: Event, username: string) {
-    (event.target as HTMLImageElement).src =
-      this.utilService.getAvatarUrl(username ?? 'U');
+    (event.target as HTMLImageElement).src = this.utilService.getAvatarUrl(
+      username ?? 'U',
+    );
   }
 }

@@ -31,7 +31,7 @@ public class UserXCourse {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id", nullable = false)
-    @JsonIgnoreProperties({"reviews", "units", "leaderboardList", "userXCourses", "scores", "reviews"})
+    @JsonIgnoreProperties({"reviews", "leaderboardList", "userXCourses", "scores", "reviews"})
     private Course course;
 
     @Column(name = "enrolled_at", nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")

@@ -50,6 +50,9 @@ public class Course {
     @Column(name = "description", nullable = false)
     private String description;
 
+    @Column(name = "difficulty")
+    private Integer difficulty;
+
     @Column(name = "created_at", nullable = false)
     private Timestamp createdAt;
 

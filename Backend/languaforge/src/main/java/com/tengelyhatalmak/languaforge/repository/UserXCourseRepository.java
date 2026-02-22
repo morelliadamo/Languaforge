@@ -36,4 +36,8 @@ public interface UserXCourseRepository extends JpaRepository<UserXCourse, Intege
                                                   @Param("unitId") Integer unitId);
 
     List<UserXCourse> findUserXCourseByUserId(Integer userId);
+
+
+    @Query("SELECT uc FROM UserXCourse uc WHERE uc.user.id = :userId AND uc.course.id = :courseId")
+    UserXCourse findUserXCoursesByUserIdAndCourseId(@Param("userId") Integer userId, @Param("courseId") Integer courseId);
 }

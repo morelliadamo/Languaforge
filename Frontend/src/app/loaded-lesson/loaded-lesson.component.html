@@ -1,0 +1,171 @@
+<div class="min-h-screen bg-gray-50 px-4 sm:px-6 lg:px-8 py-8">
+  <div class="max-w-2xl mx-auto">
+    <!-- Top bar: back button + lesson title -->
+    <div class="flex items-center gap-3 mb-6">
+      <button
+        (click)="goBack()"
+        class="p-2 rounded-lg bg-white shadow-md hover:bg-gray-100 transition-colors cursor-pointer"
+      >
+        <svg
+          class="w-5 h-5 text-gray-600"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"
+          />
+        </svg>
+      </button>
+      <h1 class="text-lg sm:text-xl font-semibold text-gray-800 truncate">
+        {{ lesson?.title }}
+      </h1>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="mb-8">
+      <div class="flex items-center justify-between text-xs text-gray-500 mb-2">
+        <span>{{ currentIndex + 1 }} / {{ lessonContent.length }}</span>
+        <span>{{ progressPercent }}%</span>
+      </div>
+      <div class="h-2 w-full rounded-full bg-gray-200">
+        <div
+          class="h-2 rounded-full transition-all duration-300"
+          [style.width.%]="progressPercent"
+          [style.background-color]="courseColor"
+        ></div>
+      </div>
+    </div>
+
+    <!-- Exercise card -->
+    @if (currentExercise) {
+      <div
+        class="rounded-2xl bg-white shadow-md border border-gray-100 p-6 sm:p-8 mb-6"
+      >
+        <!-- Exercise type badge -->
+        <span
+          class="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-4 text-white"
+          [style.background-color]="courseColor"
+        >
+          @if (currentExercise.exerciseType === "choice") {
+            Feleletválasztós
+          } @else {
+            {{ currentExercise.exerciseType }}
+          }
+        </span>
+
+        <!-- Question -->
+        <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-8">
+          {{ currentExercise.exerciseContent.description }}
+        </h2>
+
+        <!-- Answer options -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          @for (
+            answer of currentExercise.exerciseContent.answers;
+            track answer
+          ) {
+            <button
+              (click)="selectAnswer(answer)"
+              class="answer-btn w-full text-left px-5 py-4 rounded-xl border-2 font-medium transition-all duration-200 cursor-pointer"
+              [class.border-gray-200]="!isAnswered || selectedAnswer !== answer"
+              [class.bg-white]="!isAnswered || selectedAnswer !== answer"
+              [class.hover:border-gray-400]="!isAnswered"
+              [class.hover:shadow-md]="!isAnswered"
+              [class.border-green-500]="isAnswered && isCorrect(answer)"
+              [class.bg-green-50]="isAnswered && isCorrect(answer)"
+              [class.text-green-700]="isAnswered && isCorrect(answer)"
+              [class.border-red-400]="
+                isAnswered && selectedAnswer === answer && !isCorrect(answer)
+              "
+              [class.bg-red-50]="
+                isAnswered && selectedAnswer === answer && !isCorrect(answer)
+              "
+              [class.text-red-700]="
+                isAnswered && selectedAnswer === answer && !isCorrect(answer)
+              "
+              [class.cursor-not-allowed]="isAnswered"
+            >
+              {{ answer }}
+            </button>
+          }
+        </div>
+
+        <!-- Feedback message -->
+        @if (isAnswered) {
+          <div
+            class="mt-6 px-4 py-3 rounded-xl text-sm font-semibold"
+            [class.bg-green-100]="isCorrect(selectedAnswer!)"
+            [class.text-green-800]="isCorrect(selectedAnswer!)"
+            [class.bg-red-100]="!isCorrect(selectedAnswer!)"
+            [class.text-red-800]="!isCorrect(selectedAnswer!)"
+          >
+            @if (isCorrect(selectedAnswer!)) {
+              ✅ Helyes válasz!
+            } @else {
+              ❌ Helytelen! A helyes válasz:
+              {{ currentExercise.exerciseContent.correctAnswer }}
+            }
+          </div>
+        }
+      </div>
+    }
+
+    <!-- Navigation buttons -->
+    <div class="flex items-center justify-between">
+      <button
+        (click)="previousExercise()"
+        [disabled]="isFirst"
+        class="flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold transition-all cursor-pointer"
+        [class.bg-white]="!isFirst"
+        [class.shadow-md]="!isFirst"
+        [class.text-gray-700]="!isFirst"
+        [class.hover:bg-gray-100]="!isFirst"
+        [class.bg-gray-100]="isFirst"
+        [class.text-gray-400]="isFirst"
+        [class.cursor-not-allowed]="isFirst"
+      >
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"
+          />
+        </svg>
+        Előző
+      </button>
+
+      <button
+        (click)="nextExercise()"
+        [disabled]="isLast"
+        class="flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-white transition-all cursor-pointer"
+        [style.background-color]="isLast ? '#d1d5db' : courseColor"
+        [class.cursor-not-allowed]="isLast"
+      >
+        Következő
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>

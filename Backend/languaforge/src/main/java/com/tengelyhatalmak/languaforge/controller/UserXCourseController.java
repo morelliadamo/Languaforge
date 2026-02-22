@@ -1,6 +1,8 @@
 package com.tengelyhatalmak.languaforge.controller;
 
 import com.tengelyhatalmak.languaforge.model.*;
+import com.tengelyhatalmak.languaforge.service.CourseService;
+import com.tengelyhatalmak.languaforge.service.UserService;
 import com.tengelyhatalmak.languaforge.service.UserXCourseService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,10 @@ public class UserXCourseController {
 
     @Autowired
     private UserXCourseService userXCourseService;
+    @Autowired
+    private CourseService courseService;
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/")
     public List<UserXCourse> getAllUserXCourses() {
@@ -40,6 +46,11 @@ public class UserXCourseController {
         return userXCourseService.findUsersByCourseId(courseId);
     }
 
+    @GetMapping("/user/{userId}/courses/{courseId}")
+    public UserXCourse getUserXCourseByUserIdAndCourseId(@PathVariable Integer userId, @PathVariable Integer courseId) {
+        return userXCourseService.findUserXCourseByUserIdAndCourseId(userId, courseId);
+    }
+
     @GetMapping("/user/{userId}/courses")
     public List<Course> getCoursesByUserId(@PathVariable Integer userId) {
         return userXCourseService.findCoursesByUserId(userId);
@@ -62,8 +73,10 @@ public class UserXCourseController {
 
 
 
-    @PostMapping("/enroll")
-    public UserXCourse enrollUserInCourse(@RequestBody UserXCourse userXCourse) {
+    @PostMapping("/enroll/{courseId}/user/{userId}")
+    public UserXCourse enrollUserInCourse(@RequestBody UserXCourse userXCourse, @PathVariable Integer courseId, @PathVariable Integer userId) {
+        userXCourse.setCourse(courseService.findCourseById(courseId));
+        userXCourse.setUser(userService.findUserById(userId));
         return userXCourseService.saveUserXCourse(userXCourse);
     }
 

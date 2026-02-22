@@ -15,6 +15,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { authGuard } from './guards/auth-guard';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { StoreComponent } from './store/store.component';
+import { LoadedCourseComponent } from './loaded-course/loaded-course.component';
 
 export const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -27,13 +28,7 @@ export const routes: Routes = [
   },
   { path: 'login', component: LoginPageComponent, canActivate: [noAuthGuard] },
   { path: 'tos', component: TermsOfServiceComponent },
-  { path: 'my/courses', component: CourseHubComponent },
-  { path: 'my/courses/:id', component: UnitHubComponent },
-  { path: 'my/courses/:courseId/units/:unitId', component: LessonHubComponent },
-  {
-    path: 'my/courses/:courseId/units/:unitId/lessons/:id',
-    component: LessonContentComponent,
-  },
+  { path: 'my/courses/:courseId', component: LoadedCourseComponent },
 
   {
     path: 'dashboard',

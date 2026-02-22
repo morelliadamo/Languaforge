@@ -2,14 +2,14 @@ import { Unit } from './Unit';
 
 export interface Course {
   id: number;
-  units: Unit[];
   title: string;
   description: string;
+  difficulty: number | string | null;
   createdAt: string;
   isDeleted: boolean;
   deletedAt: string | null;
-  difficulty: null | any;
-  reviews: null | any;
-  color: null | any;
-  progress?: number;
+  units: Unit[];
+  color: string | null;
+  progress: number;
+  reviews: any[] | null;
 }

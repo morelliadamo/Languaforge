@@ -1,220 +1,226 @@
 <app-header></app-header>
+@if (isLoading) {
+  <app-loading-overlay
+    [message]="'Betöltjük a profilodat...'"
+    [isLoading]="isLoading"
+  ></app-loading-overlay>
+} @else {
+  <div class="bg-gray-50 min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16">
+      <div
+        class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 sm:p-8 mb-6"
+      >
+        <div class="flex flex-col sm:flex-row gap-6 items-start">
+          <div class="relative shrink-0">
+            <img
+              [src]="profile.avatar"
+              alt="Avatar"
+              class="w-20 h-20 rounded-full object-cover border-2 border-gray-100"
+            />
+            @if (isEditing) {
+              <label
+                class="absolute bottom-0 right-0 bg-sky-500 text-white p-1.5 rounded-full cursor-pointer hover:bg-sky-600"
+              >
+                📷
+                <input
+                  type="file"
+                  accept="image/*"
+                  class="hidden"
+                  (change)="onAvatarChange($event)"
+                />
+                @if (avatarError) {
+                  <p class="text-xs text-red-500 mt-1 text-center">
+                    {{ avatarError }}
+                  </p>
+                }
+                @if (isUploadingAvatar) {
+                  <p class="text-xs text-sky-500 mt-1 text-center">
+                    Feltöltés folyamatban...
+                  </p>
+                }
+              </label>
+            }
+          </div>
 
-<div class="bg-gray-50 min-h-screen">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16">
-    <div
-      class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 sm:p-8 mb-6"
-    >
-      <div class="flex flex-col sm:flex-row gap-6 items-start">
-        <div class="relative shrink-0">
-          <img
-            [src]="profile.avatar"
-            alt="Avatar"
-            class="w-20 h-20 rounded-full object-cover border-2 border-gray-100"
-          />
-          @if (isEditing) {
-            <label
-              class="absolute bottom-0 right-0 bg-sky-500 text-white p-1.5 rounded-full cursor-pointer hover:bg-sky-600"
-            >
-              📷
-              <input
-                type="file"
-                accept="image/*"
-                class="hidden"
-                (change)="onAvatarChange($event)"
-              />
-              @if (avatarError) {
-                <p class="text-xs text-red-500 mt-1 text-center">
-                  {{ avatarError }}
-                </p>
-              }
-              @if (isUploadingAvatar) {
-                <p class="text-xs text-sky-500 mt-1 text-center">
-                  Feltöltés folyamatban...
-                </p>
-              }
-            </label>
-          }
-        </div>
+          <div class="flex-1 min-w-0">
+            @if (!isEditing) {
+              <h2 class="text-2xl font-bold text-gray-800 mb-0.5">
+                {{ profile.name }}
+              </h2>
+              <p class="text-gray-600 text-sm">{{ profile.bio }}</p>
+            } @else {
+              <div class="space-y-3">
+                <input
+                  [(ngModel)]="editName"
+                  type="text"
+                  class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-300"
+                  placeholder="Teljes név"
+                />
 
-        <div class="flex-1 min-w-0">
-          @if (!isEditing) {
-            <h2 class="text-2xl font-bold text-gray-800 mb-0.5">
-              {{ profile.name }}
-            </h2>
-            <p class="text-gray-600 text-sm">{{ profile.bio }}</p>
-          } @else {
-            <div class="space-y-3">
-              <input
-                [(ngModel)]="editName"
-                type="text"
-                class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-300"
-                placeholder="Teljes név"
-              />
-
-              <textarea
-                [(ngModel)]="editBio"
-                rows="3"
-                class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-300 resize-none"
-                placeholder="Bemutatkozás"
-              ></textarea>
-              <div class="flex gap-3">
-                <button
-                  (click)="cancelEdit()"
-                  class="px-4 py-2 rounded-xl border border-gray-200 text-gray-600 text-sm hover:bg-gray-50 transition-colors cursor-pointer"
-                >
-                  Mégse
-                </button>
-                <button
-                  (click)="saveChanges()"
-                  class="px-4 py-2 rounded-xl bg-sky-500 text-white text-sm font-semibold hover:bg-sky-600 transition-colors cursor-pointer"
-                >
-                  Mentés
-                </button>
+                <textarea
+                  [(ngModel)]="editBio"
+                  rows="3"
+                  class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-300 resize-none"
+                  placeholder="Bemutatkozás"
+                ></textarea>
+                <div class="flex gap-3">
+                  <button
+                    (click)="cancelEdit()"
+                    class="px-4 py-2 rounded-xl border border-gray-200 text-gray-600 text-sm hover:bg-gray-50 transition-colors cursor-pointer"
+                  >
+                    Mégse
+                  </button>
+                  <button
+                    (click)="saveChanges()"
+                    class="px-4 py-2 rounded-xl bg-sky-500 text-white text-sm font-semibold hover:bg-sky-600 transition-colors cursor-pointer"
+                  >
+                    Mentés
+                  </button>
+                </div>
               </div>
+            }
+          </div>
+
+          @if (!isEditing) {
+            <div class="shrink-0">
+              <button
+                (click)="toggleEdit()"
+                class="border border-sky-400 text-sky-500 text-sm font-medium px-4 py-2 rounded-xl hover:bg-sky-50 transition-colors cursor-pointer"
+              >
+                ✏️ Szerkesztés
+              </button>
             </div>
           }
         </div>
 
-        @if (!isEditing) {
-          <div class="shrink-0">
-            <button
-              (click)="toggleEdit()"
-              class="border border-sky-400 text-sky-500 text-sm font-medium px-4 py-2 rounded-xl hover:bg-sky-50 transition-colors cursor-pointer"
-            >
-              ✏️ Szerkesztés
-            </button>
+        <div class="grid grid-cols-3 gap-4 mt-8 pt-6 border-t border-gray-100">
+          <div class="text-center">
+            <div class="text-3xl font-bold text-sky-500">
+              {{ profile.streak || 0 }}
+            </div>
+            <div class="text-xs text-gray-500 mt-1">Sikersorozat 🔥</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-sky-500">
+              {{ profile.achievementCount || 0 }}
+            </div>
+            <div class="text-xs text-gray-500 mt-1">Teljesítmény 🏆</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-sky-500">
+              {{ profile.friendCount || 0 }}
+            </div>
+            <div class="text-xs text-gray-500 mt-1">Barát 👥</div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden"
+      >
+        <div class="flex border-b border-gray-100">
+          <button
+            (click)="setTab('achievements')"
+            [ngClass]="
+              activeTab === 'achievements'
+                ? 'border-b-2 border-sky-500 text-sky-500 font-semibold'
+                : 'text-gray-500 hover:text-gray-700'
+            "
+            class="flex-1 sm:flex-none px-6 py-4 text-sm transition-colors cursor-pointer"
+          >
+            🏆 Teljesítmények
+          </button>
+          <button
+            (click)="setTab('friends')"
+            [ngClass]="
+              activeTab === 'friends'
+                ? 'border-b-2 border-sky-500 text-sky-500 font-semibold'
+                : 'text-gray-500 hover:text-gray-700'
+            "
+            class="flex-1 sm:flex-none px-6 py-4 text-sm transition-colors cursor-pointer"
+          >
+            👥 Barátok
+          </button>
+        </div>
+
+        @if (activeTab === "achievements") {
+          <div class="p-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              @for (achievement of achievements; track achievement.name) {
+                <div
+                  [ngClass]="
+                    achievement.earnedAt
+                      ? 'border-gray-100 bg-white'
+                      : 'border-gray-200 bg-gray-50 opacity-60'
+                  "
+                  class="border rounded-2xl p-5 flex flex-col gap-3 hover:shadow-sm transition-shadow"
+                >
+                  <div class="text-4xl">{{ achievement.icon }}</div>
+                  <div>
+                    <h3
+                      [ngClass]="
+                        achievement.earnedAt ? 'text-gray-800' : 'text-gray-400'
+                      "
+                      class="font-semibold text-sm mb-0.5"
+                    >
+                      {{ achievement.name }}
+                    </h3>
+                    <p class="text-xs text-gray-400">
+                      {{ achievement.description }}
+                    </p>
+                  </div>
+                  @if (achievement.earnedAt) {
+                    <span
+                      class="self-start text-xs font-semibold bg-sky-100 text-sky-700 px-2.5 py-0.5 rounded-full"
+                    >
+                      🏅 {{ achievement.earnedAt | date: "yyyy. MMM d." }}
+                    </span>
+                  } @else {
+                    <span
+                      class="self-start text-xs font-semibold bg-gray-100 text-gray-400 px-2.5 py-0.5 rounded-full"
+                    >
+                      🔒 Zárolva
+                    </span>
+                  }
+                </div>
+              }
+            </div>
           </div>
         }
-      </div>
 
-      <div class="grid grid-cols-3 gap-4 mt-8 pt-6 border-t border-gray-100">
-        <div class="text-center">
-          <div class="text-3xl font-bold text-sky-500">
-            {{ profile.streak || 0 }}
-          </div>
-          <div class="text-xs text-gray-500 mt-1">Sikersorozat 🔥</div>
-        </div>
-        <div class="text-center">
-          <div class="text-3xl font-bold text-sky-500">
-            {{ profile.achievementCount || 0 }}
-          </div>
-          <div class="text-xs text-gray-500 mt-1">Teljesítmény 🏆</div>
-        </div>
-        <div class="text-center">
-          <div class="text-3xl font-bold text-sky-500">
-            {{ profile.friendCount || 0 }}
-          </div>
-          <div class="text-xs text-gray-500 mt-1">Barát 👥</div>
-        </div>
-      </div>
-    </div>
-
-    <div
-      class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden"
-    >
-      <div class="flex border-b border-gray-100">
-        <button
-          (click)="setTab('achievements')"
-          [ngClass]="
-            activeTab === 'achievements'
-              ? 'border-b-2 border-sky-500 text-sky-500 font-semibold'
-              : 'text-gray-500 hover:text-gray-700'
-          "
-          class="flex-1 sm:flex-none px-6 py-4 text-sm transition-colors cursor-pointer"
-        >
-          🏆 Teljesítmények
-        </button>
-        <button
-          (click)="setTab('friends')"
-          [ngClass]="
-            activeTab === 'friends'
-              ? 'border-b-2 border-sky-500 text-sky-500 font-semibold'
-              : 'text-gray-500 hover:text-gray-700'
-          "
-          class="flex-1 sm:flex-none px-6 py-4 text-sm transition-colors cursor-pointer"
-        >
-          👥 Barátok
-        </button>
-      </div>
-
-      @if (activeTab === "achievements") {
-        <div class="p-6">
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            @for (achievement of achievements; track achievement.name) {
-              <div
-                [ngClass]="
-                  achievement.earnedAt
-                    ? 'border-gray-100 bg-white'
-                    : 'border-gray-200 bg-gray-50 opacity-60'
-                "
-                class="border rounded-2xl p-5 flex flex-col gap-3 hover:shadow-sm transition-shadow"
-              >
-                <div class="text-4xl">{{ achievement.icon }}</div>
-                <div>
-                  <h3
-                    [ngClass]="
-                      achievement.earnedAt ? 'text-gray-800' : 'text-gray-400'
-                    "
-                    class="font-semibold text-sm mb-0.5"
+        @if (activeTab === "friends") {
+          <div class="p-6">
+            @if (friends.length === 0) {
+              <div class="text-center py-12 text-gray-400">
+                <div class="text-5xl mb-4">👥</div>
+                <p class="text-sm">Még nincsenek barátaid</p>
+              </div>
+            } @else {
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                @for (friend of friends; track friend.id) {
+                  <div
+                    class="flex items-center gap-4 border border-gray-100 rounded-2xl p-4 hover:shadow-sm transition-shadow"
                   >
-                    {{ achievement.name }}
-                  </h3>
-                  <p class="text-xs text-gray-400">
-                    {{ achievement.description }}
-                  </p>
-                </div>
-                @if (achievement.earnedAt) {
-                  <span
-                    class="self-start text-xs font-semibold bg-sky-100 text-sky-700 px-2.5 py-0.5 rounded-full"
-                  >
-                    🏅 {{ achievement.earnedAt | date: "yyyy. MMM d." }}
-                  </span>
-                } @else {
-                  <span
-                    class="self-start text-xs font-semibold bg-gray-100 text-gray-400 px-2.5 py-0.5 rounded-full"
-                  >
-                    🔒 Zárolva
-                  </span>
+                    <img
+                      [src]="getFriendAvatar(friend)"
+                      [alt]="friend.username"
+                      class="w-12 h-12 rounded-full object-cover bg-gray-100"
+                      (error)="onFriendAvatarError($event, friend.username)"
+                    />
+                    <div class="min-w-0">
+                      <p class="font-semibold text-gray-800 text-sm truncate">
+                        {{ friend.username }}
+                      </p>
+                    </div>
+                  </div>
                 }
               </div>
             }
           </div>
-        </div>
-      }
-
-      @if (activeTab === "friends") {
-        <div class="p-6">
-          @if (friends.length === 0) {
-            <div class="text-center py-12 text-gray-400">
-              <div class="text-5xl mb-4">👥</div>
-              <p class="text-sm">Még nincsenek barátaid</p>
-            </div>
-          } @else {
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              @for (friend of friends; track friend.id) {
-                <div
-                  class="flex items-center gap-4 border border-gray-100 rounded-2xl p-4 hover:shadow-sm transition-shadow"
-                >
-                  <img
-                    [src]="getFriendAvatar(friend)"
-                    [alt]="friend.username"
-                    class="w-12 h-12 rounded-full object-cover bg-gray-100"
-                    (error)="onFriendAvatarError($event, friend.username)"
-                  />
-                  <div class="min-w-0">
-                    <p class="font-semibold text-gray-800 text-sm truncate">
-                      {{ friend.username }}
-                    </p>
-                  </div>
-                </div>
-              }
-            </div>
-          }
-        </div>
-      }
+        }
+      </div>
     </div>
   </div>
-</div>
 
-<app-footer></app-footer>
+  <app-footer></app-footer>
+}

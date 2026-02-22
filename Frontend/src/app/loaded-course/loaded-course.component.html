@@ -1,0 +1,181 @@
+<app-loading-overlay
+  [isLoading]="isLoading"
+  [message]="'Betöltjük a kurzust...'"
+></app-loading-overlay>
+
+<div class="bg-gray-50">
+  <app-header></app-header>
+
+  @if (!isLoading && course && courseActivated) {
+    <div class="min-h-screen max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16">
+      <!-- Course Banner -->
+      <div
+        class="rounded-2xl p-6 sm:p-8 mb-8 shadow-md text-white"
+        [style.background-color]="course.color ?? '#a0aec0'"
+      >
+        <div
+          class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4"
+        >
+          <div class="flex-1 min-w-0">
+            <span
+              class="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-semibold mb-3 border border-white/30"
+            >
+              {{ course.difficulty ?? "Kezdő" }}
+            </span>
+            <h1 class="text-2xl sm:text-3xl font-bold mb-2">
+              {{ course.title }}
+            </h1>
+            <p class="text-white/90 text-sm sm:text-base">
+              {{ course.description }}
+            </p>
+          </div>
+          <div class="text-4xl shrink-0">📖</div>
+        </div>
+
+        <!-- Progress bar -->
+        @if (course.progress !== undefined) {
+          <div class="mt-6">
+            <div class="flex items-center justify-between text-xs mb-2">
+              <span class="font-semibold">Haladás</span>
+              <span>{{ course.progress }}%</span>
+            </div>
+            <div class="h-2 w-full rounded-full bg-white/30">
+              <div
+                class="h-2 rounded-full bg-white transition-all"
+                [style.width.%]="course.progress"
+              ></div>
+            </div>
+          </div>
+        }
+
+        <!-- Stats row -->
+        <div class="flex flex-wrap gap-4 mt-5 text-sm text-white/90">
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"
+              />
+            </svg>
+            <!-- {{ units.length.toString() }} egység -->
+          </span>
+        </div>
+      </div>
+
+      <!-- Units & Lessons -->
+      <h2 class="text-lg sm:text-xl font-semibold text-gray-800 mb-4">
+        Tananyag
+      </h2>
+
+      @if (!units) {
+        <div
+          class="rounded-2xl bg-white p-8 shadow-md text-center text-gray-500"
+        >
+          Ehhez a kurzushoz még nincs tartalom.
+        </div>
+      }
+
+      <div class="flex flex-col gap-3">
+        @for (unit of units; track unit.id) {
+          <div
+            class="rounded-2xl bg-white shadow-md border border-gray-100 overflow-hidden"
+          >
+            <!-- Unit Header -->
+            <button
+              (click)="toggleUnit(unit.id)"
+              class="w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-gray-50 transition-colors"
+            >
+              <div class="flex items-center gap-4 min-w-0">
+                <div
+                  class="w-9 h-9 rounded-xl flex items-center justify-center text-white text-sm font-bold shrink-0"
+                  [style.background-color]="course.color ?? '#0ea5e9'"
+                >
+                  {{ unit.orderIndex }}
+                </div>
+                <div class="min-w-0">
+                  <h3
+                    class="font-semibold text-gray-800 text-sm sm:text-base truncate"
+                  >
+                    {{ unit.title }}
+                  </h3>
+                  <p class="text-xs text-gray-400 mt-0.5">
+                    {{ unit.lessons.length }} lecke
+                  </p>
+                </div>
+              </div>
+              <svg
+                class="w-5 h-5 text-gray-400 shrink-0 transition-transform duration-200"
+                [class.rotate-180]="isUnitExpanded(unit.id)"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+
+            <!-- Lessons List -->
+            @if (isUnitExpanded(unit.id)) {
+              <div class="border-t border-gray-100">
+                @if (!unit.lessons) {
+                  <p class="text-sm text-gray-400 px-6 py-4">
+                    Ehhez az egységhez még nincs lecke.
+                  </p>
+                }
+                @for (
+                  lesson of unit.lessons;
+                  track lesson.id;
+                  let last = $last
+                ) {
+                  <div
+                    class="flex items-center justify-between px-5 sm:px-6 py-4 hover:bg-gray-50 transition-colors"
+                    [class.border-b]="!last"
+                    [class.border-gray-100]="!last"
+                  >
+                    <div class="flex items-center gap-4 min-w-0">
+                      <div
+                        class="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center shrink-0"
+                      >
+                        <svg
+                          class="w-4 h-4 text-gray-500"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                      </div>
+                      <span class="text-sm text-gray-700 font-medium truncate">
+                        {{ lesson.title }}
+                      </span>
+                    </div>
+                    <button
+                      (click)="startLesson(lesson.id)"
+                      [style.background-color]="course.color ?? '#a0aec0'"
+                      class="ml-4 shrink-0 px-4 py-1.5 text-white text-xs hover:transform hover:scale-105 font-semibold rounded-lg transition-colors cursor-pointer"
+                    >
+                      Kezdés
+                    </button>
+                  </div>
+                }
+              </div>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+  @if (lessonActivated) {
+    <app-loaded-lesson [lesson]="activatedLesson" [courseColor]="course?.color ?? '#0ea5e9'" (lessonClosed)="closeLessonView()"></app-loaded-lesson>
+  }
+
+  <app-footer></app-footer>
+</div>
