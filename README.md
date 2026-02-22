@@ -1,3 +1,3 @@
 # Languaforge
 
-Documentation (slides): https://docs.google.com/presentation/d/1bV7nvY7Xu4YMfyiVS6isyd_YzhyH61hu9R4wA0FXO7g/edit?usp=sharing_eil&ts=691ecf19
+Documentation (slides): https://1drv.ms/p/c/e981ea3592159fa8/IQB9ZDs8wpPXSpyYFqQ8hvXfAWe1tUTZ_60MI7YeVKNKOJ4?e=vPJ2oV
