@@ -1,0 +1,41 @@
+.course-scroll-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: 8px 0;
+}
+
+.course-scroll-content,
+.started-scroll-content,
+.completed-scroll-content {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  transition: transform 0.3s ease-in-out;
+}
+
+.course-card {
+  min-width: 320px;
+  max-width: 320px;
+  height: 240px;
+  flex-shrink: 0;
+}
+
+.progress-card {
+  min-width: 450px;
+  max-width: 450px;
+  height: 260px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .course-card {
+    min-width: 280px;
+    max-width: 280px;
+  }
+
+  .progress-card {
+    min-width: 320px;
+    max-width: 320px;
+  }
+}

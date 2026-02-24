@@ -1,6 +1,5 @@
-import { UserXCourse } from './../interfaces/UserProfileData';
+import { UserXCourse } from './../interfaces/UserProfile';
 import { CourseLoaderServiceService } from './course-loader-service.service';
-import { routes } from './../app.routes';
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -16,26 +15,32 @@ export class CourseLogicService {
   private courseLoaderService = inject(CourseLoaderServiceService);
 
   enterCourse(courseId: number) {
-    console.log(`Enrolling into course with ID: ${courseId}`);
-    this.enrollCourse(courseId);
-    console.log(`Entering course with ID: ${courseId}`);
-    this.router.navigate([`/my/courses/${courseId}`]);
-  }
+    const userId = Number(this.authService.getCurrentUserId());
 
-  enrollCourse(courseId: number) {
     this.courseLoaderService
-      .loadUserCoursesByUserId(Number(this.authService.getCurrentUserId()))
+      .loadUserXCoursesByUserId(userId)
       .subscribe((userCourses: UserXCourse[]) => {
-        for (const userCourse of userCourses) {
-          if (userCourse.course.id == courseId) {
-            alert(`Már beiratkozva: ${courseId}`);
+        const alreadyEnrolled = userCourses.some(
+          (uxc) => uxc.course?.id == courseId,
+        );
 
-            return;
-          }
+        if (alreadyEnrolled) {
+          console.log(`Already enrolled in course ${courseId}, navigating...`);
+          this.router.navigate([`/my/courses/${courseId}`]);
+        } else {
+          console.log(`Enrolling in course with ID: ${courseId}`);
+          this.courseLoaderService.createUserXCourse(courseId).subscribe({
+            next: () => {
+              console.log(
+                `Successfully enrolled, navigating to course ${courseId}`,
+              );
+              this.router.navigate([`/my/courses/${courseId}`]);
+            },
+            error: (err) => {
+              console.error('Error enrolling in course:', err);
+            },
+          });
         }
-
-        console.log(`Enrolling in course with ID: ${courseId}`);
-        this.courseLoaderService.createUserXCourse(courseId);
       });
   }
 }

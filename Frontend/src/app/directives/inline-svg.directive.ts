@@ -13,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class InlineSvgDirective implements OnChanges {
   @Input('appInlineSvg') src: string = '';
-  @Input() svgColor: string = '';
+  @Input() locked: boolean = false;
 
   constructor(
     private el: ElementRef<HTMLElement>,
@@ -21,34 +21,53 @@ export class InlineSvgDirective implements OnChanges {
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if ((changes['src'] || changes['svgColor']) && this.src) {
+    if (changes['src'] && this.src) {
       this.http.get(this.src, { responseType: 'text' }).subscribe({
         next: (svgContent) => {
-          this.el.nativeElement.innerHTML = svgContent;
+          const resolved = svgContent.replace(
+            /var\(--[\w-]+,\s*([^)]+)\)/g,
+            (_, fallback) => fallback.trim(),
+          );
+          this.el.nativeElement.innerHTML = resolved;
           const svg = this.el.nativeElement.querySelector('svg');
           if (svg) {
             svg.setAttribute('width', '100%');
             svg.setAttribute('height', '100%');
-
-            const color = this.svgColor || 'currentColor';
-
-            svg.querySelectorAll('[fill]').forEach((el) => {
-              const fill = el.getAttribute('fill');
-              if (fill && fill !== 'none') {
-                el.setAttribute('fill', color);
-              }
-            });
-            svg.querySelectorAll('[stroke]').forEach((el) => {
-              const stroke = el.getAttribute('stroke');
-              if (stroke && stroke !== 'none') {
-                el.setAttribute('stroke', color);
-              }
-            });
           }
+          this.applyColor();
         },
         error: () => {
           this.el.nativeElement.innerHTML = '';
         },
+      });
+    } else if (changes['locked']) {
+      this.applyColor();
+    }
+  }
+
+  private applyColor(): void {
+    const svg = this.el.nativeElement.querySelector('svg');
+    if (!svg) return;
+
+    if (this.locked) {
+      svg.querySelectorAll('[fill]').forEach((el) => {
+        const fill = el.getAttribute('fill');
+        if (fill && fill !== 'none') {
+          el.setAttribute('fill', '#9ca3af');
+        }
+      });
+      svg.querySelectorAll('[stroke]').forEach((el) => {
+        const stroke = el.getAttribute('stroke');
+        if (stroke && stroke !== 'none') {
+          el.setAttribute('stroke', '#9ca3af');
+        }
+      });
+      svg.querySelectorAll('style').forEach((styleEl) => {
+        styleEl.textContent =
+          styleEl.textContent?.replace(
+            /#[0-9a-fA-F]{3,8}|rgba?\([^)]+\)/g,
+            '#9ca3af',
+          ) ?? '';
       });
     }
   }

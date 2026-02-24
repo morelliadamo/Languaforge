@@ -69,7 +69,7 @@ export class LessonHubComponent implements OnInit {
           lesson: lesson,
           exercises: exercises,
         },
-      }
+      },
     );
   }
 }

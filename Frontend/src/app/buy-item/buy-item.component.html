@@ -1,0 +1,114 @@
+<!-- Backdrop -->
+<div class="overlay-backdrop" (click)="onBackdropClick()">
+  @if (item) {
+    <div class="overlay-card" (click)="$event.stopPropagation()">
+      <!-- Close button -->
+      <button
+        class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
+        (click)="close.emit()"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+
+      @if (!purchaseSuccess) {
+        <!-- Item display -->
+        <div class="flex flex-col items-center text-center">
+          <span class="text-6xl mb-4">{{ getEmoji(item.type) }}</span>
+          <h2 class="text-2xl font-bold text-gray-800 mb-1">{{ item.name }}</h2>
+          <p class="text-sm text-gray-500 mb-6 max-w-xs">
+            {{ item.description }}
+          </p>
+
+          <!-- Price -->
+          <div
+            class="flex items-center gap-2 bg-sky-50 rounded-xl px-5 py-3 mb-6"
+          >
+            <span class="text-lg font-bold text-sky-600"
+              >{{ item.price }} HUF</span
+            >
+          </div>
+
+          <!-- Error message -->
+          @if (purchaseError) {
+            <div
+              class="mb-4 px-4 py-2 rounded-lg bg-red-50 text-red-600 text-sm font-medium"
+            >
+              {{ purchaseError }}
+            </div>
+          }
+
+          <!-- Action buttons -->
+          <div class="flex gap-3 w-full">
+            <button
+              (click)="close.emit()"
+              class="flex-1 px-4 py-3 rounded-xl border border-gray-200 text-gray-600 font-semibold hover:bg-gray-50 transition-colors cursor-pointer"
+            >
+              Mégse
+            </button>
+            <button
+              (click)="confirmPurchase()"
+              [disabled]="purchasing"
+              class="flex-1 px-4 py-3 rounded-xl bg-sky-500 text-white font-semibold hover:bg-sky-600 active:scale-95 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              @if (purchasing) {
+                <span class="flex items-center justify-center gap-2">
+                  <svg
+                    class="animate-spin w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      class="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      stroke-width="4"
+                    ></circle>
+                    <path
+                      class="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                    ></path>
+                  </svg>
+                  Feldolgozás...
+                </span>
+              } @else {
+                Megvásárlás
+              }
+            </button>
+          </div>
+        </div>
+      } @else {
+        <!-- Success state -->
+        <div class="flex flex-col items-center text-center py-4">
+          <span class="text-6xl mb-4">🎉</span>
+          <h2 class="text-2xl font-bold text-gray-800 mb-2">
+            Sikeres vásárlás!
+          </h2>
+          <p class="text-sm text-gray-500 mb-6">
+            Megvásároltad: <strong>{{ item.name }}</strong>
+          </p>
+          <button
+            (click)="close.emit()"
+            class="px-6 py-3 rounded-xl bg-sky-500 text-white font-semibold hover:bg-sky-600 active:scale-95 transition-all cursor-pointer"
+          >
+            Rendben
+          </button>
+        </div>
+      }
+    </div>
+  }
+</div>

@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { AuthServiceService } from '../services/auth-service.service';
 import { Router, RouterLink } from '@angular/router';
+import { InventoryComponent } from '../inventory/inventory.component';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink],
+  imports: [RouterLink, InventoryComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })

@@ -55,7 +55,6 @@
       Vágj bele
     </a>
   }
-
   @if (router.url !== "/profile") {
     <button
       [routerLink]="'/profile'"
@@ -67,9 +66,9 @@
     <hr class="border-gray-200" />
   }
 
-  @if (router.url !== "/courses") {
+  @if (router.url !== "/my/courses") {
     <button
-      [routerLink]="'/courses'"
+      [routerLink]="'/my/courses'"
       class="text-left text-gray-700 font-semibold hover:text-sky-500 transition-colors duration-200 cursor-pointer"
     >
       Kurzusok

@@ -118,19 +118,10 @@ export class CourseLoaderServiceService {
       enrolledAt: new Date().toISOString(),
       completedAt: null,
     };
-    this.http
-      .post(
-        `${this.apiUrl}/enroll/${courseId}/user/${this.authService.getCurrentUserId()}`,
-        requestBody,
-        { headers },
-      )
-      .subscribe(
-        (response) => {
-          console.log('Successfully enrolled in course:', response);
-        },
-        (error) => {
-          console.error('Error enrolling in course:', error);
-        },
-      );
+    return this.http.post(
+      `${this.apiUrl}/enroll/${courseId}/user/${this.authService.getCurrentUserId()}`,
+      requestBody,
+      { headers },
+    );
   }
 }

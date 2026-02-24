@@ -35,7 +35,8 @@ public class StoreItem {
         hints5,
         hints10,
         hints25,
-        freeze
+        freeze,
+        course_slot
     }
     @Column(name = "type", nullable = false)
     @Enumerated(EnumType.STRING)

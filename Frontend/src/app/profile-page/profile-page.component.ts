@@ -9,6 +9,7 @@ import { UserProfileDataService } from '../services/user-profile-data.service';
 import { FriendshipService } from '../services/friendship.service';
 import { AuthServiceService } from '../services/auth-service.service';
 import { LoadingOverlayComponent } from '../loading-overlay/loading-overlay.component';
+import { InventoryComponent } from '../inventory/inventory.component';
 
 interface AchievementDisplay {
   icon: string;
@@ -26,6 +27,7 @@ interface AchievementDisplay {
     FormsModule,
     DatePipe,
     LoadingOverlayComponent,
+    InventoryComponent,
   ],
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.css',

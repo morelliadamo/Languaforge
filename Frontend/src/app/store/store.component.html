@@ -37,6 +37,7 @@
               >{{ item.price }} HUF</span
             >
             <button
+              (click)="buy(item)"
               class="bg-sky-500 hover:bg-sky-600 active:scale-95 text-white text-sm font-semibold px-4 py-2 rounded-xl transition-all cursor-pointer"
             >
               Vásárlás
@@ -77,8 +78,21 @@
           </p>
         </div>
       </div>
+      <div class="flex justify-center mt-6">
+        <div class="flex flex-col gap-2 max-w-xs">
+          <span class="text-4xl">📚📦</span>
+          <h3 class="font-semibold text-gray-800">Kurzushely</h3>
+          <p class="text-sm text-gray-500">
+            Szerezz új kurzushelyeket, hogy több tananyagot tanulhass egyszerre
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+@if (buyingItem) {
+  <app-buy-item [item]="boughtItem" (close)="buyingItem = false"></app-buy-item>
+}
 
 <app-footer></app-footer>

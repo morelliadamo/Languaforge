@@ -40,5 +40,11 @@ export const routes: Routes = [
     component: ProfilePageComponent,
     canActivate: [authGuard],
   },
+  {
+    path: 'my/courses',
+    component: CourseHubComponent,
+    canActivate: [authGuard],
+  },
   { path: 'store', component: StoreComponent, canActivate: [authGuard] },
+  { path: '**', redirectTo: '' },
 ];

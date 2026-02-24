@@ -1,5 +1,7 @@
 package com.tengelyhatalmak.languaforge.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,6 +26,7 @@ public class UserXItem {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnoreProperties({"reviews", "courses", "scores", "achievementsOfUser", "userXCourses", "loginDataList", "lessonProgresses", "streak", "leaderboardList"})
     private User user;
 
     @Column(name = "user_id", nullable = false, insertable = false, updatable = false)
@@ -36,7 +39,7 @@ public class UserXItem {
     @Column(name = "item_id", nullable = false, insertable = false, updatable = false)
     private Integer itemId;
 
-    @Column(name = "amount", nullable = false)
+    @Column(name = "amount")
     private Integer amount;
 
     @Column(name = "created_at", nullable = false)

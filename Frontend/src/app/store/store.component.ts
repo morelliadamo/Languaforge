@@ -3,10 +3,10 @@ import { StoreItem } from '../interfaces/StoreItem';
 import { StoreService } from '../services/store.service';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
-
+import { BuyItemComponent } from '../buy-item/buy-item.component';
 @Component({
   selector: 'app-store',
-  imports: [HeaderComponent, FooterComponent],
+  imports: [HeaderComponent, FooterComponent, BuyItemComponent],
   templateUrl: './store.component.html',
   styleUrl: './store.component.css',
 })
@@ -14,6 +14,13 @@ export class StoreComponent {
   storeItems: StoreItem[] = [];
 
   private storeService = inject(StoreService);
+  buyingItem: boolean = false;
+  boughtItem: StoreItem | null = null;
+
+  buy(item: StoreItem) {
+    this.boughtItem = item;
+    this.buyingItem = true;
+  }
 
   ngOnInit() {
     this.storeService.getStoreItems().subscribe((items) => {
@@ -30,6 +37,7 @@ export class StoreComponent {
       hints10: '💡💡',
       hints25: '💡✨',
       freeze: '🧊',
+      course_slot: '📦',
     };
     return map[type] ?? 'missing icon!';
   }

@@ -80,13 +80,13 @@
             <div
               class="rounded-2xl shadow-md border border-gray-100 overflow-hidden transition-colors"
               [class.bg-green-200]="isUnitCompleted(unit)"
-              [class.hover:bg-green-300]="isUnitCompleted(unit)"
               [class.bg-white]="!isUnitCompleted(unit)"
             >
               <!-- Unit Header -->
               <button
                 (click)="toggleUnit(unit.id)"
-                class="w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-gray-50 transition-colors"
+                class="w-full flex items-center justify-between p-5 sm:p-6 text-left transition-colors"
+                [class.hover:bg-green-300]="isUnitCompleted(unit)"
               >
                 <div class="flex items-center gap-4 min-w-0">
                   <div
@@ -162,14 +162,8 @@
                       <div class="flex items-center gap-4 min-w-0">
                         <div
                           class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
-                          [appInlineSvg]="getLessonIconSrc(lesson.id)"
-                          [svgColor]="
-                            getLessonIconColor(
-                              lesson.id,
-                              !isLessonUnlocked(unit, i)
-                            )
-                          "
                         ></div>
+
                         <span
                           class="text-sm font-medium truncate"
                           [class.text-gray-700]="isLessonUnlocked(unit, i)"
