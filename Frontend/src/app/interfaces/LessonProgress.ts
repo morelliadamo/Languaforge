@@ -10,9 +10,9 @@ export interface LessonProgress {
   exerciseCount: number;
   completedExercises: number;
   updatedAt: string;
+  completedAt: string | null;
   createdAt: string;
   isDeleted: boolean;
   deletedAt: string | null;
   lessonCompleted: boolean;
-  completedAt: string | null;
 }

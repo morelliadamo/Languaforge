@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .p  { fill: var(--color, #0f766e); }
+    .pm { fill: var(--color, #0f766e); opacity: 0.62; }
+    .pl { fill: var(--color, #0f766e); opacity: 0.30; }
+  </style>
+  <!-- Briefcase body -->
+  <rect class="p"  x="10" y="24" width="44" height="28" rx="4"/>
+  <!-- Briefcase top bar -->
+  <rect class="pm" x="10" y="24" width="44" height="8" rx="2"/>
+  <!-- Briefcase handle -->
+  <path class="p"  d="M24 24v-4a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v4" fill="none" stroke="var(--color,#0f766e)" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Center clasp -->
+  <rect class="pl" x="27" y="34" width="10" height="7" rx="2"/>
+  <rect class="p"  x="29" y="36" width="6" height="3" rx="1"/>
+  <!-- Person silhouette badge (top-right) -->
+  <circle class="pm" cx="49" cy="20" r="6"/>
+  <circle class="p"  cx="49" cy="17.5" r="2.2"/>
+  <path   class="p"  d="M44.5 25c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5" fill="var(--color,#0f766e)" opacity="0.9"/>
+</svg>

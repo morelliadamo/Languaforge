@@ -1,0 +1,40 @@
+<!-- At the Airport – A repülőtéren -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <style>
+    .p  { fill: var(--color, #0284c7); }
+    .pm { fill: var(--color, #0284c7); opacity: 0.60; }
+    .pl { fill: var(--color, #0284c7); opacity: 0.28; }
+  </style>
+
+  <!-- Fuselage -->
+  <path class="p"
+    d="M6 26 C6 26 16 22 24 22 C32 22 40 18 43 17 C44.5 16.5 44.5 18.5 43 19 C40 20 34 24 28 25 L6 30 Z"
+  />
+
+  <!-- Left wing -->
+  <path class="pm"
+    d="M18 24 L10 36 L22 30 Z"
+  />
+
+  <!-- Right winglet / tail -->
+  <path class="pm"
+    d="M8 26 L4 20 L10 23 Z"
+  />
+
+  <!-- Tail fin -->
+  <path class="p"
+    d="M10 26 L7 18 L14 23 Z"
+  />
+
+  <!-- Cabin windows strip -->
+  <circle fill="white" opacity="0.8" cx="30" cy="23" r="1.5"/>
+  <circle fill="white" opacity="0.8" cx="34" cy="21.5" r="1.5"/>
+  <circle fill="white" opacity="0.8" cx="38" cy="20" r="1.5"/>
+
+  <!-- Ground / runway line -->
+  <line stroke="var(--color, #0284c7)" stroke-width="2" stroke-linecap="round" stroke-opacity="0.35"
+    x1="4" y1="40" x2="44" y2="40"/>
+  <!-- Dashed centre line -->
+  <line stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 4"
+    x1="4" y1="40" x2="44" y2="40"/>
+</svg>

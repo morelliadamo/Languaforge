@@ -18,4 +18,47 @@ export class LessonProgressService {
       headers,
     });
   }
+
+  loadLessonProgressesByUserIdAndCourseId(userId: number, courseId: number) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.get<LessonProgress[]>(
+      `${this.apiUrl}/user/${userId}/course/${courseId}`,
+      {
+        headers,
+      },
+    );
+  }
+
+  createLessonProgress(userId: number, lessonId: number) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    const body = { userId, lessonId, completedExercises: 0 };
+    return this.http.post<LessonProgress>(
+      `${this.apiUrl}/createLessonProgress`,
+      body,
+      {
+        headers,
+      },
+    );
+  }
+
+  updateLessonProgress(lessonProgressId: number, completedExercises: number) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    const body = { completedExercises };
+    return this.http.put<LessonProgress>(
+      `${this.apiUrl}/updateLessonProgress/${lessonProgressId}`,
+      body,
+      {
+        headers,
+      },
+    );
+  }
 }

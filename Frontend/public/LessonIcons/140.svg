@@ -1,0 +1,29 @@
+<!-- Immediate Family – Szűk család -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <style>
+    .p  { fill: var(--color, #2563eb); }
+    .pm { fill: var(--color, #2563eb); opacity: 0.60; }
+    .pl { fill: var(--color, #2563eb); opacity: 0.25; }
+  </style>
+
+  <!-- House shape (home = family) -->
+  <polygon class="p" points="24,5 44,22 40,22 40,43 8,43 8,22 4,22"/>
+  <polygon class="pm" points="24,5 44,22 4,22"/>
+
+  <!-- Door -->
+  <rect class="pl" x="20" y="30" width="8" height="13" rx="1.5"/>
+  <circle fill="white" opacity="0.8" cx="26.5" cy="37" r="1"/>
+
+  <!-- Left window -->
+  <rect fill="white" opacity="0.75" x="11" y="28" width="6" height="6" rx="1.5"/>
+  <line stroke="var(--color, #2563eb)" stroke-width="1" x1="14" y1="28" x2="14" y2="34"/>
+  <line stroke="var(--color, #2563eb)" stroke-width="1" x1="11" y1="31" x2="17" y2="31"/>
+
+  <!-- Right window -->
+  <rect fill="white" opacity="0.75" x="31" y="28" width="6" height="6" rx="1.5"/>
+  <line stroke="var(--color, #2563eb)" stroke-width="1" x1="34" y1="28" x2="34" y2="34"/>
+  <line stroke="var(--color, #2563eb)" stroke-width="1" x1="31" y1="31" x2="37" y2="31"/>
+
+  <!-- Chimney -->
+  <rect class="pm" x="31" y="8" width="5" height="10" rx="1"/>
+</svg>

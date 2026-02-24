@@ -24,7 +24,9 @@
       </div>
 
       <!-- Social Buttons -->
-      <div class="flex gap-6 mb-4 items-center justify-center w-full sm:w-40 md:w-60 lg:w-80 xl:w-96">
+      <div
+        class="flex gap-6 mb-4 items-center justify-center w-full sm:w-40 md:w-60 lg:w-80 xl:w-96"
+      >
         <!-- Google -->
         <button
           class="flex-1 flex items-center justify-center gap-3 border border-gray-300 rounded-xl py-4 hover:bg-gray-50 transition"
@@ -62,7 +64,7 @@
       <!-- Divider -->
       <div class="flex items-center gap-4">
         <div class="flex-1 h-px bg-gray-300"></div>
-        <span class="text-gray-500 font-medium">OR</span>
+        <span class="text-gray-500 font-medium">VAGY</span>
         <div class="flex-1 h-px bg-gray-300"></div>
       </div>
       <br />
@@ -70,9 +72,8 @@
       <input
         type="text"
         formControlName="emailOrUsername"
-        placeholder="Email *"
+        placeholder="Email vagy Felhasználónév *"
         class="border-[1px] border-zinc-300 p-2 w-md-flex rounded-xl sm:w-40 md:w-60 lg:w-80 xl:w-96"
-
       />
       <div
         *ngIf="
@@ -81,14 +82,14 @@
         "
         class="text-red-500 text-sm mt-1"
       >
-        This field is required
+        Meg kell adnod egy érvényes email címet vagy felhasználónevet
       </div>
       <br />
 
       <input
         type="password"
         formControlName="password"
-        placeholder="Password *"
+        placeholder="Jelszó *"
         class="border-[1px] border-zinc-300 p-2 w-md-flex rounded-xl sm:w-40 md:w-60 lg:w-80 xl:w-96"
       />
       <div
@@ -98,7 +99,7 @@
         "
         class="text-red-500 text-sm mt-1"
       >
-        Password is required (min 6 characters)
+        Meg kell adnod a jelszót (min 6 karakter)
       </div>
 
       <div class="flex items-center mb-4 mt-4">
@@ -106,7 +107,7 @@
           routerLink="/forgot-password"
           class="select-none ms-18 text-sm font-medium text-fg-disabled text-center cursor-pointer text-sky-500 hover:underline"
         >
-          Forgot password?
+          Elfelejtetted a jelszavad?
         </a>
       </div>
 
@@ -115,12 +116,12 @@
         [disabled]="loginForm.invalid || isLoading"
         class="bg-sky-500 text-white p-2 w-md-flex mt-4 mb-4 rounded-xl hover:cursor-pointer sm:w-40 md:w-60 lg:w-80 xl:w-96"
       >
-        {{ isLoading ? "Logging In..." : "Log In" }}
+        {{ isLoading ? "Bejelentkezés..." : "Bejelentkezés" }}
       </button>
 
       <h4 class="text-[15px] text-center mb-[60px] text-gray-500">
-        Don't have an account?
-        <a routerLink="/register" class="text-sky-500"><b>Sign Up</b></a>
+        Nincs fiókod?
+        <a routerLink="/register" class="text-sky-500"><b>Regisztráció</b></a>
       </h4>
     </form>
   </div>
@@ -130,7 +131,7 @@
 <div class="min-h-screen bg-black flex items-center justify-center">
   <div class="bg-white w-[650px] p-10 rounded-md shadow-lg">
     <!-- Title -->
-    <h1 class="text-3xl font-semibold text-gray-800 mb-8">Welcome Back</h1>
+    <h1 class="text-3xl font-semibold text-gray-800 mb-8">Üdv újra</h1>
 
     <!-- Social Buttons -->
     <div class="flex gap-6 mb-8">
@@ -171,7 +172,7 @@
     <!-- Divider -->
     <div class="flex items-center gap-4">
       <div class="flex-1 h-px bg-gray-300"></div>
-      <span class="text-gray-500 font-medium">OR</span>
+      <span class="text-gray-500 font-medium">VAGY</span>
       <div class="flex-1 h-px bg-gray-300"></div>
     </div>
   </div>

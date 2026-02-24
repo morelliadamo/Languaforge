@@ -1,0 +1,32 @@
+<!-- Colors and Numbers – Színek és számok -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <style>
+    .p  { fill: var(--color, #e11d48); }
+    .pl { fill: var(--color, #e11d48); opacity: 0.35; }
+    .pm { fill: var(--color, #e11d48); opacity: 0.65; }
+  </style>
+
+  <!-- Painter palette body -->
+  <path class="pl"
+    d="M24 6C14.06 6 6 13.16 6 22c0 5.52 3.09 10.37 7.8 13.3-.3 1.05-.5 2.13-.5 3.2 0 2.4 1.97 3.5 4.3 3.5 1.56 0 3-.5 4.4-.5 1.52 0 1.64 .5 1.9 .5.44 0 .6-.28.6-.7 0-2.5-2-5.3-2-7.8 0-1.62.8-3.1 2.2-4.1 1.12-.8 2.5-1.2 3.8-1.2 3.3 0 5.5 2.5 5.5 5.8 0 .8-.1 1.6-.3 2.3C38.8 33.3 42 27.97 42 22c0-8.84-8.06-16-18-16z"
+  />
+
+  <!-- Color dots on palette -->
+  <circle class="p"  cx="16" cy="19" r="3.5"/>
+  <circle class="pm" cx="24" cy="13" r="3.5"/>
+  <circle class="p"  cx="32" cy="19" r="3.5"/>
+  <circle class="pm" cx="30" cy="28" r="3.5"/>
+
+  <!-- Thumb hole -->
+  <circle fill="white" cx="17" cy="30" r="3"/>
+
+  <!-- Number "1 2 3" strip at bottom -->
+  <text
+    x="24" y="44.5"
+    text-anchor="middle"
+    font-family="system-ui, sans-serif"
+    font-size="7"
+    font-weight="700"
+    class="p"
+  >1  2  3</text>
+</svg>

@@ -1,0 +1,30 @@
+<!-- Friendship – Barátság -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <style>
+    .p  { fill: var(--color, #db2777); }
+    .pm { fill: var(--color, #db2777); opacity: 0.60; }
+    .pl { fill: var(--color, #db2777); opacity: 0.25; }
+  </style>
+
+  <!-- Two overlapping hands / handshake -->
+
+  <!-- Left arm + hand -->
+  <rect class="pm" x="4" y="24" width="18" height="6" rx="3"/>
+  <!-- Left fingers -->
+  <rect class="pm" x="8"  y="18" width="5" height="10" rx="2.5"/>
+  <rect class="pm" x="14" y="16" width="5" height="12" rx="2.5"/>
+  <rect class="pm" x="4"  y="20" width="5" height="10" rx="2.5"/>
+
+  <!-- Right arm + hand -->
+  <rect class="p" x="26" y="24" width="18" height="6" rx="3"/>
+  <!-- Right fingers -->
+  <rect class="p" x="27" y="16" width="5" height="12" rx="2.5"/>
+  <rect class="p" x="33" y="18" width="5" height="10" rx="2.5"/>
+  <rect class="p" x="39" y="20" width="5" height="10" rx="2.5"/>
+
+  <!-- Handshake join -->
+  <ellipse class="pl" cx="24" cy="27" rx="4" ry="5"/>
+
+  <!-- Small heart above -->
+  <path class="p" d="M21 10 C21 7.5 24 6 24 8.5 C24 6 27 7.5 27 10 C27 13 24 15 24 15 C24 15 21 13 21 10 Z"/>
+</svg>

@@ -1,0 +1,33 @@
+<!-- Paying – Fizetés -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <style>
+    .p  { fill: var(--color, #059669); }
+    .pm { fill: var(--color, #059669); opacity: 0.60; }
+    .pl { fill: var(--color, #059669); opacity: 0.25; }
+  </style>
+
+  <!-- Card body -->
+  <rect class="p" x="4" y="12" width="40" height="26" rx="4"/>
+
+  <!-- Magnetic stripe -->
+  <rect fill="black" opacity="0.25" x="4" y="18" width="40" height="6"/>
+
+  <!-- Chip -->
+  <rect class="pm" x="9" y="28" width="10" height="7" rx="2"/>
+  <!-- Chip contact lines -->
+  <line stroke="white" stroke-opacity="0.5" stroke-width="1" x1="11" y1="28" x2="11" y2="35"/>
+  <line stroke="white" stroke-opacity="0.5" stroke-width="1" x1="14" y1="28" x2="14" y2="35"/>
+  <line stroke="white" stroke-opacity="0.5" stroke-width="1" x1="9" y1="31" x2="19" y2="31"/>
+
+  <!-- Card number dots -->
+  <circle fill="white" opacity="0.7" cx="24" cy="31.5" r="1.5"/>
+  <circle fill="white" opacity="0.7" cx="28" cy="31.5" r="1.5"/>
+  <circle fill="white" opacity="0.7" cx="32" cy="31.5" r="1.5"/>
+  <circle fill="white" opacity="0.7" cx="36" cy="31.5" r="1.5"/>
+
+  <!-- Contactless symbol -->
+  <path fill="none" stroke="white" stroke-opacity="0.8" stroke-width="1.5" stroke-linecap="round"
+    d="M30 16 Q34 19 30 22"/>
+  <path fill="none" stroke="white" stroke-opacity="0.6" stroke-width="1.5" stroke-linecap="round"
+    d="M33 14 Q39 19 33 24"/>
+</svg>

@@ -1,0 +1,36 @@
+<!-- Browsing – Böngészés -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <style>
+    .p  { fill: var(--color, #0284c7); }
+    .pm { fill: var(--color, #0284c7); opacity: 0.60; }
+    .pl { fill: var(--color, #0284c7); opacity: 0.25; }
+  </style>
+
+  <!-- Browser window -->
+  <rect class="p" x="4" y="6" width="40" height="36" rx="4"/>
+  <!-- Chrome bar -->
+  <rect class="pm" x="4" y="6" width="40" height="9" rx="4"/>
+  <rect class="pm" x="4" y="11" width="40" height="4"/>
+
+  <!-- Back arrow button -->
+  <path fill="white" opacity="0.8" d="M8 10.5 L11 8.5 L11 12.5 Z"/>
+
+  <!-- Address bar -->
+  <rect fill="white" opacity="0.8" x="15" y="8.5" width="24" height="4" rx="2"/>
+  <!-- Lock icon in address bar -->
+  <rect class="pm" x="16.5" y="9.5" width="2" height="2" rx="0.5"/>
+  <!-- URL dots -->
+  <rect class="pl" x="20" y="10" width="8" height="1.5" rx="0.75"/>
+
+  <!-- Globe / page content -->
+  <circle class="pl" cx="24" cy="27" r="11"/>
+  <circle fill="none" stroke="var(--color, #0284c7)" stroke-width="1.5" stroke-opacity="0.5" cx="24" cy="27" r="11"/>
+  <!-- Latitude lines -->
+  <path fill="none" stroke="var(--color, #0284c7)" stroke-width="1.2" stroke-opacity="0.4"
+    d="M13 27 Q24 23 35 27"/>
+  <path fill="none" stroke="var(--color, #0284c7)" stroke-width="1.2" stroke-opacity="0.4"
+    d="M13 27 Q24 31 35 27"/>
+  <!-- Meridian -->
+  <ellipse fill="none" stroke="var(--color, #0284c7)" stroke-width="1.2" stroke-opacity="0.4"
+    cx="24" cy="27" rx="5" ry="11"/>
+</svg>

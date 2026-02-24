@@ -1,0 +1,38 @@
+<!-- Landmarks – Nevezetességek -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <style>
+    .p  { fill: var(--color, #16a34a); }
+    .pm { fill: var(--color, #16a34a); opacity: 0.60; }
+    .pl { fill: var(--color, #16a34a); opacity: 0.25; }
+  </style>
+
+  <!-- Main tower body -->
+  <rect class="p" x="18" y="16" width="12" height="28" rx="1"/>
+
+  <!-- Tower top / battlements -->
+  <rect class="p" x="16" y="12" width="4" height="6" rx="1"/>
+  <rect class="p" x="22" y="10" width="4" height="8" rx="1"/>
+  <rect class="p" x="28" y="12" width="4" height="6" rx="1"/>
+
+  <!-- Left wing -->
+  <rect class="pm" x="8"  y="26" width="10" height="18" rx="1"/>
+  <!-- Right wing -->
+  <rect class="pm" x="30" y="26" width="10" height="18" rx="1"/>
+
+  <!-- Wing battlements -->
+  <rect class="pm" x="7"  y="23" width="3" height="5" rx="1"/>
+  <rect class="pm" x="11" y="22" width="3" height="6" rx="1"/>
+  <rect class="pm" x="34" y="22" width="3" height="6" rx="1"/>
+  <rect class="pm" x="38" y="23" width="3" height="5" rx="1"/>
+
+  <!-- Tower windows -->
+  <rect fill="white" opacity="0.8" x="21" y="19" width="6" height="7" rx="2"/>
+
+  <!-- Arch door in tower -->
+  <path fill="white" opacity="0.7"
+    d="M21 44 L21 37 Q24 33 27 37 L27 44 Z"/>
+
+  <!-- Flag -->
+  <line stroke="var(--color, #16a34a)" stroke-width="1.5" stroke-linecap="round" x1="24" y1="10" x2="24" y2="5"/>
+  <polygon class="p" points="24,5 30,7.5 24,10"/>
+</svg>

@@ -1,0 +1,35 @@
+<!-- At the Station – Az állomáson -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <style>
+    .p  { fill: var(--color, #4f46e5); }
+    .pm { fill: var(--color, #4f46e5); opacity: 0.60; }
+    .pl { fill: var(--color, #4f46e5); opacity: 0.28; }
+  </style>
+
+  <!-- Train body -->
+  <rect class="p" x="9" y="14" width="30" height="22" rx="5"/>
+
+  <!-- Train roof ridge -->
+  <rect class="pm" x="9" y="14" width="30" height="5" rx="5"/>
+
+  <!-- Windows -->
+  <rect fill="white" opacity="0.85" x="13" y="21" width="8" height="7" rx="2"/>
+  <rect fill="white" opacity="0.85" x="27" y="21" width="8" height="7" rx="2"/>
+
+  <!-- Door line -->
+  <rect class="pm" x="21" y="21" width="6" height="15" rx="1"/>
+
+  <!-- Wheels -->
+  <circle fill="white" cx="15" cy="38" r="4.5"/>
+  <circle class="pm"  cx="15" cy="38" r="2.5"/>
+  <circle fill="white" cx="33" cy="38" r="4.5"/>
+  <circle class="pm"  cx="33" cy="38" r="2.5"/>
+
+  <!-- Rails -->
+  <line stroke="var(--color, #4f46e5)" stroke-width="2" stroke-linecap="round" x1="4" y1="43" x2="44" y2="43"/>
+  <line stroke="var(--color, #4f46e5)" stroke-width="2" stroke-linecap="round" stroke-opacity="0.4" x1="4" y1="43" x2="44" y2="43"/>
+
+  <!-- Pantograph (top connector) -->
+  <path fill="none" stroke="var(--color, #4f46e5)" stroke-width="1.8" stroke-linecap="round"
+    d="M20 14 L17 8 M28 14 L31 8 M17 8 L31 8"/>
+</svg>

@@ -30,6 +30,11 @@ public class LessonProgressController {
         return lessonProgressService.findLessonProgressesByUserId(userId);
     }
 
+    @GetMapping("/user/{userId}/course/{courseId}")
+    public List<LessonProgress> getLessonProgressesByUserIdAndCourseId(@PathVariable Integer userId, @PathVariable Integer courseId){
+        return lessonProgressService.findLessonProgressesByUserIdAndCourseId(userId, courseId);
+    }
+
     @GetMapping("/checkProgress/{id}")
     public Boolean checkProgress(@PathVariable Integer id){
         return lessonProgressService.isLessonCompleted(id);

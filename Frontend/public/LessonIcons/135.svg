@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .p  { fill: var(--color, #2563eb); }
+    .pm { fill: var(--color, #2563eb); opacity: 0.62; }
+    .pl { fill: var(--color, #2563eb); opacity: 0.28; }
+  </style>
+  <!-- Presentation screen -->
+  <rect class="pl" x="8"  y="8"  width="48" height="32" rx="4"/>
+  <rect class="pm" x="12" y="12" width="40" height="24" rx="2"/>
+  <!-- Bar chart on screen -->
+  <rect class="p"  x="18" y="28" width="5" height="6" rx="1"/>
+  <rect class="p"  x="26" y="23" width="5" height="11" rx="1"/>
+  <rect class="p"  x="34" y="19" width="5" height="15" rx="1"/>
+  <rect class="p"  x="42" y="25" width="5" height="9"  rx="1"/>
+  <!-- Trend arrow on chart -->
+  <path class="pm" d="M20 28 L28 22 L36 18 L45 24" fill="none" stroke="var(--color,#2563eb)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+  <!-- Screen stand -->
+  <rect class="pm" x="29" y="40" width="6"  height="5" rx="1"/>
+  <rect class="p"  x="22" y="44" width="20" height="3" rx="1.5"/>
+  <!-- Presenter person (bottom-left) -->
+  <circle class="p"  cx="12" cy="52" r="4.5"/>
+  <path   class="pm" d="M7 62c0-3.3 2.2-6 5-6s5 2.7 5 6" fill="var(--color,#2563eb)" opacity="0.62"/>
+  <!-- Pointer line -->
+  <line x1="16" y1="50" x2="26" y2="34" stroke="var(--color,#2563eb)" stroke-width="2" stroke-linecap="round" class="pm"/>
+</svg>

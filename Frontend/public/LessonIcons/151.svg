@@ -1,0 +1,31 @@
+<!-- Software – Szoftver -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <style>
+    .p  { fill: var(--color, #7c3aed); }
+    .pm { fill: var(--color, #7c3aed); opacity: 0.60; }
+    .pl { fill: var(--color, #7c3aed); opacity: 0.25; }
+  </style>
+
+  <!-- Code editor window -->
+  <rect class="p" x="4" y="6" width="40" height="36" rx="4"/>
+  <!-- Title bar -->
+  <rect class="pm" x="4" y="6" width="40" height="8" rx="4"/>
+  <rect class="pm" x="4" y="10" width="40" height="4"/>
+  <!-- Window buttons -->
+  <circle fill="white" opacity="0.9" cx="11" cy="10" r="2"/>
+  <circle fill="white" opacity="0.6" cx="18" cy="10" r="2"/>
+  <circle fill="white" opacity="0.35" cx="25" cy="10" r="2"/>
+
+  <!-- Code lines -->
+  <!-- Line 1: short keyword -->
+  <rect class="p"  x="9"  y="20" width="8"  height="2.5" rx="1.2"/>
+  <rect class="pl" x="19" y="20" width="14" height="2.5" rx="1.2"/>
+  <!-- Line 2: indented -->
+  <rect class="pl" x="13" y="25" width="6"  height="2.5" rx="1.2"/>
+  <rect class="pm" x="21" y="25" width="10" height="2.5" rx="1.2"/>
+  <!-- Line 3 -->
+  <rect class="p"  x="9"  y="30" width="5"  height="2.5" rx="1.2"/>
+  <rect class="pl" x="16" y="30" width="18" height="2.5" rx="1.2"/>
+  <!-- Line 4: shorter -->
+  <rect class="pm" x="9"  y="35" width="12" height="2.5" rx="1.2"/>
+</svg>

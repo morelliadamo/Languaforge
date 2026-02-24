@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .p  { fill: var(--color, #d97706); }
+    .pm { fill: var(--color, #d97706); opacity: 0.62; }
+    .pl { fill: var(--color, #d97706); opacity: 0.28; }
+  </style>
+  <!-- Left person (interviewer) -->
+  <circle class="pm" cx="18" cy="18" r="7"/>
+  <path   class="pm" d="M8  40c0-5.5 4.5-10 10-10s10 4.5 10 10" fill="var(--color,#d97706)" opacity="0.62"/>
+  <!-- Right person (candidate) -->
+  <circle class="p"  cx="46" cy="18" r="7"/>
+  <path   class="p"  d="M36 40c0-5.5 4.5-10 10-10s10 4.5 10 10" fill="var(--color,#d97706)"/>
+  <!-- Table -->
+  <rect class="pl" x="10" y="40" width="44" height="4" rx="2"/>
+  <rect class="pl" x="13" y="44" width="4"  height="8" rx="1"/>
+  <rect class="pl" x="47" y="44" width="4"  height="8" rx="1"/>
+  <!-- Handshake in center above table -->
+  <path class="p"  d="M27 36 C29 34 31 33 32 33 C33 33 35 34 37 36" fill="none" stroke="var(--color,#d97706)" stroke-width="3" stroke-linecap="round"/>
+  <circle class="p" cx="32" cy="33" r="3"/>
+  <!-- Checkmark (hired!) badge -->
+  <circle class="pm" cx="50" cy="54" r="6"/>
+  <path   fill="white" d="M47 54 L50 57 L54 51" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

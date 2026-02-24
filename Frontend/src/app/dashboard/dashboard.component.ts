@@ -118,7 +118,7 @@ export class DashboardComponent {
           const course: LoadedCourse = {
             ...userXCourse.course,
             units: [],
-            progress: userXCourse.progress * 100,
+            progress: Math.floor(userXCourse.progress * 100),
             difficulty: null,
             reviews: null,
             color: null,

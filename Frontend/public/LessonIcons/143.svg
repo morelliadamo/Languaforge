@@ -1,0 +1,34 @@
+<!-- Emotions – Érzelmek -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <style>
+    .p  { fill: var(--color, #f59e0b); }
+    .pm { fill: var(--color, #f59e0b); opacity: 0.60; }
+    .pl { fill: var(--color, #f59e0b); opacity: 0.25; }
+  </style>
+
+  <!-- Face circle -->
+  <circle class="p" cx="24" cy="24" r="19"/>
+
+  <!-- Eyes -->
+  <circle fill="white" cx="17" cy="20" r="3.5"/>
+  <circle fill="white" cx="31" cy="20" r="3.5"/>
+  <circle fill="#333" cx="18" cy="20" r="1.8"/>
+  <circle fill="#333" cx="32" cy="20" r="1.8"/>
+  <!-- Eye shine -->
+  <circle fill="white" cx="18.8" cy="19.2" r="0.8"/>
+  <circle fill="white" cx="32.8" cy="19.2" r="0.8"/>
+
+  <!-- Happy smile -->
+  <path fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"
+    d="M15 29 Q24 37 33 29"/>
+
+  <!-- Cheek blush -->
+  <ellipse class="pm" opacity="0.4" cx="12" cy="27" rx="4" ry="2.5"/>
+  <ellipse class="pm" opacity="0.4" cx="36" cy="27" rx="4" ry="2.5"/>
+
+  <!-- Eyebrows (raised = expressive) -->
+  <path fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+    d="M14 16 Q17 14 20 15"/>
+  <path fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+    d="M28 15 Q31 14 34 16"/>
+</svg>

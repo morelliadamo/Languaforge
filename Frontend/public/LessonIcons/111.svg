@@ -1,0 +1,30 @@
+<!-- Directions – Irányok -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <style>
+    .p  { fill: var(--color, #0d9488); }
+    .pm { fill: var(--color, #0d9488); opacity: 0.65; }
+    .pl { fill: var(--color, #0d9488); opacity: 0.28; }
+  </style>
+
+  <!-- Compass ring -->
+  <circle class="pl" cx="24" cy="24" r="19"/>
+  <circle class="pm" cx="24" cy="24" r="19" fill="none" stroke="var(--color, #0d9488)" stroke-width="2.5"/>
+
+  <!-- North needle (primary color, pointing up) -->
+  <polygon class="p" points="24,7 27.5,24 24,21 20.5,24"/>
+
+  <!-- South needle (lighter, pointing down) -->
+  <polygon class="pm" points="24,41 27.5,24 24,27 20.5,24"/>
+
+  <!-- East & West tick marks -->
+  <rect class="pm" x="39" y="23" width="4" height="2" rx="1"/>
+  <rect class="pm" x="5"  y="23" width="4" height="2" rx="1"/>
+
+  <!-- Center dot -->
+  <circle fill="white" cx="24" cy="24" r="3"/>
+  <circle class="p"   cx="24" cy="24" r="1.5"/>
+
+  <!-- Cardinal labels -->
+  <text x="24" y="5.5" text-anchor="middle" font-family="system-ui,sans-serif" font-size="5" font-weight="800" class="p">N</text>
+  <text x="24" y="46"  text-anchor="middle" font-family="system-ui,sans-serif" font-size="5" font-weight="700" class="pm">S</text>
+</svg>

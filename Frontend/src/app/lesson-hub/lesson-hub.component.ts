@@ -6,15 +6,13 @@ import { CourseLoaderServiceService } from '../services/course-loader-service.se
 import { HttpErrorResponse } from '@angular/common/http';
 import { FooterComponent } from '../footer/footer.component';
 import { HeaderComponent } from '../header/header.component';
-import { LessonCardComponent } from '../lesson-card/lesson-card.component';
-import { CourseCardComponent } from '../course-card/course-card.component';
 import { NgForOf } from '@angular/common';
 import { Unit } from '../interfaces/Unit';
 import { Exercise } from '../interfaces/Exercise';
 
 @Component({
   selector: 'app-lesson-hub',
-  imports: [FooterComponent, HeaderComponent, LessonCardComponent, NgForOf],
+  imports: [FooterComponent, HeaderComponent, NgForOf],
   templateUrl: './lesson-hub.component.html',
   styleUrl: './lesson-hub.component.css',
 })

@@ -1,0 +1,31 @@
+<!-- Greetings – Köszöntések -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <style>
+    .p  { fill: var(--color, #f59e0b); }
+    .pl { fill: var(--color, #f59e0b); opacity: 0.35; }
+    .pm { fill: var(--color, #f59e0b); opacity: 0.65; }
+  </style>
+
+  <!-- Large speech bubble -->
+  <rect class="p" x="4" y="6" width="30" height="22" rx="6"/>
+  <polygon class="p" points="9,28 4,36 17,28"/>
+
+  <!-- Dots inside large bubble (ellipsis = greeting) -->
+  <circle fill="white" cx="12" cy="17" r="2.5"/>
+  <circle fill="white" cx="19" cy="17" r="2.5"/>
+  <circle fill="white" cx="26" cy="17" r="2.5"/>
+
+  <!-- Small reply bubble (overlapping, lighter) -->
+  <rect class="pm" x="20" y="24" width="24" height="16" rx="5"/>
+  <polygon class="pm" points="38,40 43,46 29,40"/>
+
+  <!-- Wave / exclamation in small bubble -->
+  <text
+    x="32" y="36"
+    text-anchor="middle"
+    font-family="system-ui, sans-serif"
+    font-size="10"
+    font-weight="700"
+    fill="white"
+  >Hi!</text>
+</svg>

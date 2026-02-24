@@ -1,0 +1,25 @@
+<!-- Clothes – Ruházat -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <style>
+    .p  { fill: var(--color, #9333ea); }
+    .pm { fill: var(--color, #9333ea); opacity: 0.60; }
+    .pl { fill: var(--color, #9333ea); opacity: 0.25; }
+  </style>
+
+  <!-- T-shirt body -->
+  <path class="p"
+    d="M14 16 L6 24 L12 26 L12 42 L36 42 L36 26 L42 24 L34 16
+       C34 16 31 21 24 21 C17 21 14 16 14 16 Z"/>
+
+  <!-- Collar -->
+  <path class="pm"
+    d="M17 16 C17 16 19.5 22 24 22 C28.5 22 31 16 31 16 Z"/>
+
+  <!-- Sleeve shading -->
+  <polygon class="pm" points="6,24 12,26 14,16"/>
+  <polygon class="pm" points="42,24 36,26 34,16"/>
+
+  <!-- Seam line down shirt body -->
+  <line stroke="white" stroke-opacity="0.35" stroke-width="1.5" stroke-linecap="round"
+    x1="24" y1="22" x2="24" y2="42"/>
+</svg>

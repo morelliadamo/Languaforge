@@ -1,0 +1,28 @@
+<!-- Currency – Pénznem -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <style>
+    .p  { fill: var(--color, #ca8a04); }
+    .pm { fill: var(--color, #ca8a04); opacity: 0.60; }
+    .pl { fill: var(--color, #ca8a04); opacity: 0.25; }
+  </style>
+
+  <!-- Banknote body -->
+  <rect class="p" x="4" y="14" width="40" height="22" rx="3"/>
+
+  <!-- Banknote inner frame -->
+  <rect class="pm" x="8" y="18" width="32" height="14" rx="2"/>
+
+  <!-- Currency symbol -->
+  <text x="24" y="29" text-anchor="middle"
+        font-family="system-ui, sans-serif" font-size="11" font-weight="800"
+        fill="white" opacity="0.9">$</text>
+
+  <!-- Corner denomination marks -->
+  <text x="9"  y="22" font-family="system-ui,sans-serif" font-size="4.5" font-weight="700" fill="white" opacity="0.7">10</text>
+  <text x="34" y="34" font-family="system-ui,sans-serif" font-size="4.5" font-weight="700" fill="white" opacity="0.7">10</text>
+
+  <!-- Coin stack (right side) -->
+  <ellipse class="pm" cx="38" cy="36" rx="6" ry="2.5"/>
+  <ellipse class="pm" cx="38" cy="34" rx="6" ry="2.5"/>
+  <ellipse class="p"  cx="38" cy="32" rx="6" ry="2.5"/>
+</svg>

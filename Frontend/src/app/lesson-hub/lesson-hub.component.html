@@ -1,11 +1,15 @@
 <app-header></app-header>
 
 <div *ngFor="let lesson of lessons">
-  <app-lesson-card
-    [lesson]="lesson"
+  <div
+    class="bg-white rounded-2xl shadow-md p-4 mb-3 hover:shadow-lg cursor-pointer transition-shadow flex items-center gap-4"
     (click)="onLessonClick(lesson, lesson.exercises)"
-  ></app-lesson-card>
-  <h1>hello</h1>
+  >
+    <span class="text-sm font-medium text-gray-700 truncate">{{ lesson.title }}</span>
+    <span class="ml-auto px-3 py-1 bg-green-100 text-green-700 text-xs rounded-full font-medium">
+      {{ lesson.exercises.length }} exercises
+    </span>
+  </div>
 </div>
 
 <app-footer></app-footer>

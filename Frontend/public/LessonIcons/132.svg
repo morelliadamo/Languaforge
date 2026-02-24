@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .p  { fill: var(--color, #7c3aed); }
+    .pm { fill: var(--color, #7c3aed); opacity: 0.62; }
+    .pl { fill: var(--color, #7c3aed); opacity: 0.28; }
+  </style>
+  <!-- Envelope body -->
+  <rect class="pl" x="8"  y="16" width="48" height="34" rx="4"/>
+  <!-- Envelope flap (triangle) -->
+  <path class="pm" d="M8 16 L32 36 L56 16 Z"/>
+  <!-- Envelope fold lines -->
+  <path class="p"  d="M8 50 L24 34" fill="none" stroke="var(--color,#7c3aed)" stroke-width="2.2" stroke-linecap="round" opacity="0.55"/>
+  <path class="p"  d="M56 50 L40 34" fill="none" stroke="var(--color,#7c3aed)" stroke-width="2.2" stroke-linecap="round" opacity="0.55"/>
+  <!-- @ symbol overlay -->
+  <circle class="p"  cx="46" cy="14" r="10" opacity="0.15"/>
+  <circle class="pm" cx="46" cy="14" r="4.5" fill="none" stroke="var(--color,#7c3aed)" stroke-width="2.5"/>
+  <circle class="p"  cx="46" cy="14" r="2"/>
+  <path   class="p"  d="M50.5 11 C50.5 7.5 43 8 43 14 C43 18 45 20 48 19.5 L50.5 19" fill="none" stroke="var(--color,#7c3aed)" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

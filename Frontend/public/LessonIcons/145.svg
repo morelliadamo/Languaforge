@@ -1,0 +1,33 @@
+<!-- Celebrations – Ünnepek -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <style>
+    .p  { fill: var(--color, #e11d48); }
+    .pm { fill: var(--color, #e11d48); opacity: 0.65; }
+    .pl { fill: var(--color, #e11d48); opacity: 0.28; }
+  </style>
+
+  <!-- Party popper cone -->
+  <path class="p"
+    d="M6 42 L22 20 L30 28 Z"/>
+  <path class="pm"
+    d="M22 20 L30 28 L26 30 Z"/>
+
+  <!-- Explosion burst -->
+  <circle class="pl" cx="30" cy="18" r="13"/>
+
+  <!-- Confetti pieces -->
+  <rect class="p"  x="28" y="6"  width="4" height="4" rx="1" transform="rotate(20 28 6)"/>
+  <rect class="pm" x="38" y="10" width="3" height="3" rx="1" transform="rotate(-15 38 10)"/>
+  <rect class="p"  x="36" y="22" width="4" height="4" rx="1" transform="rotate(35 36 22)"/>
+  <rect class="pm" x="22" y="8"  width="3" height="3" rx="1" transform="rotate(-30 22 8)"/>
+  <rect class="p"  x="42" y="17" width="3" height="5" rx="1" transform="rotate(10 42 17)"/>
+
+  <!-- Star -->
+  <text x="30" y="22" text-anchor="middle"
+        font-family="system-ui,sans-serif" font-size="11" font-weight="700"
+        fill="white" opacity="0.9">★</text>
+
+  <!-- Streamer curl from popper -->
+  <path fill="none" stroke="var(--color, #e11d48)" stroke-width="2" stroke-linecap="round"
+    d="M24 22 Q18 16 20 10 Q22 5 28 8"/>
+</svg>

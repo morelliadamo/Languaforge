@@ -1,0 +1,32 @@
+<!-- Vehicles – Járművek -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <style>
+    .p  { fill: var(--color, #ea580c); }
+    .pm { fill: var(--color, #ea580c); opacity: 0.65; }
+    .pl { fill: var(--color, #ea580c); opacity: 0.30; }
+  </style>
+
+  <!-- Car body -->
+  <rect class="p" x="4" y="22" width="40" height="14" rx="3"/>
+
+  <!-- Cabin roof -->
+  <path class="pm" d="M11 22 L15 12 H33 L37 22 Z"/>
+
+  <!-- Windshield cutout -->
+  <path fill="white" opacity="0.5" d="M17 14 L14.5 21 H33.5 L31 14 Z"/>
+
+  <!-- Windows (cabin) -->
+  <rect class="pl" x="16" y="14" width="7" height="7" rx="1.5"/>
+  <rect class="pl" x="25" y="14" width="7" height="7" rx="1.5"/>
+
+  <!-- Wheels -->
+  <circle fill="white" cx="13" cy="36" r="5"/>
+  <circle class="pm" cx="13" cy="36" r="3"/>
+  <circle fill="white" cx="35" cy="36" r="5"/>
+  <circle class="pm" cx="35" cy="36" r="3"/>
+
+  <!-- Headlight -->
+  <rect class="pl" x="38" y="25" width="4" height="3" rx="1"/>
+  <!-- Taillight -->
+  <rect class="pm" x="6"  y="25" width="3" height="3" rx="1"/>
+</svg>

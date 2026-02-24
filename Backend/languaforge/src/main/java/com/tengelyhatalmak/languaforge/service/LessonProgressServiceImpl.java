@@ -3,9 +3,11 @@ package com.tengelyhatalmak.languaforge.service;
 import com.tengelyhatalmak.languaforge.model.Lesson;
 import com.tengelyhatalmak.languaforge.model.LessonProgress;
 import com.tengelyhatalmak.languaforge.model.User;
+import com.tengelyhatalmak.languaforge.model.UserXCourse;
 import com.tengelyhatalmak.languaforge.repository.LessonProgressRepository;
 import com.tengelyhatalmak.languaforge.repository.LessonRepository;
 import com.tengelyhatalmak.languaforge.repository.UserRepository;
+import com.tengelyhatalmak.languaforge.repository.UserXCourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,8 @@ public class LessonProgressServiceImpl implements LessonProgressService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private UserXCourseRepository userXCourseRepository;
 
     @Override
     public LessonProgress saveLessonProgress(LessonProgress lessonProgress) {
@@ -59,6 +63,20 @@ public class LessonProgressServiceImpl implements LessonProgressService {
     }
 
     @Override
+    public List<LessonProgress> findLessonProgressesByUserIdAndCourseId(Integer userId, Integer courseId) {
+
+    List<LessonProgress> userLessonProgresses = findLessonProgressesByUserId(userId);
+
+        return userLessonProgresses.stream()
+                .filter(lp -> {
+                    Lesson lesson = lessonRepository.findById(lp.getLessonId())
+                            .orElseThrow(() -> new RuntimeException("Lesson not found with id: " + lp.getLessonId()));
+                    return lesson.getUnit().getCourseId().equals(courseId);
+                })
+                .toList();
+    }
+
+    @Override
     public List<LessonProgress> findCompletedLessonProgressesByUserId(Integer userId) {
         return lessonProgressRepository.findCompletedByUserId(userId);
     }
@@ -70,14 +88,68 @@ public class LessonProgressServiceImpl implements LessonProgressService {
                 .orElseThrow(() -> new RuntimeException("LessonProgress not found"));
 
         existingLessonProgress.setCompletedExercises(lessonProgress.getCompletedExercises());
+        existingLessonProgress.setUpdatedAt(Timestamp.valueOf(LocalDateTime.now()));
 
         if (existingLessonProgress.getCompletedExercises() >= existingLessonProgress.getExerciseCount()) {
             existingLessonProgress.setCompletedAt(Timestamp.valueOf(LocalDateTime.now()));
         }
-        existingLessonProgress.setUpdatedAt(Timestamp.valueOf(LocalDateTime.now()));
 
-        return lessonProgressRepository.save(existingLessonProgress);
+        LessonProgress saved = lessonProgressRepository.save(existingLessonProgress);
+
+        try {
+            Integer userId = existingLessonProgress.getUserId();
+
+            Lesson lesson = lessonRepository.findById(existingLessonProgress.getLessonId())
+                    .orElseThrow(() -> new RuntimeException("Lesson not found"));
+
+            Integer courseId = lesson.getUnit().getCourseId();
+
+            System.out.println("=== Course Progress Update ===");
+            System.out.println("userId: " + userId);
+            System.out.println("courseId: " + courseId);
+
+            List<Integer> courseLessonIds = lessonRepository.findLessonIdsByCourseId(courseId);
+            System.out.println("courseLessonIds: " + courseLessonIds);
+
+            int totalLessons = courseLessonIds.size();
+            int completedLessons = 0;
+
+            List<LessonProgress> userProgresses = lessonProgressRepository.findByUserId(userId);
+
+            for (Integer lessonId : courseLessonIds) {
+                for (LessonProgress lp : userProgresses) {
+                    if (lp.getLessonId().equals(lessonId)
+                            && lp.getCompletedExercises() >= lp.getExerciseCount()) {
+                        completedLessons++;
+                        break;
+                    }
+                }
+            }
+
+            System.out.println("completedLessons: " + completedLessons);
+            System.out.println("totalLessons: " + totalLessons);
+
+            Double progress = totalLessons > 0 ? (double) completedLessons / totalLessons : 0.0;
+            System.out.println("calculated progress: " + progress);
+
+            UserXCourse userXCourse = userXCourseRepository.findUserXCoursesByUserIdAndCourseId(userId, courseId);
+            System.out.println("userXCourse: " + userXCourse);
+
+            if (userXCourse != null) {
+                userXCourse.setProgress(progress);
+                userXCourseRepository.save(userXCourse);
+                System.out.println("Progress saved: " + progress);
+            } else {
+                System.err.println("No UserXCourse found for userId=" + userId + ", courseId=" + courseId);
+            }
+        } catch (Exception e) {
+            System.err.println("Error updating course progress: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return saved;
     }
+
 
 
     @Override

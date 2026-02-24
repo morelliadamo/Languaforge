@@ -1,0 +1,24 @@
+<!-- Objects – Tárgyak -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <style>
+    .p  { fill: var(--color, #2563eb); }
+    .pl { fill: var(--color, #2563eb); opacity: 0.30; }
+    .pm { fill: var(--color, #2563eb); opacity: 0.60; }
+    .str { fill: none; stroke: var(--color, #2563eb); stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+
+  <!-- Book cover -->
+  <rect class="p" x="8" y="8" width="26" height="34" rx="3"/>
+
+  <!-- Spine shadow -->
+  <rect class="pm" x="8" y="8" width="6" height="34" rx="3"/>
+
+  <!-- Page lines -->
+  <line class="str" stroke-width="2" stroke-opacity="0.45" x1="18" y1="16" x2="30" y2="16"/>
+  <line class="str" stroke-width="2" stroke-opacity="0.45" x1="18" y1="21" x2="30" y2="21"/>
+  <line class="str" stroke-width="2" stroke-opacity="0.45" x1="18" y1="26" x2="30" y2="26"/>
+  <line class="str" stroke-width="2" stroke-opacity="0.45" x1="18" y1="31" x2="26" y2="31"/>
+
+  <!-- Bookmark ribbon -->
+  <polygon class="pm" points="35,8 40,8 40,24 37.5,21 35,24"/>
+</svg>

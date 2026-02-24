@@ -10,6 +10,7 @@ public interface LessonProgressService {
     List<LessonProgress> findAllLessonProgresses();
     LessonProgress findLessonProgressById(Integer id);
     List<LessonProgress> findLessonProgressesByUserId(Integer userId);
+    List<LessonProgress> findLessonProgressesByUserIdAndCourseId(Integer userId, Integer courseId);
     List<LessonProgress> findCompletedLessonProgressesByUserId(Integer userId);
 
 

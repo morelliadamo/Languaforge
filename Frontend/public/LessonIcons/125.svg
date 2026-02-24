@@ -1,0 +1,29 @@
+<!-- Ordering Food – Rendelés -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <style>
+    .p  { fill: var(--color, #dc2626); }
+    .pm { fill: var(--color, #dc2626); opacity: 0.60; }
+    .pl { fill: var(--color, #dc2626); opacity: 0.25; }
+  </style>
+
+  <!-- Plate -->
+  <circle class="pl" cx="24" cy="26" r="17"/>
+  <circle class="pm" cx="24" cy="26" r="17" fill="none" stroke="var(--color, #dc2626)" stroke-width="2"/>
+
+  <!-- Inner plate ring -->
+  <circle fill="none" stroke="var(--color, #dc2626)" stroke-width="1" stroke-opacity="0.35" cx="24" cy="26" r="12"/>
+
+  <!-- Fork (left) -->
+  <line stroke="var(--color, #dc2626)" stroke-width="2.5" stroke-linecap="round" x1="11" y1="7" x2="11" y2="20"/>
+  <path fill="none" stroke="var(--color, #dc2626)" stroke-width="1.5" stroke-linecap="round"
+    d="M9 7 L9 13 Q11 15 13 13 L13 7"/>
+  <line stroke="var(--color, #dc2626)" stroke-width="2" stroke-linecap="round" stroke-opacity="0.5" x1="11" y1="20" x2="11" y2="44"/>
+
+  <!-- Knife (right) -->
+  <line stroke="var(--color, #dc2626)" stroke-width="2.5" stroke-linecap="round" x1="37" y1="7" x2="37" y2="44"/>
+  <path class="p" d="M35 7 Q37 7 39 11 L37 18 Z"/>
+
+  <!-- Food on plate (simplified dome) -->
+  <path class="pm"
+    d="M15 26 Q19 18 24 18 Q29 18 33 26 Z"/>
+</svg>

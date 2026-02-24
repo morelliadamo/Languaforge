@@ -1,0 +1,30 @@
+<!-- Hotel – Szálloda -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <style>
+    .p  { fill: var(--color, #7c3aed); }
+    .pm { fill: var(--color, #7c3aed); opacity: 0.60; }
+    .pl { fill: var(--color, #7c3aed); opacity: 0.25; }
+  </style>
+
+  <!-- Main building -->
+  <rect class="p" x="8" y="16" width="32" height="28" rx="2"/>
+
+  <!-- Roof / pediment -->
+  <polygon class="pm" points="4,18 24,6 44,18"/>
+
+  <!-- Grid of windows -->
+  <rect fill="white" opacity="0.75" x="13" y="21" width="5" height="5" rx="1"/>
+  <rect fill="white" opacity="0.75" x="22" y="21" width="5" height="5" rx="1"/>
+  <rect fill="white" opacity="0.75" x="31" y="21" width="5" height="5" rx="1"/>
+  <rect fill="white" opacity="0.75" x="13" y="30" width="5" height="5" rx="1"/>
+  <rect fill="white" opacity="0.75" x="31" y="30" width="5" height="5" rx="1"/>
+
+  <!-- Door -->
+  <rect class="pm" x="20" y="33" width="8" height="11" rx="1.5"/>
+  <!-- Door knob -->
+  <circle fill="white" opacity="0.9" cx="26" cy="39" r="1"/>
+
+  <!-- Star on pediment -->
+  <text x="24" y="16" text-anchor="middle" font-family="system-ui,sans-serif"
+        font-size="7" fill="white" opacity="0.9">★</text>
+</svg>
