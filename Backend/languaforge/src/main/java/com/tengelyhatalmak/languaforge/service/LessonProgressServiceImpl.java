@@ -1,14 +1,14 @@
 package com.tengelyhatalmak.languaforge.service;
 
+import com.tengelyhatalmak.languaforge.domainevent.LessonCompletedDE;
 import com.tengelyhatalmak.languaforge.model.Lesson;
 import com.tengelyhatalmak.languaforge.model.LessonProgress;
 import com.tengelyhatalmak.languaforge.model.User;
 import com.tengelyhatalmak.languaforge.model.UserXCourse;
-import com.tengelyhatalmak.languaforge.repository.LessonProgressRepository;
-import com.tengelyhatalmak.languaforge.repository.LessonRepository;
-import com.tengelyhatalmak.languaforge.repository.UserRepository;
-import com.tengelyhatalmak.languaforge.repository.UserXCourseRepository;
+import com.tengelyhatalmak.languaforge.repository.*;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -29,6 +29,9 @@ public class LessonProgressServiceImpl implements LessonProgressService {
 
     @Autowired
     private UserXCourseRepository userXCourseRepository;
+
+    private ApplicationEventPublisher eventPublisher;
+
 
     @Override
     public LessonProgress saveLessonProgress(LessonProgress lessonProgress) {
@@ -82,10 +85,12 @@ public class LessonProgressServiceImpl implements LessonProgressService {
     }
 
     @Override
+    @Transactional
     public LessonProgress updateLessonProgress(LessonProgress lessonProgress, Integer id) {
 
         LessonProgress existingLessonProgress = lessonProgressRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("LessonProgress not found"));
+
 
         existingLessonProgress.setCompletedExercises(lessonProgress.getCompletedExercises());
         existingLessonProgress.setUpdatedAt(Timestamp.valueOf(LocalDateTime.now()));
@@ -93,6 +98,8 @@ public class LessonProgressServiceImpl implements LessonProgressService {
         if (existingLessonProgress.getCompletedExercises() >= existingLessonProgress.getExerciseCount()) {
             existingLessonProgress.setCompletedAt(Timestamp.valueOf(LocalDateTime.now()));
         }
+
+        publishIfNewlyCompleted(existingLessonProgress); // check if the lesson was just completed and publish event if so
 
         LessonProgress saved = lessonProgressRepository.save(existingLessonProgress);
 
@@ -126,6 +133,8 @@ public class LessonProgressServiceImpl implements LessonProgressService {
                 }
             }
 
+
+
             System.out.println("completedLessons: " + completedLessons);
             System.out.println("totalLessons: " + totalLessons);
 
@@ -149,6 +158,17 @@ public class LessonProgressServiceImpl implements LessonProgressService {
 
         return saved;
     }
+    private void publishIfNewlyCompleted(LessonProgress lessonProgress) {
+        if (lessonProgress.getCompletedExercises() >= lessonProgress.getExerciseCount()
+                && lessonProgress.getCompletedAt() == null)
+            eventPublisher.publishEvent(
+                    new LessonCompletedDE(this,
+                            lessonProgress.getUserId(),
+                            lessonProgress.getLessonId())
+            );
+    }
+
+
 
 
 

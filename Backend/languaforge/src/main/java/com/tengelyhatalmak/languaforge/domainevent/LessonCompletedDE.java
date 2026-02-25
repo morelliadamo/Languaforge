@@ -14,13 +14,14 @@ import java.time.LocalDateTime;
 public class LessonCompletedDE extends ApplicationEvent {
     private Integer userId;
     private Integer lessonId;
-    private Timestamp completedAt = Timestamp.valueOf(LocalDateTime.now());
+    private Timestamp completedAt;
 
 
     public LessonCompletedDE(Object source, Integer userId, Integer lessonId) {
         super(source);
         this.userId = userId;
         this.lessonId = lessonId;
+        this.completedAt = Timestamp.valueOf(LocalDateTime.now());
     }
 
 }

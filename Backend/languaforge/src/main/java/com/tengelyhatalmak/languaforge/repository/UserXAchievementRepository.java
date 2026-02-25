@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Set;
 
 public interface UserXAchievementRepository extends JpaRepository<UserXAchievement, Integer> {
     @Query("SELECT uxa FROM UserXAchievement uxa JOIN uxa.user u WHERE u.username = :username AND uxa.isDeleted = false")
@@ -30,4 +31,9 @@ public interface UserXAchievementRepository extends JpaRepository<UserXAchieveme
 
     @Query("SELECT COUNT(uxa) FROM UserXAchievement uxa WHERE uxa.achievementId = :achievementId AND uxa.isDeleted = false")
     Integer countUserXAchievementByAchievementId(@Param("achievementId") Integer achievementId);
+
+    @Query("SELECT uxa.achievement.id FROM UserXAchievement uxa WHERE uxa.userId = :userId AND uxa.isDeleted = false")
+    Set<Integer> findAchievementIdsByUserId(@Param("userId") Integer userId);
+
+
 }
