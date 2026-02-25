@@ -6,4 +6,8 @@ export interface Achievement {
   createdAt: string;
   isDeleted: boolean;
   deletedAt: string | null;
+  earnCondition: {
+    condition: string;
+    value: string;
+  } | null;
 }

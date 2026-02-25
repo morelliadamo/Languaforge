@@ -15,7 +15,7 @@
             [src]="getAvatar(friend)"
             [alt]="friend.username"
             class="h-10 w-10 rounded-full object-cover"
-            (error)="onAvatarError($event, friend.username ?? 'U')"
+            (error)="onAvatarError($event, friend.username)"
           />
 
           <!-- Text -->

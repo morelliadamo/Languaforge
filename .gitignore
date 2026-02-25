@@ -5,3 +5,8 @@ Backend/languaforge/microservice/.venv/Lib/site-packages/llvmlite/binding/llvmli
 /Frontend/.angular
 Backend/languaforge/microservice/.venv/Lib/
 
+/Frontend/node_modules/@algolia
+/Frontend/node_modules
+/Frontend/node_modules
+/Frontend/node_modules
+/Frontend/node_modules

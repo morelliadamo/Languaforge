@@ -81,7 +81,7 @@ public class AchievementUnlockService {
 
         messagingTemplate.convertAndSendToUser(
                 userId.toString(),
-                "queue/achievementsUnlocked",
+                "topic/achievementsUnlocked",
                 new AchievementUnlockedDTO(
                         achievement.getId(),
                         achievement.getName(),
