@@ -1,12 +1,17 @@
 package com.tengelyhatalmak.languaforge.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.lettuce.core.json.JsonObject;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.bouncycastle.util.Times;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -23,6 +28,7 @@ public class Achievement {
 
 
     @OneToMany(mappedBy = "achievement", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<UserXAchievement> usersOfAchievement = new ArrayList<>();
 
 
@@ -36,6 +42,10 @@ public class Achievement {
 
     @Column(name = "description", nullable = false)
     private String description;
+
+    @Column(name = "earn_condition", nullable = false)
+    @JdbcTypeCode(SqlTypes.JSON)
+    private AchievementEarnCondition earnCondition;
 
     @Column(name = "icon_url", nullable = false)
     private String iconUrl;
