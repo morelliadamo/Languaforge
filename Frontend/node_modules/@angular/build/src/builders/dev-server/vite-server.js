@@ -83,7 +83,14 @@ async function* serveWithVite(serverOptions, builderName, builderAction, context
         browserOptions.ssr ||= true;
     }
     // Disable auto CSP.
+    const allowedHosts = Array.isArray(serverOptions.allowedHosts)
+        ? [...serverOptions.allowedHosts]
+        : [];
+    // Always allow the dev server host
+    allowedHosts.push(serverOptions.host);
     browserOptions.security = {
+        allowedHosts,
+        // Disable auto CSP.
         autoCsp: false,
     };
     // Disable JSON build stats.

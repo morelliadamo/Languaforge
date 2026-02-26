@@ -1,0 +1,16 @@
+@if(currentUnlock()){
+<div class="achievement-popup">
+  <div class="card">
+    <button class="close-btn" (click)="hide()">×</button>
+
+    <img [src]="currentUnlock()!.iconUrl" alt="Achievement icon" class="icon" />
+
+    <h2>🎉 Achievement Unlocked!</h2>
+    <h3>{{ currentUnlock()!.name }}</h3>
+    <p>{{ currentUnlock()!.description }}</p>
+
+    <small>Earned {{ currentUnlock()!.earnedAt | date:'short' }}</small>
+  </div>
+</div>
+
+}

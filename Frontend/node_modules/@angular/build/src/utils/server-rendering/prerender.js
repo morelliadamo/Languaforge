@@ -124,6 +124,9 @@ async function renderPages(baseHref, sourcemap, serializableRouteTreeNode, maxTh
             hasSsrEntry: !!outputFilesForWorker['server.mjs'],
         },
         execArgv: workerExecArgv,
+        env: {
+            'NG_ALLOWED_HOSTS': 'localhost',
+        },
     });
     try {
         const renderingPromises = [];
@@ -203,6 +206,9 @@ async function getAllRoutes(workspaceRoot, baseHref, outputFilesForWorker, asset
             hasSsrEntry: !!outputFilesForWorker['server.mjs'],
         },
         execArgv: workerExecArgv,
+        env: {
+            'NG_ALLOWED_HOSTS': 'localhost',
+        },
     });
     try {
         const { serializedRouteTree, appShellRoute, errors } = await renderWorker.run({});

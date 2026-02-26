@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { AuthServiceService } from '../services/auth-service.service';
 import { Router, RouterLink } from '@angular/router';
 import { InventoryComponent } from '../inventory/inventory.component';
+import { AchievementUnlocked } from '../achievement-unlocked/achievement-unlocked';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, InventoryComponent],
+  imports: [RouterLink, InventoryComponent, AchievementUnlocked],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
