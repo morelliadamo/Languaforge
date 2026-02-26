@@ -15,11 +15,32 @@ export class AchievementUnlocked {
   currentUnlock = signal<AchievementUnlockedDTO | null>(null);
 
   constructor() {
+    //   effect(() => {
+    //     const unlock = this.achievementService.unlocked();
+    //     if (unlock) {
+    //       this.currentUnlock.set(unlock);
+
+    //       setTimeout(() => {
+    //         this.shootConfetti();
+    //       }, 0);
+
+    //       setTimeout(() => {
+    //         if (this.currentUnlock() === unlock) {
+    //           this.hide();
+    //         }
+    //       }, 6000);
+    //     }
+    //   });
+    // }
     effect(() => {
       const unlock = this.achievementService.unlocked();
       if (unlock) {
         this.currentUnlock.set(unlock);
-        this.shootConfetti();
+
+        // Confetti
+        setTimeout(() => this.shootConfetti(), 0);
+
+        // Auto-hide after 6s
         setTimeout(() => {
           if (this.currentUnlock() === unlock) {
             this.hide();
@@ -49,12 +70,14 @@ export class AchievementUnlocked {
         angle: 60,
         spread: 55,
         origin: { x: 0 },
+        zIndex: 9999,
       });
       confetti({
         particleCount: 5,
         angle: 120,
         spread: 55,
         origin: { x: 1 },
+        zIndex: 9999,
       });
     }, 200);
   }

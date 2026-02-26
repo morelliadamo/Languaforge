@@ -15,6 +15,8 @@ import { UtilService } from '../services/util.service';
 import { LoadingOverlayComponent } from '../loading-overlay/loading-overlay.component';
 import { ActivityHeatmapComponent } from '../activity-heatmap/activity-heatmap.component';
 import { CourseLogicService } from '../services/course-logic.service';
+import { AchievementUnlocked } from '../achievement-unlocked/achievement-unlocked';
+import { AchievementService } from '../services/achievement.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,6 +26,7 @@ import { CourseLogicService } from '../services/course-logic.service';
     FooterComponent,
     LoadingOverlayComponent,
     ActivityHeatmapComponent,
+    AchievementUnlocked,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
@@ -71,6 +74,8 @@ export class DashboardComponent {
 
   availableCoursesToStart: LoadedCourse[] = [];
   startedCourses: LoadedCourse[] = [];
+
+  achievementService = inject(AchievementService);
 
   // delay to ensure loading overlay appears
 

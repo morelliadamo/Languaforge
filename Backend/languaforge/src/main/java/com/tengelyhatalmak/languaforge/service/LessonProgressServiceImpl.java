@@ -7,7 +7,6 @@ import com.tengelyhatalmak.languaforge.model.User;
 import com.tengelyhatalmak.languaforge.model.UserXCourse;
 import com.tengelyhatalmak.languaforge.repository.*;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
@@ -18,33 +17,38 @@ import java.util.List;
 @Service
 public class LessonProgressServiceImpl implements LessonProgressService {
 
-    @Autowired
-    private LessonProgressRepository lessonProgressRepository;
+    private final LessonProgressRepository lessonProgressRepository;
+    private final LessonRepository lessonRepository;
+    private final UserRepository userRepository;
+    private final UserXCourseRepository userXCourseRepository;
+    private final ApplicationEventPublisher eventPublisher;
 
-    @Autowired
-    private LessonRepository lessonRepository;
-
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private UserXCourseRepository userXCourseRepository;
-
-    private ApplicationEventPublisher eventPublisher;
-
+    public LessonProgressServiceImpl(
+            LessonProgressRepository lessonProgressRepository,
+            LessonRepository lessonRepository,
+            UserRepository userRepository,
+            UserXCourseRepository userXCourseRepository,
+            ApplicationEventPublisher eventPublisher
+    ) {
+        this.lessonProgressRepository = lessonProgressRepository;
+        this.lessonRepository = lessonRepository;
+        this.userRepository = userRepository;
+        this.userXCourseRepository = userXCourseRepository;
+        this.eventPublisher = eventPublisher;
+    }
 
     @Override
     public LessonProgress saveLessonProgress(LessonProgress lessonProgress) {
-//        ensuring lesson and user exist before saving the progress, and setting the exercise count for the lesson
-        Lesson tempLesson= lessonRepository.findById(lessonProgress.getLessonId())
+
+        Lesson lesson = lessonRepository.findById(lessonProgress.getLessonId())
                 .orElseThrow(() -> new RuntimeException("Lesson not found with id: " + lessonProgress.getLessonId()));
 
-        lessonProgress.setExerciseCount(tempLesson.getExercises().size());
+        lessonProgress.setExerciseCount(lesson.getExercises().size());
 
-        User tempUser = userRepository.findById(lessonProgress.getUserId())
+        User user = userRepository.findById(lessonProgress.getUserId())
                 .orElseThrow(() -> new RuntimeException("User not found with id: " + lessonProgress.getUserId()));
 
-        lessonProgress.setUser(tempUser);
+        lessonProgress.setUser(user);
 
         return lessonProgressRepository.save(lessonProgress);
     }
@@ -68,7 +72,7 @@ public class LessonProgressServiceImpl implements LessonProgressService {
     @Override
     public List<LessonProgress> findLessonProgressesByUserIdAndCourseId(Integer userId, Integer courseId) {
 
-    List<LessonProgress> userLessonProgresses = findLessonProgressesByUserId(userId);
+        List<LessonProgress> userLessonProgresses = findLessonProgressesByUserId(userId);
 
         return userLessonProgresses.stream()
                 .filter(lp -> {
@@ -88,35 +92,54 @@ public class LessonProgressServiceImpl implements LessonProgressService {
     @Transactional
     public LessonProgress updateLessonProgress(LessonProgress lessonProgress, Integer id) {
 
-        LessonProgress existingLessonProgress = lessonProgressRepository.findById(id)
+        LessonProgress existing = lessonProgressRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("LessonProgress not found"));
 
+        boolean wasCompletedBefore = existing.getCompletedAt() != null;
 
-        existingLessonProgress.setCompletedExercises(lessonProgress.getCompletedExercises());
-        existingLessonProgress.setUpdatedAt(Timestamp.valueOf(LocalDateTime.now()));
+        existing.setCompletedExercises(lessonProgress.getCompletedExercises());
+        existing.setUpdatedAt(Timestamp.valueOf(LocalDateTime.now()));
 
-        if (existingLessonProgress.getCompletedExercises() >= existingLessonProgress.getExerciseCount()) {
-            existingLessonProgress.setCompletedAt(Timestamp.valueOf(LocalDateTime.now()));
+        boolean isNowCompleted =
+                existing.getCompletedExercises() >= existing.getExerciseCount();
+
+
+
+        System.out.println("=========wasCompletedBefore: " + wasCompletedBefore+"=========");
+        System.out.println("=========completedExercises: " + existing.getCompletedExercises()+"=========");
+        System.out.println("=========exerciseCount: " + existing.getExerciseCount()+"=========");
+        System.out.println("===========isNowCompleted: " + isNowCompleted+"=========");
+        if (isNowCompleted && !wasCompletedBefore) {
+
+            existing.setCompletedAt(Timestamp.valueOf(LocalDateTime.now()));
+
+            // 🔥 Publish event ONLY when transitioning to completed
+            eventPublisher.publishEvent(
+                    new LessonCompletedDE(
+                            this,
+                            existing.getUserId(),
+                            existing.getLessonId()
+                    )
+            );
         }
 
-        publishIfNewlyCompleted(existingLessonProgress); // check if the lesson was just completed and publish event if so
+        LessonProgress saved = lessonProgressRepository.save(existing);
 
-        LessonProgress saved = lessonProgressRepository.save(existingLessonProgress);
+        updateCourseProgress(existing);
 
+        return saved;
+    }
+
+    private void updateCourseProgress(LessonProgress lessonProgress) {
         try {
-            Integer userId = existingLessonProgress.getUserId();
+            Integer userId = lessonProgress.getUserId();
 
-            Lesson lesson = lessonRepository.findById(existingLessonProgress.getLessonId())
+            Lesson lesson = lessonRepository.findById(lessonProgress.getLessonId())
                     .orElseThrow(() -> new RuntimeException("Lesson not found"));
 
             Integer courseId = lesson.getUnit().getCourseId();
 
-            System.out.println("=== Course Progress Update ===");
-            System.out.println("userId: " + userId);
-            System.out.println("courseId: " + courseId);
-
             List<Integer> courseLessonIds = lessonRepository.findLessonIdsByCourseId(courseId);
-            System.out.println("courseLessonIds: " + courseLessonIds);
 
             int totalLessons = courseLessonIds.size();
             int completedLessons = 0;
@@ -133,67 +156,45 @@ public class LessonProgressServiceImpl implements LessonProgressService {
                 }
             }
 
+            Double progress = totalLessons > 0
+                    ? (double) completedLessons / totalLessons
+                    : 0.0;
 
-
-            System.out.println("completedLessons: " + completedLessons);
-            System.out.println("totalLessons: " + totalLessons);
-
-            Double progress = totalLessons > 0 ? (double) completedLessons / totalLessons : 0.0;
-            System.out.println("calculated progress: " + progress);
-
-            UserXCourse userXCourse = userXCourseRepository.findUserXCoursesByUserIdAndCourseId(userId, courseId);
-            System.out.println("userXCourse: " + userXCourse);
+            UserXCourse userXCourse =
+                    userXCourseRepository.findUserXCoursesByUserIdAndCourseId(userId, courseId);
 
             if (userXCourse != null) {
                 userXCourse.setProgress(progress);
                 userXCourseRepository.save(userXCourse);
-                System.out.println("Progress saved: " + progress);
-            } else {
-                System.err.println("No UserXCourse found for userId=" + userId + ", courseId=" + courseId);
             }
+
         } catch (Exception e) {
             System.err.println("Error updating course progress: " + e.getMessage());
             e.printStackTrace();
         }
-
-        return saved;
     }
-    private void publishIfNewlyCompleted(LessonProgress lessonProgress) {
-        if (lessonProgress.getCompletedExercises() >= lessonProgress.getExerciseCount()
-                && lessonProgress.getCompletedAt() == null)
-            eventPublisher.publishEvent(
-                    new LessonCompletedDE(this,
-                            lessonProgress.getUserId(),
-                            lessonProgress.getLessonId())
-            );
-    }
-
-
-
-
 
     @Override
     public Boolean isLessonCompleted(Integer id) {
-        LessonProgress lessonProgressToCheck = lessonProgressRepository.findById(id)
+        LessonProgress lessonProgress = lessonProgressRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("LessonProgress not found"));
 
-        return lessonProgressToCheck.isLessonCompleted();
+        return lessonProgress.getCompletedAt() != null;
     }
 
     @Override
     public LessonProgress softDeleteLessonProgress(Integer id) {
-        LessonProgress lessonProgressToSoftDelete = lessonProgressRepository.findById(id)
+        LessonProgress lessonProgress = lessonProgressRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("LessonProgress not found"));
 
-        lessonProgressToSoftDelete.setIsDeleted(true);
-        lessonProgressToSoftDelete.setDeletedAt(Timestamp.valueOf(LocalDateTime.now()));
+        lessonProgress.setIsDeleted(true);
+        lessonProgress.setDeletedAt(Timestamp.valueOf(LocalDateTime.now()));
 
-        return lessonProgressRepository.save(lessonProgressToSoftDelete);
+        return lessonProgressRepository.save(lessonProgress);
     }
 
     @Override
     public void deleteLessonProgress(Integer id) {
-        System.out.println("Deleting LessonProgress with id: "+id);
         lessonProgressRepository.deleteById(id);
     }
 }

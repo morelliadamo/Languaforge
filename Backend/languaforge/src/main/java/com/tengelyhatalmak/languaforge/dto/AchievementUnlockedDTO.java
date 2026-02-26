@@ -8,10 +8,10 @@ import java.sql.Timestamp;
 @Data
 @AllArgsConstructor
 public class AchievementUnlockedDTO {
-    private Integer achievementId;
-    private String achievementName;
-    private String achievementDescription;
-    private String achievementIconUrl;
+    private Integer id;
+    private String name;
+    private String description;
+    private String iconUrl;
     private Timestamp earnedAt;
 }
 
