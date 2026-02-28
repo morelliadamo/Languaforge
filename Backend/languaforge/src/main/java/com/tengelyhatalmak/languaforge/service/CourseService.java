@@ -7,9 +7,16 @@ import java.util.List;
 
 public interface CourseService {
     Course saveCourse(Course course);
+
     List<Course> findAllCourses();
     List<Unit> findAllUnitsByCourseId(Integer courseId);
     Course findCourseById(Integer id);
+
+    Course findCourseByMostUsers();
+    Course findCourseByBestReviews();
+
+
+
     Course updateCourse(Course course, Integer id);
 
     void deleteCourseById(Integer id);

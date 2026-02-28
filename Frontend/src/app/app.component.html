@@ -1,2 +1,13 @@
 <router-outlet> </router-outlet>
 <app-achievement-unlocked></app-achievement-unlocked>
+
+@if (showStreakMessageSad) {
+  <app-streak-changed
+    [streakEvent]="{
+      currentStreak: streak?.currentStreak ?? 0,
+      longestStreak: streak?.longestStreak ?? 0,
+      isReset: true,
+      message: '',
+    }"
+  ></app-streak-changed>
+}

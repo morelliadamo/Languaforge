@@ -2,10 +2,12 @@ package com.tengelyhatalmak.languaforge.service;
 
 import com.tengelyhatalmak.languaforge.model.Streak;
 import com.tengelyhatalmak.languaforge.repository.StreakRepository;
+import com.tengelyhatalmak.languaforge.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -16,9 +18,12 @@ public class StreakServiceImpl implements StreakService{
     private StreakRepository streakRepository;
 
 
+
+    @Autowired
+    private UserRepository userRepository;
+
     @Override
     public Streak saveStreak(Streak streak) {
-
         return streakRepository.save(streak);
     }
 
@@ -52,6 +57,31 @@ public class StreakServiceImpl implements StreakService{
     }
 
     @Override
+    public Streak fixStreakByUserId(Integer userId) {
+        Streak streak = streakRepository.findStreakByUserID(userId);
+
+        LocalDate today = LocalDate.now();
+        LocalDate lastActive = streak.getUpdatedAt()
+                .toLocalDateTime()
+                .toLocalDate();
+
+        if (lastActive.equals(today)) {
+            return streak;
+        }
+
+        if (!lastActive.plusDays(1).equals(today)) {
+            streak.setCurrentStreak(0);
+        }
+
+        streak.setUpdatedAt(Timestamp.valueOf(LocalDateTime.now()));
+
+        return streakRepository.save(streak);
+    }
+
+
+
+
+    @Override
     public Streak changeStreakFreezeState(Integer id) {
         Streak streakToChangeFreezeStateOf = streakRepository.findById(id)
                 .orElseThrow(()-> new RuntimeException("Streak not found with id: " + id));
@@ -61,6 +91,33 @@ public class StreakServiceImpl implements StreakService{
 
         return streakRepository.save(streakToChangeFreezeStateOf);
     }
+
+    @Override
+    public Streak incrementOrCreateStreak(Integer userId) {
+        try {
+            Streak streak = streakRepository.findStreakByUserID(userId);
+
+            int newCurrent = streak.getCurrentStreak() + 1;
+            streak.setCurrentStreak(newCurrent);
+
+            if (newCurrent > streak.getLongestStreak()) {
+                streak.setLongestStreak(newCurrent);
+            }
+
+            return streakRepository.save(streak);
+        } catch (Exception ex) {
+            Streak newStreak = new Streak();
+            newStreak.setUser(userRepository.findById(userId).orElseThrow());
+            newStreak.setCurrentStreak(1);
+            newStreak.setLongestStreak(1);
+            newStreak.setIsFrozen(false);
+            newStreak.setIsDeleted(false);
+            newStreak.setUpdatedAt(Timestamp.valueOf(LocalDateTime.now()));
+            return streakRepository.save(newStreak);
+        }
+    }
+
+
 
     @Override
     public Streak softDeleteStreak(Integer id) {

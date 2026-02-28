@@ -56,6 +56,14 @@ public class UserController {
         return userService.findUserById(id).getUsername();
     }
 
+    @GetMapping("/count")
+    public ResponseEntity<Integer> countUsers() {
+        if (userService.countUsers() == null) {
+            return new ResponseEntity<>(0, HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(userService.countUsers(), HttpStatus.OK);
+    }
 
 
     @PostMapping("/createUser")

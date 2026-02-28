@@ -22,7 +22,7 @@ export class CourseHubComponent implements OnInit {
   courseLogicService = inject(CourseLogicService);
 
   isLoading = true;
-  maxCourseSlots = 1;
+  maxCourseSlots = 1; //course slot system to be implemented later
   startedCourses: Course[] = [];
   completedCourses: Course[] = [];
   allCourses: Course[] = [];

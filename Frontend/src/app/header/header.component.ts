@@ -6,7 +6,7 @@ import { AchievementUnlocked } from '../achievement-unlocked/achievement-unlocke
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, InventoryComponent, AchievementUnlocked],
+  imports: [RouterLink],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })

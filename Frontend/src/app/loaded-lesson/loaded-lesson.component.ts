@@ -2,12 +2,24 @@ import { Exercise } from '../interfaces/Exercise';
 import { LessonProgress } from '../interfaces/LessonProgress';
 import { AuthServiceService } from '../services/auth-service.service';
 import { LessonProgressService } from '../services/lesson-progress.service';
+import { StreakService } from '../services/streak-service';
+import {
+  StreakEvent,
+  StreakChangedComponent,
+} from '../streak-changed/streak-changed';
 import { Lesson } from './../interfaces/Lesson';
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  inject,
+  Input,
+  Output,
+  signal,
+} from '@angular/core';
 
 @Component({
   selector: 'app-loaded-lesson',
-  imports: [],
+  imports: [StreakChangedComponent],
   templateUrl: './loaded-lesson.component.html',
   styleUrl: './loaded-lesson.component.css',
 })
@@ -18,6 +30,7 @@ export class LoadedLessonComponent {
 
   private lessonProgressService = inject(LessonProgressService);
   private authService = inject(AuthServiceService);
+  private streakService = inject(StreakService);
 
   lessonContent: Exercise[] = [];
   currentIndex: number = 0;
@@ -28,6 +41,10 @@ export class LoadedLessonComponent {
   originalExerciseCount: number = 0;
 
   correctUniqueCount: number = 0;
+
+  private previousStreakValue = signal<number>(0);
+
+  streakEvent = signal<StreakEvent | null>(null);
 
   private correctExerciseIds: Set<number> = new Set();
   private lessonProgress: LessonProgress | null = null;
@@ -104,12 +121,34 @@ export class LoadedLessonComponent {
 
     this.lessonProgressService
       .updateLessonProgress(this.lessonProgress.id, completedCount)
-      .subscribe((updated) => {
-        this.lessonProgress = updated;
-        if (updated.completedExercises >= updated.exerciseCount) {
-          this.isLessonComplete = true;
-        }
+      .subscribe({
+        next: (updated) => {
+          this.lessonProgress = updated;
+
+          if (updated.completedExercises >= updated.exerciseCount) {
+            this.isLessonComplete = true;
+            this.checkAndShowStreak();
+          }
+        },
       });
+  }
+
+  private showPositiveStreak(data: {
+    currentStreak: number;
+    longestStreak: number;
+  }) {
+    const event: StreakEvent = {
+      currentStreak: data.currentStreak,
+      longestStreak: data.longestStreak,
+      isReset: false,
+      message: '',
+    };
+    this.streakEvent.set(event);
+    console.log('[STREAK POSITIVE] Event created:', event);
+
+    setTimeout(() => {
+      this.streakEvent.set(null);
+    }, 6000);
   }
 
   private forceSaveProgress(completedCount: number) {
@@ -119,7 +158,28 @@ export class LoadedLessonComponent {
       .updateLessonProgress(this.lessonProgress.id, completedCount)
       .subscribe((updated) => {
         this.lessonProgress = updated;
+        this.checkAndShowStreak();
       });
+  }
+
+  private checkAndShowStreak() {
+    const userId = Number(this.authService.getCurrentUserId());
+
+    this.streakService.getStreakByUserId(userId).subscribe({
+      next: (latestStreak) => {
+        const newValue = latestStreak.currentStreak;
+
+        if (newValue > this.previousStreakValue()) {
+          this.showPositiveStreak({
+            currentStreak: newValue,
+            longestStreak: latestStreak.longestStreak,
+          });
+        }
+
+        this.previousStreakValue.set(newValue);
+      },
+      error: (err) => console.error('Failed to refresh streak:', err),
+    });
   }
 
   selectAnswer(answer: string) {

@@ -23,7 +23,7 @@ public class Streak {
     private Integer id;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false, insertable = false, unique = true, updatable = false)
+    @JoinColumn(name = "user_id", nullable = false, insertable = true, unique = true, updatable = false)
     @JsonIgnoreProperties({"leaderboardList", "scores", "reviews", "achievementsOfUser", "userXCourses", "loginDataList", "lessonProgresses", "streak"})
     private User user;
 

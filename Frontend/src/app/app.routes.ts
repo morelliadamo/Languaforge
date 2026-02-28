@@ -16,9 +16,11 @@ import { authGuard } from './guards/auth-guard';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { StoreComponent } from './store/store.component';
 import { LoadedCourseComponent } from './loaded-course/loaded-course.component';
+import { inject } from '@angular/core';
+import { AuthServiceService } from './services/auth-service.service';
 
 export const routes: Routes = [
-  { path: '', component: HomepageComponent },
+  { path: '', component: HomepageComponent, canActivate: [noAuthGuard] },
 
   { path: 'register', component: RegisterPageComponent },
   {

@@ -1,6 +1,7 @@
 package com.tengelyhatalmak.languaforge.controller;
 
 import com.tengelyhatalmak.languaforge.model.Streak;
+import com.tengelyhatalmak.languaforge.service.LessonProgressService;
 import com.tengelyhatalmak.languaforge.service.StreakService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,8 @@ public class StreakController {
     @Autowired
     private StreakService streakService;
 
+    @Autowired
+    private LessonProgressService lessonProgressService;
 
     @GetMapping("/")
     public List<Streak> getAllStreaks() {
@@ -25,15 +28,24 @@ public class StreakController {
         return streakService.findStreakById(id);
     }
 
-
     @GetMapping("/user/{userId}")
     public Streak getStreakByUserId(@PathVariable Integer userId) {
         return streakService.findStreakByUserId(userId);
     }
 
+    @PostMapping("/user/{userId}/incrementOrCreateStreak")
+    public Streak incrementOrCreateStreak(@PathVariable Integer userId) {
+        return streakService.incrementOrCreateStreak(userId);
+    }
+
     @PutMapping("/updateStreak/{id}")
     public Streak updateStreak(@RequestBody Streak streak, @PathVariable Integer id) {
         return streakService.updateStreak(streak, id);
+    }
+
+    @PatchMapping("/fixStreak/{userId}")
+    public Streak fixStreakByUserId(@PathVariable Integer userId) {
+        return streakService.fixStreakByUserId(userId);
     }
 
     @PatchMapping("/changeFreezeState/{id}")

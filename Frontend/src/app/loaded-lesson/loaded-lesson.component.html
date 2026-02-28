@@ -1,3 +1,9 @@
+@if (streakEvent()) {
+  <app-streak-changed
+    (closed)="streakEvent.set(null)"
+    [streakEvent]="streakEvent()"
+  ></app-streak-changed>
+}
 <div class="min-h-screen bg-gray-50 px-4 sm:px-6 lg:px-8 py-8">
   <div class="max-w-2xl mx-auto">
     <!-- Top bar: back button + lesson title -->

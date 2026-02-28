@@ -16,8 +16,9 @@ public interface StreakService {
     Streak findStreakByUserId(Integer userId);
 
     Streak updateStreak(Streak streak, Integer id);
+    Streak fixStreakByUserId(Integer userId);
     Streak changeStreakFreezeState(Integer id);
-
+    Streak incrementOrCreateStreak(Integer userId);
 
     Streak softDeleteStreak(Integer id);
     void hardDeleteStreak(Integer id);

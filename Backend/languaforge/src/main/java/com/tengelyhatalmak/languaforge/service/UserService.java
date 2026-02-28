@@ -9,6 +9,7 @@ public interface UserService {
     List<User> findAllUsers();
     User findUserById(Integer id);
     User findUserByUsername(String username);
+    Integer countUsers();
 
     User updateUser(User user, Integer id);
     User updateAvatarUrl(Integer id, String avatarUrl);

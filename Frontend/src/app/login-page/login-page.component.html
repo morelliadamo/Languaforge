@@ -1,52 +1,52 @@
 <app-header></app-header>
-<div class="bg-gray-200 min-h-screen pt-[10%]">
+
+<div
+  class="bg-gray-200 min-h-screen flex items-center justify-center py-8 sm:py-12 px-4 sm:px-6"
+>
   <div
-    class="flex flex-col items-center justify-center w-[40%] ml-[30%] bg-white p-10 rounded-3xl shadow-md"
+    class="flex flex-col items-center justify-center w-full max-w-md mx-auto bg-white p-6 sm:p-8 lg:p-10 rounded-3xl shadow-md"
   >
-    <img src="Languaforge.png" class="ml-[20%] mr-[20%] h-24 object-center" />
-    <h1 class="text-[35px] font-bold text-center mt-[60px] text-sky-500">
+    <img src="Languaforge.png" class="h-20 sm:h-24 object-center" />
+
+    <h1
+      class="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mt-10 sm:mt-12 text-sky-500"
+    >
       LanguaForge
     </h1>
     <h3
-      class="text-[15px] text-center mb-[60px] text-gray-500 italic font-semibold"
+      class="text-sm sm:text-base text-center mb-10 sm:mb-12 text-gray-500 italic font-semibold"
     >
       "Forge Your Language Skills."
     </h3>
-    <h2 class="text-3xl font-bold">Welcome Back</h2>
-    <br />
+
+    <h2 class="text-xl sm:text-2xl font-bold text-left w-full">Üdv újra</h2>
+
     <form
       [formGroup]="loginForm"
       (ngSubmit)="onSubmit()"
-      class="flex flex-col items-center w-full"
+      class="flex flex-col items-center w-full mt-6 space-y-4"
     >
-      <div *ngIf="errorMessage" class="text-red-500 text-sm mb-4">
+      <div *ngIf="errorMessage" class="text-red-500 text-sm w-full">
         {{ errorMessage }}
       </div>
 
       <!-- Social Buttons -->
-      <div
-        class="flex gap-6 mb-4 items-center justify-center w-full sm:w-40 md:w-60 lg:w-80 xl:w-96"
-      >
+      <div class="flex gap-4 w-full">
         <!-- Google -->
         <button
-          class="flex-1 flex items-center justify-center gap-3 border border-gray-300 rounded-xl py-4 hover:bg-gray-50 transition"
+          type="button"
+          class="flex-1 flex items-center justify-center gap-3 border border-gray-300 rounded-xl py-3 hover:bg-gray-50 transition-colors"
         >
-          <!-- Google Icon -->
-          <svg class="w-5 h-5" viewBox="0 0 24 24">
-            <path
-              fill="#757575"
-              d="M12 10.2v3.6h5.1c-.2 1.2-1.4 3.5-5.1 3.5-3.1 0-5.7-2.6-5.7-5.8s2.6-5.8 5.7-5.8c1.8 0 3 .8 3.7 1.5l2.5-2.4C16.6 3.4 14.5 2.5 12 2.5 6.8 2.5 2.5 6.8 2.5 12S6.8 21.5 12 21.5c6.9 0 9.2-4.8 9.2-7.2 0-.5 0-.9-.1-1.3H12z"
-            />
-          </svg>
+          <img src="google.svg" class="w-5 h-5" viewBox="0 0 24 24" />
 
-          <span class="text-gray-700 font-medium">Google</span>
+          <span class="text-gray-700 font-medium text-sm">Google</span>
         </button>
 
         <!-- Facebook -->
         <button
-          class="flex-1 flex items-center justify-center gap-3 border border-gray-300 rounded-xl py-4 hover:bg-gray-50 transition"
+          type="button"
+          class="flex-1 flex items-center justify-center gap-3 border border-gray-300 rounded-xl py-3 hover:bg-gray-50 transition-colors"
         >
-          <!-- Facebook Icon -->
           <svg
             class="w-5 h-5 text-blue-600"
             fill="currentColor"
@@ -56,125 +56,83 @@
               d="M22 12a10 10 0 10-11.6 9.9v-7h-2.2V12h2.2V9.8c0-2.2 1.3-3.4 3.3-3.4.9 0 1.9.2 1.9.2v2.1h-1.1c-1.1 0-1.4.7-1.4 1.3V12h2.4l-.4 2.9h-2v7A10 10 0 0022 12z"
             />
           </svg>
-
-          <span class="text-gray-700 font-medium">Facebook</span>
+          <span class="text-gray-700 font-medium text-sm">Facebook</span>
         </button>
       </div>
 
       <!-- Divider -->
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-4 w-full">
         <div class="flex-1 h-px bg-gray-300"></div>
-        <span class="text-gray-500 font-medium">VAGY</span>
+        <span class="text-gray-500 text-sm font-medium">VAGY</span>
         <div class="flex-1 h-px bg-gray-300"></div>
       </div>
-      <br />
 
-      <input
-        type="text"
-        formControlName="emailOrUsername"
-        placeholder="Email vagy Felhasználónév *"
-        class="border-[1px] border-zinc-300 p-2 w-md-flex rounded-xl sm:w-40 md:w-60 lg:w-80 xl:w-96"
-      />
-      <div
-        *ngIf="
-          loginForm.get('emailOrUsername')?.touched &&
-          loginForm.get('emailOrUsername')?.invalid
-        "
-        class="text-red-500 text-sm mt-1"
-      >
-        Meg kell adnod egy érvényes email címet vagy felhasználónevet
-      </div>
-      <br />
-
-      <input
-        type="password"
-        formControlName="password"
-        placeholder="Jelszó *"
-        class="border-[1px] border-zinc-300 p-2 w-md-flex rounded-xl sm:w-40 md:w-60 lg:w-80 xl:w-96"
-      />
-      <div
-        *ngIf="
-          loginForm.get('password')?.touched &&
-          loginForm.get('password')?.invalid
-        "
-        class="text-red-500 text-sm mt-1"
-      >
-        Meg kell adnod a jelszót (min 6 karakter)
+      <!-- Email / Username -->
+      <div class="w-full">
+        <input
+          type="text"
+          formControlName="emailOrUsername"
+          placeholder="Email vagy Felhasználónév *"
+          class="border border-zinc-300 p-2.5 w-full rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-300 text-sm"
+        />
+        <div
+          *ngIf="
+            loginForm.get('emailOrUsername')?.touched &&
+            loginForm.get('emailOrUsername')?.invalid
+          "
+          class="text-red-500 text-xs mt-1"
+        >
+          Meg kell adnod egy érvényes email címet vagy felhasználónevet
+        </div>
       </div>
 
-      <div class="flex items-center mb-4 mt-4">
+      <!-- Password -->
+      <div class="w-full">
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Jelszó *"
+          class="border border-zinc-300 p-2.5 w-full rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-300 text-sm"
+        />
+        <div
+          *ngIf="
+            loginForm.get('password')?.touched &&
+            loginForm.get('password')?.invalid
+          "
+          class="text-red-500 text-xs mt-1"
+        >
+          Meg kell adnod a jelszót (min 6 karakter)
+        </div>
+      </div>
+
+      <!-- Forgot password -->
+      <div class="w-full text-right">
         <a
           routerLink="/forgot-password"
-          class="select-none ms-18 text-sm font-medium text-fg-disabled text-center cursor-pointer text-sky-500 hover:underline"
+          class="text-sm text-sky-500 hover:underline cursor-pointer"
         >
-          Elfelejtetted a jelszavad?
+          Elfelejtetted a jelszód?
         </a>
       </div>
 
+      <!-- Submit -->
       <button
         type="submit"
         [disabled]="loginForm.invalid || isLoading"
-        class="bg-sky-500 text-white p-2 w-md-flex mt-4 mb-4 rounded-xl hover:cursor-pointer sm:w-40 md:w-60 lg:w-80 xl:w-96"
+        class="bg-sky-500 text-white py-2.5 w-full rounded-xl hover:bg-sky-600 transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {{ isLoading ? "Bejelentkezés..." : "Bejelentkezés" }}
       </button>
 
-      <h4 class="text-[15px] text-center mb-[60px] text-gray-500">
+      <p class="text-sm text-center text-gray-500 pb-4">
         Nincs fiókod?
-        <a routerLink="/register" class="text-sky-500"><b>Regisztráció</b></a>
-      </h4>
-    </form>
-  </div>
-  <br />
-</div>
-
-<div class="min-h-screen bg-black flex items-center justify-center">
-  <div class="bg-white w-[650px] p-10 rounded-md shadow-lg">
-    <!-- Title -->
-    <h1 class="text-3xl font-semibold text-gray-800 mb-8">Üdv újra</h1>
-
-    <!-- Social Buttons -->
-    <div class="flex gap-6 mb-8">
-      <!-- Google -->
-      <button
-        class="flex-1 flex items-center justify-center gap-3 border border-gray-300 rounded-xl py-4 hover:bg-gray-50 transition"
-      >
-        <!-- Google Icon -->
-        <svg class="w-5 h-5" viewBox="0 0 24 24">
-          <path
-            fill="#EA4335"
-            d="M12 10.2v3.6h5.1c-.2 1.2-1.4 3.5-5.1 3.5-3.1 0-5.7-2.6-5.7-5.8s2.6-5.8 5.7-5.8c1.8 0 3 .8 3.7 1.5l2.5-2.4C16.6 3.4 14.5 2.5 12 2.5 6.8 2.5 2.5 6.8 2.5 12S6.8 21.5 12 21.5c6.9 0 9.2-4.8 9.2-7.2 0-.5 0-.9-.1-1.3H12z"
-          />
-        </svg>
-
-        <span class="text-gray-700 font-medium">Google</span>
-      </button>
-
-      <!-- Facebook -->
-      <button
-        class="flex-1 flex items-center justify-center gap-3 border border-gray-300 rounded-xl py-4 hover:bg-gray-50 transition"
-      >
-        <!-- Facebook Icon -->
-        <svg
-          class="w-5 h-5 text-blue-600"
-          fill="currentColor"
-          viewBox="0 0 24 24"
+        <a
+          routerLink="/register"
+          class="text-sky-500 hover:underline font-semibold"
+          >Regisztráció</a
         >
-          <path
-            d="M22 12a10 10 0 10-11.6 9.9v-7h-2.2V12h2.2V9.8c0-2.2 1.3-3.4 3.3-3.4.9 0 1.9.2 1.9.2v2.1h-1.1c-1.1 0-1.4.7-1.4 1.3V12h2.4l-.4 2.9h-2v7A10 10 0 0022 12z"
-          />
-        </svg>
-
-        <span class="text-gray-700 font-medium">Facebook</span>
-      </button>
-    </div>
-
-    <!-- Divider -->
-    <div class="flex items-center gap-4">
-      <div class="flex-1 h-px bg-gray-300"></div>
-      <span class="text-gray-500 font-medium">VAGY</span>
-      <div class="flex-1 h-px bg-gray-300"></div>
-    </div>
+      </p>
+    </form>
   </div>
 </div>
 

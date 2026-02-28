@@ -41,6 +41,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Integer countUsers() {
+        return userRepository.countUsersByIdGreaterThan((0));
+    }
+
+    @Override
     public User updateUser(User user, Integer id) {
         User existingUser = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));

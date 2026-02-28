@@ -23,7 +23,6 @@ import { LessonProgress } from '../interfaces/LessonProgress';
     FooterComponent,
     LoadingOverlayComponent,
     LoadedLessonComponent,
-    InlineSvgDirective,
   ],
   templateUrl: './loaded-course.component.html',
   styleUrl: './loaded-course.component.css',

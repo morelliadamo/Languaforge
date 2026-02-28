@@ -11,7 +11,7 @@ import {
   ValidationErrors,
 } from '@angular/forms';
 import { AuthServiceService } from '../services/auth-service.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { LoginRequest } from '../interfaces/LoginRequest';
 import { NgIf } from '@angular/common';
 
@@ -23,6 +23,7 @@ import { NgIf } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     NgIf,
+    RouterLink,
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css',

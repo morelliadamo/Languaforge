@@ -2,6 +2,7 @@ package com.tengelyhatalmak.languaforge.service;
 
 import com.tengelyhatalmak.languaforge.model.LessonProgress;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public interface LessonProgressService {
@@ -12,7 +13,8 @@ public interface LessonProgressService {
     List<LessonProgress> findLessonProgressesByUserId(Integer userId);
     List<LessonProgress> findLessonProgressesByUserIdAndCourseId(Integer userId, Integer courseId);
     List<LessonProgress> findCompletedLessonProgressesByUserId(Integer userId);
-
+    Integer findCompletedLessonProgressCountOverall();
+    Boolean userByIdHasLessonCompletedToday(Integer userId);
 
     LessonProgress updateLessonProgress(LessonProgress lessonProgress, Integer id);
     Boolean isLessonCompleted(Integer id);

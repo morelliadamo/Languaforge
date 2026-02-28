@@ -61,4 +61,26 @@ export class LessonProgressService {
       },
     );
   }
+
+  countCompletedLessons() {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.get<number>(`${this.apiUrl}/count/completed`, {
+      headers,
+    });
+  }
+
+  getEligibleForStreak(userId: number) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.get<boolean>(
+      `${this.apiUrl}/user/${userId}/hasCompletedToday`,
+      { headers },
+    );
+  }
 }

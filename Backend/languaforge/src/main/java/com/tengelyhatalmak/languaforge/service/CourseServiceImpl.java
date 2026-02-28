@@ -1,12 +1,10 @@
 package com.tengelyhatalmak.languaforge.service;
 
-import com.tengelyhatalmak.languaforge.model.Course;
-import com.tengelyhatalmak.languaforge.model.Exercise;
-import com.tengelyhatalmak.languaforge.model.Lesson;
-import com.tengelyhatalmak.languaforge.model.Unit;
+import com.tengelyhatalmak.languaforge.model.*;
 import com.tengelyhatalmak.languaforge.repository.CourseRepository;
 import com.tengelyhatalmak.languaforge.repository.LessonRepository;
 import com.tengelyhatalmak.languaforge.repository.UnitRepository;
+import com.tengelyhatalmak.languaforge.repository.UserXCourseRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +23,8 @@ public class CourseServiceImpl implements CourseService{
 
     @Autowired
     private LessonRepository lessonRepository;
+    @Autowired
+    private UserXCourseRepository userXCourseRepository;
 
     @Override
     @Transactional
@@ -90,6 +90,43 @@ public class CourseServiceImpl implements CourseService{
     @Override
     public Course findCourseById(Integer id) {
         return courseRepository.findById(id).orElseThrow(() -> new RuntimeException("Course not found"));
+    }
+
+    @Override
+    public Course findCourseByMostUsers() {
+        Course courseWithMostUsers = null;
+        int maxUsers = -1;
+
+        for (Course course : courseRepository.findAll()) {
+            int userCount = userXCourseRepository.countByCourseId((course.getId()));
+            if (userCount > maxUsers) {
+                maxUsers = userCount;
+                courseWithMostUsers = course;
+            }
+        }
+
+        System.out.println("Course with most users: " + (courseWithMostUsers != null ? courseWithMostUsers.getTitle() : "None") + " with " + maxUsers + " users.");
+        return courseWithMostUsers;
+    }
+
+    @Override
+    public Course findCourseByBestReviews() {
+        Course courseWithBestReviews = null;
+        double highestAverageRating = -1.0;
+
+        for (Course course : courseRepository.findAll()) {
+            double averageRating = course.getReviews().stream()
+                    .mapToInt(Review::getRating)
+                    .average()
+                    .orElse(0.0);
+
+            if (averageRating > highestAverageRating) {
+                highestAverageRating = averageRating;
+                courseWithBestReviews = course;
+            }
+        }
+        System.out.println("Course with best reviews: " + (courseWithBestReviews != null ? courseWithBestReviews.getTitle() : "None") + " with average rating of " + highestAverageRating);
+        return courseWithBestReviews;
     }
 
     @Override

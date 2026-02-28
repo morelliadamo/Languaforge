@@ -1,0 +1,83 @@
+@if (visible() && streakEvent) {
+<div
+  class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-md px-4 animate-fade-in"
+>
+  <div
+    class="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden"
+  >
+    <!-- Header -->
+    <div class="flex items-center justify-between px-5 pt-5 pb-2">
+      <div class="flex items-center gap-3">
+        <div
+          class="w-10 h-10 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
+          [ngClass]="{
+                 'bg-green-100 text-green-600': !streakEvent.isReset,
+                 'bg-red-100 text-red-600': streakEvent.isReset
+               }"
+        >
+          @if (!streakEvent.isReset) { 🔥 } @else { 💀 }
+        </div>
+
+        <div>
+          <p
+            class="text-xs font-semibold uppercase tracking-wide"
+            [ngClass]="{
+                 'text-green-600': !streakEvent.isReset,
+                 'text-red-500': streakEvent.isReset
+               }"
+          >
+            @if (!streakEvent.isReset) { Sorozat Nőtt! } @else { Sorozat
+            Megszakadt }
+          </p>
+          <p class="text-xl font-bold text-gray-900">
+            {{ streakEvent.currentStreak }} nap @if (!streakEvent.isReset &&
+            streakEvent.longestStreak > streakEvent.currentStreak) {
+            <span class="text-sm font-normal text-gray-500 ml-2">
+              (legjobb: {{ streakEvent.longestStreak }})
+            </span>
+            }
+          </p>
+        </div>
+      </div>
+
+      <button (click)="hide()" class="text-gray-400 hover:text-gray-700">
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Body -->
+    <div class="px-5 pb-6">
+      <p class="text-base text-gray-700 leading-relaxed text-center">
+        @if (!streakEvent.isReset) { {{ positiveMessage }} } @else { {{
+        negativeMessage }} }
+      </p>
+
+      @if (streakEvent.message) {
+      <p class="text-sm text-gray-500 mt-3 text-center">
+        {{ streakEvent.message }}
+      </p>
+      }
+    </div>
+
+    <!-- Bottom progress bar animation -->
+    <div class="h-1 bg-gray-100 overflow-hidden">
+      <div
+        class="h-full bg-gradient-to-r from-green-400 to-green-600 w-0 animate-progress-drain"
+        [ngClass]="{'from-red-400 to-red-600': streakEvent.isReset}"
+      ></div>
+    </div>
+  </div>
+</div>
+}

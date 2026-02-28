@@ -3,6 +3,7 @@ package com.tengelyhatalmak.languaforge.controller;
 import com.tengelyhatalmak.languaforge.model.LessonProgress;
 import com.tengelyhatalmak.languaforge.service.LessonProgressService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +26,21 @@ public class LessonProgressController {
         return lessonProgressService.findLessonProgressById(id);
     }
 
+    @GetMapping("/count/completed")
+    public ResponseEntity<Integer> countAllCompleted(){
+        if(lessonProgressService.findCompletedLessonProgressCountOverall() == null || lessonProgressService.findCompletedLessonProgressCountOverall() == 0)
+            return new ResponseEntity<>(0, HttpStatus.NOT_FOUND);
+
+        return new ResponseEntity<>(lessonProgressService.findCompletedLessonProgressCountOverall(), HttpStatus.OK);
+    }
+
+    @GetMapping("/user/{userId}/hasCompletedToday")
+    public ResponseEntity<Boolean> hasUserCompletedLessonToday(@PathVariable Integer userId) {
+        if (!lessonProgressService.userByIdHasLessonCompletedToday(userId))
+            return new ResponseEntity<>(false, HttpStatus.OK);
+
+        return new ResponseEntity<>(true, HttpStatus.OK);
+    }
     @GetMapping("/user/{userId}")
     public List<LessonProgress> getLessonProgressesByUserId(@PathVariable Integer userId){
         return lessonProgressService.findLessonProgressesByUserId(userId);

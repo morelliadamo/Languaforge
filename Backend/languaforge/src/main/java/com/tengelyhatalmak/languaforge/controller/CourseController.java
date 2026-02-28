@@ -32,6 +32,22 @@ public class CourseController {
         return courseService.findCourseById(id);
     }
 
+    @GetMapping("/count")
+    public Integer countCourses() {
+        return courseService.findAllCourses().size();
+    }
+
+    @GetMapping("/courseWith/mostUsers")
+    public Course getCourseWithMostUsers() {
+        return courseService.findCourseByMostUsers();
+    }
+
+    @GetMapping("courseWith/bestReviews")
+    public Course getCourseWithBestReviews() {
+        return courseService.findCourseByBestReviews();
+    }
+
+
     @PostMapping("/createCourse")
     public Course createCourse(@RequestBody Course course) {
         course.setCreatedAt(Timestamp.valueOf(java.time.LocalDateTime.now()));

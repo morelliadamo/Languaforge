@@ -12,24 +12,24 @@
           <span class="text-sky-500">LanguaForge-al</span>
         </h1>
         <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci
-          voluptates aliquid aperiam ipsam eligendi debitis cum, consequatur
-          fugit doloremque autem sed dolorum laborum sunt praesentium odit vitae
-          ea placeat rem?
+          Tanulj hatékonyan. Interaktív leckék, valódi kihívások – indulj el a
+          nyelvtanulás útján még ma!
         </p>
         <div
           class="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <button
-            class="bg-sky-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-sky-600 transition-colors shadow-lg"
+          <a
+            routerLink="/register"
+            class="bg-sky-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-sky-600 transition-colors shadow-lg cursor-pointer"
           >
             Vágj bele ingyen
-          </button>
-          <button
-            class="bg-white text-gray-900 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors shadow-md border border-gray-200"
+          </a>
+          <a
+            routerLink="/login"
+            class="bg-white text-gray-900 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors shadow-md border border-gray-200 cursor-pointer"
           >
-            Nézd meg mások mit mondanak
-          </button>
+            Már van fiókom
+          </a>
         </div>
       </div>
 
@@ -42,11 +42,13 @@
           class="flex items-center justify-between rounded-3xl bg-gradient-to-r from-pink-500 to-red-400 p-5 sm:p-6 shadow-lg hover:shadow-xl transition-shadow"
         >
           <div class="text-white">
-            <div class="text-3xl sm:text-4xl font-bold">placeholdernumber</div>
+            <div class="text-3xl sm:text-4xl font-bold">
+              {{ numberOfUsers }}
+            </div>
             <div
               class="text-xs sm:text-sm flex items-center gap-1 font-semibold mt-1"
             >
-              Felhasználók <span>🌍</span>
+              Felhasználó <span>🌍</span>
             </div>
           </div>
           <div class="text-white text-2xl sm:text-3xl opacity-80">👥</div>
@@ -57,10 +59,14 @@
           class="flex items-center justify-between rounded-3xl bg-gradient-to-r from-teal-200 to-purple-200 p-5 sm:p-6 shadow-lg hover:shadow-xl transition-shadow"
         >
           <div class="text-gray-800">
-            <div class="text-3xl sm:text-4xl font-bold">placeholdernumber</div>
-            <div class="text-xs sm:text-sm font-semibold mt-1">Nyelv</div>
+            <div class="text-3xl sm:text-4xl font-bold">
+              {{ numberOfCourses }}
+            </div>
+            <div class="text-xs sm:text-sm font-semibold mt-1">
+              Elérhető kurzus
+            </div>
           </div>
-          <div class="text-gray-800 text-2xl sm:text-3xl opacity-70">🗣️</div>
+          <div class="text-gray-800 text-2xl sm:text-3xl opacity-70">📚</div>
         </div>
 
         <!-- Lessons Completed -->
@@ -68,7 +74,9 @@
           class="flex items-center justify-between rounded-3xl bg-gradient-to-r from-sky-500 to-cyan-400 p-5 sm:p-6 shadow-lg hover:shadow-xl transition-shadow"
         >
           <div class="text-white">
-            <div class="text-3xl sm:text-4xl font-bold">placeholdernumber</div>
+            <div class="text-3xl sm:text-4xl font-bold">
+              {{ numberOfCompletedLessons }}
+            </div>
             <div class="text-xs sm:text-sm font-semibold mt-1">
               Teljesített lecke
             </div>
@@ -78,7 +86,7 @@
 
         <!-- Success Rate -->
         <div
-          class="flex items-center justify-between rounded-3xl bg-gradient-to-r from-amber-200 to-slate-600 p-5 sm:p-6 shadow-lg hover:shadow-xl transition-shadow"
+          class="flex items-center justify-between rounded-3xl bg-gradient-to-r from-amber-400 to-orange-500 p-5 sm:p-6 shadow-lg hover:shadow-xl transition-shadow"
         >
           <div class="text-white">
             <div class="text-3xl sm:text-4xl font-bold">95%</div>
@@ -90,74 +98,166 @@
 
       <!-- Main Content Grid -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
-        <!-- Popular Courses Section -->
+        <!-- Recommended Courses Section -->
         <div class="lg:col-span-2">
           <div class="rounded-2xl bg-white p-6 sm:p-8 shadow-md">
             <h2 class="mb-6 text-xl sm:text-2xl font-semibold text-gray-900">
-              Népszerű kurzusok
+              Ajánlott kurzusok
             </h2>
 
             <!-- Course Card 1 -->
             <div
-              class="mb-4 rounded-xl bg-gray-50 p-4 sm:p-5 hover:bg-gray-100 transition-colors cursor-pointer"
+              class="mb-4 rounded-xl bg-gray-50 p-4 sm:p-5 hover:bg-gray-100 transition-colors cursor-pointer border border-gray-100"
+              [routerLink]="'/register'"
             >
               <div
                 class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
               >
-                <div class="flex-1">
-                  <h3 class="font-semibold text-gray-900 text-base sm:text-lg">
-                    Angol alapok
-                  </h3>
-                  <p class="text-sm text-gray-500 mt-1">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  </p>
+                <div class="flex items-center gap-4">
+                  <div>
+                    <h3
+                      class="font-semibold text-gray-900 text-base sm:text-lg"
+                    >
+                      {{ recommendedFirstCourse!.title }}
+                    </h3>
+                    <p class="text-sm text-gray-500 mt-0.5">
+                      {{ recommendedFirstCourse!.description }}
+                    </p>
+                  </div>
                 </div>
                 <span
-                  class="rounded-full bg-green-600 px-4 py-1.5 text-sm font-medium text-white w-fit"
+                  class="rounded-full bg-green-100 text-green-700 px-4 py-1.5 text-sm font-semibold w-fit flex-shrink-0"
                 >
-                  Népszerű
+                  😸 Legjobb kezdőknek
                 </span>
               </div>
-
-              <div class="mt-4 flex items-center gap-2">
-                <div class="flex-1 h-2 rounded-full bg-blue-100">
+              <div class="mt-4 flex items-center justify-between gap-4">
+                <div class="flex-1 h-2 rounded-full bg-gray-200">
                   <div
-                    class="h-2 rounded-full bg-blue-500 transition-all"
+                    class="h-2 rounded-full bg-sky-500 transition-all"
                     style="width: 0%"
                   ></div>
                 </div>
-                <span class="text-sm text-gray-500">Vágj bele most</span>
+                <span class="text-sm text-sky-500 font-medium whitespace-nowrap"
+                  >Vágj bele most →</span
+                >
               </div>
             </div>
 
             <!-- Course Card 2 -->
+            <div
+              class="mb-4 rounded-xl bg-gray-50 p-4 sm:p-5 hover:bg-gray-100 transition-colors cursor-pointer border border-gray-100"
+              [routerLink]="'/register'"
+            >
+              <div
+                class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+              >
+                <div class="flex items-center gap-4">
+                  <div>
+                    <h3
+                      class="font-semibold text-gray-900 text-base sm:text-lg"
+                    >
+                      {{ courseWithMostUsers?.title }}
+                    </h3>
+                    <p class="text-sm text-gray-500 mt-0.5">
+                      {{ courseWithMostUsers?.description }}
+                    </p>
+                  </div>
+                </div>
+                <span
+                  class="rounded-full bg-purple-100 text-purple-700 px-4 py-1.5 text-sm font-semibold w-fit flex-shrink-0"
+                >
+                  👥 Legtöbb felhasználó
+                </span>
+              </div>
+              <div class="mt-4 flex items-center justify-between gap-4">
+                <div class="flex-1 h-2 rounded-full bg-gray-200">
+                  <div
+                    class="h-2 rounded-full bg-sky-500 transition-all"
+                    style="width: 0%"
+                  ></div>
+                </div>
+                <span class="text-sm text-sky-500 font-medium whitespace-nowrap"
+                  >Vágj bele most →</span
+                >
+              </div>
+            </div>
+
+            <!-- Course Card 3 -->
+            <div
+              class="rounded-xl bg-gray-50 p-4 sm:p-5 hover:bg-gray-100 transition-colors cursor-pointer border border-gray-100"
+              [routerLink]="'/register'"
+            >
+              <div
+                class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+              >
+                <div class="flex items-center gap-4">
+                  <div>
+                    <h3
+                      class="font-semibold text-gray-900 text-base sm:text-lg"
+                    >
+                      {{ courseWithBestReviews?.title }}
+                    </h3>
+                    <p class="text-sm text-gray-500 mt-0.5">
+                      {{ courseWithBestReviews?.description }}
+                    </p>
+                  </div>
+                </div>
+                <span
+                  class="rounded-full bg-sky-100 text-sky-700 px-4 py-1.5 text-sm font-semibold w-fit flex-shrink-0"
+                >
+                  🌟 Legjobb értékelések
+                </span>
+              </div>
+              <div class="mt-4 flex items-center justify-between gap-4">
+                <div class="flex-1 h-2 rounded-full bg-gray-200">
+                  <div
+                    class="h-2 rounded-full bg-sky-500 transition-all"
+                    style="width: 0%"
+                  ></div>
+                </div>
+                <span class="text-sm text-sky-500 font-medium whitespace-nowrap"
+                  >Vágj bele most →</span
+                >
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Why Choose Us Section -->
+        <!-- Miért minket válassz -->
         <div class="lg:col-span-1">
           <div class="rounded-2xl bg-white p-6 sm:p-8 shadow-md">
             <h2 class="mb-6 text-xl sm:text-2xl font-semibold text-gray-900">
-              Why Choose Us?
+              Miért minket válassz?
             </h2>
 
             <div class="space-y-6">
               <!-- Feature 1 -->
-              <div class="flex items-start gap-3">
+              <div
+                class="relative flex items-start gap-3 rounded-xl overflow-hidden"
+              >
                 <div
                   class="flex-shrink-0 w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center text-xl"
                 >
                   🎯
                 </div>
                 <div>
-                  <h3 class="font-semibold text-gray-900 mb-1">ASDAasd</h3>
+                  <h3 class="font-semibold text-gray-900 mb-1">
+                    Személyre szabott tanulás
+                  </h3>
                   <p class="text-sm text-gray-600">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Est
-                    architecto molestiae doloremque animi et, eaque officia
-                    aperiam excepturi a deleniti accusamus aliquid nisi
-                    reprehenderit voluptate culpa sapiente? Obcaecati, dolorem
-                    error!
+                    Az algoritmusunk az egyéni tempódhoz igazodik, így mindig a
+                    megfelelő szinten tanulhatsz.
                   </p>
+                </div>
+                <div
+                  class="absolute inset-0 bg-white/75 backdrop-blur-[6px] flex items-center justify-center rounded-xl"
+                >
+                  <span
+                    class="rounded-full bg-sky-100 border border-sky-200 text-sky-600 px-4 py-1.5 text-sm font-bold"
+                  >
+                    🔒 Hamarosan
+                  </span>
                 </div>
               </div>
 
@@ -170,17 +270,19 @@
                 </div>
                 <div>
                   <h3 class="font-semibold text-gray-900 mb-1">
-                    Gamified Experience
+                    Gamifikált élmény
                   </h3>
                   <p class="text-sm text-gray-600">
-                    Earn achievements, compete with friends, and track your
-                    progress
+                    Szerezz teljesítményeket, versenyezz barátaiddal és kövesd a
+                    fejlődésed.
                   </p>
                 </div>
               </div>
 
               <!-- Feature 3 -->
-              <div class="flex items-start gap-3">
+              <div
+                class="relative flex items-start gap-3 rounded-xl overflow-hidden"
+              >
                 <div
                   class="flex-shrink-0 w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-xl"
                 >
@@ -188,11 +290,21 @@
                 </div>
                 <div>
                   <h3 class="font-semibold text-gray-900 mb-1">
-                    Real Conversations
+                    Valódi párbeszédek
                   </h3>
                   <p class="text-sm text-gray-600">
-                    Practice with native speakers in our community
+                    Gyakorolj anyanyelvűekkel a közösségünkben és fejleszd a
+                    beszédkészségedet.
                   </p>
+                </div>
+                <div
+                  class="absolute inset-0 bg-white/75 backdrop-blur-[6px] flex items-center justify-center rounded-xl"
+                >
+                  <span
+                    class="rounded-full bg-sky-100 border border-sky-200 text-sky-600 px-4 py-1.5 text-sm font-bold"
+                  >
+                    🔒 Hamarosan
+                  </span>
                 </div>
               </div>
 
@@ -205,10 +317,11 @@
                 </div>
                 <div>
                   <h3 class="font-semibold text-gray-900 mb-1">
-                    Learn Anywhere
+                    Tanulj bárhol
                   </h3>
                   <p class="text-sm text-gray-600">
-                    Access lessons on mobile, tablet, or desktop
+                    Mobilon, tableten vagy asztali gépen – mindig és mindenhol
+                    elérheted a leckéket.
                   </p>
                 </div>
               </div>

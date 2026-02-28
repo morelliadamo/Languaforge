@@ -25,6 +25,22 @@ export class CourseLoaderServiceService {
     return this.http.get<any[]>(`${this.apiUrl}/user/${username}`, { headers });
   }
 
+  getCourseById(courseId: number) {
+    return this.http.get<Course>(`http://localhost:8080/courses/${courseId}`);
+  }
+
+  getCourseWithMostUsers() {
+    return this.http.get<Course>(
+      'http://localhost:8080/courses/courseWith/mostUsers',
+    );
+  }
+
+  getCourseWithBestReviews() {
+    return this.http.get<Course>(
+      'http://localhost:8080/courses/courseWith/bestReviews',
+    );
+  }
+
   loadUserCoursesByUserId(id: number) {
     console.log('Loading courses for user ID:', id);
     console.log(`${this.apiUrl}/user/${id}`);
@@ -123,5 +139,15 @@ export class CourseLoaderServiceService {
       requestBody,
       { headers },
     );
+  }
+
+  countCourses() {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.get<number>('http://localhost:8080/courses/count', {
+      headers,
+    });
   }
 }

@@ -1,10 +1,7 @@
 package com.tengelyhatalmak.languaforge.service;
 
 import com.tengelyhatalmak.languaforge.domainevent.LessonCompletedDE;
-import com.tengelyhatalmak.languaforge.model.Lesson;
-import com.tengelyhatalmak.languaforge.model.LessonProgress;
-import com.tengelyhatalmak.languaforge.model.User;
-import com.tengelyhatalmak.languaforge.model.UserXCourse;
+import com.tengelyhatalmak.languaforge.model.*;
 import com.tengelyhatalmak.languaforge.repository.*;
 import jakarta.transaction.Transactional;
 import org.springframework.context.ApplicationEventPublisher;
@@ -14,6 +11,7 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
+
 @Service
 public class LessonProgressServiceImpl implements LessonProgressService {
 
@@ -22,19 +20,22 @@ public class LessonProgressServiceImpl implements LessonProgressService {
     private final UserRepository userRepository;
     private final UserXCourseRepository userXCourseRepository;
     private final ApplicationEventPublisher eventPublisher;
+    private final StreakService streakService;
 
     public LessonProgressServiceImpl(
             LessonProgressRepository lessonProgressRepository,
             LessonRepository lessonRepository,
             UserRepository userRepository,
             UserXCourseRepository userXCourseRepository,
-            ApplicationEventPublisher eventPublisher
+            ApplicationEventPublisher eventPublisher,
+            StreakService streakService
     ) {
         this.lessonProgressRepository = lessonProgressRepository;
         this.lessonRepository = lessonRepository;
         this.userRepository = userRepository;
         this.userXCourseRepository = userXCourseRepository;
         this.eventPublisher = eventPublisher;
+        this.streakService = streakService;
     }
 
     @Override
@@ -89,9 +90,28 @@ public class LessonProgressServiceImpl implements LessonProgressService {
     }
 
     @Override
+    public Integer findCompletedLessonProgressCountOverall() {
+        return lessonProgressRepository.findCompletedCountOverall();
+    }
+
+    @Override
+    public Boolean userByIdHasLessonCompletedToday(Integer userId) {
+        if (userRepository.findById(userId).isEmpty()) {
+            throw new RuntimeException("User not found");
+        }
+
+        Timestamp startOfDay = Timestamp.valueOf(LocalDateTime.now().toLocalDate().atStartOfDay());
+        Timestamp endOfDay = Timestamp.valueOf(LocalDateTime.now().toLocalDate().atTime(23, 59, 59));
+        System.out.println(("=========Checking hasCompletedToday for user "+userId+": "+
+                lessonProgressRepository.existsAnyCompletionToday(userId, startOfDay, endOfDay)+" at "+
+                LocalDateTime.now()));
+        return lessonProgressRepository.existsAnyCompletionToday(userId, startOfDay, endOfDay);
+    }
+
+
+    @Override
     @Transactional
     public LessonProgress updateLessonProgress(LessonProgress lessonProgress, Integer id) {
-
         LessonProgress existing = lessonProgressRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("LessonProgress not found"));
 
@@ -100,32 +120,43 @@ public class LessonProgressServiceImpl implements LessonProgressService {
         existing.setCompletedExercises(lessonProgress.getCompletedExercises());
         existing.setUpdatedAt(Timestamp.valueOf(LocalDateTime.now()));
 
-        boolean isNowCompleted =
-                existing.getCompletedExercises() >= existing.getExerciseCount();
+        boolean isNowCompleted = existing.getCompletedExercises() >= existing.getExerciseCount();
 
+        System.out.println("=========wasCompletedBefore: " + wasCompletedBefore + "=========");
+        System.out.println("=========completedExercises: " + existing.getCompletedExercises() + "=========");
+        System.out.println("=========exerciseCount: " + existing.getExerciseCount() + "=========");
+        System.out.println("===========isNowCompleted: " + isNowCompleted + "=========");
 
-
-        System.out.println("=========wasCompletedBefore: " + wasCompletedBefore+"=========");
-        System.out.println("=========completedExercises: " + existing.getCompletedExercises()+"=========");
-        System.out.println("=========exerciseCount: " + existing.getExerciseCount()+"=========");
-        System.out.println("===========isNowCompleted: " + isNowCompleted+"=========");
+        boolean alreadyHadActivityToday = false;
         if (isNowCompleted && !wasCompletedBefore) {
+            Timestamp startOfDay = Timestamp.valueOf(LocalDateTime.now().toLocalDate().atStartOfDay());
+            Timestamp endOfDay = Timestamp.valueOf(LocalDateTime.now().toLocalDate().atTime(23, 59, 59, 999_999_999));
 
+            alreadyHadActivityToday = lessonProgressRepository.existsAnyCompletionToday(
+                    existing.getUserId(), startOfDay, endOfDay);
+
+            System.out.println("=========PRE-SAVE check hasCompletedToday for user " + existing.getUserId() +
+                    ": " + alreadyHadActivityToday + " at " + LocalDateTime.now());
+        }
+
+        if (isNowCompleted && !wasCompletedBefore) {
             existing.setCompletedAt(Timestamp.valueOf(LocalDateTime.now()));
-
-            // 🔥 Publish event ONLY when transitioning to completed
-            eventPublisher.publishEvent(
-                    new LessonCompletedDE(
-                            this,
-                            existing.getUserId(),
-                            existing.getLessonId()
-                    )
-            );
         }
 
         LessonProgress saved = lessonProgressRepository.save(existing);
 
-        updateCourseProgress(existing);
+        if (isNowCompleted && !wasCompletedBefore) {
+            eventPublisher.publishEvent(
+                    new LessonCompletedDE(this, existing.getUserId(), existing.getLessonId())
+            );
+        }
+
+        if (isNowCompleted && !wasCompletedBefore && !alreadyHadActivityToday) {
+            System.out.println("FIRST daily completion detected → incrementing streak for user " + existing.getUserId());
+            streakService.incrementOrCreateStreak(existing.getUserId());
+        }
+
+        updateCourseProgress(saved);
 
         return saved;
     }
