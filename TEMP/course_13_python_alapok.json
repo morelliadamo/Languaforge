@@ -1,0 +1,1457 @@
+{
+    "id": 13,
+    "title": "Python Programming Basics",
+    "description": "Learn the fundamentals of Python programming with interactive exercises!",
+    "createdAt": "2026-02-25T10:00:00.000Z",
+    "isDeleted": false,
+    "deletedAt": null,
+    "units": [
+        {
+            "id": 103,
+            "courseId": 13,
+            "title": "Python Fundamentals",
+            "orderIndex": 1,
+            "createdAt": "2026-02-25T11:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 156,
+                    "unitId": 103,
+                    "title": "Variables & Data Types",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T12:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1022,
+                            "lessonId": 156,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which is the correct way to declare a variable in Python?",
+                                "answers": [
+                                    "int x = 5",
+                                    "x = 5",
+                                    "var x = 5",
+                                    "x := 5"
+                                ],
+                                "correctAnswer": "x = 5"
+                            }
+                        },
+                        {
+                            "id": 1023,
+                            "lessonId": 156,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What will this code print?",
+                                "code": "x = 10\ny = 3\nprint(x + y)",
+                                "answers": [
+                                    "13",
+                                    "103",
+                                    "10 + 3",
+                                    "Error"
+                                ],
+                                "correctAnswer": "13"
+                            }
+                        },
+                        {
+                            "id": 1024,
+                            "lessonId": 156,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which type-conversion function is missing?",
+                                "code": "x = \"42\"\nnum = __(x)\nprint(num + 1)",
+                                "correctAnswer": "int"
+                            }
+                        },
+                        {
+                            "id": 1025,
+                            "lessonId": 156,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Complete the sentence: In Python, text data is called the __ type.",
+                                "sentence": "In Python, text data is called the __ type.",
+                                "correctAnswer": "str"
+                            }
+                        },
+                        {
+                            "id": 1026,
+                            "lessonId": 156,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you print the type of variable x?",
+                                "correctAnswer": "print(type(x))"
+                            }
+                        },
+                        {
+                            "id": 1027,
+                            "lessonId": 156,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match each data type to its example!",
+                                "pairs": [
+                                    {
+                                        "left": "int",
+                                        "right": "42"
+                                    },
+                                    {
+                                        "left": "float",
+                                        "right": "3.14"
+                                    },
+                                    {
+                                        "left": "str",
+                                        "right": "\"hello\""
+                                    },
+                                    {
+                                        "left": "bool",
+                                        "right": "True"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1028,
+                            "lessonId": 156,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Say this Python expression out loud!",
+                                "expectedAnswer": "x equals five"
+                            }
+                        },
+                        {
+                            "id": 1029,
+                            "lessonId": 156,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which data type did you hear?",
+                                "audioUrl": "https://audio.example.com/python/float.mp3",
+                                "answers": [
+                                    "int",
+                                    "float",
+                                    "str",
+                                    "bool"
+                                ],
+                                "correctAnswer": "float"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 157,
+                    "unitId": 103,
+                    "title": "Operators",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-25T13:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1030,
+                            "lessonId": 157,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does this code print?",
+                                "code": "print(10 // 3)",
+                                "answers": [
+                                    "3",
+                                    "3.33",
+                                    "1",
+                                    "3.0"
+                                ],
+                                "correctAnswer": "3"
+                            }
+                        },
+                        {
+                            "id": 1031,
+                            "lessonId": 157,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does this code print?",
+                                "code": "print(10 % 3)",
+                                "answers": [
+                                    "3",
+                                    "1",
+                                    "0",
+                                    "3.33"
+                                ],
+                                "correctAnswer": "1"
+                            }
+                        },
+                        {
+                            "id": 1032,
+                            "lessonId": 157,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "The __ operator is used for exponentiation in Python.",
+                                "sentence": "The __ operator is used for exponentiation in Python.",
+                                "correctAnswer": "**"
+                            }
+                        },
+                        {
+                            "id": 1033,
+                            "lessonId": 157,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which operator is missing to get the result 2.5?",
+                                "code": "print(5 __ 2)",
+                                "correctAnswer": "/"
+                            }
+                        },
+                        {
+                            "id": 1034,
+                            "lessonId": 157,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match each operator to its name!",
+                                "pairs": [
+                                    {
+                                        "left": "+",
+                                        "right": "addition"
+                                    },
+                                    {
+                                        "left": "//",
+                                        "right": "floor division"
+                                    },
+                                    {
+                                        "left": "%",
+                                        "right": "modulo"
+                                    },
+                                    {
+                                        "left": "**",
+                                        "right": "exponentiation"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1035,
+                            "lessonId": 157,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you calculate 2 to the power of 8 in Python?",
+                                "correctAnswer": "2 ** 8"
+                            }
+                        },
+                        {
+                            "id": 1036,
+                            "lessonId": 157,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Say this out loud: the double-star operator means exponentiation!",
+                                "expectedAnswer": "double star means exponentiation"
+                            }
+                        },
+                        {
+                            "id": 1037,
+                            "lessonId": 157,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which operation did you hear?",
+                                "audioUrl": "https://audio.example.com/python/modulo.mp3",
+                                "answers": [
+                                    "addition",
+                                    "modulo",
+                                    "exponentiation",
+                                    "floor division"
+                                ],
+                                "correctAnswer": "modulo"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 158,
+                    "unitId": 103,
+                    "title": "Input & Output",
+                    "orderIndex": 3,
+                    "createdAt": "2026-02-25T14:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1038,
+                            "lessonId": 158,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which function reads input from the user in Python?",
+                                "answers": [
+                                    "read()",
+                                    "input()",
+                                    "scan()",
+                                    "get()"
+                                ],
+                                "correctAnswer": "input()"
+                            }
+                        },
+                        {
+                            "id": 1039,
+                            "lessonId": 158,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does this code print if the user types '5'?",
+                                "code": "x = input(\"Number: \")\nprint(type(x))",
+                                "answers": [
+                                    "<class 'int'>",
+                                    "<class 'str'>",
+                                    "<class 'float'>",
+                                    "5"
+                                ],
+                                "correctAnswer": "<class 'str'>"
+                            }
+                        },
+                        {
+                            "id": 1040,
+                            "lessonId": 158,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Complete the code so the input is read as an integer.",
+                                "code": "x = __(input(\"Number: \"))\nprint(x + 1)",
+                                "correctAnswer": "int"
+                            }
+                        },
+                        {
+                            "id": 1041,
+                            "lessonId": 158,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "The print() function outputs values to the __.",
+                                "sentence": "The print() function outputs values to the __.",
+                                "correctAnswer": "console"
+                            }
+                        },
+                        {
+                            "id": 1042,
+                            "lessonId": 158,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you print 'Hello, World!'?",
+                                "correctAnswer": "print(\"Hello, World!\")"
+                            }
+                        },
+                        {
+                            "id": 1043,
+                            "lessonId": 158,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Say this out loud!",
+                                "expectedAnswer": "print hello world"
+                            }
+                        },
+                        {
+                            "id": 1044,
+                            "lessonId": 158,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which function did you hear?",
+                                "audioUrl": "https://audio.example.com/python/input_func.mp3",
+                                "answers": [
+                                    "print()",
+                                    "input()",
+                                    "read()",
+                                    "write()"
+                                ],
+                                "correctAnswer": "input()"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 104,
+            "courseId": 13,
+            "title": "Control Flow",
+            "orderIndex": 2,
+            "createdAt": "2026-02-26T10:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 159,
+                    "unitId": 104,
+                    "title": "If-Else Conditions",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-26T11:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1045,
+                            "lessonId": 159,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What will this code print?",
+                                "code": "x = 7\nif x > 5:\n    print(\"big\")\nelse:\n    print(\"small\")",
+                                "answers": [
+                                    "big",
+                                    "small",
+                                    "7",
+                                    "Error"
+                                ],
+                                "correctAnswer": "big"
+                            }
+                        },
+                        {
+                            "id": 1046,
+                            "lessonId": 159,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which keyword is missing?",
+                                "code": "x = 3\n__ x == 3:\n    print(\"three\")",
+                                "correctAnswer": "if"
+                            }
+                        },
+                        {
+                            "id": 1047,
+                            "lessonId": 159,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "When the if condition is False, the __ branch runs.",
+                                "sentence": "When the if condition is False, the __ branch runs.",
+                                "correctAnswer": "else"
+                            }
+                        },
+                        {
+                            "id": 1048,
+                            "lessonId": 159,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is the output?",
+                                "code": "x = 10\nif x < 5:\n    print(\"A\")\nelif x < 15:\n    print(\"B\")\nelse:\n    print(\"C\")",
+                                "answers": [
+                                    "A",
+                                    "B",
+                                    "C",
+                                    "Error"
+                                ],
+                                "correctAnswer": "B"
+                            }
+                        },
+                        {
+                            "id": 1049,
+                            "lessonId": 159,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you check if x equals 0?",
+                                "correctAnswer": "if x == 0:"
+                            }
+                        },
+                        {
+                            "id": 1050,
+                            "lessonId": 159,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match each comparison operator to its meaning!",
+                                "pairs": [
+                                    {
+                                        "left": "==",
+                                        "right": "equal to"
+                                    },
+                                    {
+                                        "left": "!=",
+                                        "right": "not equal to"
+                                    },
+                                    {
+                                        "left": ">=",
+                                        "right": "greater than or equal to"
+                                    },
+                                    {
+                                        "left": "not",
+                                        "right": "negation"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1051,
+                            "lessonId": 159,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Say this out loud: if x is greater than ten",
+                                "expectedAnswer": "if x is greater than ten"
+                            }
+                        },
+                        {
+                            "id": 1052,
+                            "lessonId": 159,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which keyword did you hear?",
+                                "audioUrl": "https://audio.example.com/python/elif.mp3",
+                                "answers": [
+                                    "if",
+                                    "else",
+                                    "elif",
+                                    "while"
+                                ],
+                                "correctAnswer": "elif"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 160,
+                    "unitId": 104,
+                    "title": "For & While Loops",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-26T12:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1053,
+                            "lessonId": 160,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How many times does this loop run?",
+                                "code": "for i in range(5):\n    print(i)",
+                                "answers": [
+                                    "4 times",
+                                    "5 times",
+                                    "6 times",
+                                    "Forever"
+                                ],
+                                "correctAnswer": "5 times"
+                            }
+                        },
+                        {
+                            "id": 1054,
+                            "lessonId": 160,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does this code print?",
+                                "code": "for i in range(2, 5):\n    print(i)",
+                                "answers": [
+                                    "2 3 4",
+                                    "2 3 4 5",
+                                    "1 2 3 4",
+                                    "0 1 2 3 4"
+                                ],
+                                "correctAnswer": "2 3 4"
+                            }
+                        },
+                        {
+                            "id": 1055,
+                            "lessonId": 160,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which keyword is missing?",
+                                "code": "i = 0\n__ i < 3:\n    print(i)\n    i += 1",
+                                "correctAnswer": "while"
+                            }
+                        },
+                        {
+                            "id": 1056,
+                            "lessonId": 160,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "The __ statement immediately exits a loop.",
+                                "sentence": "The __ statement immediately exits a loop.",
+                                "correctAnswer": "break"
+                            }
+                        },
+                        {
+                            "id": 1057,
+                            "lessonId": 160,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Write a for loop that iterates from 0 to 9.",
+                                "correctAnswer": "for i in range(10):"
+                            }
+                        },
+                        {
+                            "id": 1058,
+                            "lessonId": 160,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match each loop statement to its effect!",
+                                "pairs": [
+                                    {
+                                        "left": "break",
+                                        "right": "exit the loop"
+                                    },
+                                    {
+                                        "left": "continue",
+                                        "right": "skip to next iteration"
+                                    },
+                                    {
+                                        "left": "range(n)",
+                                        "right": "generates numbers 0 to n-1"
+                                    },
+                                    {
+                                        "left": "while",
+                                        "right": "condition-based loop"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1059,
+                            "lessonId": 160,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Say this out loud!",
+                                "expectedAnswer": "for i in range ten"
+                            }
+                        },
+                        {
+                            "id": 1060,
+                            "lessonId": 160,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which loop type did you hear?",
+                                "audioUrl": "https://audio.example.com/python/while_loop.mp3",
+                                "answers": [
+                                    "for loop",
+                                    "while loop",
+                                    "do-while",
+                                    "foreach"
+                                ],
+                                "correctAnswer": "while loop"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 161,
+                    "unitId": 104,
+                    "title": "Lists",
+                    "orderIndex": 3,
+                    "createdAt": "2026-02-26T13:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1061,
+                            "lessonId": 161,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you access the first element of a list?",
+                                "code": "my_list = [10, 20, 30]",
+                                "answers": [
+                                    "my_list[0]",
+                                    "my_list[1]",
+                                    "my_list.first()",
+                                    "my_list(0)"
+                                ],
+                                "correctAnswer": "my_list[0]"
+                            }
+                        },
+                        {
+                            "id": 1062,
+                            "lessonId": 161,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does this code print?",
+                                "code": "my_list = [1, 2, 3]\nmy_list.append(4)\nprint(len(my_list))",
+                                "answers": [
+                                    "3",
+                                    "4",
+                                    "5",
+                                    "Error"
+                                ],
+                                "correctAnswer": "4"
+                            }
+                        },
+                        {
+                            "id": 1063,
+                            "lessonId": 161,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which method removes the last element?",
+                                "code": "my_list = [1, 2, 3]\nmy_list.__()\nprint(my_list)",
+                                "correctAnswer": "pop"
+                            }
+                        },
+                        {
+                            "id": 1064,
+                            "lessonId": 161,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "List elements are enclosed in __ brackets.",
+                                "sentence": "List elements are enclosed in __ brackets.",
+                                "correctAnswer": "square"
+                            }
+                        },
+                        {
+                            "id": 1065,
+                            "lessonId": 161,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you create an empty list?",
+                                "correctAnswer": "my_list = []"
+                            }
+                        },
+                        {
+                            "id": 1066,
+                            "lessonId": 161,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match each list method to what it does!",
+                                "pairs": [
+                                    {
+                                        "left": ".append(x)",
+                                        "right": "adds an element to the end"
+                                    },
+                                    {
+                                        "left": ".pop()",
+                                        "right": "removes the last element"
+                                    },
+                                    {
+                                        "left": ".sort()",
+                                        "right": "sorts the list in place"
+                                    },
+                                    {
+                                        "left": "len(list)",
+                                        "right": "returns the number of elements"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1067,
+                            "lessonId": 161,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Say this out loud!",
+                                "expectedAnswer": "list dot append x"
+                            }
+                        },
+                        {
+                            "id": 1068,
+                            "lessonId": 161,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which list method did you hear?",
+                                "audioUrl": "https://audio.example.com/python/list_sort.mp3",
+                                "answers": [
+                                    ".append()",
+                                    ".pop()",
+                                    ".sort()",
+                                    ".remove()"
+                                ],
+                                "correctAnswer": ".sort()"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 105,
+            "courseId": 13,
+            "title": "Functions & Modules",
+            "orderIndex": 3,
+            "createdAt": "2026-02-27T10:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 162,
+                    "unitId": 105,
+                    "title": "Defining Functions",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-27T11:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1069,
+                            "lessonId": 162,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which keyword is missing to define a function?",
+                                "code": "__ greet(name):\n    print(\"Hello, \" + name)",
+                                "correctAnswer": "def"
+                            }
+                        },
+                        {
+                            "id": 1070,
+                            "lessonId": 162,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does this code print?",
+                                "code": "def square(x):\n    return x * x\n\nprint(square(4))",
+                                "answers": [
+                                    "8",
+                                    "16",
+                                    "44",
+                                    "Error"
+                                ],
+                                "correctAnswer": "16"
+                            }
+                        },
+                        {
+                            "id": 1071,
+                            "lessonId": 162,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "A function's return value is specified with the __ keyword.",
+                                "sentence": "A function's return value is specified with the __ keyword.",
+                                "correctAnswer": "return"
+                            }
+                        },
+                        {
+                            "id": 1072,
+                            "lessonId": 162,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match each concept to its definition!",
+                                "pairs": [
+                                    {
+                                        "left": "def",
+                                        "right": "defines a function"
+                                    },
+                                    {
+                                        "left": "return",
+                                        "right": "specifies the return value"
+                                    },
+                                    {
+                                        "left": "parameter",
+                                        "right": "function input"
+                                    },
+                                    {
+                                        "left": "call",
+                                        "right": "invoking a function"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1073,
+                            "lessonId": 162,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Define a function called 'add' that takes a and b as parameters.",
+                                "correctAnswer": "def add(a, b):"
+                            }
+                        },
+                        {
+                            "id": 1074,
+                            "lessonId": 162,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is the default return value of a function with no return statement?",
+                                "code": "def nothing():\n    x = 5",
+                                "answers": [
+                                    "0",
+                                    "None",
+                                    "False",
+                                    "Error"
+                                ],
+                                "correctAnswer": "None"
+                            }
+                        },
+                        {
+                            "id": 1075,
+                            "lessonId": 162,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Say this out loud!",
+                                "expectedAnswer": "def function name colon"
+                            }
+                        },
+                        {
+                            "id": 1076,
+                            "lessonId": 162,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which keyword did you hear?",
+                                "audioUrl": "https://audio.example.com/python/return.mp3",
+                                "answers": [
+                                    "def",
+                                    "return",
+                                    "pass",
+                                    "yield"
+                                ],
+                                "correctAnswer": "return"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 163,
+                    "unitId": 105,
+                    "title": "Dictionaries",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-27T12:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1077,
+                            "lessonId": 163,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you access the value for key 'apple'?",
+                                "code": "fruits = {\"apple\": 5, \"pear\": 3}",
+                                "answers": [
+                                    "fruits[0]",
+                                    "fruits[\"apple\"]",
+                                    "fruits.apple",
+                                    "fruits.get[\"apple\"]"
+                                ],
+                                "correctAnswer": "fruits[\"apple\"]"
+                            }
+                        },
+                        {
+                            "id": 1078,
+                            "lessonId": 163,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does this code print?",
+                                "code": "d = {\"a\": 1, \"b\": 2}\nd[\"c\"] = 3\nprint(len(d))",
+                                "answers": [
+                                    "2",
+                                    "3",
+                                    "4",
+                                    "Error"
+                                ],
+                                "correctAnswer": "3"
+                            }
+                        },
+                        {
+                            "id": 1079,
+                            "lessonId": 163,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which method is missing to get all keys?",
+                                "code": "d = {\"x\": 1, \"y\": 2}\nprint(d.__())",
+                                "correctAnswer": "keys"
+                            }
+                        },
+                        {
+                            "id": 1080,
+                            "lessonId": 163,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "In a dictionary, each key maps to a __.",
+                                "sentence": "In a dictionary, each key maps to a __.",
+                                "correctAnswer": "value"
+                            }
+                        },
+                        {
+                            "id": 1081,
+                            "lessonId": 163,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you create an empty dictionary?",
+                                "correctAnswer": "d = {}"
+                            }
+                        },
+                        {
+                            "id": 1082,
+                            "lessonId": 163,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match each dictionary method to what it returns!",
+                                "pairs": [
+                                    {
+                                        "left": ".keys()",
+                                        "right": "all keys"
+                                    },
+                                    {
+                                        "left": ".values()",
+                                        "right": "all values"
+                                    },
+                                    {
+                                        "left": ".items()",
+                                        "right": "key-value pairs"
+                                    },
+                                    {
+                                        "left": ".get(k)",
+                                        "right": "safe key lookup"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1083,
+                            "lessonId": 163,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Say this out loud!",
+                                "expectedAnswer": "dictionary dot keys"
+                            }
+                        },
+                        {
+                            "id": 1084,
+                            "lessonId": 163,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which data structure was described?",
+                                "audioUrl": "https://audio.example.com/python/dictionary.mp3",
+                                "answers": [
+                                    "list",
+                                    "dictionary",
+                                    "set",
+                                    "tuple"
+                                ],
+                                "correctAnswer": "dictionary"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 164,
+                    "unitId": 105,
+                    "title": "Importing Modules",
+                    "orderIndex": 3,
+                    "createdAt": "2026-02-27T13:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1085,
+                            "lessonId": 164,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which keyword is missing?",
+                                "code": "__ math\nprint(math.sqrt(16))",
+                                "correctAnswer": "import"
+                            }
+                        },
+                        {
+                            "id": 1086,
+                            "lessonId": 164,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does this code print?",
+                                "code": "import math\nprint(math.sqrt(25))",
+                                "answers": [
+                                    "5",
+                                    "5.0",
+                                    "25",
+                                    "Error"
+                                ],
+                                "correctAnswer": "5.0"
+                            }
+                        },
+                        {
+                            "id": 1087,
+                            "lessonId": 164,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "To import only one function from a module, you use the __ keyword.",
+                                "sentence": "To import only one function from a module, you use the __ keyword.",
+                                "correctAnswer": "from"
+                            }
+                        },
+                        {
+                            "id": 1088,
+                            "lessonId": 164,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Complete the import so only sqrt is available directly.",
+                                "code": "__ math __ sqrt\nprint(sqrt(9))",
+                                "correctAnswer": "from ... import"
+                            }
+                        },
+                        {
+                            "id": 1089,
+                            "lessonId": 164,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match each module to its purpose!",
+                                "pairs": [
+                                    {
+                                        "left": "math",
+                                        "right": "mathematical operations"
+                                    },
+                                    {
+                                        "left": "random",
+                                        "right": "random number generation"
+                                    },
+                                    {
+                                        "left": "datetime",
+                                        "right": "dates and times"
+                                    },
+                                    {
+                                        "left": "os",
+                                        "right": "operating system access"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1090,
+                            "lessonId": 164,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you import the random module?",
+                                "correctAnswer": "import random"
+                            }
+                        },
+                        {
+                            "id": 1091,
+                            "lessonId": 164,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Say this out loud!",
+                                "expectedAnswer": "import random"
+                            }
+                        },
+                        {
+                            "id": 1092,
+                            "lessonId": 164,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which module did you hear?",
+                                "audioUrl": "https://audio.example.com/python/math_module.mp3",
+                                "answers": [
+                                    "math",
+                                    "random",
+                                    "os",
+                                    "sys"
+                                ],
+                                "correctAnswer": "math"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 165,
+                    "unitId": 105,
+                    "title": "Error Handling (try-except)",
+                    "orderIndex": 4,
+                    "createdAt": "2026-02-27T14:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1093,
+                            "lessonId": 165,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which keyword is missing?",
+                                "code": "__ x = int(input())\n    print(x)\nexcept ValueError:\n    print(\"Error!\")",
+                                "correctAnswer": "try"
+                            }
+                        },
+                        {
+                            "id": 1094,
+                            "lessonId": 165,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does the code print if the user types 'abc'?",
+                                "code": "try:\n    x = int(input())\n    print(x)\nexcept ValueError:\n    print(\"Not a number!\")",
+                                "answers": [
+                                    "abc",
+                                    "0",
+                                    "Not a number!",
+                                    "Error"
+                                ],
+                                "correctAnswer": "Not a number!"
+                            }
+                        },
+                        {
+                            "id": 1095,
+                            "lessonId": 165,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "The __ block always runs, whether an error occurred or not.",
+                                "sentence": "The __ block always runs, whether an error occurred or not.",
+                                "correctAnswer": "finally"
+                            }
+                        },
+                        {
+                            "id": 1096,
+                            "lessonId": 165,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match each exception to the situation that causes it!",
+                                "pairs": [
+                                    {
+                                        "left": "ValueError",
+                                        "right": "wrong value type"
+                                    },
+                                    {
+                                        "left": "ZeroDivisionError",
+                                        "right": "dividing by zero"
+                                    },
+                                    {
+                                        "left": "IndexError",
+                                        "right": "list index out of range"
+                                    },
+                                    {
+                                        "left": "KeyError",
+                                        "right": "missing dictionary key"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1097,
+                            "lessonId": 165,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you manually raise a ValueError?",
+                                "correctAnswer": "raise ValueError(\"Error!\")"
+                            }
+                        },
+                        {
+                            "id": 1098,
+                            "lessonId": 165,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Say this out loud!",
+                                "expectedAnswer": "try except finally"
+                            }
+                        },
+                        {
+                            "id": 1099,
+                            "lessonId": 165,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T10:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which exception type did you hear?",
+                                "audioUrl": "https://audio.example.com/python/zero_division.mp3",
+                                "answers": [
+                                    "ValueError",
+                                    "ZeroDivisionError",
+                                    "IndexError",
+                                    "TypeError"
+                                ],
+                                "correctAnswer": "ZeroDivisionError"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

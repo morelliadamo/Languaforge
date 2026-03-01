@@ -1,0 +1,703 @@
+{
+    "id": 8,
+    "title": "English-Hungarian: Technology & Digital Life",
+    "description": "Master tech vocabulary in Hungarian — from devices and apps to AI and online safety!",
+    "createdAt": "2026-02-25T08:00:00.000Z",
+    "isDeleted": false,
+    "deletedAt": null,
+    "units": [
+        {
+            "id": 124,
+            "courseId": 8,
+            "title": "Devices & Software",
+            "orderIndex": 1,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 197,
+                    "unitId": 124,
+                    "title": "Hardware & Devices",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1492,
+                            "lessonId": 197,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'billentyűzet' in English?",
+                                "answers": [
+                                    "mouse",
+                                    "keyboard",
+                                    "monitor",
+                                    "speaker"
+                                ],
+                                "correctAnswer": "keyboard"
+                            }
+                        },
+                        {
+                            "id": 1493,
+                            "lessonId": 197,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'touch screen' in Hungarian?",
+                                "answers": [
+                                    "érintőképernyő",
+                                    "billentyűzet",
+                                    "egér",
+                                    "processzor"
+                                ],
+                                "correctAnswer": "érintőképernyő"
+                            }
+                        },
+                        {
+                            "id": 1494,
+                            "lessonId": 197,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'My laptop battery is dead'",
+                                "correctAnswer": "A laptopom akkumulátora lemerült"
+                            }
+                        },
+                        {
+                            "id": 1495,
+                            "lessonId": 197,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "I need to __ my phone. (Fel kell tölteni a telefonom.)",
+                                "sentence": "I need to __ my phone.",
+                                "correctAnswer": "charge"
+                            }
+                        },
+                        {
+                            "id": 1496,
+                            "lessonId": 197,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the tech words!",
+                                "pairs": [
+                                    {
+                                        "left": "printer",
+                                        "right": "nyomtató"
+                                    },
+                                    {
+                                        "left": "headphones",
+                                        "right": "fejhallgató"
+                                    },
+                                    {
+                                        "left": "charger",
+                                        "right": "töltő"
+                                    },
+                                    {
+                                        "left": "hard drive",
+                                        "right": "merevlemez"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1497,
+                            "lessonId": 197,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Describe your phone specs in Hungarian!",
+                                "expectedAnswer": "A telefonom nagy képernyős és gyors processzorral rendelkezik"
+                            }
+                        },
+                        {
+                            "id": 1498,
+                            "lessonId": 197,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What device is mentioned?",
+                                "audioUrl": "https://audio.example.com/hu/tech/printer.mp3",
+                                "answers": [
+                                    "scanner",
+                                    "printer",
+                                    "projector",
+                                    "router"
+                                ],
+                                "correctAnswer": "printer"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 198,
+                    "unitId": 124,
+                    "title": "Software & Apps",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1499,
+                            "lessonId": 198,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'frissítés' mean?",
+                                "answers": [
+                                    "download",
+                                    "upload",
+                                    "update",
+                                    "install"
+                                ],
+                                "correctAnswer": "update"
+                            }
+                        },
+                        {
+                            "id": 1500,
+                            "lessonId": 198,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'I forgot my password' in Hungarian?",
+                                "answers": [
+                                    "Elfelejtettem a jelszavamat",
+                                    "Nem tudom a jelszavamat",
+                                    "Új jelszót szeretnék",
+                                    "Be akarok lépni"
+                                ],
+                                "correctAnswer": "Elfelejtettem a jelszavamat"
+                            }
+                        },
+                        {
+                            "id": 1501,
+                            "lessonId": 198,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'Please restart your computer'",
+                                "correctAnswer": "Kérem indítsa újra a számítógépét"
+                            }
+                        },
+                        {
+                            "id": 1502,
+                            "lessonId": 198,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Click __ to save the file. (Kattintson a mentés gombra.)",
+                                "sentence": "Click __ to save the file.",
+                                "correctAnswer": "save"
+                            }
+                        },
+                        {
+                            "id": 1503,
+                            "lessonId": 198,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the software actions!",
+                                "pairs": [
+                                    {
+                                        "left": "copy",
+                                        "right": "másolás"
+                                    },
+                                    {
+                                        "left": "paste",
+                                        "right": "beillesztés"
+                                    },
+                                    {
+                                        "left": "delete",
+                                        "right": "törlés"
+                                    },
+                                    {
+                                        "left": "search",
+                                        "right": "keresés"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1504,
+                            "lessonId": 198,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Report a software bug in Hungarian!",
+                                "expectedAnswer": "Az alkalmazás nem nyílik meg és hibaüzenetet mutat"
+                            }
+                        },
+                        {
+                            "id": 1505,
+                            "lessonId": 198,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What action does the user need to take?",
+                                "audioUrl": "https://audio.example.com/hu/tech/update.mp3",
+                                "answers": [
+                                    "restart",
+                                    "update",
+                                    "delete",
+                                    "install"
+                                ],
+                                "correctAnswer": "update"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 125,
+            "courseId": 8,
+            "title": "Internet & Social Media",
+            "orderIndex": 2,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 199,
+                    "unitId": 125,
+                    "title": "Online Communication",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1506,
+                            "lessonId": 199,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'videóhívás' in English?",
+                                "answers": [
+                                    "voice call",
+                                    "video call",
+                                    "text message",
+                                    "email"
+                                ],
+                                "correctAnswer": "video call"
+                            }
+                        },
+                        {
+                            "id": 1507,
+                            "lessonId": 199,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'I will send you a link' in Hungarian?",
+                                "answers": [
+                                    "Küldöm a linket",
+                                    "Megmutatom a fájlt",
+                                    "Megosztom a képet",
+                                    "Elküldöm az emailt"
+                                ],
+                                "correctAnswer": "Küldöm a linket"
+                            }
+                        },
+                        {
+                            "id": 1508,
+                            "lessonId": 199,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'Can you share your screen?'",
+                                "correctAnswer": "Meg tudod osztani a képernyődet?"
+                            }
+                        },
+                        {
+                            "id": 1509,
+                            "lessonId": 199,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Please __ the document before the meeting. (Kérlek töltsd le a dokumentumot az értekezlet előtt.)",
+                                "sentence": "Please __ the document before the meeting.",
+                                "correctAnswer": "download"
+                            }
+                        },
+                        {
+                            "id": 1510,
+                            "lessonId": 199,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the online actions!",
+                                "pairs": [
+                                    {
+                                        "left": "to post",
+                                        "right": "posztolni"
+                                    },
+                                    {
+                                        "left": "to share",
+                                        "right": "megosztani"
+                                    },
+                                    {
+                                        "left": "to comment",
+                                        "right": "kommentelni"
+                                    },
+                                    {
+                                        "left": "to follow",
+                                        "right": "követni"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1511,
+                            "lessonId": 199,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Describe how you use social media in Hungarian!",
+                                "expectedAnswer": "Naponta egyszer nézem át a közösségi médiát"
+                            }
+                        },
+                        {
+                            "id": 1512,
+                            "lessonId": 199,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What online action is described?",
+                                "audioUrl": "https://audio.example.com/hu/internet/sharing.mp3",
+                                "answers": [
+                                    "posting",
+                                    "sharing",
+                                    "commenting",
+                                    "liking"
+                                ],
+                                "correctAnswer": "sharing"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 200,
+                    "unitId": 125,
+                    "title": "Online Safety",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1513,
+                            "lessonId": 200,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'adathalászat' mean?",
+                                "answers": [
+                                    "hacking",
+                                    "phishing",
+                                    "spam",
+                                    "malware"
+                                ],
+                                "correctAnswer": "phishing"
+                            }
+                        },
+                        {
+                            "id": 1514,
+                            "lessonId": 200,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'strong password' in Hungarian?",
+                                "answers": [
+                                    "erős jelszó",
+                                    "biztonságos kapcsolat",
+                                    "kétlépéses azonosítás",
+                                    "titkosítás"
+                                ],
+                                "correctAnswer": "erős jelszó"
+                            }
+                        },
+                        {
+                            "id": 1515,
+                            "lessonId": 200,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'Do not click on suspicious links'",
+                                "correctAnswer": "Ne kattintson gyanús linkekre"
+                            }
+                        },
+                        {
+                            "id": 1516,
+                            "lessonId": 200,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Always enable two-__ authentication. (Mindig engedélyezze a kétlépéses azonosítást.)",
+                                "sentence": "Always enable two-__ authentication.",
+                                "correctAnswer": "factor"
+                            }
+                        },
+                        {
+                            "id": 1517,
+                            "lessonId": 200,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the cybersecurity terms!",
+                                "pairs": [
+                                    {
+                                        "left": "firewall",
+                                        "right": "tűzfal"
+                                    },
+                                    {
+                                        "left": "virus",
+                                        "right": "vírus"
+                                    },
+                                    {
+                                        "left": "backup",
+                                        "right": "biztonsági mentés"
+                                    },
+                                    {
+                                        "left": "encryption",
+                                        "right": "titkosítás"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1518,
+                            "lessonId": 200,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Warn someone about an online scam in Hungarian!",
+                                "expectedAnswer": "Vigyázz ez egy átverés ne add meg az adataidat"
+                            }
+                        },
+                        {
+                            "id": 1519,
+                            "lessonId": 200,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What security threat is described?",
+                                "audioUrl": "https://audio.example.com/hu/security/phishing.mp3",
+                                "answers": [
+                                    "virus",
+                                    "phishing",
+                                    "hacking",
+                                    "spam"
+                                ],
+                                "correctAnswer": "phishing"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 126,
+            "courseId": 8,
+            "title": "Future Technology",
+            "orderIndex": 3,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 201,
+                    "unitId": 126,
+                    "title": "AI & Automation",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1520,
+                            "lessonId": 201,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'mesterséges intelligencia' in English?",
+                                "answers": [
+                                    "virtual reality",
+                                    "artificial intelligence",
+                                    "machine learning",
+                                    "robotics"
+                                ],
+                                "correctAnswer": "artificial intelligence"
+                            }
+                        },
+                        {
+                            "id": 1521,
+                            "lessonId": 201,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'self-driving car' in Hungarian?",
+                                "answers": [
+                                    "elektromos autó",
+                                    "önvezető autó",
+                                    "hibrid autó",
+                                    "repülő autó"
+                                ],
+                                "correctAnswer": "önvezető autó"
+                            }
+                        },
+                        {
+                            "id": 1522,
+                            "lessonId": 201,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'Technology is changing the world'",
+                                "correctAnswer": "A technológia megváltoztatja a világot"
+                            }
+                        },
+                        {
+                            "id": 1523,
+                            "lessonId": 201,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Many jobs will be __ by robots in the future. (Sok munkát robotok fognak elvégezni a jövőben.)",
+                                "sentence": "Many jobs will be __ by robots in the future.",
+                                "correctAnswer": "done"
+                            }
+                        },
+                        {
+                            "id": 1524,
+                            "lessonId": 201,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the tech concepts!",
+                                "pairs": [
+                                    {
+                                        "left": "virtual reality",
+                                        "right": "virtuális valóság"
+                                    },
+                                    {
+                                        "left": "3D printing",
+                                        "right": "3D nyomtatás"
+                                    },
+                                    {
+                                        "left": "drone",
+                                        "right": "drón"
+                                    },
+                                    {
+                                        "left": "blockchain",
+                                        "right": "blokklánc"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1525,
+                            "lessonId": 201,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Share your opinion on AI in Hungarian!",
+                                "expectedAnswer": "Szerintem a mesterséges intelligencia hasznos de körültekintően kell használni"
+                            }
+                        },
+                        {
+                            "id": 1526,
+                            "lessonId": 201,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What technology is discussed?",
+                                "audioUrl": "https://audio.example.com/hu/tech/drone.mp3",
+                                "answers": [
+                                    "AI",
+                                    "3D printing",
+                                    "drone",
+                                    "VR"
+                                ],
+                                "correctAnswer": "drone"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

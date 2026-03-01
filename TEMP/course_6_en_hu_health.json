@@ -1,0 +1,703 @@
+{
+    "id": 6,
+    "title": "English-Hungarian: Health & Wellbeing",
+    "description": "Learn to talk about your body, health, and lifestyle in Hungarian!",
+    "createdAt": "2026-02-25T08:00:00.000Z",
+    "isDeleted": false,
+    "deletedAt": null,
+    "units": [
+        {
+            "id": 118,
+            "courseId": 6,
+            "title": "The Human Body",
+            "orderIndex": 1,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 187,
+                    "unitId": 118,
+                    "title": "Body Parts",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1422,
+                            "lessonId": 187,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'térd' in English?",
+                                "answers": [
+                                    "elbow",
+                                    "knee",
+                                    "ankle",
+                                    "wrist"
+                                ],
+                                "correctAnswer": "knee"
+                            }
+                        },
+                        {
+                            "id": 1423,
+                            "lessonId": 187,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'shoulder' in Hungarian?",
+                                "answers": [
+                                    "váll",
+                                    "könyök",
+                                    "csukló",
+                                    "boka"
+                                ],
+                                "correctAnswer": "váll"
+                            }
+                        },
+                        {
+                            "id": 1424,
+                            "lessonId": 187,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'My back hurts'",
+                                "correctAnswer": "Fáj a hátam"
+                            }
+                        },
+                        {
+                            "id": 1425,
+                            "lessonId": 187,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "The __ is connected to the arm. (A kéz a karhoz kapcsolódik.)",
+                                "sentence": "The __ is connected to the arm.",
+                                "correctAnswer": "hand"
+                            }
+                        },
+                        {
+                            "id": 1426,
+                            "lessonId": 187,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the body parts!",
+                                "pairs": [
+                                    {
+                                        "left": "forehead",
+                                        "right": "homlok"
+                                    },
+                                    {
+                                        "left": "chin",
+                                        "right": "áll"
+                                    },
+                                    {
+                                        "left": "chest",
+                                        "right": "mellkas"
+                                    },
+                                    {
+                                        "left": "stomach",
+                                        "right": "has"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1427,
+                            "lessonId": 187,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Name head, shoulder, knee and foot in Hungarian!",
+                                "expectedAnswer": "fej váll térd lábfej"
+                            }
+                        },
+                        {
+                            "id": 1428,
+                            "lessonId": 187,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which body part is mentioned?",
+                                "audioUrl": "https://audio.example.com/hu/body/elbow.mp3",
+                                "answers": [
+                                    "knee",
+                                    "elbow",
+                                    "ankle",
+                                    "wrist"
+                                ],
+                                "correctAnswer": "elbow"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 188,
+                    "unitId": 118,
+                    "title": "Feelings & Sensations",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1429,
+                            "lessonId": 188,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'fáradt vagyok' mean?",
+                                "answers": [
+                                    "I am hungry",
+                                    "I am tired",
+                                    "I am cold",
+                                    "I am in pain"
+                                ],
+                                "correctAnswer": "I am tired"
+                            }
+                        },
+                        {
+                            "id": 1430,
+                            "lessonId": 188,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'I feel dizzy' in Hungarian?",
+                                "answers": [
+                                    "Szédülök",
+                                    "Hányingerem van",
+                                    "Viszket",
+                                    "Égeti a torkom"
+                                ],
+                                "correctAnswer": "Szédülök"
+                            }
+                        },
+                        {
+                            "id": 1431,
+                            "lessonId": 188,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'I have a headache'",
+                                "correctAnswer": "Fáj a fejem"
+                            }
+                        },
+                        {
+                            "id": 1432,
+                            "lessonId": 188,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "I feel very __ today. (Ma nagyon rosszul érzem magam.)",
+                                "sentence": "I feel very __ today.",
+                                "correctAnswer": "unwell"
+                            }
+                        },
+                        {
+                            "id": 1433,
+                            "lessonId": 188,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the feelings!",
+                                "pairs": [
+                                    {
+                                        "left": "cold",
+                                        "right": "fázom"
+                                    },
+                                    {
+                                        "left": "hot",
+                                        "right": "melegem van"
+                                    },
+                                    {
+                                        "left": "nauseous",
+                                        "right": "hányingerem van"
+                                    },
+                                    {
+                                        "left": "itchy",
+                                        "right": "viszket"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1434,
+                            "lessonId": 188,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Describe how you feel in Hungarian!",
+                                "expectedAnswer": "Fáradt és fejfájós vagyok"
+                            }
+                        },
+                        {
+                            "id": 1435,
+                            "lessonId": 188,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How is the person feeling?",
+                                "audioUrl": "https://audio.example.com/hu/body/dizzy.mp3",
+                                "answers": [
+                                    "tired",
+                                    "dizzy",
+                                    "cold",
+                                    "hungry"
+                                ],
+                                "correctAnswer": "dizzy"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 119,
+            "courseId": 6,
+            "title": "At the Doctor",
+            "orderIndex": 2,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 189,
+                    "unitId": 119,
+                    "title": "Symptoms & Diagnosis",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1436,
+                            "lessonId": 189,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'láz' in English?",
+                                "answers": [
+                                    "cough",
+                                    "fever",
+                                    "rash",
+                                    "cold"
+                                ],
+                                "correctAnswer": "fever"
+                            }
+                        },
+                        {
+                            "id": 1437,
+                            "lessonId": 189,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'I have been ill for three days' in Hungarian?",
+                                "answers": [
+                                    "Három napja beteg vagyok",
+                                    "Ma lettem beteg",
+                                    "Tegnap mentem orvoshoz",
+                                    "Gyógyszereket szedek"
+                                ],
+                                "correctAnswer": "Három napja beteg vagyok"
+                            }
+                        },
+                        {
+                            "id": 1438,
+                            "lessonId": 189,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'I have a sore throat'",
+                                "correctAnswer": "Fáj a torkom"
+                            }
+                        },
+                        {
+                            "id": 1439,
+                            "lessonId": 189,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "He has a high __. (Magas láza van.)",
+                                "sentence": "He has a high __.",
+                                "correctAnswer": "fever"
+                            }
+                        },
+                        {
+                            "id": 1440,
+                            "lessonId": 189,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the symptoms!",
+                                "pairs": [
+                                    {
+                                        "left": "cough",
+                                        "right": "köhögés"
+                                    },
+                                    {
+                                        "left": "sneezing",
+                                        "right": "tüsszögés"
+                                    },
+                                    {
+                                        "left": "rash",
+                                        "right": "kiütés"
+                                    },
+                                    {
+                                        "left": "bruise",
+                                        "right": "zúzódás"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1441,
+                            "lessonId": 189,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Tell the doctor your symptoms in Hungarian!",
+                                "expectedAnswer": "Köhögök és fáj a torkom három napja"
+                            }
+                        },
+                        {
+                            "id": 1442,
+                            "lessonId": 189,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What symptom does the patient have?",
+                                "audioUrl": "https://audio.example.com/hu/health/cough.mp3",
+                                "answers": [
+                                    "fever",
+                                    "cough",
+                                    "rash",
+                                    "headache"
+                                ],
+                                "correctAnswer": "cough"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 190,
+                    "unitId": 119,
+                    "title": "Medicine & Treatment",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1443,
+                            "lessonId": 190,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'recept' in English (medical context)?",
+                                "answers": [
+                                    "recipe",
+                                    "prescription",
+                                    "receipt",
+                                    "record"
+                                ],
+                                "correctAnswer": "prescription"
+                            }
+                        },
+                        {
+                            "id": 1444,
+                            "lessonId": 190,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'Take two tablets twice a day'?",
+                                "answers": [
+                                    "Vegyen be két tablettát naponta kétszer",
+                                    "Vegyen be egy tablettát naponta egyszer",
+                                    "Napi háromszor vegyen be egyet",
+                                    "Evés után vegyen be kettőt"
+                                ],
+                                "correctAnswer": "Vegyen be két tablettát naponta kétszer"
+                            }
+                        },
+                        {
+                            "id": 1445,
+                            "lessonId": 190,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'Are you allergic to penicillin?'",
+                                "correctAnswer": "Allergiás penicillinre?"
+                            }
+                        },
+                        {
+                            "id": 1446,
+                            "lessonId": 190,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "You need to __ a blood test. (Vérvizsgálatra van szükség.)",
+                                "sentence": "You need to __ a blood test.",
+                                "correctAnswer": "have"
+                            }
+                        },
+                        {
+                            "id": 1447,
+                            "lessonId": 190,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the medical terms!",
+                                "pairs": [
+                                    {
+                                        "left": "injection",
+                                        "right": "injekció"
+                                    },
+                                    {
+                                        "left": "blood test",
+                                        "right": "vérvizsgálat"
+                                    },
+                                    {
+                                        "left": "X-ray",
+                                        "right": "röntgen"
+                                    },
+                                    {
+                                        "left": "surgery",
+                                        "right": "műtét"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1448,
+                            "lessonId": 190,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Tell the pharmacist what you need!",
+                                "expectedAnswer": "Lázcsökkentőt és köhögés elleni szirupot kérek"
+                            }
+                        },
+                        {
+                            "id": 1449,
+                            "lessonId": 190,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What treatment is the doctor recommending?",
+                                "audioUrl": "https://audio.example.com/hu/health/rest.mp3",
+                                "answers": [
+                                    "antibiotics",
+                                    "rest",
+                                    "surgery",
+                                    "injection"
+                                ],
+                                "correctAnswer": "rest"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 120,
+            "courseId": 6,
+            "title": "Healthy Lifestyle",
+            "orderIndex": 3,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 191,
+                    "unitId": 120,
+                    "title": "Diet & Exercise",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1450,
+                            "lessonId": 191,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'egészséges táplálkozás' mean?",
+                                "answers": [
+                                    "regular exercise",
+                                    "healthy eating",
+                                    "good sleep",
+                                    "stress management"
+                                ],
+                                "correctAnswer": "healthy eating"
+                            }
+                        },
+                        {
+                            "id": 1451,
+                            "lessonId": 191,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'I go to the gym three times a week'?",
+                                "answers": [
+                                    "Hetente háromszor járok edzőterembe",
+                                    "Minden nap futok",
+                                    "Ritkán sportolok",
+                                    "Nem szeretek sportolni"
+                                ],
+                                "correctAnswer": "Hetente háromszor járok edzőterembe"
+                            }
+                        },
+                        {
+                            "id": 1452,
+                            "lessonId": 191,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'Drink plenty of water'",
+                                "correctAnswer": "Igyon sok vizet"
+                            }
+                        },
+                        {
+                            "id": 1453,
+                            "lessonId": 191,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Regular __ keeps you healthy. (A rendszeres testmozgás egészségesen tart.)",
+                                "sentence": "Regular __ keeps you healthy.",
+                                "correctAnswer": "exercise"
+                            }
+                        },
+                        {
+                            "id": 1454,
+                            "lessonId": 191,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the healthy habits!",
+                                "pairs": [
+                                    {
+                                        "left": "to sleep well",
+                                        "right": "jól aludni"
+                                    },
+                                    {
+                                        "left": "to avoid stress",
+                                        "right": "kerülni a stresszt"
+                                    },
+                                    {
+                                        "left": "to eat vegetables",
+                                        "right": "zöldséget enni"
+                                    },
+                                    {
+                                        "left": "to drink water",
+                                        "right": "vizet inni"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1455,
+                            "lessonId": 191,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Describe your weekly exercise routine in Hungarian!",
+                                "expectedAnswer": "Hetente háromszor futok és naponta nyújtok"
+                            }
+                        },
+                        {
+                            "id": 1456,
+                            "lessonId": 191,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What healthy habit is mentioned?",
+                                "audioUrl": "https://audio.example.com/hu/health/sleep.mp3",
+                                "answers": [
+                                    "exercise",
+                                    "diet",
+                                    "sleep",
+                                    "meditation"
+                                ],
+                                "correctAnswer": "sleep"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,703 @@
+{
+    "id": 4,
+    "title": "English-Hungarian: Travel & Tourism",
+    "description": "Everything you need to navigate Hungary as a traveller — transport, hotels, and sightseeing!",
+    "createdAt": "2026-02-25T08:00:00.000Z",
+    "isDeleted": false,
+    "deletedAt": null,
+    "units": [
+        {
+            "id": 112,
+            "courseId": 4,
+            "title": "Transport",
+            "orderIndex": 1,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 177,
+                    "unitId": 112,
+                    "title": "Vehicles & Getting Around",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1352,
+                            "lessonId": 177,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'vonat' in English?",
+                                "answers": [
+                                    "bus",
+                                    "train",
+                                    "tram",
+                                    "taxi"
+                                ],
+                                "correctAnswer": "train"
+                            }
+                        },
+                        {
+                            "id": 1353,
+                            "lessonId": 177,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'timetable' in Hungarian?",
+                                "answers": [
+                                    "jegy",
+                                    "menetrend",
+                                    "megálló",
+                                    "vágány"
+                                ],
+                                "correctAnswer": "menetrend"
+                            }
+                        },
+                        {
+                            "id": 1354,
+                            "lessonId": 177,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'I need a ticket to Budapest'",
+                                "correctAnswer": "Egy jegyet kérek Budapestre"
+                            }
+                        },
+                        {
+                            "id": 1355,
+                            "lessonId": 177,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "The train departs from platform __. (vágány)",
+                                "sentence": "The train departs from platform __.",
+                                "correctAnswer": "vágány"
+                            }
+                        },
+                        {
+                            "id": 1356,
+                            "lessonId": 177,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the transport words!",
+                                "pairs": [
+                                    {
+                                        "left": "bus stop",
+                                        "right": "buszmegálló"
+                                    },
+                                    {
+                                        "left": "return ticket",
+                                        "right": "retúrjegy"
+                                    },
+                                    {
+                                        "left": "departure",
+                                        "right": "indulás"
+                                    },
+                                    {
+                                        "left": "arrival",
+                                        "right": "érkezés"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1357,
+                            "lessonId": 177,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Ask when the next train to Pécs is!",
+                                "expectedAnswer": "Mikor indul a következő vonat Pécsre?"
+                            }
+                        },
+                        {
+                            "id": 1358,
+                            "lessonId": 177,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What transport is mentioned?",
+                                "audioUrl": "https://audio.example.com/hu/transport/tram.mp3",
+                                "answers": [
+                                    "bus",
+                                    "train",
+                                    "tram",
+                                    "taxi"
+                                ],
+                                "correctAnswer": "tram"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 178,
+                    "unitId": 112,
+                    "title": "Directions",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1359,
+                            "lessonId": 178,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'forduljon balra' mean?",
+                                "answers": [
+                                    "turn right",
+                                    "go straight",
+                                    "turn left",
+                                    "go back"
+                                ],
+                                "correctAnswer": "turn left"
+                            }
+                        },
+                        {
+                            "id": 1360,
+                            "lessonId": 178,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'crossroads' in Hungarian?",
+                                "answers": [
+                                    "körforgalom",
+                                    "kereszteződés",
+                                    "aluljáró",
+                                    "felüljáró"
+                                ],
+                                "correctAnswer": "kereszteződés"
+                            }
+                        },
+                        {
+                            "id": 1361,
+                            "lessonId": 178,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'How do I get to the station?'",
+                                "correctAnswer": "Hogy jutok el az állomásra?"
+                            }
+                        },
+                        {
+                            "id": 1362,
+                            "lessonId": 178,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Go __ and then turn right. (Menjen egyenesen, majd forduljon jobbra.)",
+                                "sentence": "Go __ and then turn right.",
+                                "correctAnswer": "straight"
+                            }
+                        },
+                        {
+                            "id": 1363,
+                            "lessonId": 178,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the directions!",
+                                "pairs": [
+                                    {
+                                        "left": "north",
+                                        "right": "észak"
+                                    },
+                                    {
+                                        "left": "south",
+                                        "right": "dél"
+                                    },
+                                    {
+                                        "left": "east",
+                                        "right": "kelet"
+                                    },
+                                    {
+                                        "left": "west",
+                                        "right": "nyugat"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1364,
+                            "lessonId": 178,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Give directions: straight, left, right in Hungarian!",
+                                "expectedAnswer": "egyenesen balra jobbra"
+                            }
+                        },
+                        {
+                            "id": 1365,
+                            "lessonId": 178,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which direction was given?",
+                                "audioUrl": "https://audio.example.com/hu/directions/right.mp3",
+                                "answers": [
+                                    "left",
+                                    "right",
+                                    "straight",
+                                    "back"
+                                ],
+                                "correctAnswer": "right"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 113,
+            "courseId": 4,
+            "title": "Accommodation",
+            "orderIndex": 2,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 179,
+                    "unitId": 113,
+                    "title": "At the Hotel",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1366,
+                            "lessonId": 179,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'check-in' in Hungarian?",
+                                "answers": [
+                                    "bejelentkezés",
+                                    "kijelentkezés",
+                                    "foglalás",
+                                    "szoba"
+                                ],
+                                "correctAnswer": "bejelentkezés"
+                            }
+                        },
+                        {
+                            "id": 1367,
+                            "lessonId": 179,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'Egyágyas szobát szeretnék.' mean?",
+                                "answers": [
+                                    "I would like a double room",
+                                    "I would like a single room",
+                                    "I have a reservation",
+                                    "Is breakfast included?"
+                                ],
+                                "correctAnswer": "I would like a single room"
+                            }
+                        },
+                        {
+                            "id": 1368,
+                            "lessonId": 179,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'What time is check-out?'",
+                                "correctAnswer": "Mikor kell kijelentkezni?"
+                            }
+                        },
+                        {
+                            "id": 1369,
+                            "lessonId": 179,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Is __ included? (Reggeli benne van az árban?)",
+                                "sentence": "Is __ included?",
+                                "correctAnswer": "breakfast"
+                            }
+                        },
+                        {
+                            "id": 1370,
+                            "lessonId": 179,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match hotel words!",
+                                "pairs": [
+                                    {
+                                        "left": "reception",
+                                        "right": "recepció"
+                                    },
+                                    {
+                                        "left": "room key",
+                                        "right": "szobaculcs"
+                                    },
+                                    {
+                                        "left": "wake-up call",
+                                        "right": "ébresztőhívás"
+                                    },
+                                    {
+                                        "left": "towel",
+                                        "right": "törölköző"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1371,
+                            "lessonId": 179,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Ask for a double room for two nights!",
+                                "expectedAnswer": "Kérek egy kétágyas szobát két éjszakára"
+                            }
+                        },
+                        {
+                            "id": 1372,
+                            "lessonId": 179,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is the guest asking about?",
+                                "audioUrl": "https://audio.example.com/hu/hotel/wifi.mp3",
+                                "answers": [
+                                    "breakfast",
+                                    "wifi",
+                                    "parking",
+                                    "pool"
+                                ],
+                                "correctAnswer": "wifi"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 114,
+            "courseId": 4,
+            "title": "Sightseeing & Activities",
+            "orderIndex": 3,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 180,
+                    "unitId": 114,
+                    "title": "Attractions & Places",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1373,
+                            "lessonId": 180,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'múzeum' in English?",
+                                "answers": [
+                                    "cinema",
+                                    "museum",
+                                    "theatre",
+                                    "gallery"
+                                ],
+                                "correctAnswer": "museum"
+                            }
+                        },
+                        {
+                            "id": 1374,
+                            "lessonId": 180,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'entrance fee' in Hungarian?",
+                                "answers": [
+                                    "belépőjegy",
+                                    "térkép",
+                                    "túravezető",
+                                    "emléktárgy"
+                                ],
+                                "correctAnswer": "belépőjegy"
+                            }
+                        },
+                        {
+                            "id": 1375,
+                            "lessonId": 180,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'Where is the city centre?'",
+                                "correctAnswer": "Hol van a városközpont?"
+                            }
+                        },
+                        {
+                            "id": 1376,
+                            "lessonId": 180,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "The castle is very __ (beautiful). (A vár nagyon szép.)",
+                                "sentence": "The castle is very __.",
+                                "correctAnswer": "beautiful"
+                            }
+                        },
+                        {
+                            "id": 1377,
+                            "lessonId": 180,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the places!",
+                                "pairs": [
+                                    {
+                                        "left": "castle",
+                                        "right": "vár"
+                                    },
+                                    {
+                                        "left": "bridge",
+                                        "right": "híd"
+                                    },
+                                    {
+                                        "left": "church",
+                                        "right": "temploma"
+                                    },
+                                    {
+                                        "left": "market",
+                                        "right": "piac"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1378,
+                            "lessonId": 180,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Ask where the nearest museum is!",
+                                "expectedAnswer": "Hol van a legközelebbi múzeum?"
+                            }
+                        },
+                        {
+                            "id": 1379,
+                            "lessonId": 180,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Where does the tourist want to go?",
+                                "audioUrl": "https://audio.example.com/hu/sights/castle.mp3",
+                                "answers": [
+                                    "museum",
+                                    "castle",
+                                    "bridge",
+                                    "church"
+                                ],
+                                "correctAnswer": "castle"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 181,
+                    "unitId": 114,
+                    "title": "Buying Tickets & Souvenirs",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1380,
+                            "lessonId": 181,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'Mennyi az ára?' mean?",
+                                "answers": [
+                                    "Is it open?",
+                                    "How much does it cost?",
+                                    "Where can I buy tickets?",
+                                    "What time does it close?"
+                                ],
+                                "correctAnswer": "How much does it cost?"
+                            }
+                        },
+                        {
+                            "id": 1381,
+                            "lessonId": 181,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'sold out' in Hungarian?",
+                                "answers": [
+                                    "elfogyott",
+                                    "zárva",
+                                    "nyitva",
+                                    "olcsó"
+                                ],
+                                "correctAnswer": "elfogyott"
+                            }
+                        },
+                        {
+                            "id": 1382,
+                            "lessonId": 181,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'Two adult tickets please'",
+                                "correctAnswer": "Két felnőtt jegyet kérek"
+                            }
+                        },
+                        {
+                            "id": 1383,
+                            "lessonId": 181,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Do you have this in a smaller __? (Megvan ez kisebb méretben?)",
+                                "sentence": "Do you have this in a smaller __?",
+                                "correctAnswer": "size"
+                            }
+                        },
+                        {
+                            "id": 1384,
+                            "lessonId": 181,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the shopping phrases!",
+                                "pairs": [
+                                    {
+                                        "left": "discount",
+                                        "right": "kedvezmény"
+                                    },
+                                    {
+                                        "left": "receipt",
+                                        "right": "nyugta"
+                                    },
+                                    {
+                                        "left": "souvenir",
+                                        "right": "emléktárgy"
+                                    },
+                                    {
+                                        "left": "expensive",
+                                        "right": "drága"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1385,
+                            "lessonId": 181,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Ask if they have a student discount!",
+                                "expectedAnswer": "Van diákkedvezmény?"
+                            }
+                        },
+                        {
+                            "id": 1386,
+                            "lessonId": 181,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is the customer asking about?",
+                                "audioUrl": "https://audio.example.com/hu/shopping/price.mp3",
+                                "answers": [
+                                    "size",
+                                    "price",
+                                    "color",
+                                    "discount"
+                                ],
+                                "correctAnswer": "price"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,703 @@
+{
+    "id": 9,
+    "title": "English-Hungarian: Culture & Society",
+    "description": "Dive into Hungarian culture, arts, traditions and learn to express opinions like a local!",
+    "createdAt": "2026-02-25T08:00:00.000Z",
+    "isDeleted": false,
+    "deletedAt": null,
+    "units": [
+        {
+            "id": 127,
+            "courseId": 9,
+            "title": "Hungarian Culture & Traditions",
+            "orderIndex": 1,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 202,
+                    "unitId": 127,
+                    "title": "Festivals & Celebrations",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1527,
+                            "lessonId": 202,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'Húsvét' in English?",
+                                "answers": [
+                                    "Christmas",
+                                    "Easter",
+                                    "New Year",
+                                    "Halloween"
+                                ],
+                                "correctAnswer": "Easter"
+                            }
+                        },
+                        {
+                            "id": 1528,
+                            "lessonId": 202,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is the Hungarian national holiday on August 20th?",
+                                "answers": [
+                                    "Easter",
+                                    "Christmas",
+                                    "St Stephen's Day",
+                                    "New Year"
+                                ],
+                                "correctAnswer": "St Stephen's Day"
+                            }
+                        },
+                        {
+                            "id": 1529,
+                            "lessonId": 202,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'Merry Christmas!'",
+                                "correctAnswer": "Boldog Karácsonyt!"
+                            }
+                        },
+                        {
+                            "id": 1530,
+                            "lessonId": 202,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Hungarians celebrate __ on December 6th. (Magyarok december 6-án ünneplik Mikulást.)",
+                                "sentence": "Hungarians celebrate __ on December 6th.",
+                                "correctAnswer": "St Nicholas Day"
+                            }
+                        },
+                        {
+                            "id": 1531,
+                            "lessonId": 202,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the holidays!",
+                                "pairs": [
+                                    {
+                                        "left": "New Year's Eve",
+                                        "right": "Szilveszter"
+                                    },
+                                    {
+                                        "left": "Easter",
+                                        "right": "Húsvét"
+                                    },
+                                    {
+                                        "left": "Christmas",
+                                        "right": "Karácsony"
+                                    },
+                                    {
+                                        "left": "Valentine's Day",
+                                        "right": "Valentin-nap"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1532,
+                            "lessonId": 202,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Wish someone happy Easter in Hungarian!",
+                                "expectedAnswer": "Kellemes Húsvéti Ünnepeket kívánok"
+                            }
+                        },
+                        {
+                            "id": 1533,
+                            "lessonId": 202,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which holiday is mentioned?",
+                                "audioUrl": "https://audio.example.com/hu/culture/christmas.mp3",
+                                "answers": [
+                                    "Easter",
+                                    "Christmas",
+                                    "New Year",
+                                    "Halloween"
+                                ],
+                                "correctAnswer": "Christmas"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 203,
+                    "unitId": 127,
+                    "title": "Hungarian Food Culture",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1534,
+                            "lessonId": 203,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'gulyás' in English?",
+                                "answers": [
+                                    "a stew/goulash",
+                                    "a type of bread",
+                                    "a pastry",
+                                    "a salad"
+                                ],
+                                "correctAnswer": "a stew/goulash"
+                            }
+                        },
+                        {
+                            "id": 1535,
+                            "lessonId": 203,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What spice is most associated with Hungarian cooking?",
+                                "answers": [
+                                    "oregano",
+                                    "paprika",
+                                    "cumin",
+                                    "turmeric"
+                                ],
+                                "correctAnswer": "paprika"
+                            }
+                        },
+                        {
+                            "id": 1536,
+                            "lessonId": 203,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'Hungarian food is very spicy'",
+                                "correctAnswer": "A magyar étel nagyon fűszeres"
+                            }
+                        },
+                        {
+                            "id": 1537,
+                            "lessonId": 203,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Lángos is a popular Hungarian __ food. (A lángos egy népszerű utcai étel.)",
+                                "sentence": "Lángos is a popular Hungarian __ food.",
+                                "correctAnswer": "street"
+                            }
+                        },
+                        {
+                            "id": 1538,
+                            "lessonId": 203,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the Hungarian dishes!",
+                                "pairs": [
+                                    {
+                                        "left": "goulash",
+                                        "right": "gulyás"
+                                    },
+                                    {
+                                        "left": "fisherman's soup",
+                                        "right": "halászlé"
+                                    },
+                                    {
+                                        "left": "stuffed cabbage",
+                                        "right": "töltött káposzta"
+                                    },
+                                    {
+                                        "left": "chimney cake",
+                                        "right": "kürtőskalács"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1539,
+                            "lessonId": 203,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Describe a Hungarian dish you like!",
+                                "expectedAnswer": "A gulyás az egyik kedvenc magyar ételem nagyon ízletes"
+                            }
+                        },
+                        {
+                            "id": 1540,
+                            "lessonId": 203,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which Hungarian dish is described?",
+                                "audioUrl": "https://audio.example.com/hu/food/langos.mp3",
+                                "answers": [
+                                    "goulash",
+                                    "lángos",
+                                    "chimney cake",
+                                    "fisherman's soup"
+                                ],
+                                "correctAnswer": "lángos"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 128,
+            "courseId": 9,
+            "title": "Arts & Entertainment",
+            "orderIndex": 2,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 204,
+                    "unitId": 128,
+                    "title": "Music & Film",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1541,
+                            "lessonId": 204,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'színész' in English?",
+                                "answers": [
+                                    "director",
+                                    "actor",
+                                    "writer",
+                                    "musician"
+                                ],
+                                "correctAnswer": "actor"
+                            }
+                        },
+                        {
+                            "id": 1542,
+                            "lessonId": 204,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'I love jazz music' in Hungarian?",
+                                "answers": [
+                                    "Szeretem a jazz zenét",
+                                    "Szeretem a klasszikus zenét",
+                                    "Nem szeretem a zenét",
+                                    "Sokat járok koncertre"
+                                ],
+                                "correctAnswer": "Szeretem a jazz zenét"
+                            }
+                        },
+                        {
+                            "id": 1543,
+                            "lessonId": 204,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'This film won an Oscar'",
+                                "correctAnswer": "Ez a film Oscar-díjat nyert"
+                            }
+                        },
+                        {
+                            "id": 1544,
+                            "lessonId": 204,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "The concert was __ (amazing). (A koncert lenyűgöző volt.)",
+                                "sentence": "The concert was __.",
+                                "correctAnswer": "amazing"
+                            }
+                        },
+                        {
+                            "id": 1545,
+                            "lessonId": 204,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the arts vocabulary!",
+                                "pairs": [
+                                    {
+                                        "left": "exhibition",
+                                        "right": "kiállítás"
+                                    },
+                                    {
+                                        "left": "performance",
+                                        "right": "előadás"
+                                    },
+                                    {
+                                        "left": "composer",
+                                        "right": "zeneszerző"
+                                    },
+                                    {
+                                        "left": "gallery",
+                                        "right": "galéria"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1546,
+                            "lessonId": 204,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Recommend a film or song in Hungarian!",
+                                "expectedAnswer": "Nagyon ajánlom ezt a filmet gyönyörű a zenéje és a története"
+                            }
+                        },
+                        {
+                            "id": 1547,
+                            "lessonId": 204,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What type of event is described?",
+                                "audioUrl": "https://audio.example.com/hu/arts/concert.mp3",
+                                "answers": [
+                                    "theatre",
+                                    "cinema",
+                                    "concert",
+                                    "exhibition"
+                                ],
+                                "correctAnswer": "concert"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 205,
+                    "unitId": 128,
+                    "title": "Books & Literature",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1548,
+                            "lessonId": 205,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'regény' in English?",
+                                "answers": [
+                                    "poem",
+                                    "short story",
+                                    "novel",
+                                    "biography"
+                                ],
+                                "correctAnswer": "novel"
+                            }
+                        },
+                        {
+                            "id": 1549,
+                            "lessonId": 205,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'I am reading a very interesting book'?",
+                                "answers": [
+                                    "Egy nagyon érdekes könyvet olvasok",
+                                    "Könyvet írok",
+                                    "Befejeztem a könyvet",
+                                    "Nem szeretek olvasni"
+                                ],
+                                "correctAnswer": "Egy nagyon érdekes könyvet olvasok"
+                            }
+                        },
+                        {
+                            "id": 1550,
+                            "lessonId": 205,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'Who is the author of this book?'",
+                                "correctAnswer": "Ki a könyv szerzője?"
+                            }
+                        },
+                        {
+                            "id": 1551,
+                            "lessonId": 205,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "I read two __ a month. (Havonta két könyvet olvasok.)",
+                                "sentence": "I read two __ a month.",
+                                "correctAnswer": "books"
+                            }
+                        },
+                        {
+                            "id": 1552,
+                            "lessonId": 205,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the literary terms!",
+                                "pairs": [
+                                    {
+                                        "left": "chapter",
+                                        "right": "fejezet"
+                                    },
+                                    {
+                                        "left": "plot",
+                                        "right": "cselekmény"
+                                    },
+                                    {
+                                        "left": "character",
+                                        "right": "szereplő"
+                                    },
+                                    {
+                                        "left": "author",
+                                        "right": "szerző"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1553,
+                            "lessonId": 205,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Describe a book you have read in Hungarian!",
+                                "expectedAnswer": "Ez egy izgalmas krimi sok váratlan fordulattal"
+                            }
+                        },
+                        {
+                            "id": 1554,
+                            "lessonId": 205,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What genre is the book?",
+                                "audioUrl": "https://audio.example.com/hu/books/thriller.mp3",
+                                "answers": [
+                                    "romance",
+                                    "thriller",
+                                    "comedy",
+                                    "biography"
+                                ],
+                                "correctAnswer": "thriller"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 129,
+            "courseId": 9,
+            "title": "Social Issues & Opinions",
+            "orderIndex": 3,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 206,
+                    "unitId": 129,
+                    "title": "Expressing Opinions",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1555,
+                            "lessonId": 206,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'In my opinion' in Hungarian?",
+                                "answers": [
+                                    "Szerintem",
+                                    "Valószínűleg",
+                                    "Sajnos",
+                                    "Természetesen"
+                                ],
+                                "correctAnswer": "Szerintem"
+                            }
+                        },
+                        {
+                            "id": 1556,
+                            "lessonId": 206,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'Egyetértek' mean?",
+                                "answers": [
+                                    "I disagree",
+                                    "I agree",
+                                    "I am not sure",
+                                    "I do not understand"
+                                ],
+                                "correctAnswer": "I agree"
+                            }
+                        },
+                        {
+                            "id": 1557,
+                            "lessonId": 206,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'I strongly disagree with this idea'",
+                                "correctAnswer": "Határozottan nem értek egyet ezzel az ötlettel"
+                            }
+                        },
+                        {
+                            "id": 1558,
+                            "lessonId": 206,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "On the one hand... on the __ hand... (Egyrészt... másrészt...)",
+                                "sentence": "On the one hand... on the __ hand...",
+                                "correctAnswer": "other"
+                            }
+                        },
+                        {
+                            "id": 1559,
+                            "lessonId": 206,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the opinion phrases!",
+                                "pairs": [
+                                    {
+                                        "left": "in my view",
+                                        "right": "véleményem szerint"
+                                    },
+                                    {
+                                        "left": "I think that",
+                                        "right": "Úgy gondolom hogy"
+                                    },
+                                    {
+                                        "left": "it seems to me",
+                                        "right": "Nekem úgy tűnik"
+                                    },
+                                    {
+                                        "left": "to be honest",
+                                        "right": "Őszintén szólva"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1560,
+                            "lessonId": 206,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Give your opinion on a social issue in Hungarian!",
+                                "expectedAnswer": "Szerintem fontos hogy mindenki egyenlő lehetőségeket kapjon"
+                            }
+                        },
+                        {
+                            "id": 1561,
+                            "lessonId": 206,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Does the speaker agree or disagree?",
+                                "audioUrl": "https://audio.example.com/hu/opinions/disagree.mp3",
+                                "answers": [
+                                    "strongly agree",
+                                    "agree",
+                                    "disagree",
+                                    "strongly disagree"
+                                ],
+                                "correctAnswer": "disagree"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
