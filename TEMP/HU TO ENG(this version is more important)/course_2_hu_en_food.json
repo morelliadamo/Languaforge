@@ -1,0 +1,703 @@
+{
+    "id": 2,
+    "title": "Hungarian-English: Food & Dining",
+    "description": "Learn all the vocabulary you need to eat, cook, and dine out in Hungary!",
+    "createdAt": "2026-02-25T08:00:00.000Z",
+    "isDeleted": false,
+    "deletedAt": null,
+    "units": [
+        {
+            "id": 109,
+            "courseId": 2,
+            "title": "Fruits & Vegetables",
+            "orderIndex": 1,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 172,
+                    "unitId": 109,
+                    "title": "Common Fruits",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1317,
+                            "lessonId": 172,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'alma' in English?",
+                                "answers": [
+                                    "pear",
+                                    "apple",
+                                    "plum",
+                                    "cherry"
+                                ],
+                                "correctAnswer": "apple"
+                            }
+                        },
+                        {
+                            "id": 1318,
+                            "lessonId": 172,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'strawberry' in English?",
+                                "answers": [
+                                    "eper",
+                                    "szőlő",
+                                    "málna",
+                                    "áfonya"
+                                ],
+                                "correctAnswer": "eper"
+                            }
+                        },
+                        {
+                            "id": 1319,
+                            "lessonId": 172,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'banana'",
+                                "correctAnswer": "banán"
+                            }
+                        },
+                        {
+                            "id": 1320,
+                            "lessonId": 172,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "__ is my favourite fruit. (Hungarian: A kedvenc gyümölcsöm az alma.)",
+                                "sentence": "__ is my favourite fruit.",
+                                "correctAnswer": "apple"
+                            }
+                        },
+                        {
+                            "id": 1321,
+                            "lessonId": 172,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the fruits!",
+                                "pairs": [
+                                    {
+                                        "left": "orange",
+                                        "right": "narancs"
+                                    },
+                                    {
+                                        "left": "grape",
+                                        "right": "szőlő"
+                                    },
+                                    {
+                                        "left": "lemon",
+                                        "right": "citrom"
+                                    },
+                                    {
+                                        "left": "peach",
+                                        "right": "barack"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1322,
+                            "lessonId": 172,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Name four fruits in English!",
+                                "expectedAnswer": "alma körte narancs banán"
+                            }
+                        },
+                        {
+                            "id": 1323,
+                            "lessonId": 172,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which fruit did you hear?",
+                                "audioUrl": "https://audio.example.com/hu/food/lemon.mp3",
+                                "answers": [
+                                    "orange",
+                                    "lemon",
+                                    "lime",
+                                    "grapefruit"
+                                ],
+                                "correctAnswer": "lemon"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 173,
+                    "unitId": 109,
+                    "title": "Vegetables",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1324,
+                            "lessonId": 173,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'sárgarépa' in English?",
+                                "answers": [
+                                    "potato",
+                                    "carrot",
+                                    "onion",
+                                    "tomato"
+                                ],
+                                "correctAnswer": "carrot"
+                            }
+                        },
+                        {
+                            "id": 1325,
+                            "lessonId": 173,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'cucumber' in English?",
+                                "answers": [
+                                    "uborka",
+                                    "paprika",
+                                    "hagyma",
+                                    "fokhagyma"
+                                ],
+                                "correctAnswer": "uborka"
+                            }
+                        },
+                        {
+                            "id": 1326,
+                            "lessonId": 173,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'potato'",
+                                "correctAnswer": "burgonya"
+                            }
+                        },
+                        {
+                            "id": 1327,
+                            "lessonId": 173,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Onion in Hungarian is __.",
+                                "sentence": "Onion in Hungarian is __.",
+                                "correctAnswer": "hagyma"
+                            }
+                        },
+                        {
+                            "id": 1328,
+                            "lessonId": 173,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the vegetables!",
+                                "pairs": [
+                                    {
+                                        "left": "tomato",
+                                        "right": "paradicsom"
+                                    },
+                                    {
+                                        "left": "pepper",
+                                        "right": "paprika"
+                                    },
+                                    {
+                                        "left": "cabbage",
+                                        "right": "káposzta"
+                                    },
+                                    {
+                                        "left": "mushroom",
+                                        "right": "gomba"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1329,
+                            "lessonId": 173,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Name these vegetables in English!",
+                                "expectedAnswer": "paradicsom paprika uborka sárgarépa"
+                            }
+                        },
+                        {
+                            "id": 1330,
+                            "lessonId": 173,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which vegetable did you hear?",
+                                "audioUrl": "https://audio.example.com/hu/food/mushroom.mp3",
+                                "answers": [
+                                    "carrot",
+                                    "potato",
+                                    "mushroom",
+                                    "onion"
+                                ],
+                                "correctAnswer": "mushroom"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 110,
+            "courseId": 2,
+            "title": "Meals & Cooking",
+            "orderIndex": 2,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 174,
+                    "unitId": 110,
+                    "title": "Meal Times",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1331,
+                            "lessonId": 174,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'reggeli' in English?",
+                                "answers": [
+                                    "lunch",
+                                    "dinner",
+                                    "breakfast",
+                                    "snack"
+                                ],
+                                "correctAnswer": "breakfast"
+                            }
+                        },
+                        {
+                            "id": 1332,
+                            "lessonId": 174,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'I am hungry' in English?",
+                                "answers": [
+                                    "Fáradt vagyok",
+                                    "Szomjas vagyok",
+                                    "Éhes vagyok",
+                                    "Tele vagyok"
+                                ],
+                                "correctAnswer": "Éhes vagyok"
+                            }
+                        },
+                        {
+                            "id": 1333,
+                            "lessonId": 174,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'dinner'",
+                                "correctAnswer": "vacsora"
+                            }
+                        },
+                        {
+                            "id": 1334,
+                            "lessonId": 174,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "We eat __ in the evening. (Hungarian: Este vacsorázunk.)",
+                                "sentence": "We eat __ in the evening.",
+                                "correctAnswer": "dinner"
+                            }
+                        },
+                        {
+                            "id": 1335,
+                            "lessonId": 174,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the meal phrases!",
+                                "pairs": [
+                                    {
+                                        "left": "I am thirsty",
+                                        "right": "Szomjas vagyok"
+                                    },
+                                    {
+                                        "left": "It is delicious",
+                                        "right": "Finom"
+                                    },
+                                    {
+                                        "left": "The bill please",
+                                        "right": "A számlát kérem"
+                                    },
+                                    {
+                                        "left": "I am full",
+                                        "right": "Tele vagyok"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1336,
+                            "lessonId": 174,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Say 'I would like breakfast please' in English!",
+                                "expectedAnswer": "Reggelit kérek legyen szíves"
+                            }
+                        },
+                        {
+                            "id": 1337,
+                            "lessonId": 174,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What meal is the speaker talking about?",
+                                "audioUrl": "https://audio.example.com/hu/meals/lunch.mp3",
+                                "answers": [
+                                    "breakfast",
+                                    "lunch",
+                                    "dinner",
+                                    "snack"
+                                ],
+                                "correctAnswer": "lunch"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 175,
+                    "unitId": 110,
+                    "title": "Cooking Methods",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1338,
+                            "lessonId": 175,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'sütni' mean?",
+                                "answers": [
+                                    "to boil",
+                                    "to fry/bake",
+                                    "to steam",
+                                    "to grill"
+                                ],
+                                "correctAnswer": "to fry/bake"
+                            }
+                        },
+                        {
+                            "id": 1339,
+                            "lessonId": 175,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'raw' in English?",
+                                "answers": [
+                                    "főtt",
+                                    "sült",
+                                    "nyers",
+                                    "párolt"
+                                ],
+                                "correctAnswer": "nyers"
+                            }
+                        },
+                        {
+                            "id": 1340,
+                            "lessonId": 175,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'to cook'",
+                                "correctAnswer": "főzni"
+                            }
+                        },
+                        {
+                            "id": 1341,
+                            "lessonId": 175,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Boiled eggs in Hungarian: __ tojás.",
+                                "sentence": "__ tojás.",
+                                "correctAnswer": "főtt"
+                            }
+                        },
+                        {
+                            "id": 1342,
+                            "lessonId": 175,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the cooking methods!",
+                                "pairs": [
+                                    {
+                                        "left": "grilled",
+                                        "right": "grillezett"
+                                    },
+                                    {
+                                        "left": "steamed",
+                                        "right": "párolt"
+                                    },
+                                    {
+                                        "left": "fried",
+                                        "right": "sült"
+                                    },
+                                    {
+                                        "left": "baked",
+                                        "right": "sütött"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1343,
+                            "lessonId": 175,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How is the food cooked? Say in English!",
+                                "expectedAnswer": "sütve főzve grillezve"
+                            }
+                        },
+                        {
+                            "id": 1344,
+                            "lessonId": 175,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which cooking method did you hear?",
+                                "audioUrl": "https://audio.example.com/hu/cooking/steamed.mp3",
+                                "answers": [
+                                    "fried",
+                                    "grilled",
+                                    "steamed",
+                                    "boiled"
+                                ],
+                                "correctAnswer": "steamed"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 111,
+            "courseId": 2,
+            "title": "At the Restaurant",
+            "orderIndex": 3,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 176,
+                    "unitId": 111,
+                    "title": "Ordering & Paying",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1345,
+                            "lessonId": 176,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you ask for the menu in English?",
+                                "answers": [
+                                    "Kérem a számlát!",
+                                    "Kérem az étlapot!",
+                                    "Hol van a mosdó?",
+                                    "Szeretnék rendelni."
+                                ],
+                                "correctAnswer": "Kérem az étlapot!"
+                            }
+                        },
+                        {
+                            "id": 1346,
+                            "lessonId": 176,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'Jó étvágyat!' mean?",
+                                "answers": [
+                                    "Cheers!",
+                                    "Bon appétit!",
+                                    "Thank you!",
+                                    "Enjoy your stay!"
+                                ],
+                                "correctAnswer": "Bon appétit!"
+                            }
+                        },
+                        {
+                            "id": 1347,
+                            "lessonId": 176,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'I would like a table for two'",
+                                "correctAnswer": "Egy asztalt szeretnék két személyre"
+                            }
+                        },
+                        {
+                            "id": 1348,
+                            "lessonId": 176,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "To ask for the bill you say: A __ kérem.",
+                                "sentence": "A __ kérem.",
+                                "correctAnswer": "számlát"
+                            }
+                        },
+                        {
+                            "id": 1349,
+                            "lessonId": 176,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match restaurant phrases!",
+                                "pairs": [
+                                    {
+                                        "left": "starter",
+                                        "right": "előétel"
+                                    },
+                                    {
+                                        "left": "main course",
+                                        "right": "főétel"
+                                    },
+                                    {
+                                        "left": "dessert",
+                                        "right": "desszert"
+                                    },
+                                    {
+                                        "left": "tip",
+                                        "right": "borravaló"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1350,
+                            "lessonId": 176,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Order a coffee and cake in English!",
+                                "expectedAnswer": "Egy kávét és egy sütit kérek"
+                            }
+                        },
+                        {
+                            "id": 1351,
+                            "lessonId": 176,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is the customer asking for?",
+                                "audioUrl": "https://audio.example.com/hu/restaurant/bill.mp3",
+                                "answers": [
+                                    "menu",
+                                    "table",
+                                    "bill",
+                                    "dessert"
+                                ],
+                                "correctAnswer": "bill"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

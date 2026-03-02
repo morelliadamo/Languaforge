@@ -1,0 +1,703 @@
+{
+    "id": 7,
+    "title": "Hungarian-English: Nature & Environment",
+    "description": "Explore the natural world — weather, animals, plants, and sustainability — all in English!",
+    "createdAt": "2026-02-25T08:00:00.000Z",
+    "isDeleted": false,
+    "deletedAt": null,
+    "units": [
+        {
+            "id": 121,
+            "courseId": 7,
+            "title": "Weather & Seasons",
+            "orderIndex": 1,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 192,
+                    "unitId": 121,
+                    "title": "Describing the Weather",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1457,
+                            "lessonId": 192,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'vihar' mean?",
+                                "answers": [
+                                    "fog",
+                                    "storm",
+                                    "snow",
+                                    "ice"
+                                ],
+                                "correctAnswer": "storm"
+                            }
+                        },
+                        {
+                            "id": 1458,
+                            "lessonId": 192,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'It is freezing' in English?",
+                                "answers": [
+                                    "Esik az eső",
+                                    "Fúj a szél",
+                                    "Fagy van",
+                                    "Süt a nap"
+                                ],
+                                "correctAnswer": "Fagy van"
+                            }
+                        },
+                        {
+                            "id": 1459,
+                            "lessonId": 192,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'What will the weather be like tomorrow?'",
+                                "correctAnswer": "Milyen lesz az idő holnap?"
+                            }
+                        },
+                        {
+                            "id": 1460,
+                            "lessonId": 192,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "It is very __ today. (Ma nagyon meleg van.)",
+                                "sentence": "It is very __ today.",
+                                "correctAnswer": "hot"
+                            }
+                        },
+                        {
+                            "id": 1461,
+                            "lessonId": 192,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the weather words!",
+                                "pairs": [
+                                    {
+                                        "left": "thunderstorm",
+                                        "right": "zivatar"
+                                    },
+                                    {
+                                        "left": "hailstorm",
+                                        "right": "jégeső"
+                                    },
+                                    {
+                                        "left": "fog",
+                                        "right": "köd"
+                                    },
+                                    {
+                                        "left": "drizzle",
+                                        "right": "szitálás"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1462,
+                            "lessonId": 192,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Describe today's weather in English!",
+                                "expectedAnswer": "Ma napos és meleg az idő"
+                            }
+                        },
+                        {
+                            "id": 1463,
+                            "lessonId": 192,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What weather is the forecast describing?",
+                                "audioUrl": "https://audio.example.com/hu/weather/storm.mp3",
+                                "answers": [
+                                    "sunny",
+                                    "cloudy",
+                                    "storm",
+                                    "snow"
+                                ],
+                                "correctAnswer": "storm"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 193,
+                    "unitId": 121,
+                    "title": "Seasons & Climate",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1464,
+                            "lessonId": 193,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'ősz' in English?",
+                                "answers": [
+                                    "spring",
+                                    "summer",
+                                    "autumn",
+                                    "winter"
+                                ],
+                                "correctAnswer": "autumn"
+                            }
+                        },
+                        {
+                            "id": 1465,
+                            "lessonId": 193,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'It gets dark early in winter'?",
+                                "answers": [
+                                    "Télen korán sötétedik",
+                                    "Nyáron korán sötétedik",
+                                    "Tavasszal hosszabbak a nappalok",
+                                    "Ősszel sok az eső"
+                                ],
+                                "correctAnswer": "Télen korán sötétedik"
+                            }
+                        },
+                        {
+                            "id": 1466,
+                            "lessonId": 193,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'My favourite season is spring'",
+                                "correctAnswer": "A kedvenc évszakom a tavasz"
+                            }
+                        },
+                        {
+                            "id": 1467,
+                            "lessonId": 193,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "In __ the leaves change colour. (Ősszel változik a levelek színe.)",
+                                "sentence": "In __ the leaves change colour.",
+                                "correctAnswer": "autumn"
+                            }
+                        },
+                        {
+                            "id": 1468,
+                            "lessonId": 193,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the seasons to their features!",
+                                "pairs": [
+                                    {
+                                        "left": "spring",
+                                        "right": "virágzás"
+                                    },
+                                    {
+                                        "left": "summer",
+                                        "right": "hőség"
+                                    },
+                                    {
+                                        "left": "autumn",
+                                        "right": "lehulló levelek"
+                                    },
+                                    {
+                                        "left": "winter",
+                                        "right": "hó"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1469,
+                            "lessonId": 193,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Describe what your favourite season is like!",
+                                "expectedAnswer": "A nyár a kedvencem mert meleg van és sokat lehet kirándulni"
+                            }
+                        },
+                        {
+                            "id": 1470,
+                            "lessonId": 193,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which season is the speaker describing?",
+                                "audioUrl": "https://audio.example.com/hu/seasons/winter.mp3",
+                                "answers": [
+                                    "spring",
+                                    "summer",
+                                    "autumn",
+                                    "winter"
+                                ],
+                                "correctAnswer": "winter"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 122,
+            "courseId": 7,
+            "title": "Animals & Nature",
+            "orderIndex": 2,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 194,
+                    "unitId": 122,
+                    "title": "Wild Animals",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1471,
+                            "lessonId": 194,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'farkas' in English?",
+                                "answers": [
+                                    "fox",
+                                    "wolf",
+                                    "bear",
+                                    "deer"
+                                ],
+                                "correctAnswer": "wolf"
+                            }
+                        },
+                        {
+                            "id": 1472,
+                            "lessonId": 194,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'eagle' in English?",
+                                "answers": [
+                                    "sas",
+                                    "bagoly",
+                                    "varjú",
+                                    "sirály"
+                                ],
+                                "correctAnswer": "sas"
+                            }
+                        },
+                        {
+                            "id": 1473,
+                            "lessonId": 194,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'The deer lives in the forest'",
+                                "correctAnswer": "A szarvas az erdőben él"
+                            }
+                        },
+                        {
+                            "id": 1474,
+                            "lessonId": 194,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "The __ is Hungary's national animal. (A turul Magyarország nemzeti szimbóluma.)",
+                                "sentence": "The __ is Hungary's national symbol.",
+                                "correctAnswer": "turul"
+                            }
+                        },
+                        {
+                            "id": 1475,
+                            "lessonId": 194,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the animals to their habitats!",
+                                "pairs": [
+                                    {
+                                        "left": "wolf",
+                                        "right": "erdő"
+                                    },
+                                    {
+                                        "left": "dolphin",
+                                        "right": "tenger"
+                                    },
+                                    {
+                                        "left": "eagle",
+                                        "right": "hegy"
+                                    },
+                                    {
+                                        "left": "crocodile",
+                                        "right": "folyó"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1476,
+                            "lessonId": 194,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Name four wild animals in English!",
+                                "expectedAnswer": "farkas medve róka szarvas"
+                            }
+                        },
+                        {
+                            "id": 1477,
+                            "lessonId": 194,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which animal is described?",
+                                "audioUrl": "https://audio.example.com/hu/animals/bear.mp3",
+                                "answers": [
+                                    "wolf",
+                                    "fox",
+                                    "bear",
+                                    "deer"
+                                ],
+                                "correctAnswer": "bear"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 195,
+                    "unitId": 122,
+                    "title": "Plants & Landscapes",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1478,
+                            "lessonId": 195,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'tölgy' in English?",
+                                "answers": [
+                                    "pine",
+                                    "birch",
+                                    "oak",
+                                    "maple"
+                                ],
+                                "correctAnswer": "oak"
+                            }
+                        },
+                        {
+                            "id": 1479,
+                            "lessonId": 195,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'waterfall' in English?",
+                                "answers": [
+                                    "tó",
+                                    "folyó",
+                                    "vízesés",
+                                    "patak"
+                                ],
+                                "correctAnswer": "vízesés"
+                            }
+                        },
+                        {
+                            "id": 1480,
+                            "lessonId": 195,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'The forest is very quiet in the morning'",
+                                "correctAnswer": "Az erdő nagyon csendes reggel"
+                            }
+                        },
+                        {
+                            "id": 1481,
+                            "lessonId": 195,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "The __ flows through the city. (A folyó átfolyik a városon.)",
+                                "sentence": "The __ flows through the city.",
+                                "correctAnswer": "river"
+                            }
+                        },
+                        {
+                            "id": 1482,
+                            "lessonId": 195,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the landscape words!",
+                                "pairs": [
+                                    {
+                                        "left": "mountain",
+                                        "right": "hegy"
+                                    },
+                                    {
+                                        "left": "valley",
+                                        "right": "völgy"
+                                    },
+                                    {
+                                        "left": "meadow",
+                                        "right": "rét"
+                                    },
+                                    {
+                                        "left": "cliff",
+                                        "right": "szikla"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1483,
+                            "lessonId": 195,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Describe a forest scene in English!",
+                                "expectedAnswer": "A sűrű erdőben magas fák és egy kis patak van"
+                            }
+                        },
+                        {
+                            "id": 1484,
+                            "lessonId": 195,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which landscape is described?",
+                                "audioUrl": "https://audio.example.com/hu/nature/mountain.mp3",
+                                "answers": [
+                                    "valley",
+                                    "lake",
+                                    "mountain",
+                                    "forest"
+                                ],
+                                "correctAnswer": "mountain"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 123,
+            "courseId": 7,
+            "title": "Environment & Sustainability",
+            "orderIndex": 3,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 196,
+                    "unitId": 123,
+                    "title": "Climate & Pollution",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1485,
+                            "lessonId": 196,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'légszennyezés' mean?",
+                                "answers": [
+                                    "water pollution",
+                                    "air pollution",
+                                    "noise pollution",
+                                    "light pollution"
+                                ],
+                                "correctAnswer": "air pollution"
+                            }
+                        },
+                        {
+                            "id": 1486,
+                            "lessonId": 196,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'renewable energy' in English?",
+                                "answers": [
+                                    "fosszilis tüzelőanyag",
+                                    "megújuló energia",
+                                    "atomenergia",
+                                    "szénenergia"
+                                ],
+                                "correctAnswer": "megújuló energia"
+                            }
+                        },
+                        {
+                            "id": 1487,
+                            "lessonId": 196,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'We must protect the environment'",
+                                "correctAnswer": "Meg kell védenünk a környezetet"
+                            }
+                        },
+                        {
+                            "id": 1488,
+                            "lessonId": 196,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "__ change is a global challenge. (Az éghajlatváltozás globális kihívás.)",
+                                "sentence": "__ change is a global challenge.",
+                                "correctAnswer": "Climate"
+                            }
+                        },
+                        {
+                            "id": 1489,
+                            "lessonId": 196,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the environmental terms!",
+                                "pairs": [
+                                    {
+                                        "left": "recycle",
+                                        "right": "újrahasznosítani"
+                                    },
+                                    {
+                                        "left": "carbon footprint",
+                                        "right": "szén-dioxid lábnyom"
+                                    },
+                                    {
+                                        "left": "endangered species",
+                                        "right": "veszélyeztetett fajok"
+                                    },
+                                    {
+                                        "left": "deforestation",
+                                        "right": "erdőirtás"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1490,
+                            "lessonId": 196,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Say one thing you do to help the environment!",
+                                "expectedAnswer": "Minden nap kerékpárral közlekedem hogy csökkentsem a szén-dioxid kibocsátást"
+                            }
+                        },
+                        {
+                            "id": 1491,
+                            "lessonId": 196,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What environmental issue is discussed?",
+                                "audioUrl": "https://audio.example.com/hu/environment/recycling.mp3",
+                                "answers": [
+                                    "pollution",
+                                    "recycling",
+                                    "deforestation",
+                                    "flooding"
+                                ],
+                                "correctAnswer": "recycling"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
