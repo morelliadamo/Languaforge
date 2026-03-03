@@ -48,7 +48,6 @@ export class HoverableTextComponent implements OnChanges {
 
     const tokens = this.text.match(/[\p{L}\p{N}'-]+|[^\p{L}\p{N}'-]+/gu) || [];
     this.words = tokens.map((token) => {
-      // Strip non-word chars, then trim leading/trailing quotes and hyphens
       const clean = token
         .replace(/[^\p{L}\p{N}'-]/gu, '')
         .replace(/^['-]+|['-]+$/g, '')
@@ -64,16 +63,6 @@ export class HoverableTextComponent implements OnChanges {
   private prefetchDefinitions(): void {
     if (!this.text) return;
 
-    console.log('[Hoverable] text:', this.text);
-    console.log(
-      '[Hoverable] words parsed:',
-      this.words.map((w) => ({
-        display: w.display,
-        clean: w.clean,
-        isWord: w.isWord,
-      })),
-    );
-
     this.definitionService
       .fetchDefinitionsForSentence(
         this.text,
@@ -82,7 +71,6 @@ export class HoverableTextComponent implements OnChanges {
       )
       .subscribe({
         next: (defs) => {
-          console.log('[Hoverable] definitions received:', defs);
           this.definitions.set(defs);
           this.mergeMultiWordTokens();
 
@@ -91,26 +79,12 @@ export class HoverableTextComponent implements OnChanges {
           const unmatched = this.words.filter(
             (w) => w.isWord && !defs[w.clean],
           );
-          console.log(
-            '[Hoverable] matched words:',
-            matched.map((w) => w.clean),
-          );
-          console.log(
-            '[Hoverable] unmatched words:',
-            unmatched.map((w) => w.clean),
-          );
         },
         error: (err) => {
           console.error('[Hoverable] fetch error:', err);
         },
       });
   }
-
-  /**
-   * After definitions arrive, merge consecutive word tokens that form
-   * a known multi-word phrase (e.g. "software developer", "How are you").
-   * Longest phrases are matched first to avoid partial overlaps.
-   */
   private mergeMultiWordTokens(): void {
     const defs = this.definitions();
     const multiWordKeys = Object.keys(defs)

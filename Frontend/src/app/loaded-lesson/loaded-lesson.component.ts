@@ -1,4 +1,4 @@
-import { Exercise } from '../interfaces/Exercise';
+import { Exercise, MatchPair } from '../interfaces/Exercise';
 import { LessonProgress } from '../interfaces/LessonProgress';
 import { AuthServiceService } from '../services/auth-service.service';
 import { LessonProgressService } from '../services/lesson-progress.service';
@@ -17,10 +17,11 @@ import {
   signal,
 } from '@angular/core';
 import { HoverableTextComponent } from '../hoverable-text-component/hoverable-text-component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-loaded-lesson',
-  imports: [StreakChangedComponent, HoverableTextComponent],
+  imports: [StreakChangedComponent, HoverableTextComponent, FormsModule],
   templateUrl: './loaded-lesson.component.html',
   styleUrl: './loaded-lesson.component.css',
 })
@@ -42,6 +43,20 @@ export class LoadedLessonComponent {
   originalExerciseCount: number = 0;
 
   correctUniqueCount: number = 0;
+
+  // --- Fill-in state ---
+  fillInAnswer: string = '';
+
+  // --- Typing state ---
+  typingAnswer: string = '';
+
+  // --- Match state ---
+  shuffledRight: string[] = [];
+  matchSelectedLeft: string | null = null;
+  matchSelectedRight: string | null = null;
+  matchedPairs: { left: string; right: string }[] = [];
+  matchIncorrectPair: { left: string; right: string } | null = null;
+  matchComplete: boolean = false;
 
   private previousStreakValue = signal<number>(0);
 
@@ -79,6 +94,10 @@ export class LoadedLessonComponent {
       this.lessonContent = [...(this.lesson.exercises ?? [])];
       this.originalExerciseCount = this.lessonContent.length;
       this.initProgress();
+
+      if (this.currentExercise?.exerciseType === 'match') {
+        this.initMatchExercise();
+      }
     }
   }
 
@@ -194,10 +213,202 @@ export class LoadedLessonComponent {
     this.selectedAnswer = answer;
     this.isAnswered = true;
 
+    this.handleAnswerResult(this.isCorrect(answer));
+  }
+
+  isCorrect(answer: string): boolean {
+    return answer === this.currentExercise?.exerciseContent.correctAnswer;
+  }
+
+  nextExercise() {
+    console.log(this.currentExercise);
+
+    if (!this.isLast) {
+      this.currentIndex++;
+      this.resetSelection();
+      if (this.currentExercise?.exerciseType === 'match') {
+        this.initMatchExercise();
+      }
+    }
+  }
+
+  previousExercise() {
+    console.log(this.currentExercise);
+
+    if (!this.isFirst) {
+      this.currentIndex--;
+      this.resetSelection();
+      if (this.currentExercise?.exerciseType === 'match') {
+        this.initMatchExercise();
+      }
+    }
+  }
+
+  goBack() {
+    this.lessonClosed.emit();
+  }
+
+  private resetSelection() {
+    this.selectedAnswer = null;
+    this.isAnswered = false;
+    this.fillInAnswer = '';
+    this.typingAnswer = '';
+    this.matchSelectedLeft = null;
+    this.matchSelectedRight = null;
+    this.matchedPairs = [];
+    this.matchIncorrectPair = null;
+    this.matchComplete = false;
+
+    if (this.currentExercise?.exerciseType === 'match') {
+      this.initMatchExercise();
+    }
+  }
+
+  closeLesson() {
+    this.lessonClosed.emit();
+  }
+
+  // ─── Exercise type helpers ───
+
+  get exerciseTypeLabel(): string {
+    switch (this.currentExercise?.exerciseType) {
+      case 'choice':
+        return 'Feleletválasztós';
+      case 'fill_in':
+        return 'Kiegészítős';
+      case 'match':
+        return 'Párosítós';
+      case 'typing':
+        return 'Begépelős';
+      default:
+        return this.currentExercise?.exerciseType ?? '';
+    }
+  }
+
+  // ─── Fill-in ───
+
+  submitFillIn(): void {
+    if (this.isAnswered || !this.fillInAnswer.trim()) return;
+    this.selectedAnswer = this.fillInAnswer.trim();
+    this.isAnswered = true;
+    this.handleAnswerResult(
+      this.fillInAnswer.trim().toLowerCase() ===
+        this.currentExercise?.exerciseContent.correctAnswer?.toLowerCase(),
+    );
+  }
+
+  get fillInSentenceParts(): string[] {
+    const sentence =
+      this.currentExercise?.exerciseContent.sentence ??
+      this.currentExercise?.exerciseContent.description ??
+      '';
+    return sentence.split('__');
+  }
+
+  // ─── Typing ───
+
+  submitTyping(): void {
+    if (this.isAnswered || !this.typingAnswer.trim()) return;
+    this.selectedAnswer = this.typingAnswer.trim();
+    this.isAnswered = true;
+    this.handleAnswerResult(
+      this.typingAnswer.trim().toLowerCase() ===
+        this.currentExercise?.exerciseContent.correctAnswer?.toLowerCase(),
+    );
+  }
+
+  // ─── Match ───
+
+  initMatchExercise(): void {
+    const pairs = this.currentExercise?.exerciseContent.pairs ?? [];
+    this.shuffledRight = pairs
+      .map((p) => p.right)
+      .sort(() => Math.random() - 0.5);
+    this.matchedPairs = [];
+    this.matchSelectedLeft = null;
+    this.matchSelectedRight = null;
+    this.matchIncorrectPair = null;
+    this.matchComplete = false;
+  }
+
+  selectMatchLeft(word: string): void {
+    if (this.isAnswered || this.isMatchLeftMatched(word)) return;
+    this.matchSelectedLeft = word;
+    this.matchIncorrectPair = null;
+    if (this.matchSelectedRight) {
+      this.tryMatch();
+    }
+  }
+
+  selectMatchRight(word: string): void {
+    if (this.isAnswered || this.isMatchRightMatched(word)) return;
+    this.matchSelectedRight = word;
+    this.matchIncorrectPair = null;
+    if (this.matchSelectedLeft) {
+      this.tryMatch();
+    }
+  }
+
+  private tryMatch(): void {
+    const pairs = this.currentExercise?.exerciseContent.pairs ?? [];
+    const left = this.matchSelectedLeft!;
+    const right = this.matchSelectedRight!;
+    const isCorrectPair = pairs.some(
+      (p) => p.left === left && p.right === right,
+    );
+
+    if (isCorrectPair) {
+      this.matchedPairs.push({ left, right });
+      this.matchSelectedLeft = null;
+      this.matchSelectedRight = null;
+      this.matchIncorrectPair = null;
+
+      if (this.matchedPairs.length === pairs.length) {
+        this.matchComplete = true;
+        this.isAnswered = true;
+        this.handleAnswerResult(true);
+      }
+    } else {
+      this.matchIncorrectPair = { left, right };
+      setTimeout(() => {
+        this.matchIncorrectPair = null;
+        this.matchSelectedLeft = null;
+        this.matchSelectedRight = null;
+      }, 600);
+    }
+  }
+
+  isMatchLeftSelected(word: string): boolean {
+    return this.matchSelectedLeft === word;
+  }
+
+  isMatchRightSelected(word: string): boolean {
+    return this.matchSelectedRight === word;
+  }
+
+  isMatchLeftMatched(word: string): boolean {
+    return this.matchedPairs.some((p) => p.left === word);
+  }
+
+  isMatchRightMatched(word: string): boolean {
+    return this.matchedPairs.some((p) => p.right === word);
+  }
+
+  isMatchLeftIncorrect(word: string): boolean {
+    return this.matchIncorrectPair?.left === word;
+  }
+
+  isMatchRightIncorrect(word: string): boolean {
+    return this.matchIncorrectPair?.right === word;
+  }
+
+  // ─── Shared answer handling ───
+
+  private handleAnswerResult(correct: boolean): void {
     const exercise = this.currentExercise;
     if (!exercise) return;
 
-    if (this.isCorrect(answer)) {
+    if (correct) {
       if (!this.correctExerciseIds.has(exercise.id)) {
         this.correctExerciseIds.add(exercise.id);
         this.correctUniqueCount++;
@@ -212,36 +423,5 @@ export class LoadedLessonComponent {
     } else {
       this.lessonContent.push(exercise);
     }
-  }
-
-  isCorrect(answer: string): boolean {
-    return answer === this.currentExercise?.exerciseContent.correctAnswer;
-  }
-
-  nextExercise() {
-    if (!this.isLast) {
-      this.currentIndex++;
-      this.resetSelection();
-    }
-  }
-
-  previousExercise() {
-    if (!this.isFirst) {
-      this.currentIndex--;
-      this.resetSelection();
-    }
-  }
-
-  goBack() {
-    this.lessonClosed.emit();
-  }
-
-  private resetSelection() {
-    this.selectedAnswer = null;
-    this.isAnswered = false;
-  }
-
-  closeLesson() {
-    this.lessonClosed.emit();
   }
 }

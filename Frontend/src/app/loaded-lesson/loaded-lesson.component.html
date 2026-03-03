@@ -76,11 +76,7 @@
               class="inline-block px-3 py-1 rounded-full text-xs font-semibold text-white"
               [style.background-color]="courseColor"
             >
-              @if (currentExercise.exerciseType === "choice") {
-                Feleletválasztós
-              } @else {
-                {{ currentExercise.exerciseType }}
-              }
+              {{ exerciseTypeLabel }}
             </span>
             @if (currentIndex >= originalExerciseCount) {
               <span
@@ -91,61 +87,323 @@
             }
           </div>
 
-          <!-- Question -->
-          <!-- <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-8">
-            {{ currentExercise.exerciseContent.description }}
-          </h2> -->
-          <app-hoverable-text-component
-            [text]="currentExercise.exerciseContent.description"
-            [sourceLanguage]="'en'"
-            [targetLanguage]="'hu'"
-            textClass="text-xl sm:text-2xl font-bold text-gray-800 mb-8 inline"
-          ></app-hoverable-text-component>
+          <!-- ═══════════════════════════════════ -->
+          <!-- CHOICE exercise                     -->
+          <!-- ═══════════════════════════════════ -->
+          @if (currentExercise.exerciseType === "choice") {
+            <!-- Question -->
+            <app-hoverable-text-component
+              [text]="currentExercise.exerciseContent.description"
+              [sourceLanguage]="'en'"
+              [targetLanguage]="'hu'"
+              textClass="text-xl sm:text-2xl font-bold text-gray-800 mb-8 inline"
+            ></app-hoverable-text-component>
 
-          <!-- Answer options -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            @for (
-              answer of currentExercise.exerciseContent.answers;
-              track $index
-            ) {
+            <!-- Answer options -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              @for (
+                answer of currentExercise.exerciseContent.answers;
+                track $index
+              ) {
+                <button
+                  (click)="selectAnswer(answer)"
+                  class="answer-btn w-full text-left px-5 py-4 rounded-xl border-2 font-medium transition-all duration-200 cursor-pointer"
+                  [class.border-gray-200]="
+                    !isAnswered || selectedAnswer !== answer
+                  "
+                  [class.bg-white]="!isAnswered || selectedAnswer !== answer"
+                  [class.hover:border-gray-400]="!isAnswered"
+                  [class.hover:shadow-md]="!isAnswered"
+                  [class.border-green-500]="isAnswered && isCorrect(answer)"
+                  [class.bg-green-50]="isAnswered && isCorrect(answer)"
+                  [class.text-green-700]="isAnswered && isCorrect(answer)"
+                  [class.border-red-400]="
+                    isAnswered &&
+                    selectedAnswer === answer &&
+                    !isCorrect(answer)
+                  "
+                  [class.bg-red-50]="
+                    isAnswered &&
+                    selectedAnswer === answer &&
+                    !isCorrect(answer)
+                  "
+                  [class.text-red-700]="
+                    isAnswered &&
+                    selectedAnswer === answer &&
+                    !isCorrect(answer)
+                  "
+                  [class.cursor-not-allowed]="isAnswered"
+                >
+                  {{ answer }}
+                </button>
+              }
+            </div>
+          }
+
+          <!-- ═══════════════════════════════════ -->
+          <!-- FILL_IN exercise                    -->
+          <!-- ═══════════════════════════════════ -->
+          @if (currentExercise.exerciseType === "fill_in") {
+            <!-- Description / hint -->
+            <app-hoverable-text-component
+              [text]="currentExercise.exerciseContent.description"
+              [sourceLanguage]="'en'"
+              [targetLanguage]="'hu'"
+              textClass="text-lg sm:text-xl font-bold text-gray-800 mb-6 inline"
+            ></app-hoverable-text-component>
+
+            <!-- Sentence with blank -->
+            <div
+              class="flex flex-wrap items-center gap-1 text-lg sm:text-xl font-medium text-gray-700 mb-6"
+            >
+              @for (
+                part of fillInSentenceParts;
+                track $index;
+                let last = $last
+              ) {
+                <span>{{ part }}</span>
+                @if (!last) {
+                  @if (!isAnswered) {
+                    <input
+                      [(ngModel)]="fillInAnswer"
+                      (keydown.enter)="submitFillIn()"
+                      placeholder="..."
+                      class="inline-block w-32 sm:w-40 border-b-2 border-gray-300 bg-transparent text-center font-semibold outline-none transition-colors focus:border-blue-500 px-1 py-0.5"
+                      [style.border-bottom-color]="
+                        fillInAnswer ? courseColor : ''
+                      "
+                    />
+                  } @else {
+                    <span
+                      class="inline-block px-2 py-0.5 rounded font-bold"
+                      [class.text-green-700]="
+                        fillInAnswer.toLowerCase() ===
+                        currentExercise.exerciseContent.correctAnswer?.toLowerCase()
+                      "
+                      [class.bg-green-100]="
+                        fillInAnswer.toLowerCase() ===
+                        currentExercise.exerciseContent.correctAnswer?.toLowerCase()
+                      "
+                      [class.text-red-700]="
+                        fillInAnswer.toLowerCase() !==
+                        currentExercise.exerciseContent.correctAnswer?.toLowerCase()
+                      "
+                      [class.bg-red-100]="
+                        fillInAnswer.toLowerCase() !==
+                        currentExercise.exerciseContent.correctAnswer?.toLowerCase()
+                      "
+                    >
+                      {{ fillInAnswer }}
+                    </span>
+                  }
+                }
+              }
+            </div>
+
+            <!-- Submit button -->
+            @if (!isAnswered) {
               <button
-                (click)="selectAnswer(answer)"
-                class="answer-btn w-full text-left px-5 py-4 rounded-xl border-2 font-medium transition-all duration-200 cursor-pointer"
-                [class.border-gray-200]="
-                  !isAnswered || selectedAnswer !== answer
+                (click)="submitFillIn()"
+                [disabled]="!fillInAnswer.trim()"
+                class="px-6 py-2.5 rounded-xl text-white font-semibold transition-all cursor-pointer"
+                [style.background-color]="
+                  fillInAnswer.trim() ? courseColor : '#d1d5db'
                 "
-                [class.bg-white]="!isAnswered || selectedAnswer !== answer"
-                [class.hover:border-gray-400]="!isAnswered"
-                [class.hover:shadow-md]="!isAnswered"
-                [class.border-green-500]="isAnswered && isCorrect(answer)"
-                [class.bg-green-50]="isAnswered && isCorrect(answer)"
-                [class.text-green-700]="isAnswered && isCorrect(answer)"
-                [class.border-red-400]="
-                  isAnswered && selectedAnswer === answer && !isCorrect(answer)
-                "
-                [class.bg-red-50]="
-                  isAnswered && selectedAnswer === answer && !isCorrect(answer)
-                "
-                [class.text-red-700]="
-                  isAnswered && selectedAnswer === answer && !isCorrect(answer)
-                "
-                [class.cursor-not-allowed]="isAnswered"
+                [class.cursor-not-allowed]="!fillInAnswer.trim()"
               >
-                {{ answer }}
+                Ellenőrzés
               </button>
             }
-          </div>
+          }
 
-          <!-- Feedback message -->
+          <!-- ═══════════════════════════════════ -->
+          <!-- TYPING exercise                     -->
+          <!-- ═══════════════════════════════════ -->
+          @if (currentExercise.exerciseType === "typing") {
+            <!-- Description -->
+            <app-hoverable-text-component
+              [text]="currentExercise.exerciseContent.description"
+              [sourceLanguage]="'en'"
+              [targetLanguage]="'hu'"
+              textClass="text-xl sm:text-2xl font-bold text-gray-800 mb-8 inline"
+            ></app-hoverable-text-component>
+
+            <!-- Input field -->
+            <div class="mb-6">
+              @if (!isAnswered) {
+                <input
+                  [(ngModel)]="typingAnswer"
+                  (keydown.enter)="submitTyping()"
+                  placeholder="Írd be a választ..."
+                  class="w-full px-5 py-4 rounded-xl border-2 border-gray-200 bg-white text-base sm:text-lg font-medium outline-none transition-all focus:border-blue-400 focus:shadow-md"
+                />
+              } @else {
+                <div
+                  class="w-full px-5 py-4 rounded-xl border-2 font-medium text-base sm:text-lg"
+                  [class.border-green-500]="
+                    typingAnswer.toLowerCase() ===
+                    currentExercise.exerciseContent.correctAnswer?.toLowerCase()
+                  "
+                  [class.bg-green-50]="
+                    typingAnswer.toLowerCase() ===
+                    currentExercise.exerciseContent.correctAnswer?.toLowerCase()
+                  "
+                  [class.text-green-700]="
+                    typingAnswer.toLowerCase() ===
+                    currentExercise.exerciseContent.correctAnswer?.toLowerCase()
+                  "
+                  [class.border-red-400]="
+                    typingAnswer.toLowerCase() !==
+                    currentExercise.exerciseContent.correctAnswer?.toLowerCase()
+                  "
+                  [class.bg-red-50]="
+                    typingAnswer.toLowerCase() !==
+                    currentExercise.exerciseContent.correctAnswer?.toLowerCase()
+                  "
+                  [class.text-red-700]="
+                    typingAnswer.toLowerCase() !==
+                    currentExercise.exerciseContent.correctAnswer?.toLowerCase()
+                  "
+                >
+                  {{ typingAnswer }}
+                </div>
+              }
+            </div>
+
+            <!-- Submit button -->
+            @if (!isAnswered) {
+              <button
+                (click)="submitTyping()"
+                [disabled]="!typingAnswer.trim()"
+                class="px-6 py-2.5 rounded-xl text-white font-semibold transition-all cursor-pointer"
+                [style.background-color]="
+                  typingAnswer.trim() ? courseColor : '#d1d5db'
+                "
+                [class.cursor-not-allowed]="!typingAnswer.trim()"
+              >
+                Ellenőrzés
+              </button>
+            }
+          }
+
+          <!-- ═══════════════════════════════════ -->
+          <!-- MATCH exercise                      -->
+          <!-- ═══════════════════════════════════ -->
+          @if (currentExercise.exerciseType === "match") {
+            <!-- Description -->
+            <app-hoverable-text-component
+              [text]="currentExercise.exerciseContent.description"
+              [sourceLanguage]="'en'"
+              [targetLanguage]="'hu'"
+              textClass="text-xl sm:text-2xl font-bold text-gray-800 mb-8 inline"
+            ></app-hoverable-text-component>
+
+            <!-- Match columns -->
+            <div class="grid grid-cols-2 gap-3 sm:gap-4">
+              <!-- Left column -->
+              <div class="flex flex-col gap-2.5">
+                @for (
+                  pair of currentExercise.exerciseContent.pairs;
+                  track pair.left
+                ) {
+                  <button
+                    (click)="selectMatchLeft(pair.left)"
+                    class="w-full px-4 py-3 sm:px-5 sm:py-4 rounded-xl border-2 font-medium text-sm sm:text-base text-left transition-all duration-200 cursor-pointer"
+                    [class.border-gray-200]="
+                      !isMatchLeftSelected(pair.left) &&
+                      !isMatchLeftMatched(pair.left) &&
+                      !isMatchLeftIncorrect(pair.left)
+                    "
+                    [class.bg-white]="
+                      !isMatchLeftSelected(pair.left) &&
+                      !isMatchLeftMatched(pair.left) &&
+                      !isMatchLeftIncorrect(pair.left)
+                    "
+                    [class.border-blue-400]="isMatchLeftSelected(pair.left)"
+                    [class.bg-blue-50]="isMatchLeftSelected(pair.left)"
+                    [class.shadow-md]="isMatchLeftSelected(pair.left)"
+                    [class.border-green-500]="isMatchLeftMatched(pair.left)"
+                    [class.bg-green-50]="isMatchLeftMatched(pair.left)"
+                    [class.text-green-700]="isMatchLeftMatched(pair.left)"
+                    [class.opacity-60]="isMatchLeftMatched(pair.left)"
+                    [class.cursor-default]="isMatchLeftMatched(pair.left)"
+                    [class.border-red-400]="isMatchLeftIncorrect(pair.left)"
+                    [class.bg-red-50]="isMatchLeftIncorrect(pair.left)"
+                  >
+                    {{ pair.left }}
+                  </button>
+                }
+              </div>
+
+              <!-- Right column (shuffled) -->
+              <div class="flex flex-col gap-2.5">
+                @for (word of shuffledRight; track word) {
+                  <button
+                    (click)="selectMatchRight(word)"
+                    class="w-full px-4 py-3 sm:px-5 sm:py-4 rounded-xl border-2 font-medium text-sm sm:text-base text-left transition-all duration-200 cursor-pointer"
+                    [class.border-gray-200]="
+                      !isMatchRightSelected(word) &&
+                      !isMatchRightMatched(word) &&
+                      !isMatchRightIncorrect(word)
+                    "
+                    [class.bg-white]="
+                      !isMatchRightSelected(word) &&
+                      !isMatchRightMatched(word) &&
+                      !isMatchRightIncorrect(word)
+                    "
+                    [class.border-blue-400]="isMatchRightSelected(word)"
+                    [class.bg-blue-50]="isMatchRightSelected(word)"
+                    [class.shadow-md]="isMatchRightSelected(word)"
+                    [class.border-green-500]="isMatchRightMatched(word)"
+                    [class.bg-green-50]="isMatchRightMatched(word)"
+                    [class.text-green-700]="isMatchRightMatched(word)"
+                    [class.opacity-60]="isMatchRightMatched(word)"
+                    [class.cursor-default]="isMatchRightMatched(word)"
+                    [class.border-red-400]="isMatchRightIncorrect(word)"
+                    [class.bg-red-50]="isMatchRightIncorrect(word)"
+                  >
+                    {{ word }}
+                  </button>
+                }
+              </div>
+            </div>
+
+            <!-- Match progress -->
+            @if (matchedPairs.length > 0 && !matchComplete) {
+              <p class="mt-4 text-sm text-gray-400">
+                {{ matchedPairs.length }} /
+                {{ currentExercise.exerciseContent.pairs?.length }} párosítva
+              </p>
+            }
+          }
+
+          <!-- ═══════════════════════════════════ -->
+          <!-- Feedback message (shared)           -->
+          <!-- ═══════════════════════════════════ -->
           @if (isAnswered) {
             <div
               class="mt-6 px-4 py-3 rounded-xl text-sm font-semibold"
-              [class.bg-green-100]="isCorrect(selectedAnswer!)"
-              [class.text-green-800]="isCorrect(selectedAnswer!)"
-              [class.bg-red-100]="!isCorrect(selectedAnswer!)"
-              [class.text-red-800]="!isCorrect(selectedAnswer!)"
+              [class.bg-green-100]="
+                currentExercise.exerciseType === 'match' ||
+                isCorrect(selectedAnswer!)
+              "
+              [class.text-green-800]="
+                currentExercise.exerciseType === 'match' ||
+                isCorrect(selectedAnswer!)
+              "
+              [class.bg-red-100]="
+                currentExercise.exerciseType !== 'match' &&
+                !isCorrect(selectedAnswer!)
+              "
+              [class.text-red-800]="
+                currentExercise.exerciseType !== 'match' &&
+                !isCorrect(selectedAnswer!)
+              "
             >
-              @if (isCorrect(selectedAnswer!)) {
+              @if (
+                currentExercise.exerciseType === "match" ||
+                isCorrect(selectedAnswer!)
+              ) {
                 ✅ Helyes válasz!
               } @else {
                 ❌ Helytelen! A helyes válasz:

@@ -17,22 +17,6 @@ import org.springframework.web.cors.CorsConfigurationSource;
 @EnableAsync
 public class LanguaforgeApplication {
 
-//    @Configuration //for testing purposes only, to be removed later
-//    public class SecurityConfig {
-//
-//
-//        @Bean
-//        public SecurityFilterChain securityFilterChain(HttpSecurity http, CorsConfigurationSource corsConfigurationSource) throws Exception {
-//            http
-//                    .cors(cors ->cors.configurationSource(corsConfigurationSource))
-//                    .csrf(csrf -> csrf.disable())
-//                    .authorizeHttpRequests(auth -> auth
-//                            .anyRequest().permitAll()
-//                    );
-//
-//            return http.build();
-//        }
-//    }
 
 
 
