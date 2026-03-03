@@ -1,3 +1,4 @@
+import { UtilService } from './services/util.service';
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HomepageComponent } from './homepage/homepage.component';

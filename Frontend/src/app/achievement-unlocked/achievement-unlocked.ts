@@ -3,6 +3,7 @@ import { Component, effect, inject, signal } from '@angular/core';
 import { AchievementService } from '../services/achievement.service';
 import { AchievementUnlockedDTO } from '../interfaces/AchievementUnlocked';
 import { DatePipe } from '@angular/common';
+import { UtilService } from '../services/util.service';
 
 @Component({
   selector: 'app-achievement-unlocked',
@@ -12,6 +13,7 @@ import { DatePipe } from '@angular/common';
 })
 export class AchievementUnlocked {
   private achievementService = inject(AchievementService);
+  private utilService = inject(UtilService);
   currentUnlock = signal<AchievementUnlockedDTO | null>(null);
 
   constructor() {
@@ -37,10 +39,10 @@ export class AchievementUnlocked {
       if (unlock) {
         this.currentUnlock.set(unlock);
 
-        // Confetti
+        this.utilService.playAudio('Audio/streakSuccess.mp3');
+
         setTimeout(() => this.shootConfetti(), 0);
 
-        // Auto-hide after 6s
         setTimeout(() => {
           if (this.currentUnlock() === unlock) {
             this.hide();

@@ -25,3 +25,16 @@
     width: 0%;
   }
 }
+
+.streak-card {
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity 4s ease,
+    transform 4s ease;
+}
+
+.streak-card.fade-out {
+  opacity: 0;
+  transform: scale(0.95);
+}

@@ -57,4 +57,14 @@ export class UtilService {
   getAvatarUrl(username: string): string {
     return `https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(username)}`;
   }
+
+  playAudio(path: string) {
+    let audio = new Audio();
+    audio.src = path;
+    audio.load();
+    audio.play();
+    setTimeout(() => {
+      audio.muted = true;
+    }, 2800);
+  }
 }

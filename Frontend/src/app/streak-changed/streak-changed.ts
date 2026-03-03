@@ -1,3 +1,4 @@
+import { UtilService } from './../services/util.service';
 import {
   Component,
   Input,
@@ -5,6 +6,7 @@ import {
   EventEmitter,
   signal,
   effect,
+  inject,
 } from '@angular/core';
 import { DatePipe, NgClass } from '@angular/common';
 import confetti from 'canvas-confetti';
@@ -26,8 +28,6 @@ export interface StreakEvent {
 export class StreakChangedComponent {
   @Input() streakEvent: StreakEvent | null = null;
   @Output() closed = new EventEmitter<void>();
-
-  visible = signal(true);
 
   positiveMessageList: string[] = [
     'Szuper, csak így tovább!',
@@ -69,6 +69,12 @@ export class StreakChangedComponent {
       Math.floor(Math.random() * this.negativeMessageList.length)
     ];
 
+  private utilService = inject(UtilService);
+
+  visible = signal(true);
+  fading = signal(false);
+
+  private hideTimeout: any;
   constructor() {
     effect(() => {
       if (this.streakEvent) {
@@ -83,12 +89,26 @@ export class StreakChangedComponent {
 
         setTimeout(() => this.hide(), 6500);
       }
+
+      this.hideTimeout = setTimeout(() => this.hide(), 6500);
     });
   }
 
   hide() {
-    this.visible.set(false);
-    this.closed.emit();
+    if (!this.visible()) return;
+    if (this.streakEvent?.isReset) {
+      this.utilService.playAudio('Audio/streakFail.mp3');
+    } else {
+      this.utilService.playAudio('Audio/streakSuccess.mp3');
+    }
+    clearTimeout(this.hideTimeout);
+    this.fading.set(true);
+
+    setTimeout(() => {
+      this.visible.set(false);
+      this.fading.set(false);
+      setTimeout(() => this.closed.emit(), 500);
+    }, 4000);
   }
 
   private shootConfetti() {
