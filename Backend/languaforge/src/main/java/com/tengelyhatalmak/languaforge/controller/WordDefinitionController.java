@@ -17,6 +17,11 @@ public class WordDefinitionController {
     @Autowired
     private WordDefinitionService wordDefinitionService;
 
+    @GetMapping("/")
+    public List<WordDefinition> getAllWordDefinitions() {
+        return wordDefinitionService.findAllWordDefinitions();
+    }
+
 
     @GetMapping("/lookup")
     public ResponseEntity<WordDefinition> lookupWord(
@@ -37,6 +42,13 @@ public class WordDefinitionController {
     @PostMapping("/create")
     public WordDefinition createDefinition(@RequestBody WordDefinition wordDefinition) {
         return wordDefinitionService.saveWordDefinition(wordDefinition);
+    }
+
+    @PostMapping("/bulkCreate")
+    public List<WordDefinition> bulkCreateDefinitions(@RequestBody List<WordDefinition> definitions) {
+        return wordDefinitionService.saveAll(definitions);
+
+
     }
 
     @PostMapping("/createBulk")

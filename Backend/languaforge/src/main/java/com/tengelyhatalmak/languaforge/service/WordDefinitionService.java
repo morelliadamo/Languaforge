@@ -10,6 +10,8 @@ import java.util.Optional;
 
 public interface WordDefinitionService {
 
+    List<WordDefinition> findAllWordDefinitions();
+
     Optional<WordDefinition> findDefinition(String word, String sourceLang, String targetLang);
 
     Map<String, WordDefinition> findDefinitions(List<String> words, String sourceLang, String targetLang);

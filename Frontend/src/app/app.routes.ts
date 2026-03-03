@@ -30,7 +30,11 @@ export const routes: Routes = [
   },
   { path: 'login', component: LoginPageComponent, canActivate: [noAuthGuard] },
   { path: 'tos', component: TermsOfServiceComponent },
-  { path: 'my/courses/:courseId', component: LoadedCourseComponent },
+  {
+    path: 'my/courses/:courseId',
+    component: LoadedCourseComponent,
+    canActivate: [authGuard],
+  },
 
   {
     path: 'dashboard',

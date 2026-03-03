@@ -16,10 +16,11 @@ import {
   Output,
   signal,
 } from '@angular/core';
+import { HoverableTextComponent } from '../hoverable-text-component/hoverable-text-component';
 
 @Component({
   selector: 'app-loaded-lesson',
-  imports: [StreakChangedComponent],
+  imports: [StreakChangedComponent, HoverableTextComponent],
   templateUrl: './loaded-lesson.component.html',
   styleUrl: './loaded-lesson.component.css',
 })

@@ -18,4 +18,6 @@ public interface WordDefinitionRepository extends JpaRepository<WordDefinition, 
             @Param("words") List<String> words,
             @Param("sourceLang") String sourceLanguage,
             @Param("targetLang") String targetLanguage);
+
+
 }

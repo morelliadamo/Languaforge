@@ -92,9 +92,15 @@
           </div>
 
           <!-- Question -->
-          <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-8">
+          <!-- <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-8">
             {{ currentExercise.exerciseContent.description }}
-          </h2>
+          </h2> -->
+          <app-hoverable-text-component
+            [text]="currentExercise.exerciseContent.description"
+            [sourceLanguage]="'en'"
+            [targetLanguage]="'hu'"
+            textClass="text-xl sm:text-2xl font-bold text-gray-800 mb-8 inline"
+          ></app-hoverable-text-component>
 
           <!-- Answer options -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">

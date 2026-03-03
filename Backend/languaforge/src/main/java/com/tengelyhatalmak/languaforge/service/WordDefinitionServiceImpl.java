@@ -17,6 +17,11 @@ public class WordDefinitionServiceImpl implements WordDefinitionService {
     private WordDefinitionRepository wordDefinitionRepository;
 
     @Override
+    public List<WordDefinition> findAllWordDefinitions() {
+        return wordDefinitionRepository.findAll();
+    }
+
+    @Override
     public Optional<WordDefinition> findDefinition(String word, String sourceLang, String targetLang) {
         return wordDefinitionRepository
                 .findByWordIgnoreCaseAndSourceLanguageAndTargetLanguage(word, sourceLang, targetLang);

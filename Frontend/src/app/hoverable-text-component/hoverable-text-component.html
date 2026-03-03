@@ -1,0 +1,52 @@
+<span [class]="textClass">
+  <ng-container *ngFor="let word of words">
+    <span
+      *ngIf="word.isWord; else plainText"
+      class="cursor-default transition-all duration-150 rounded px-0.5"
+      [ngClass]="{
+        'cursor-pointer italic text-sky-800 border-b-2 border-dotted border-blue-300 hover:bg-blue-100 hover:border-blue-500': hasDefinition(word),
+        'bg-blue-100 border-blue-500': activeWord() === word.clean
+      }"
+      (mouseenter)="onWordHover(word, $event)"
+      (mouseleave)="onWordLeave()"
+      >{{ word.display }}</span
+    >
+    <ng-template #plainText>{{ word.display }}</ng-template>
+  </ng-container>
+</span>
+
+<!-- Tooltip Popup -->
+<div
+  *ngIf="activeWord() as active"
+  class="fixed z-50 pointer-events-none -translate-x-1/2 -translate-y-full animate-fade-in-up"
+  [style.left.px]="tooltipPosition().x"
+  [style.top.px]="tooltipPosition().y - 10"
+>
+  @if (getDefinition(active)) {
+  <div
+    class="relative bg-white border border-gray-100 rounded-xl shadow-lg px-4 py-3 min-w-[180px] max-w-[280px] sm:max-w-[320px]"
+  >
+    <!-- Word header -->
+    <p class="text-sm sm:text-base font-bold text-gray-800">
+      {{ definitions()[active].word }}
+    </p>
+
+    <!-- Definition -->
+    <p class="mt-1 text-xs sm:text-sm text-gray-600 leading-snug">
+      {{ definitions()[active].definition }}
+    </p>
+
+    <!-- Example sentence -->
+    @if (definitions()[active].exampleSentence) {
+    <p class="mt-2 text-[11px] sm:text-xs text-gray-400 italic leading-snug">
+      „{{ definitions()[active].exampleSentence }}"
+    </p>
+    }
+
+    <!-- Arrow -->
+    <div
+      class="absolute left-1/2 -translate-x-1/2 -bottom-1.5 w-3 h-3 rotate-45 bg-white border-r border-b border-gray-100"
+    ></div>
+  </div>
+  }
+</div>
