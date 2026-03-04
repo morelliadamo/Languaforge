@@ -12,4 +12,7 @@ public interface FriendshipRepository extends JpaRepository<Friendship, Integer>
     List<Friendship> findAllFriendshipsByUserId(Integer userId);
 
 
+    @Query("SELECT fr FROM Friendship fr WHERE fr.user1Id = :user1Id AND fr.user2Id = :user2Id AND fr.isDeleted = false")
+    Friendship findFriendshipByUserIdsStrict(Integer user1Id, Integer user2Id);
+
 }

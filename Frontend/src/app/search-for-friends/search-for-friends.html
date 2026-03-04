@@ -105,6 +105,86 @@
       @if (searchResults.length > 0) {
       <div class="space-y-3">
         @for (user of searchResults; track user.id) {
+        <!-- Already friends -->
+        @if (user.isAlreadyFriend) {
+        <div
+          class="flex items-center gap-4 border border-green-200 rounded-2xl p-4 bg-green-50"
+        >
+          <img
+            [src]="getAvatar(user)"
+            [alt]="user.username"
+            class="w-10 h-10 rounded-full object-cover bg-gray-100 shrink-0"
+          />
+          <div class="min-w-0 flex-1">
+            <p class="font-semibold text-gray-800 text-sm truncate">
+              {{ user.username }}
+            </p>
+          </div>
+          <span
+            class="shrink-0 inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold bg-green-100 text-green-600 border border-green-200"
+          >
+            ✓ Barát
+          </span>
+        </div>
+
+        <!-- Request already sent to them -->
+        } @else if (user.isRequestSentToThem) {
+        <div
+          class="flex items-center gap-4 border border-amber-200 rounded-2xl p-4 bg-amber-50"
+        >
+          <img
+            [src]="getAvatar(user)"
+            [alt]="user.username"
+            class="w-10 h-10 rounded-full object-cover bg-gray-100 shrink-0"
+          />
+          <div class="min-w-0 flex-1">
+            <p class="font-semibold text-gray-800 text-sm truncate">
+              {{ user.username }}
+            </p>
+          </div>
+          <span
+            class="shrink-0 inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold bg-amber-100 text-amber-600 border border-amber-200"
+          >
+            ⏳ Függőben
+          </span>
+        </div>
+
+        <!-- They sent us a request -->
+        } @else if (user.isRequestReceivedFromThem) {
+        <div
+          class="flex items-center gap-4 border border-sky-200 rounded-2xl p-4 bg-sky-50"
+        >
+          <img
+            [src]="getAvatar(user)"
+            [alt]="user.username"
+            class="w-10 h-10 rounded-full object-cover bg-gray-100 shrink-0"
+          />
+          <div class="min-w-0 flex-1">
+            <p class="font-semibold text-gray-800 text-sm truncate">
+              {{ user.username }}
+            </p>
+            <p class="text-xs text-sky-500">Barátkérelem érkezett</p>
+          </div>
+          <button
+            (click)="acceptFriendRequest(user.id)"
+            [disabled]="acceptedRequests.has(user.id)"
+            class="shrink-0 inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer disabled:cursor-default"
+            [ngClass]="
+                  acceptedRequests.has(user.id)
+                    ? 'bg-green-50 text-green-600 border border-green-200'
+                    : 'bg-sky-500 text-white hover:bg-sky-600 active:scale-95'
+                "
+          >
+            @if (acceptedRequests.has(user.id)) {
+            <span>✓ Elfogadva</span>
+            } @else {
+            <span>Elfogadás</span>
+            }
+          </button>
+        </div>
+
+        <!-- No relationship yet -->
+        } @else {
         <div
           class="flex items-center gap-4 border border-gray-100 rounded-2xl p-4 hover:shadow-sm transition-shadow"
         >
@@ -135,7 +215,7 @@
             }
           </button>
         </div>
-        }
+        } }
       </div>
       } @else if (hasSearched && !isSearching) {
       <div class="text-center py-8 text-gray-400">

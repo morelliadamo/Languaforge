@@ -14,7 +14,13 @@ public interface FriendshipService {
     List<Friendship> findAllFriendships();
     Friendship findFriendshipById(Integer id);
     List<Friendship> findAllFriendshipsByUserId(Integer userId);
+    Friendship findFriendshipByUserIds(Integer user1Id, Integer user2Id);
     Friendship updateFriendship(Friendship friendship, Integer id);
+
+    Friendship rejectFriendship(Integer user1Id, Integer user2Id);
+    Friendship acceptFriendship(Integer user1Id, Integer user2Id);
+    Friendship sendFriendRequest(Integer user1Id, Integer user2Id);
+
     Friendship softDeleteFriendshipById(Integer id);
     void deleteFriendshipById(Integer id);
 

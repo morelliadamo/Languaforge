@@ -45,6 +45,14 @@ public class FriendshipServiceImpl implements FriendshipService {
     }
 
     @Override
+    public Friendship findFriendshipByUserIds(Integer user1Id, Integer user2Id) {
+        return friendshipRepository.findFriendshipByUserIdsStrict(user1Id, user2Id);
+    }
+
+
+
+
+    @Override
     public Friendship updateFriendship(Friendship friendship, Integer id) {
         Friendship existingFriendship = friendshipRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Friendship not found"));
@@ -52,6 +60,46 @@ public class FriendshipServiceImpl implements FriendshipService {
         existingFriendship.setStatus(friendship.getStatus());
 
         return friendshipRepository.save(existingFriendship);
+    }
+
+    @Override
+    public Friendship rejectFriendship(Integer user1Id, Integer user2Id) {
+        Friendship friendshipToReject = friendshipRepository.findFriendshipByUserIdsStrict(user1Id, user2Id);
+
+        if (friendshipToReject == null) {
+            throw new RuntimeException("Friendship not found between user1Id: " + user1Id + " and user2Id: " + user2Id);
+        }
+
+        friendshipToReject.setStatus(Friendship.FriendshipStatus.rejected);
+
+        return friendshipRepository.save(friendshipToReject);
+    }
+
+    @Override
+    public Friendship acceptFriendship(Integer user1Id, Integer user2Id) {
+        Friendship friendshipToAccept = friendshipRepository.findFriendshipByUserIdsStrict(user1Id, user2Id);
+
+        if (friendshipToAccept == null) {
+            throw new RuntimeException("Friendship not found between user1Id: " + user1Id + " and user2Id: " + user2Id);
+        }
+
+        friendshipToAccept.setStatus(Friendship.FriendshipStatus.accepted);
+
+        return friendshipRepository.save(friendshipToAccept);
+    }
+
+    @Override
+    public Friendship sendFriendRequest(Integer user1Id, Integer user2Id) {
+        new Friendship();
+        Friendship sentFriendRequest = Friendship.builder()
+                .user1Id(user1Id)
+                .user2Id(user2Id)
+                .status(Friendship.FriendshipStatus.pending)
+                .build();
+
+
+
+        return friendshipRepository.save(sentFriendRequest);
     }
 
     @Override

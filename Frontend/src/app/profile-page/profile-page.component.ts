@@ -11,6 +11,8 @@ import { AuthServiceService } from '../services/auth-service.service';
 import { LoadingOverlayComponent } from '../loading-overlay/loading-overlay.component';
 import { InventoryComponent } from '../inventory/inventory.component';
 import { SearchForFriends } from '../search-for-friends/search-for-friends';
+import { UserService } from '../services/user.service';
+import { forkJoin } from 'rxjs';
 
 interface AchievementDisplay {
   icon: string;
@@ -39,10 +41,12 @@ export class ProfilePageComponent implements OnInit {
   private authService = inject(AuthServiceService);
   private userProfileDataService = inject(UserProfileDataService);
   private friendshipService = inject(FriendshipService);
+  private userService = inject(UserService);
 
   isLoading = true;
   isEditing = false;
   activeTab: 'achievements' | 'friends' = 'achievements';
+  activeFriendsSubTab: 'list' | 'requests' = 'list';
   isUploadingAvatar = false;
   avatarError: string | null = null;
 
@@ -64,6 +68,14 @@ export class ProfilePageComponent implements OnInit {
 
   achievements: AchievementDisplay[] = [];
   friends: User[] = [];
+
+  sentRequests: { friendshipId: number; userId: number; username: string }[] =
+    [];
+  receivedRequests: {
+    friendshipId: number;
+    userId: number;
+    username: string;
+  }[] = [];
 
   noFriendsMessage = '';
   noFriendsMessageList = [
@@ -101,23 +113,62 @@ export class ProfilePageComponent implements OnInit {
           }
         });
 
-      this.friendshipService
-        .loadFriendsAsUsersById(this.userId)
-        .subscribe((friends) => {
-          this.friends = friends;
-          this.profile.friendCount = friends.length;
+      forkJoin({
+        friends: this.friendshipService.loadFriendsAsUsersById(this.userId),
+        pending: this.friendshipService.loadPendingFriendshipsByUserId(
+          this.userId,
+        ),
+      }).subscribe(({ friends, pending }) => {
+        // Build pending user ID set first
+        const pendingUserIds = new Set<number>();
+        const currentId = this.userId!;
 
-          friends.forEach((friend, index) => {
-            this.userProfileDataService
-              .getUserProfileData(friend.id!)
-              .subscribe((data) => {
-                this.friends[index] = {
-                  ...this.friends[index],
-                  avatarUrl: data.avatarUrl ?? undefined,
-                };
+        for (const f of pending) {
+          if (f.user1Id === currentId) {
+            const entry = {
+              friendshipId: f.id,
+              userId: f.user2Id,
+              username: f.user2Name ?? '',
+            };
+            this.sentRequests.push(entry);
+            pendingUserIds.add(f.user2Id);
+            if (!entry.username) {
+              this.userService.loadUsernameByUserId(f.user2Id).subscribe({
+                next: (name) => (entry.username = name as unknown as string),
               });
-          });
+            }
+          } else {
+            const entry = {
+              friendshipId: f.id,
+              userId: f.user1Id,
+              username: f.user1Name ?? '',
+            };
+            this.receivedRequests.push(entry);
+            pendingUserIds.add(f.user1Id);
+            if (!entry.username) {
+              this.userService.loadUsernameByUserId(f.user1Id).subscribe({
+                next: (name) => (entry.username = name as unknown as string),
+              });
+            }
+          }
+        }
+
+        // Filter out pending users from friends list
+        this.friends = friends.filter((f) => !pendingUserIds.has(f.id!));
+        this.profile.friendCount = this.friends.length;
+
+        // Load avatars for accepted friends
+        this.friends.forEach((friend, index) => {
+          this.userProfileDataService
+            .getUserProfileData(friend.id!)
+            .subscribe((data) => {
+              this.friends[index] = {
+                ...this.friends[index],
+                avatarUrl: data.avatarUrl ?? undefined,
+              };
+            });
         });
+      });
 
       this.noFriendsMessage =
         this.noFriendsMessageList[
@@ -212,15 +263,87 @@ export class ProfilePageComponent implements OnInit {
     this.activeTab = tab;
   }
 
+  setFriendsSubTab(tab: 'list' | 'requests') {
+    this.activeFriendsSubTab = tab;
+  }
+
+  acceptRequest(req: {
+    friendshipId: number;
+    userId: number;
+    username: string;
+  }) {
+    this.friendshipService
+      .acceptFriendRequest(this.userId!, req.userId)
+      .subscribe({
+        next: () => {
+          this.receivedRequests = this.receivedRequests.filter(
+            (r) => r.friendshipId !== req.friendshipId,
+          );
+          this.friends.push({
+            id: req.userId,
+            username: req.username,
+            email: '',
+            roleId: 0,
+            avatarUrl: null,
+            bio: null,
+          });
+          this.profile.friendCount = this.friends.length;
+        },
+        error: (err) => console.error('Failed to accept', err),
+      });
+  }
+
+  rejectRequest(req: {
+    friendshipId: number;
+    userId: number;
+    username: string;
+  }) {
+    this.friendshipService
+      .rejectFriendRequest(this.userId!, req.userId)
+      .subscribe({
+        next: () => {
+          this.receivedRequests = this.receivedRequests.filter(
+            (r) => r.friendshipId !== req.friendshipId,
+          );
+        },
+        error: (err) => console.error('Failed to reject', err),
+      });
+  }
+
+  cancelSentRequest(req: {
+    friendshipId: number;
+    userId: number;
+    username: string;
+  }) {
+    this.friendshipService.removeFriend(this.userId!, req.userId).subscribe({
+      next: () => {
+        this.sentRequests = this.sentRequests.filter(
+          (r) => r.friendshipId !== req.friendshipId,
+        );
+      },
+      error: (err) => console.error('Failed to cancel request', err),
+    });
+  }
+
+  removeFriend(friend: User) {
+    this.friendshipService.removeFriend(this.userId!, friend.id!).subscribe({
+      next: () => {
+        this.friends = this.friends.filter((f) => f.id !== friend.id);
+        this.profile.friendCount = this.friends.length;
+      },
+      error: (err) => console.error('Failed to remove friend', err),
+    });
+  }
+
   getFriendAvatar(friend: User): string {
     return friend.avatarUrl && friend.avatarUrl.trim() !== ''
       ? friend.avatarUrl
-      : this.utilService.getAvatarUrl(friend.username ?? 'U');
+      : this.utilService.getAvatarUrl(friend.username || 'U');
   }
 
   onFriendAvatarError(event: Event, username: string) {
     (event.target as HTMLImageElement).src = this.utilService.getAvatarUrl(
-      username ?? 'U',
+      username || 'U',
     );
   }
 

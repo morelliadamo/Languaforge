@@ -194,50 +194,234 @@
               (close)="showSearchForFriendsModal = false"
             ></app-search-for-friends>
           }
-          <div class="p-6">
-            @if (friends.length === 0) {
-              <div class="text-center py-12 text-gray-400">
-                <div class="text-5xl mb-4">👥</div>
-                <p class="text-sm">{{ noFriendsMessage }}</p>
-                <button
-                  (click)="findFriends()"
-                  class="mt-6 inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-sky-500 text-white text-sm font-semibold hover:bg-sky-600 transition-colors cursor-pointer"
+
+          <!-- Friends sub-tabs -->
+          <div class="flex border-b border-gray-100">
+            <button
+              (click)="setFriendsSubTab('list')"
+              [ngClass]="
+                activeFriendsSubTab === 'list'
+                  ? 'border-b-2 border-sky-500 text-sky-500 font-semibold'
+                  : 'text-gray-500 hover:text-gray-700'
+              "
+              class="flex-1 sm:flex-none px-6 py-3 text-sm transition-colors cursor-pointer"
+            >
+              Barátok
+              @if (friends.length > 0) {
+                <span
+                  class="ml-1.5 text-xs bg-sky-100 text-sky-600 font-semibold px-2 py-0.5 rounded-full"
+                  >{{ friends.length }}</span
                 >
-                  <span class="text-base leading-none">+</span>
-                  <span>Barátok keresése</span>
-                </button>
-              </div>
-            } @else {
-              <div class="flex justify-end mb-4">
-                <button
-                  (click)="findFriends()"
-                  class="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-sky-500 text-white text-sm font-semibold hover:bg-sky-600 transition-colors cursor-pointer"
+              }
+            </button>
+            <button
+              (click)="setFriendsSubTab('requests')"
+              [ngClass]="
+                activeFriendsSubTab === 'requests'
+                  ? 'border-b-2 border-sky-500 text-sky-500 font-semibold'
+                  : 'text-gray-500 hover:text-gray-700'
+              "
+              class="flex-1 sm:flex-none px-6 py-3 text-sm transition-colors cursor-pointer"
+            >
+              Kérelmek
+              @if (receivedRequests.length > 0) {
+                <span
+                  class="ml-1.5 text-xs bg-sky-500 text-white font-semibold px-2 py-0.5 rounded-full"
+                  >{{ receivedRequests.length }}</span
                 >
-                  <span class="text-base leading-none">+</span>
-                  <span>Barátok keresése</span>
-                </button>
-              </div>
-              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                @for (friend of friends; track friend.id) {
-                  <div
-                    class="flex items-center gap-4 border border-gray-100 rounded-2xl p-4 hover:shadow-sm transition-shadow"
+              }
+            </button>
+          </div>
+
+          <!-- Friends list sub-tab -->
+          @if (activeFriendsSubTab === "list") {
+            <div class="p-6">
+              @if (friends.length === 0) {
+                <div class="text-center py-12 text-gray-400">
+                  <div class="text-5xl mb-4">👥</div>
+                  <p class="text-sm">{{ noFriendsMessage }}</p>
+                  <button
+                    (click)="findFriends()"
+                    class="mt-6 inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-sky-500 text-white text-sm font-semibold hover:bg-sky-600 transition-colors cursor-pointer"
                   >
-                    <img
-                      [src]="getFriendAvatar(friend)"
-                      [alt]="friend.username"
-                      class="w-12 h-12 rounded-full object-cover bg-gray-100"
-                      (error)="onFriendAvatarError($event, friend.username)"
-                    />
-                    <div class="min-w-0">
-                      <p class="font-semibold text-gray-800 text-sm truncate">
-                        {{ friend.username }}
-                      </p>
+                    <span class="text-base leading-none">+</span>
+                    <span>Barátok keresése</span>
+                  </button>
+                </div>
+              } @else {
+                <div class="flex justify-end mb-4">
+                  <button
+                    (click)="findFriends()"
+                    class="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-sky-500 text-white text-sm font-semibold hover:bg-sky-600 transition-colors cursor-pointer"
+                  >
+                    <span class="text-base leading-none">+</span>
+                    <span>Barátok keresése</span>
+                  </button>
+                </div>
+                <div
+                  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+                >
+                  @for (friend of friends; track friend.id) {
+                    <div
+                      class="flex items-center gap-4 border border-gray-100 rounded-2xl p-4 hover:shadow-sm transition-shadow group"
+                    >
+                      <img
+                        [src]="getFriendAvatar(friend)"
+                        [alt]="friend.username"
+                        class="w-12 h-12 rounded-full object-cover bg-gray-100"
+                        (error)="onFriendAvatarError($event, friend.username)"
+                      />
+                      <div class="min-w-0 flex-1">
+                        <p class="font-semibold text-gray-800 text-sm truncate">
+                          {{ friend.username }}
+                        </p>
+                      </div>
+                      <button
+                        (click)="removeFriend(friend)"
+                        class="shrink-0 px-3 py-1.5 rounded-xl border border-gray-200 text-gray-400 text-xs font-semibold hover:border-red-300 hover:text-red-500 hover:bg-red-50 opacity-0 group-hover:opacity-100 transition-all cursor-pointer"
+                        title="Eltávolítás"
+                      >
+                        ✕
+                      </button>
                     </div>
+                  }
+                </div>
+              }
+            </div>
+          }
+
+          <!-- Requests sub-tab -->
+          @if (activeFriendsSubTab === "requests") {
+            <div class="p-6 space-y-6">
+              <!-- Received requests -->
+              <div>
+                <h3
+                  class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3"
+                >
+                  Beérkezett kérelmek
+                  @if (receivedRequests.length > 0) {
+                    <span
+                      class="ml-1.5 normal-case text-xs bg-sky-500 text-white font-semibold px-2 py-0.5 rounded-full"
+                    >
+                      {{ receivedRequests.length }}
+                    </span>
+                  }
+                </h3>
+                @if (receivedRequests.length === 0) {
+                  <p class="text-sm text-gray-400 py-4 text-center">
+                    Nincsenek beérkezett kérelmek
+                  </p>
+                } @else {
+                  <div
+                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+                  >
+                    @for (req of receivedRequests; track req.friendshipId) {
+                      <div
+                        class="flex items-center gap-4 border border-sky-100 bg-sky-50 rounded-2xl p-4"
+                      >
+                        <img
+                          [src]="
+                            getFriendAvatar({
+                              id: req.userId,
+                              username: req.username,
+                              email: '',
+                              roleId: 0,
+                              avatarUrl: null,
+                              bio: null,
+                            })
+                          "
+                          [alt]="req.username"
+                          class="w-12 h-12 rounded-full object-cover bg-gray-100 shrink-0"
+                        />
+                        <div class="min-w-0 flex-1">
+                          <p
+                            class="font-semibold text-gray-800 text-sm truncate"
+                          >
+                            {{ req.username }}
+                          </p>
+                          <p class="text-xs text-sky-500">
+                            Barátkérelmet küldött
+                          </p>
+                        </div>
+                        <div class="flex gap-2 shrink-0">
+                          <button
+                            (click)="acceptRequest(req)"
+                            class="px-3 py-1.5 rounded-xl bg-sky-500 text-white text-xs font-semibold hover:bg-sky-600 active:scale-95 transition-all cursor-pointer"
+                          >
+                            ✓
+                          </button>
+                          <button
+                            (click)="rejectRequest(req)"
+                            class="px-3 py-1.5 rounded-xl border border-gray-200 text-gray-500 text-xs font-semibold hover:bg-gray-50 active:scale-95 transition-all cursor-pointer"
+                          >
+                            ✕
+                          </button>
+                        </div>
+                      </div>
+                    }
                   </div>
                 }
               </div>
-            }
-          </div>
+
+              <!-- Sent requests -->
+              <div>
+                <h3
+                  class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3"
+                >
+                  Elküldött kérelmek
+                </h3>
+                @if (sentRequests.length === 0) {
+                  <p class="text-sm text-gray-400 py-4 text-center">
+                    Nincsenek elküldött kérelmek
+                  </p>
+                } @else {
+                  <div
+                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+                  >
+                    @for (req of sentRequests; track req.friendshipId) {
+                      <div
+                        class="flex items-center gap-4 border border-amber-100 bg-amber-50 rounded-2xl p-4"
+                      >
+                        <img
+                          [src]="
+                            getFriendAvatar({
+                              id: req.userId,
+                              username: req.username,
+                              email: '',
+                              roleId: 0,
+                              avatarUrl: null,
+                              bio: null,
+                            })
+                          "
+                          [alt]="req.username"
+                          class="w-12 h-12 rounded-full object-cover bg-gray-100 shrink-0"
+                        />
+                        <div class="min-w-0 flex-1">
+                          <p
+                            class="font-semibold text-gray-800 text-sm truncate"
+                          >
+                            {{ req.username }}
+                          </p>
+                        </div>
+                        <span
+                          class="shrink-0 text-xs font-semibold bg-amber-100 text-amber-600 border border-amber-200 px-3 py-1.5 rounded-xl"
+                        >
+                          ⏳ Függőben
+                        </span>
+                        <button
+                          (click)="cancelSentRequest(req)"
+                          class="shrink-0 px-3 py-1.5 rounded-xl border border-gray-200 text-gray-400 text-xs font-semibold hover:border-red-300 hover:text-red-500 hover:bg-red-50 transition-all cursor-pointer"
+                          title="Visszavonás"
+                        >
+                          ✕
+                        </button>
+                      </div>
+                    }
+                  </div>
+                }
+              </div>
+            </div>
+          }
         }
       </div>
       <div class="mt-6">

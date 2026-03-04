@@ -2,11 +2,9 @@ package com.tengelyhatalmak.languaforge.model;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import javax.management.ConstructorParameters;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
@@ -15,6 +13,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Table(name = "friendship")
 public class Friendship {
 
@@ -35,21 +34,33 @@ public class Friendship {
         rejected
     }
 
-    @Column(name = "status", nullable = false)
+    @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private FriendshipStatus status = FriendshipStatus.pending;
 
-    @Column(name = "created_at", nullable = false)
-    private Timestamp createdAt = Timestamp.valueOf(LocalDateTime.now());
+    @Column(name = "created_at")
+    private Timestamp createdAt;
 
 
-    @Column(name = "is_deleted", nullable = false)
-    private Boolean isDeleted = false;
+    @Column(name = "is_deleted")
+    private Boolean isDeleted;
 
     @Column(name = "deleted_at")
     private Timestamp deletedAt;
 
 
+    @PrePersist
+    protected void onCreate() {
+        if (createdAt == null) {
+            createdAt = Timestamp.valueOf(LocalDateTime.now());
+        }
+        if (isDeleted == null) {
+            isDeleted = false;
+        }
+        if (status == null) {
+            status = FriendshipStatus.pending;
+        }
+    }
 
 
 }
