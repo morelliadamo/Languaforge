@@ -8,7 +8,7 @@ public interface UserService {
     User saveUser(User user);
     List<User> findAllUsers();
     User findUserById(Integer id);
-    User findUserByUsername(String username);
+    List<User> findUsersByUsernameLike(String username);
     Integer countUsers();
 
     User updateUser(User user, Integer id);

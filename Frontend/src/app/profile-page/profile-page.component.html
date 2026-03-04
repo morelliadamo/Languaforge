@@ -189,13 +189,34 @@
         }
 
         @if (activeTab === "friends") {
+          @if (showSearchForFriendsModal) {
+            <app-search-for-friends
+              (close)="showSearchForFriendsModal = false"
+            ></app-search-for-friends>
+          }
           <div class="p-6">
             @if (friends.length === 0) {
               <div class="text-center py-12 text-gray-400">
                 <div class="text-5xl mb-4">👥</div>
-                <p class="text-sm">Még nincsenek barátaid</p>
+                <p class="text-sm">{{ noFriendsMessage }}</p>
+                <button
+                  (click)="findFriends()"
+                  class="mt-6 inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-sky-500 text-white text-sm font-semibold hover:bg-sky-600 transition-colors cursor-pointer"
+                >
+                  <span class="text-base leading-none">+</span>
+                  <span>Barátok keresése</span>
+                </button>
               </div>
             } @else {
+              <div class="flex justify-end mb-4">
+                <button
+                  (click)="findFriends()"
+                  class="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-sky-500 text-white text-sm font-semibold hover:bg-sky-600 transition-colors cursor-pointer"
+                >
+                  <span class="text-base leading-none">+</span>
+                  <span>Barátok keresése</span>
+                </button>
+              </div>
               <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 @for (friend of friends; track friend.id) {
                   <div

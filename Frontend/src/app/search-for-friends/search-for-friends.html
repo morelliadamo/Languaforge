@@ -1,0 +1,148 @@
+<!-- Backdrop -->
+<div class="overlay-backdrop" (click)="onBackdropClick()">
+  <div class="overlay-card" (click)="$event.stopPropagation()">
+    <!-- Close button -->
+    <button
+      class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
+      (click)="close.emit()"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+
+    <!-- Header -->
+    <div class="flex flex-col items-center text-center mb-6">
+      <span class="text-5xl mb-3">🔍</span>
+      <h2 class="text-2xl font-bold text-gray-800 mb-1">Barátok keresése</h2>
+      <p class="text-sm text-gray-500">Együtt minden jobb!</p>
+    </div>
+
+    <!-- Search input -->
+    <div class="relative mb-4">
+      <input
+        [(ngModel)]="searchQuery"
+        (keyup.enter)="onSearch()"
+        type="text"
+        placeholder="Felhasználónév..."
+        class="w-full border border-gray-200 rounded-xl pl-10 pr-9 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-300 transition-shadow"
+      />
+      <svg
+        class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"
+        />
+      </svg>
+      @if (searchQuery) {
+      <button
+        type="button"
+        (click)="searchQuery = ''"
+        class="absolute right-2.5 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center transition-colors cursor-pointer"
+      >
+        <svg
+          class="w-2.5 h-2.5 text-gray-500"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2.5"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+      }
+    </div>
+
+    <button
+      (click)="onSearch()"
+      [disabled]="!searchQuery.trim() || isSearching"
+      class="w-full px-4 py-2.5 rounded-xl bg-sky-500 text-white text-sm font-semibold hover:bg-sky-600 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed mb-4"
+    >
+      @if (isSearching) {
+      <span class="flex items-center justify-center gap-2">
+        <svg class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+          <circle
+            class="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            stroke-width="4"
+          ></circle>
+          <path
+            class="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+          ></path>
+        </svg>
+        Keresés...
+      </span>
+      } @else { Keresés }
+    </button>
+
+    <!-- Results -->
+    <div class="overflow-y-auto flex-1 -mx-2 px-2">
+      @if (searchResults.length > 0) {
+      <div class="space-y-3">
+        @for (user of searchResults; track user.id) {
+        <div
+          class="flex items-center gap-4 border border-gray-100 rounded-2xl p-4 hover:shadow-sm transition-shadow"
+        >
+          <img
+            [src]="getAvatar(user)"
+            [alt]="user.username"
+            class="w-10 h-10 rounded-full object-cover bg-gray-100 shrink-0"
+          />
+          <div class="min-w-0 flex-1">
+            <p class="font-semibold text-gray-800 text-sm truncate">
+              {{ user.username }}
+            </p>
+          </div>
+          <button
+            (click)="sendFriendRequest(user.id)"
+            [disabled]="isRequestSent(user.id)"
+            class="shrink-0 inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer disabled:cursor-default"
+            [ngClass]="
+                  isRequestSent(user.id)
+                    ? 'bg-green-50 text-green-600 border border-green-200'
+                    : 'bg-sky-500 text-white hover:bg-sky-600 active:scale-95'
+                "
+          >
+            @if (isRequestSent(user.id)) {
+            <span>✓ Elküldve</span>
+            } @else {
+            <span>+ Hozzáadás</span>
+            }
+          </button>
+        </div>
+        }
+      </div>
+      } @else if (hasSearched && !isSearching) {
+      <div class="text-center py-8 text-gray-400">
+        <div class="text-4xl mb-3">😕</div>
+        <p class="text-sm">Nem találtunk felhasználót</p>
+      </div>
+      }
+    </div>
+  </div>
+</div>

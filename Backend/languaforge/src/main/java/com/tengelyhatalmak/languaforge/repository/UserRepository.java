@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -27,7 +28,12 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("SELECT u.email FROM User u WHERE u.email = :email")
     public String getEmail(String email);
 
-    Integer countUsersById(Integer id);
+//    Integer countUsersById(Integer id);
 
     Integer countUsersByIdGreaterThan(Integer idIsGreaterThan);
+
+
+    @Query("SELECT u FROM User u WHERE u.username LIKE %:username% AND u.isDeleted = false")
+    List<User> findUsersByUsernameLike(String username);
+
 }

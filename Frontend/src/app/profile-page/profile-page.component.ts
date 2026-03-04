@@ -10,6 +10,7 @@ import { FriendshipService } from '../services/friendship.service';
 import { AuthServiceService } from '../services/auth-service.service';
 import { LoadingOverlayComponent } from '../loading-overlay/loading-overlay.component';
 import { InventoryComponent } from '../inventory/inventory.component';
+import { SearchForFriends } from '../search-for-friends/search-for-friends';
 
 interface AchievementDisplay {
   icon: string;
@@ -28,6 +29,7 @@ interface AchievementDisplay {
     DatePipe,
     LoadingOverlayComponent,
     InventoryComponent,
+    SearchForFriends,
   ],
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.css',
@@ -62,6 +64,15 @@ export class ProfilePageComponent implements OnInit {
 
   achievements: AchievementDisplay[] = [];
   friends: User[] = [];
+
+  noFriendsMessage = '';
+  noFriendsMessageList = [
+    'Még nincsenek barátaid... Ez egy kicsit szomorú.',
+    'Úgy tűnik, még nincsenek barátaid. Ideje új kapcsolatokat építeni!',
+    'Üres belül, pont mint én...',
+    'A barátok nélküli az élet olyan, mint egy vas nélküli kohó!',
+  ];
+  showSearchForFriendsModal: boolean = false;
 
   ngOnInit() {
     this.userId = this.authService.getCurrentUserId();
@@ -107,6 +118,11 @@ export class ProfilePageComponent implements OnInit {
               });
           });
         });
+
+      this.noFriendsMessage =
+        this.noFriendsMessageList[
+          Math.floor(Math.random() * this.noFriendsMessageList.length)
+        ];
 
       //delay to show loading overlay
       setTimeout(() => {
@@ -206,5 +222,10 @@ export class ProfilePageComponent implements OnInit {
     (event.target as HTMLImageElement).src = this.utilService.getAvatarUrl(
       username ?? 'U',
     );
+  }
+
+  findFriends() {
+    console.log('Barátok keresése');
+    this.showSearchForFriendsModal = true;
   }
 }

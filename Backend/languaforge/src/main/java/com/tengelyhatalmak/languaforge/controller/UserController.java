@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import com.tengelyhatalmak.languaforge.dto.UserAsFriendSearchResultDTO;
 import com.tengelyhatalmak.languaforge.model.UserXCourse;
 import com.tengelyhatalmak.languaforge.service.CourseService;
 import com.tengelyhatalmak.languaforge.service.UserXCourseService;
@@ -26,6 +27,8 @@ import org.springframework.web.bind.annotation.*;
 import com.tengelyhatalmak.languaforge.model.User;
 import com.tengelyhatalmak.languaforge.service.UserService;
 import org.springframework.web.multipart.MultipartFile;
+
+import static java.util.Locale.filter;
 
 @RestController
 @RequestMapping("/users")
@@ -55,6 +58,17 @@ public class UserController {
     public String getUsernameById(@PathVariable Integer id) {
         return userService.findUserById(id).getUsername();
     }
+
+    @GetMapping("/searchByUsernameLike")
+    public List<UserAsFriendSearchResultDTO> searchUsersByUsernameLike(@RequestParam String username) {
+        List<User> usersAsFriendSearchResults = userService.findUsersByUsernameLike(username);
+
+        return usersAsFriendSearchResults.stream()
+                .map(user -> new UserAsFriendSearchResultDTO(user.getId(), user.getUsername(), user.getEmail(), user.getAvatarUrl()))
+                .toList();
+
+    }
+
 
     @GetMapping("/count")
     public ResponseEntity<Integer> countUsers() {

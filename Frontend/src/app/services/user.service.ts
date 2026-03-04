@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Friendship } from '../interfaces/Friendship';
+import { User } from '../interfaces/User';
+import { UserAsFriendSearchResultDTO } from '../interfaces/UserAsFriendSearchResultDTO';
 
 @Injectable({
   providedIn: 'root',
@@ -27,5 +29,18 @@ export class UserService {
     return this.http.get<number>(`${this.apiUrl}/count`, {
       headers,
     });
+  }
+
+  findUsersByUsernameLike(username: string) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.get<UserAsFriendSearchResultDTO[]>(
+      `${this.apiUrl}/searchByUsernameLike?username=${username}`,
+      {
+        headers,
+      },
+    );
   }
 }
