@@ -43,4 +43,15 @@ export class UserService {
       },
     );
   }
+
+  getUserByIdAsFriendDTO(userId: number) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.get<UserAsFriendSearchResultDTO>(
+      `${this.apiUrl}/getUserByIdAsFriendDTO/${userId}`,
+      { headers },
+    );
+  }
 }

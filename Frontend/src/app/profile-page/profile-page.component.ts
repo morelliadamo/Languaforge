@@ -69,12 +69,17 @@ export class ProfilePageComponent implements OnInit {
   achievements: AchievementDisplay[] = [];
   friends: User[] = [];
 
-  sentRequests: { friendshipId: number; userId: number; username: string }[] =
-    [];
+  sentRequests: {
+    friendshipId: number;
+    userId: number;
+    username: string;
+    avatarUrl: string | null;
+  }[] = [];
   receivedRequests: {
     friendshipId: number;
     userId: number;
     username: string;
+    avatarUrl: string | null;
   }[] = [];
 
   noFriendsMessage = '';
@@ -85,6 +90,9 @@ export class ProfilePageComponent implements OnInit {
     'A barátok nélküli az élet olyan, mint egy vas nélküli kohó!',
   ];
   showSearchForFriendsModal: boolean = false;
+
+  friendToRemove: User | null = null;
+  removingFriend = false;
 
   ngOnInit() {
     this.userId = this.authService.getCurrentUserId();
@@ -129,27 +137,31 @@ export class ProfilePageComponent implements OnInit {
               friendshipId: f.id,
               userId: f.user2Id,
               username: f.user2Name ?? '',
+              avatarUrl: null as string | null,
             };
             this.sentRequests.push(entry);
             pendingUserIds.add(f.user2Id);
-            if (!entry.username) {
-              this.userService.loadUsernameByUserId(f.user2Id).subscribe({
-                next: (name) => (entry.username = name as unknown as string),
-              });
-            }
+            this.userService.getUserByIdAsFriendDTO(f.user2Id).subscribe({
+              next: (dto) => {
+                entry.username = dto.username;
+                entry.avatarUrl = dto.avatarUrl;
+              },
+            });
           } else {
             const entry = {
               friendshipId: f.id,
               userId: f.user1Id,
               username: f.user1Name ?? '',
+              avatarUrl: null as string | null,
             };
             this.receivedRequests.push(entry);
             pendingUserIds.add(f.user1Id);
-            if (!entry.username) {
-              this.userService.loadUsernameByUserId(f.user1Id).subscribe({
-                next: (name) => (entry.username = name as unknown as string),
-              });
-            }
+            this.userService.getUserByIdAsFriendDTO(f.user1Id).subscribe({
+              next: (dto) => {
+                entry.username = dto.username;
+                entry.avatarUrl = dto.avatarUrl;
+              },
+            });
           }
         }
 
@@ -271,6 +283,7 @@ export class ProfilePageComponent implements OnInit {
     friendshipId: number;
     userId: number;
     username: string;
+    avatarUrl: string | null;
   }) {
     this.friendshipService
       .acceptFriendRequest(this.userId!, req.userId)
@@ -284,7 +297,7 @@ export class ProfilePageComponent implements OnInit {
             username: req.username,
             email: '',
             roleId: 0,
-            avatarUrl: null,
+            avatarUrl: req.avatarUrl,
             bio: null,
           });
           this.profile.friendCount = this.friends.length;
@@ -297,6 +310,7 @@ export class ProfilePageComponent implements OnInit {
     friendshipId: number;
     userId: number;
     username: string;
+    avatarUrl: string | null;
   }) {
     this.friendshipService
       .rejectFriendRequest(this.userId!, req.userId)
@@ -314,6 +328,7 @@ export class ProfilePageComponent implements OnInit {
     friendshipId: number;
     userId: number;
     username: string;
+    avatarUrl: string | null;
   }) {
     this.friendshipService.removeFriend(this.userId!, req.userId).subscribe({
       next: () => {
@@ -325,14 +340,38 @@ export class ProfilePageComponent implements OnInit {
     });
   }
 
+  openRemoveFriendModal(friend: User) {
+    this.friendToRemove = friend;
+  }
+
+  cancelRemoveFriend() {
+    this.friendToRemove = null;
+    this.removingFriend = false;
+  }
+
+  confirmRemoveFriend() {
+    if (!this.friendToRemove) return;
+    this.removingFriend = true;
+    this.friendshipService
+      .removeFriend(this.userId!, this.friendToRemove.id!)
+      .subscribe({
+        next: () => {
+          this.friends = this.friends.filter(
+            (f) => f.id !== this.friendToRemove!.id,
+          );
+          this.profile.friendCount = this.friends.length;
+          this.friendToRemove = null;
+          this.removingFriend = false;
+        },
+        error: (err) => {
+          console.error('Failed to remove friend', err);
+          this.removingFriend = false;
+        },
+      });
+  }
+
   removeFriend(friend: User) {
-    this.friendshipService.removeFriend(this.userId!, friend.id!).subscribe({
-      next: () => {
-        this.friends = this.friends.filter((f) => f.id !== friend.id);
-        this.profile.friendCount = this.friends.length;
-      },
-      error: (err) => console.error('Failed to remove friend', err),
-    });
+    this.openRemoveFriendModal(friend);
   }
 
   getFriendAvatar(friend: User): string {

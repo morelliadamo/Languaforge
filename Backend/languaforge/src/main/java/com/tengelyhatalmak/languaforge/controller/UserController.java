@@ -69,6 +69,13 @@ public class UserController {
 
     }
 
+    @GetMapping("getUserByIdAsFriendDTO/{userId}")
+    public UserAsFriendSearchResultDTO getUserByIdAsFriendDTO(@PathVariable Integer userId){
+        User userToTransform = userService.findUserById(userId);
+
+        return new UserAsFriendSearchResultDTO(userToTransform.getId(), userToTransform.getUsername(), userToTransform.getEmail(), userToTransform.getAvatarUrl());
+    }
+
 
     @GetMapping("/count")
     public ResponseEntity<Integer> countUsers() {

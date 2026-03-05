@@ -59,7 +59,6 @@ def alignSequences(expected: List[str], actual: List[str]) -> Dict:
 
 @app.post("/transcribe")
 async def transcribe(file: UploadFile = File(...), expected: Optional[str] = Form(None)):
-    print(tokenize("i like pizza"))
     try:
         with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as tmp:
             shutil.copyfileobj(file.file, tmp)
