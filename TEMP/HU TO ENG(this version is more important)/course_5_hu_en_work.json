@@ -1,0 +1,703 @@
+{
+    "id": 5,
+    "title": "Hungarian-English: Work & Career",
+    "description": "Master professional Hungarian for the modern workplace — emails, meetings, and job interviews!",
+    "createdAt": "2026-02-25T08:00:00.000Z",
+    "isDeleted": false,
+    "deletedAt": null,
+    "units": [
+        {
+            "id": 115,
+            "courseId": 5,
+            "title": "The Workplace",
+            "orderIndex": 1,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 182,
+                    "unitId": 115,
+                    "title": "Job Titles & Departments",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1387,
+                            "lessonId": 182,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'mérnök' in English?",
+                                "answers": [
+                                    "doctor",
+                                    "engineer",
+                                    "lawyer",
+                                    "accountant"
+                                ],
+                                "correctAnswer": "engineer"
+                            }
+                        },
+                        {
+                            "id": 1388,
+                            "lessonId": 182,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'human resources' in English?",
+                                "answers": [
+                                    "értékesítés",
+                                    "emberi erőforrások",
+                                    "könyvelés",
+                                    "ügyfélszolgálat"
+                                ],
+                                "correctAnswer": "emberi erőforrások"
+                            }
+                        },
+                        {
+                            "id": 1389,
+                            "lessonId": 182,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'I work in marketing'",
+                                "correctAnswer": "Marketingben dolgozom"
+                            }
+                        },
+                        {
+                            "id": 1390,
+                            "lessonId": 182,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "My __ is on the second floor. (Az irodám a második emeleten van.)",
+                                "sentence": "My __ is on the second floor.",
+                                "correctAnswer": "office"
+                            }
+                        },
+                        {
+                            "id": 1391,
+                            "lessonId": 182,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the job titles!",
+                                "pairs": [
+                                    {
+                                        "left": "manager",
+                                        "right": "vezető"
+                                    },
+                                    {
+                                        "left": "developer",
+                                        "right": "fejlesztő"
+                                    },
+                                    {
+                                        "left": "designer",
+                                        "right": "tervező"
+                                    },
+                                    {
+                                        "left": "accountant",
+                                        "right": "könyvelő"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1392,
+                            "lessonId": 182,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Say your job title and department in English!",
+                                "expectedAnswer": "Fejlesztő vagyok az IT részlegnél"
+                            }
+                        },
+                        {
+                            "id": 1393,
+                            "lessonId": 182,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What department is mentioned?",
+                                "audioUrl": "https://audio.example.com/hu/work/marketing.mp3",
+                                "answers": [
+                                    "sales",
+                                    "marketing",
+                                    "HR",
+                                    "IT"
+                                ],
+                                "correctAnswer": "marketing"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 183,
+                    "unitId": 115,
+                    "title": "Daily Work Tasks",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1394,
+                            "lessonId": 183,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'értekezlet' mean?",
+                                "answers": [
+                                    "deadline",
+                                    "meeting",
+                                    "report",
+                                    "presentation"
+                                ],
+                                "correctAnswer": "meeting"
+                            }
+                        },
+                        {
+                            "id": 1395,
+                            "lessonId": 183,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'I have a deadline' in English?",
+                                "answers": [
+                                    "Határidőm van",
+                                    "Szabad vagyok",
+                                    "Szabadságon vagyok",
+                                    "Késő vagyok"
+                                ],
+                                "correctAnswer": "Határidőm van"
+                            }
+                        },
+                        {
+                            "id": 1396,
+                            "lessonId": 183,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'Can we reschedule the meeting?'",
+                                "correctAnswer": "El tudjuk halasztani az értekezletet?"
+                            }
+                        },
+                        {
+                            "id": 1397,
+                            "lessonId": 183,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Please send me the __ by email. (Kérem küldje el nekem az anyagot emailben.)",
+                                "sentence": "Please send me the __ by email.",
+                                "correctAnswer": "document"
+                            }
+                        },
+                        {
+                            "id": 1398,
+                            "lessonId": 183,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the work phrases!",
+                                "pairs": [
+                                    {
+                                        "left": "to work overtime",
+                                        "right": "túlórázni"
+                                    },
+                                    {
+                                        "left": "annual leave",
+                                        "right": "éves szabadság"
+                                    },
+                                    {
+                                        "left": "sick leave",
+                                        "right": "betegszabadság"
+                                    },
+                                    {
+                                        "left": "pay rise",
+                                        "right": "fizetésemelés"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1399,
+                            "lessonId": 183,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Say you are working from home today!",
+                                "expectedAnswer": "Ma otthonról dolgozom"
+                            }
+                        },
+                        {
+                            "id": 1400,
+                            "lessonId": 183,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is the speaker asking about?",
+                                "audioUrl": "https://audio.example.com/hu/work/deadline.mp3",
+                                "answers": [
+                                    "meeting",
+                                    "deadline",
+                                    "report",
+                                    "holiday"
+                                ],
+                                "correctAnswer": "deadline"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 116,
+            "courseId": 5,
+            "title": "Communication at Work",
+            "orderIndex": 2,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 184,
+                    "unitId": 116,
+                    "title": "Emails & Phone Calls",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1401,
+                            "lessonId": 184,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you start a formal email in English?",
+                                "answers": [
+                                    "Szia!",
+                                    "Tisztelt Uram/Hölgyem!",
+                                    "Helló!",
+                                    "Kedves Barátom!"
+                                ],
+                                "correctAnswer": "Tisztelt Uram/Hölgyem!"
+                            }
+                        },
+                        {
+                            "id": 1402,
+                            "lessonId": 184,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'Visszahívhatom?' mean?",
+                                "answers": [
+                                    "Can I put you on hold?",
+                                    "Can I call you back?",
+                                    "Can I take a message?",
+                                    "Is this a good time?"
+                                ],
+                                "correctAnswer": "Can I call you back?"
+                            }
+                        },
+                        {
+                            "id": 1403,
+                            "lessonId": 184,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'I am writing regarding your enquiry'",
+                                "correctAnswer": "Megkeresésével kapcsolatban írok"
+                            }
+                        },
+                        {
+                            "id": 1404,
+                            "lessonId": 184,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Please find __ the requested documents. (Mellékelten küldöm a kért dokumentumokat.)",
+                                "sentence": "Please find __ the requested documents.",
+                                "correctAnswer": "attached"
+                            }
+                        },
+                        {
+                            "id": 1405,
+                            "lessonId": 184,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the email phrases!",
+                                "pairs": [
+                                    {
+                                        "left": "Dear Sir/Madam",
+                                        "right": "Tisztelt Uram/Hölgyem"
+                                    },
+                                    {
+                                        "left": "Kind regards",
+                                        "right": "Üdvözlettel"
+                                    },
+                                    {
+                                        "left": "As per our discussion",
+                                        "right": "Megbeszélésünknek megfelelően"
+                                    },
+                                    {
+                                        "left": "I look forward to hearing from you",
+                                        "right": "Várom válaszát"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1406,
+                            "lessonId": 184,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Leave a voicemail: your name and reason for calling!",
+                                "expectedAnswer": "Kovács Anna vagyok és az értekezlettel kapcsolatban hívom"
+                            }
+                        },
+                        {
+                            "id": 1407,
+                            "lessonId": 184,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How does the caller end the conversation?",
+                                "audioUrl": "https://audio.example.com/hu/work/goodbye_call.mp3",
+                                "answers": [
+                                    "I will call back",
+                                    "Thank you, goodbye",
+                                    "Please hold",
+                                    "Leave a message"
+                                ],
+                                "correctAnswer": "Thank you, goodbye"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 185,
+                    "unitId": 116,
+                    "title": "Meetings & Presentations",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1408,
+                            "lessonId": 185,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'Let's get started' in English?",
+                                "answers": [
+                                    "Fejezzük be",
+                                    "Kezdjük el",
+                                    "Tartsunk szünetet",
+                                    "Szavazzunk"
+                                ],
+                                "correctAnswer": "Kezdjük el"
+                            }
+                        },
+                        {
+                            "id": 1409,
+                            "lessonId": 185,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'Kérdés van?' mean?",
+                                "answers": [
+                                    "Any questions?",
+                                    "Any objections?",
+                                    "Shall we vote?",
+                                    "Is everyone here?"
+                                ],
+                                "correctAnswer": "Any questions?"
+                            }
+                        },
+                        {
+                            "id": 1410,
+                            "lessonId": 185,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'I would like to present our results'",
+                                "correctAnswer": "Szeretném bemutatni az eredményeinket"
+                            }
+                        },
+                        {
+                            "id": 1411,
+                            "lessonId": 185,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "As you can see on __ slide... (Ahogy ezen a dián látják...)",
+                                "sentence": "As you can see on __ slide...",
+                                "correctAnswer": "this"
+                            }
+                        },
+                        {
+                            "id": 1412,
+                            "lessonId": 185,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the presentation phrases!",
+                                "pairs": [
+                                    {
+                                        "left": "in conclusion",
+                                        "right": "összefoglalva"
+                                    },
+                                    {
+                                        "left": "to summarise",
+                                        "right": "összegzésképpen"
+                                    },
+                                    {
+                                        "left": "next point",
+                                        "right": "következő pont"
+                                    },
+                                    {
+                                        "left": "any feedback",
+                                        "right": "van visszajelzés?"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1413,
+                            "lessonId": 185,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Open a meeting in English!",
+                                "expectedAnswer": "Kezdjük el az értekezletet Köszönöm hogy mindenki eljött"
+                            }
+                        },
+                        {
+                            "id": 1414,
+                            "lessonId": 185,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What stage of the presentation is this?",
+                                "audioUrl": "https://audio.example.com/hu/work/conclusion.mp3",
+                                "answers": [
+                                    "introduction",
+                                    "main point",
+                                    "conclusion",
+                                    "Q&A"
+                                ],
+                                "correctAnswer": "conclusion"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 117,
+            "courseId": 5,
+            "title": "Job Hunting",
+            "orderIndex": 3,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 186,
+                    "unitId": 117,
+                    "title": "CVs & Applications",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1415,
+                            "lessonId": 186,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'önéletrajz' in English?",
+                                "answers": [
+                                    "reference",
+                                    "cover letter",
+                                    "CV",
+                                    "contract"
+                                ],
+                                "correctAnswer": "CV"
+                            }
+                        },
+                        {
+                            "id": 1416,
+                            "lessonId": 186,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'work experience' in English?",
+                                "answers": [
+                                    "iskolai végzettség",
+                                    "munkatapasztalat",
+                                    "készségek",
+                                    "referencia"
+                                ],
+                                "correctAnswer": "munkatapasztalat"
+                            }
+                        },
+                        {
+                            "id": 1417,
+                            "lessonId": 186,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'I am applying for the position of software developer'",
+                                "correctAnswer": "Szoftverfejlesztői pozícióra jelentkezem"
+                            }
+                        },
+                        {
+                            "id": 1418,
+                            "lessonId": 186,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "My highest __ is a master's degree. (Legmagasabb végzettségem mesteri fokozat.)",
+                                "sentence": "My highest __ is a master's degree.",
+                                "correctAnswer": "qualification"
+                            }
+                        },
+                        {
+                            "id": 1419,
+                            "lessonId": 186,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the CV terms!",
+                                "pairs": [
+                                    {
+                                        "left": "skills",
+                                        "right": "készségek"
+                                    },
+                                    {
+                                        "left": "reference",
+                                        "right": "referencia"
+                                    },
+                                    {
+                                        "left": "hobbies",
+                                        "right": "hobbik"
+                                    },
+                                    {
+                                        "left": "objective",
+                                        "right": "célkitűzés"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1420,
+                            "lessonId": 186,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Say why you want this job in English!",
+                                "expectedAnswer": "Azért szeretnék itt dolgozni mert nagy kihívást jelent"
+                            }
+                        },
+                        {
+                            "id": 1421,
+                            "lessonId": 186,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is the interviewer asking?",
+                                "audioUrl": "https://audio.example.com/hu/work/interview_strength.mp3",
+                                "answers": [
+                                    "salary",
+                                    "strength",
+                                    "weakness",
+                                    "experience"
+                                ],
+                                "correctAnswer": "strength"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

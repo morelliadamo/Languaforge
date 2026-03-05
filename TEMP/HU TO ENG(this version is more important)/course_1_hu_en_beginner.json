@@ -1,0 +1,835 @@
+{
+    "id": 1,
+    "title": "Hungarian-English: Absolute Beginner",
+    "description": "Master your very first English words and phrases from scratch!",
+    "createdAt": "2026-02-25T08:00:00.000Z",
+    "isDeleted": false,
+    "deletedAt": null,
+    "units": [
+        {
+            "id": 106,
+            "courseId": 1,
+            "title": "Numbers & Colors",
+            "orderIndex": 1,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 166,
+                    "unitId": 106,
+                    "title": "Numbers 1–20",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1275,
+                            "lessonId": 166,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'hat' in English?",
+                                "answers": [
+                                    "five",
+                                    "six",
+                                    "seven",
+                                    "eight"
+                                ],
+                                "correctAnswer": "six"
+                            }
+                        },
+                        {
+                            "id": 1276,
+                            "lessonId": 166,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'tizenkettő' in English?",
+                                "answers": [
+                                    "eleven",
+                                    "twelve",
+                                    "thirteen",
+                                    "fourteen"
+                                ],
+                                "correctAnswer": "twelve"
+                            }
+                        },
+                        {
+                            "id": 1277,
+                            "lessonId": 166,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate to English: 'nine'",
+                                "correctAnswer": "kilenc"
+                            }
+                        },
+                        {
+                            "id": 1278,
+                            "lessonId": 166,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Complete: The word for 20 in Hungarian is __.",
+                                "sentence": "The word for 20 in Hungarian is __.",
+                                "correctAnswer": "húsz"
+                            }
+                        },
+                        {
+                            "id": 1279,
+                            "lessonId": 166,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the numbers!",
+                                "pairs": [
+                                    {
+                                        "left": "one",
+                                        "right": "egy"
+                                    },
+                                    {
+                                        "left": "three",
+                                        "right": "három"
+                                    },
+                                    {
+                                        "left": "seven",
+                                        "right": "hét"
+                                    },
+                                    {
+                                        "left": "ten",
+                                        "right": "tíz"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1280,
+                            "lessonId": 166,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Say these numbers in English!",
+                                "expectedAnswer": "egy kettő három négy öt"
+                            }
+                        },
+                        {
+                            "id": 1281,
+                            "lessonId": 166,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which number did you hear?",
+                                "audioUrl": "https://audio.example.com/hu/numbers/eight.mp3",
+                                "answers": [
+                                    "six",
+                                    "seven",
+                                    "eight",
+                                    "nine"
+                                ],
+                                "correctAnswer": "eight"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 167,
+                    "unitId": 106,
+                    "title": "Colors",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1282,
+                            "lessonId": 167,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'piros' in English?",
+                                "answers": [
+                                    "blue",
+                                    "red",
+                                    "green",
+                                    "yellow"
+                                ],
+                                "correctAnswer": "red"
+                            }
+                        },
+                        {
+                            "id": 1283,
+                            "lessonId": 167,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is the English word for 'purple'?",
+                                "answers": [
+                                    "lila",
+                                    "narancs",
+                                    "rózsaszín",
+                                    "szürke"
+                                ],
+                                "correctAnswer": "lila"
+                            }
+                        },
+                        {
+                            "id": 1284,
+                            "lessonId": 167,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate to English: 'orange'",
+                                "correctAnswer": "narancs"
+                            }
+                        },
+                        {
+                            "id": 1285,
+                            "lessonId": 167,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "The sky is __. (Hungarian: Az ég kék.)",
+                                "sentence": "The sky is __.",
+                                "correctAnswer": "blue"
+                            }
+                        },
+                        {
+                            "id": 1286,
+                            "lessonId": 167,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the colors!",
+                                "pairs": [
+                                    {
+                                        "left": "black",
+                                        "right": "fekete"
+                                    },
+                                    {
+                                        "left": "white",
+                                        "right": "fehér"
+                                    },
+                                    {
+                                        "left": "green",
+                                        "right": "zöld"
+                                    },
+                                    {
+                                        "left": "pink",
+                                        "right": "rózsaszín"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1287,
+                            "lessonId": 167,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Say 'red, blue, green, yellow' in English!",
+                                "expectedAnswer": "piros kék zöld sárga"
+                            }
+                        },
+                        {
+                            "id": 1288,
+                            "lessonId": 167,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which color did you hear?",
+                                "audioUrl": "https://audio.example.com/hu/colors/purple.mp3",
+                                "answers": [
+                                    "red",
+                                    "blue",
+                                    "purple",
+                                    "green"
+                                ],
+                                "correctAnswer": "purple"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 168,
+                    "unitId": 106,
+                    "title": "Days & Months",
+                    "orderIndex": 3,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1289,
+                            "lessonId": 168,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'hétfő' in English?",
+                                "answers": [
+                                    "Sunday",
+                                    "Monday",
+                                    "Tuesday",
+                                    "Wednesday"
+                                ],
+                                "correctAnswer": "Monday"
+                            }
+                        },
+                        {
+                            "id": 1290,
+                            "lessonId": 168,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'március' in English?",
+                                "answers": [
+                                    "January",
+                                    "February",
+                                    "March",
+                                    "April"
+                                ],
+                                "correctAnswer": "March"
+                            }
+                        },
+                        {
+                            "id": 1291,
+                            "lessonId": 168,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate to English: 'Friday'",
+                                "correctAnswer": "péntek"
+                            }
+                        },
+                        {
+                            "id": 1292,
+                            "lessonId": 168,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "There are __ days in a week.",
+                                "sentence": "There are __ days in a week.",
+                                "correctAnswer": "seven"
+                            }
+                        },
+                        {
+                            "id": 1293,
+                            "lessonId": 168,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the days!",
+                                "pairs": [
+                                    {
+                                        "left": "Monday",
+                                        "right": "hétfő"
+                                    },
+                                    {
+                                        "left": "Wednesday",
+                                        "right": "szerda"
+                                    },
+                                    {
+                                        "left": "Friday",
+                                        "right": "péntek"
+                                    },
+                                    {
+                                        "left": "Sunday",
+                                        "right": "vasárnap"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1294,
+                            "lessonId": 168,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Say Monday through Friday in English!",
+                                "expectedAnswer": "hétfő kedd szerda csütörtök péntek"
+                            }
+                        },
+                        {
+                            "id": 1295,
+                            "lessonId": 168,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which month did you hear?",
+                                "audioUrl": "https://audio.example.com/hu/months/december.mp3",
+                                "answers": [
+                                    "October",
+                                    "November",
+                                    "December",
+                                    "January"
+                                ],
+                                "correctAnswer": "December"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 107,
+            "courseId": 1,
+            "title": "Greetings & Small Talk",
+            "orderIndex": 2,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 169,
+                    "unitId": 107,
+                    "title": "Basic Greetings",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1296,
+                            "lessonId": 169,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'Jó reggelt!' mean?",
+                                "answers": [
+                                    "Good evening!",
+                                    "Good morning!",
+                                    "Good night!",
+                                    "Hello!"
+                                ],
+                                "correctAnswer": "Good morning!"
+                            }
+                        },
+                        {
+                            "id": 1297,
+                            "lessonId": 169,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'How are you?' formally in English?",
+                                "answers": [
+                                    "Hogy vagy?",
+                                    "Hogy van?",
+                                    "Mi újság?",
+                                    "Szia!"
+                                ],
+                                "correctAnswer": "Hogy van?"
+                            }
+                        },
+                        {
+                            "id": 1298,
+                            "lessonId": 169,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'Goodbye' (informal)",
+                                "correctAnswer": "Viszlát"
+                            }
+                        },
+                        {
+                            "id": 1299,
+                            "lessonId": 169,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "__ means 'thank you' in English.",
+                                "sentence": "__ means 'thank you' in Hungarian.",
+                                "correctAnswer": "Köszönöm"
+                            }
+                        },
+                        {
+                            "id": 1300,
+                            "lessonId": 169,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the greetings!",
+                                "pairs": [
+                                    {
+                                        "left": "Hello",
+                                        "right": "Szia"
+                                    },
+                                    {
+                                        "left": "Good night",
+                                        "right": "Jó éjszakát"
+                                    },
+                                    {
+                                        "left": "Please",
+                                        "right": "Kérem"
+                                    },
+                                    {
+                                        "left": "Sorry",
+                                        "right": "Elnézést"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1301,
+                            "lessonId": 169,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Greet someone good morning in English!",
+                                "expectedAnswer": "Jó reggelt"
+                            }
+                        },
+                        {
+                            "id": 1302,
+                            "lessonId": 169,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which greeting did you hear?",
+                                "audioUrl": "https://audio.example.com/hu/greetings/goodnight.mp3",
+                                "answers": [
+                                    "Good morning",
+                                    "Good afternoon",
+                                    "Good evening",
+                                    "Good night"
+                                ],
+                                "correctAnswer": "Good night"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 170,
+                    "unitId": 107,
+                    "title": "Introductions",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1303,
+                            "lessonId": 170,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'My name is...' in English?",
+                                "answers": [
+                                    "A nevem...",
+                                    "Én vagyok...",
+                                    "Nevez engem...",
+                                    "Hívnak..."
+                                ],
+                                "correctAnswer": "A nevem..."
+                            }
+                        },
+                        {
+                            "id": 1304,
+                            "lessonId": 170,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'Hány éves vagy?' mean?",
+                                "answers": [
+                                    "Where are you from?",
+                                    "How old are you?",
+                                    "What is your name?",
+                                    "Do you speak English?"
+                                ],
+                                "correctAnswer": "How old are you?"
+                            }
+                        },
+                        {
+                            "id": 1305,
+                            "lessonId": 170,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'I am from England'",
+                                "correctAnswer": "Angliából vagyok"
+                            }
+                        },
+                        {
+                            "id": 1306,
+                            "lessonId": 170,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "__ beszélsz? means 'What language do you speak?'",
+                                "sentence": "__ beszélsz?",
+                                "correctAnswer": "Milyen nyelven"
+                            }
+                        },
+                        {
+                            "id": 1307,
+                            "lessonId": 170,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the phrases!",
+                                "pairs": [
+                                    {
+                                        "left": "I am 25 years old",
+                                        "right": "25 éves vagyok"
+                                    },
+                                    {
+                                        "left": "Nice to meet you",
+                                        "right": "Örülök, hogy megismertelek"
+                                    },
+                                    {
+                                        "left": "I live in Budapest",
+                                        "right": "Budapesten lakom"
+                                    },
+                                    {
+                                        "left": "I am a student",
+                                        "right": "Diák vagyok"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1308,
+                            "lessonId": 170,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Introduce yourself: My name is and I am from...",
+                                "expectedAnswer": "A nevem Anna és Angliából vagyok"
+                            }
+                        },
+                        {
+                            "id": 1309,
+                            "lessonId": 170,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What did the person say their job was?",
+                                "audioUrl": "https://audio.example.com/hu/intro/teacher.mp3",
+                                "answers": [
+                                    "doctor",
+                                    "teacher",
+                                    "engineer",
+                                    "student"
+                                ],
+                                "correctAnswer": "teacher"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 108,
+            "courseId": 1,
+            "title": "Around the House",
+            "orderIndex": 3,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 171,
+                    "unitId": 108,
+                    "title": "Rooms & Furniture",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1310,
+                            "lessonId": 171,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'konyha' in English?",
+                                "answers": [
+                                    "bedroom",
+                                    "bathroom",
+                                    "kitchen",
+                                    "living room"
+                                ],
+                                "correctAnswer": "kitchen"
+                            }
+                        },
+                        {
+                            "id": 1311,
+                            "lessonId": 171,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'wardrobe' in English?",
+                                "answers": [
+                                    "szekrény",
+                                    "ágy",
+                                    "asztal",
+                                    "kanapé"
+                                ],
+                                "correctAnswer": "szekrény"
+                            }
+                        },
+                        {
+                            "id": 1312,
+                            "lessonId": 171,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'bathroom'",
+                                "correctAnswer": "fürdőszoba"
+                            }
+                        },
+                        {
+                            "id": 1313,
+                            "lessonId": 171,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "I sleep in the __. (Hungarian: Hálószobában alszom.)",
+                                "sentence": "I sleep in the __.",
+                                "correctAnswer": "bedroom"
+                            }
+                        },
+                        {
+                            "id": 1314,
+                            "lessonId": 171,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the furniture!",
+                                "pairs": [
+                                    {
+                                        "left": "bed",
+                                        "right": "ágy"
+                                    },
+                                    {
+                                        "left": "chair",
+                                        "right": "szék"
+                                    },
+                                    {
+                                        "left": "table",
+                                        "right": "asztal"
+                                    },
+                                    {
+                                        "left": "sofa",
+                                        "right": "kanapé"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1315,
+                            "lessonId": 171,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Name four rooms in English!",
+                                "expectedAnswer": "konyha nappali hálószoba fürdőszoba"
+                            }
+                        },
+                        {
+                            "id": 1316,
+                            "lessonId": 171,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which room did you hear?",
+                                "audioUrl": "https://audio.example.com/hu/house/bathroom.mp3",
+                                "answers": [
+                                    "kitchen",
+                                    "bedroom",
+                                    "bathroom",
+                                    "garage"
+                                ],
+                                "correctAnswer": "bathroom"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

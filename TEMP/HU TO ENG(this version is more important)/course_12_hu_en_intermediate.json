@@ -1,0 +1,967 @@
+{
+    "id": 12,
+    "title": "Hungarian-English: Intermediate Grammar & Fluency",
+    "description": "Level up your Hungarian with grammar deep-dives, idioms, and debate skills!",
+    "createdAt": "2026-02-25T08:00:00.000Z",
+    "isDeleted": false,
+    "deletedAt": null,
+    "units": [
+        {
+            "id": 136,
+            "courseId": 12,
+            "title": "Hungarian Grammar Essentials",
+            "orderIndex": 1,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 217,
+                    "unitId": 136,
+                    "title": "Verb Conjugation",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1632,
+                            "lessonId": 217,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is the correct form of 'to go' (menni) for 'I go'?",
+                                "answers": [
+                                    "megy",
+                                    "megyek",
+                                    "mennek",
+                                    "mentek"
+                                ],
+                                "correctAnswer": "megyek"
+                            }
+                        },
+                        {
+                            "id": 1633,
+                            "lessonId": 217,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which sentence is correct?",
+                                "answers": [
+                                    "Ő megy az iskolában",
+                                    "Én megyek a boltba",
+                                    "Te megy a parkba",
+                                    "Mi megy a strandra"
+                                ],
+                                "correctAnswer": "Én megyek a boltba"
+                            }
+                        },
+                        {
+                            "id": 1634,
+                            "lessonId": 217,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Conjugate 'to eat' (enni) for 'they eat'",
+                                "correctAnswer": "esznek"
+                            }
+                        },
+                        {
+                            "id": 1635,
+                            "lessonId": 217,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "We are going to the cinema: Mi moziba __.",
+                                "sentence": "Mi moziba __.",
+                                "correctAnswer": "megyünk"
+                            }
+                        },
+                        {
+                            "id": 1636,
+                            "lessonId": 217,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the verb conjugations for 'to speak' (beszélni)!",
+                                "pairs": [
+                                    {
+                                        "left": "I speak",
+                                        "right": "Én beszélek"
+                                    },
+                                    {
+                                        "left": "you speak",
+                                        "right": "Te beszélsz"
+                                    },
+                                    {
+                                        "left": "he speaks",
+                                        "right": "Ő beszél"
+                                    },
+                                    {
+                                        "left": "we speak",
+                                        "right": "Mi beszélünk"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1637,
+                            "lessonId": 217,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Conjugate 'to read' in all persons!",
+                                "expectedAnswer": "Én olvasok te olvasol ő olvas mi olvasunk"
+                            }
+                        },
+                        {
+                            "id": 1638,
+                            "lessonId": 217,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which conjugation did you hear?",
+                                "audioUrl": "https://audio.example.com/hu/grammar/we_go.mp3",
+                                "answers": [
+                                    "I go",
+                                    "you go",
+                                    "he goes",
+                                    "we go"
+                                ],
+                                "correctAnswer": "we go"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 218,
+                    "unitId": 136,
+                    "title": "The Accusative Case",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1639,
+                            "lessonId": 218,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which word is in the accusative case?",
+                                "answers": [
+                                    "Látom a házat",
+                                    "Megyek a házhoz",
+                                    "A ház szép",
+                                    "A házban lakom"
+                                ],
+                                "correctAnswer": "Látom a házat"
+                            }
+                        },
+                        {
+                            "id": 1640,
+                            "lessonId": 218,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What suffix forms the accusative in English?",
+                                "answers": [
+                                    "-nak",
+                                    "-ban",
+                                    "-t",
+                                    "-ra"
+                                ],
+                                "correctAnswer": "-t"
+                            }
+                        },
+                        {
+                            "id": 1641,
+                            "lessonId": 218,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Put 'könyv' (book) in the accusative case",
+                                "correctAnswer": "könyvet"
+                            }
+                        },
+                        {
+                            "id": 1642,
+                            "lessonId": 218,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "I see the dog. Látom a __.",
+                                "sentence": "Látom a __.",
+                                "correctAnswer": "kutyát"
+                            }
+                        },
+                        {
+                            "id": 1643,
+                            "lessonId": 218,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the accusative forms!",
+                                "pairs": [
+                                    {
+                                        "left": "the apple (obj)",
+                                        "right": "az almát"
+                                    },
+                                    {
+                                        "left": "the cat (obj)",
+                                        "right": "a macskát"
+                                    },
+                                    {
+                                        "left": "the car (obj)",
+                                        "right": "az autót"
+                                    },
+                                    {
+                                        "left": "the house (obj)",
+                                        "right": "a házat"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1644,
+                            "lessonId": 218,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Make three sentences using the accusative case!",
+                                "expectedAnswer": "Látom a házat olvasom a könyvet és eszem az almát"
+                            }
+                        },
+                        {
+                            "id": 1645,
+                            "lessonId": 218,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which sentence uses the accusative case?",
+                                "audioUrl": "https://audio.example.com/hu/grammar/accusative.mp3",
+                                "answers": [
+                                    "A ház szép",
+                                    "Látom a házat",
+                                    "A házban lakom",
+                                    "A ház nagy"
+                                ],
+                                "correctAnswer": "Látom a házat"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 219,
+                    "unitId": 136,
+                    "title": "Postpositions",
+                    "orderIndex": 3,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1646,
+                            "lessonId": 219,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'mellett' mean?",
+                                "answers": [
+                                    "behind",
+                                    "in front of",
+                                    "next to",
+                                    "above"
+                                ],
+                                "correctAnswer": "next to"
+                            }
+                        },
+                        {
+                            "id": 1647,
+                            "lessonId": 219,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which is correct for 'in front of the school'?",
+                                "answers": [
+                                    "az iskola mögött",
+                                    "az iskola előtt",
+                                    "az iskola alatt",
+                                    "az iskola felett"
+                                ],
+                                "correctAnswer": "az iskola előtt"
+                            }
+                        },
+                        {
+                            "id": 1648,
+                            "lessonId": 219,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'The park is behind the church'",
+                                "correctAnswer": "A park a temploma mögött van"
+                            }
+                        },
+                        {
+                            "id": 1649,
+                            "lessonId": 219,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "The cat is __ the table. (A macska az asztal alatt van.)",
+                                "sentence": "The cat is __ the table.",
+                                "correctAnswer": "under"
+                            }
+                        },
+                        {
+                            "id": 1650,
+                            "lessonId": 219,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the postpositions!",
+                                "pairs": [
+                                    {
+                                        "left": "above",
+                                        "right": "felett"
+                                    },
+                                    {
+                                        "left": "below",
+                                        "right": "alatt"
+                                    },
+                                    {
+                                        "left": "between",
+                                        "right": "között"
+                                    },
+                                    {
+                                        "left": "around",
+                                        "right": "körül"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1651,
+                            "lessonId": 219,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Describe where things are in your room using postpositions!",
+                                "expectedAnswer": "Az asztal a fal mellett áll a könyv az asztal felett van"
+                            }
+                        },
+                        {
+                            "id": 1652,
+                            "lessonId": 219,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which postposition is used?",
+                                "audioUrl": "https://audio.example.com/hu/grammar/behind.mp3",
+                                "answers": [
+                                    "in front of",
+                                    "behind",
+                                    "next to",
+                                    "above"
+                                ],
+                                "correctAnswer": "behind"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 137,
+            "courseId": 12,
+            "title": "Advanced Communication",
+            "orderIndex": 2,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 220,
+                    "unitId": 137,
+                    "title": "Telling Stories in the Past",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1653,
+                            "lessonId": 220,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is the past tense of 'megyek' (I go)?",
+                                "answers": [
+                                    "mentem",
+                                    "ment",
+                                    "mentünk",
+                                    "mentek"
+                                ],
+                                "correctAnswer": "mentem"
+                            }
+                        },
+                        {
+                            "id": 1654,
+                            "lessonId": 220,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which sentence is in the past tense?",
+                                "answers": [
+                                    "Megyek moziba",
+                                    "Mentem moziba",
+                                    "Elmegyek moziba",
+                                    "Majd megyek moziba"
+                                ],
+                                "correctAnswer": "Mentem moziba"
+                            }
+                        },
+                        {
+                            "id": 1655,
+                            "lessonId": 220,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'Yesterday I went to the market'",
+                                "correctAnswer": "Tegnap a piacra mentem"
+                            }
+                        },
+                        {
+                            "id": 1656,
+                            "lessonId": 220,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "She __ the book last night. (Tegnap este elolvasta a könyvet.)",
+                                "sentence": "She __ the book last night.",
+                                "correctAnswer": "read"
+                            }
+                        },
+                        {
+                            "id": 1657,
+                            "lessonId": 220,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the past tense forms!",
+                                "pairs": [
+                                    {
+                                        "left": "I ate",
+                                        "right": "ettem"
+                                    },
+                                    {
+                                        "left": "she said",
+                                        "right": "mondta"
+                                    },
+                                    {
+                                        "left": "we worked",
+                                        "right": "dolgoztunk"
+                                    },
+                                    {
+                                        "left": "they came",
+                                        "right": "jöttek"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1658,
+                            "lessonId": 220,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Tell a story about what you did yesterday in English!",
+                                "expectedAnswer": "Tegnap reggel kávét ittam majd dolgozni mentem este pedig filmet néztem"
+                            }
+                        },
+                        {
+                            "id": 1659,
+                            "lessonId": 220,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Is the story in the past or present?",
+                                "audioUrl": "https://audio.example.com/hu/grammar/past_story.mp3",
+                                "answers": [
+                                    "present",
+                                    "past",
+                                    "future",
+                                    "mixed"
+                                ],
+                                "correctAnswer": "past"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 221,
+                    "unitId": 137,
+                    "title": "Conditionals & Wishes",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1660,
+                            "lessonId": 221,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'If I had more time...' in English?",
+                                "answers": [
+                                    "Ha lenne több időm...",
+                                    "Amikor van időm...",
+                                    "Ha volt időm...",
+                                    "Bár van időm..."
+                                ],
+                                "correctAnswer": "Ha lenne több időm..."
+                            }
+                        },
+                        {
+                            "id": 1661,
+                            "lessonId": 221,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'Bárcsak tudnék repülni!' mean?",
+                                "answers": [
+                                    "I can fly",
+                                    "I wish I could fly",
+                                    "I like flying",
+                                    "I am afraid of flying"
+                                ],
+                                "correctAnswer": "I wish I could fly"
+                            }
+                        },
+                        {
+                            "id": 1662,
+                            "lessonId": 221,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'If it rains, I will stay at home'",
+                                "correctAnswer": "Ha esik az eső otthon maradok"
+                            }
+                        },
+                        {
+                            "id": 1663,
+                            "lessonId": 221,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "I __ buy a house if I won the lottery. (Házat vennék ha megnyerném a lottót.)",
+                                "sentence": "I __ buy a house if I won the lottery.",
+                                "correctAnswer": "would"
+                            }
+                        },
+                        {
+                            "id": 1664,
+                            "lessonId": 221,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the conditional phrases!",
+                                "pairs": [
+                                    {
+                                        "left": "If I were you",
+                                        "right": "Ha én lennék a helyedben"
+                                    },
+                                    {
+                                        "left": "I wish...",
+                                        "right": "Bárcsak..."
+                                    },
+                                    {
+                                        "left": "Unless...",
+                                        "right": "Hacsak nem..."
+                                    },
+                                    {
+                                        "left": "provided that",
+                                        "right": "feltéve hogy"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1665,
+                            "lessonId": 221,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Make a wish in Hungarian using 'bárcsak'!",
+                                "expectedAnswer": "Bárcsak több szabadidőm lenne hogy utazhassak"
+                            }
+                        },
+                        {
+                            "id": 1666,
+                            "lessonId": 221,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Is this a real condition or a hypothetical wish?",
+                                "audioUrl": "https://audio.example.com/hu/grammar/wish.mp3",
+                                "answers": [
+                                    "real condition",
+                                    "hypothetical wish",
+                                    "fact",
+                                    "command"
+                                ],
+                                "correctAnswer": "hypothetical wish"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 138,
+            "courseId": 12,
+            "title": "Fluency Builders",
+            "orderIndex": 3,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 222,
+                    "unitId": 138,
+                    "title": "Hungarian Idioms",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1667,
+                            "lessonId": 222,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'Esik az eső' literally mean, and what is its actual meaning?",
+                                "answers": [
+                                    "The sun shines - it is hot",
+                                    "It is raining - no idiom, literal",
+                                    "The water boils - he is very angry",
+                                    "The bread is hard - times are tough"
+                                ],
+                                "correctAnswer": "It is raining - no idiom, literal"
+                            }
+                        },
+                        {
+                            "id": 1668,
+                            "lessonId": 222,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'Kicsi a bors, de erős' mean?",
+                                "answers": [
+                                    "Money is tight but we manage",
+                                    "Small but mighty",
+                                    "The pepper is hot",
+                                    "Old but wise"
+                                ],
+                                "correctAnswer": "Small but mighty"
+                            }
+                        },
+                        {
+                            "id": 1669,
+                            "lessonId": 222,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate the idiom: 'Nem esik messze az alma a fájától'",
+                                "correctAnswer": "The apple does not fall far from the tree"
+                            }
+                        },
+                        {
+                            "id": 1670,
+                            "lessonId": 222,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "To be completely lost: El van __. (El van tévedve.)",
+                                "sentence": "To be completely lost: El van __.",
+                                "correctAnswer": "tévedve"
+                            }
+                        },
+                        {
+                            "id": 1671,
+                            "lessonId": 222,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the Hungarian idioms to their English equivalents!",
+                                "pairs": [
+                                    {
+                                        "left": "Sok lúd disznót győz",
+                                        "right": "There is strength in numbers"
+                                    },
+                                    {
+                                        "left": "Minden jó, ha a vége jó",
+                                        "right": "All's well that ends well"
+                                    },
+                                    {
+                                        "left": "Addig jár a korsó a kútra...",
+                                        "right": "The pitcher goes to the well once too often"
+                                    },
+                                    {
+                                        "left": "Jobb ma egy veréb...",
+                                        "right": "A bird in the hand is worth two in the bush"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1672,
+                            "lessonId": 222,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Use a Hungarian idiom in a sentence!",
+                                "expectedAnswer": "Ahogy mondják sok lúd disznót győz ezért csapatban dolgozunk"
+                            }
+                        },
+                        {
+                            "id": 1673,
+                            "lessonId": 222,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which idiom is being explained?",
+                                "audioUrl": "https://audio.example.com/hu/idioms/apple_tree.mp3",
+                                "answers": [
+                                    "like father like son",
+                                    "the early bird",
+                                    "small but mighty",
+                                    "all is well that ends well"
+                                ],
+                                "correctAnswer": "like father like son"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 223,
+                    "unitId": 138,
+                    "title": "Debating & Arguing Your Point",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1674,
+                            "lessonId": 223,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'On the contrary' in English?",
+                                "answers": [
+                                    "Ezenkívül",
+                                    "Éppen ellenkezőleg",
+                                    "Ennek ellenére",
+                                    "Ehelyett"
+                                ],
+                                "correctAnswer": "Éppen ellenkezőleg"
+                            }
+                        },
+                        {
+                            "id": 1675,
+                            "lessonId": 223,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'Ez egy fontos szempont.' mean?",
+                                "answers": [
+                                    "This is a difficult decision",
+                                    "This is an important point",
+                                    "I strongly disagree",
+                                    "This is not relevant"
+                                ],
+                                "correctAnswer": "This is an important point"
+                            }
+                        },
+                        {
+                            "id": 1676,
+                            "lessonId": 223,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'I take your point, however...'",
+                                "correctAnswer": "Értem amit mond, azonban..."
+                            }
+                        },
+                        {
+                            "id": 1677,
+                            "lessonId": 223,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "While I agree in __, I think... (Miközben alapvetően egyetértek, úgy gondolom...)",
+                                "sentence": "While I agree in __, I think...",
+                                "correctAnswer": "principle"
+                            }
+                        },
+                        {
+                            "id": 1678,
+                            "lessonId": 223,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the debate phrases!",
+                                "pairs": [
+                                    {
+                                        "left": "to sum up",
+                                        "right": "összefoglalva"
+                                    },
+                                    {
+                                        "left": "on the other hand",
+                                        "right": "másrészt"
+                                    },
+                                    {
+                                        "left": "this proves that",
+                                        "right": "ez bizonyítja hogy"
+                                    },
+                                    {
+                                        "left": "I concede that",
+                                        "right": "elismerem hogy"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1679,
+                            "lessonId": 223,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Argue for or against a topic in English!",
+                                "expectedAnswer": "Szerintem a távmunka hatékonyabb mert csökkenti az ingázási időt"
+                            }
+                        },
+                        {
+                            "id": 1680,
+                            "lessonId": 223,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Is the speaker agreeing or countering?",
+                                "audioUrl": "https://audio.example.com/hu/debate/counter.mp3",
+                                "answers": [
+                                    "agreeing",
+                                    "countering",
+                                    "asking a question",
+                                    "summarising"
+                                ],
+                                "correctAnswer": "countering"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
