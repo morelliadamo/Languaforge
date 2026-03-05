@@ -31,6 +31,14 @@ public class AchievementController {
         return achievementService.saveAchievement(achievement);
     }
 
+    @PostMapping("createAchievementsBulk")
+    public void createAchievementsBulk(@RequestBody List<Achievement> listOfAchievements){
+        for (var achievement : listOfAchievements){
+            achievementService.saveAchievement(achievement);
+            System.out.println("Achievement saved: "+achievement.toString());
+        }
+    }
+
     @PatchMapping("/softDeleteAchievement/{id}")
     public Achievement softDeleteAchievement(@PathVariable Integer id){
         return achievementService.softDeleteAchievement(id);

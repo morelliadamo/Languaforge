@@ -27,6 +27,9 @@ export class CourseHubComponent implements OnInit {
   completedCourses: Course[] = [];
   allCourses: Course[] = [];
 
+  recentStart = new Date().getTime() - 14 * 24 * 60 * 60 * 1000;
+  recentEnd = new Date().getTime();
+
   get startedCount(): number {
     return this.startedCourses.length;
   }
@@ -35,12 +38,35 @@ export class CourseHubComponent implements OnInit {
     return Math.max(0, this.maxCourseSlots - this.startedCount);
   }
 
+  // get availableCourses(): Course[] {
+  //   const enrolledIds = new Set([
+  //     ...this.startedCourses.map((c) => c.id),
+  //     ...this.completedCourses.map((c) => c.id),
+  //   ]);
+
+  //   return this.allCourses.filter((c) => !enrolledIds.has(c.id));
+  // }
+
   get availableCourses(): Course[] {
     const enrolledIds = new Set([
       ...this.startedCourses.map((c) => c.id),
       ...this.completedCourses.map((c) => c.id),
     ]);
-    return this.allCourses.filter((c) => !enrolledIds.has(c.id));
+
+    return this.allCourses
+      .filter((c) => !enrolledIds.has(c.id))
+      .sort((a, b) => {
+        const aRecent = this.isRecent(a);
+        const bRecent = this.isRecent(b);
+        if (aRecent && bRecent) {
+          return (
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          );
+        }
+        if (aRecent) return -1;
+        if (bRecent) return 1;
+        return 0;
+      });
   }
 
   ngOnInit() {
@@ -184,5 +210,18 @@ export class CourseHubComponent implements OnInit {
     if (val === 2 || val === '2') return 'Szakértő';
     if (typeof val === 'string' && val.length > 0) return val;
     return 'Kezdő';
+  }
+
+  isRecent(course: Course): boolean {
+    const createdAt = new Date(course.createdAt).getTime();
+    return createdAt >= this.recentStart && createdAt <= this.recentEnd;
+  }
+
+  isEnglishRequired(course: Course): boolean {
+    if (course.description.toLowerCase().split(' ').includes('learn')) {
+      console.log(course.description);
+    }
+
+    return course.description.toLowerCase().split(' ').includes('learn');
   }
 }

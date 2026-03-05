@@ -473,9 +473,25 @@
               <div class="course-scroll-content">
                 @for (course of availableCourses; track course.id) {
                   <div
-                    [style]="{ 'background-color': course.color }"
-                    class="course-card rounded-xl p-6 shadow-lg hover:shadow-xl transition-all"
+                    [style]="{
+                      'background-color': course.color,
+                    }"
+                    class="course-card relative rounded-xl p-6 shadow-lg hover:shadow-xl transition-all"
                   >
+                    @if (isRecent(course)) {
+                      <div
+                        class="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-amber-400 text-white text-xs font-bold flex items-center justify-center shadow-md animate-pulse z-10 border-2 border-white"
+                      >
+                        Új!
+                      </div>
+                    }
+                    @if (isEnglishRequired(course)) {
+                      <h1
+                        class="absolute -bottom-2 -left-0.5 w-min-10 h-10 text-white text-sm font-bold flex items-center justify-center bg-blue-500 rounded-full px-3 py-1 shadow-md z-10 border-2 border-white"
+                      >
+                        Angolnyelvű!
+                      </h1>
+                    }
                     <div
                       class="flex flex-col justify-between h-full text-white"
                     >
