@@ -1,0 +1,703 @@
+{
+    "id": 11,
+    "title": "English-Hungarian: Emotions & Relationships",
+    "description": "Express feelings, describe people, and navigate social life in Hungarian!",
+    "createdAt": "2026-02-25T08:00:00.000Z",
+    "isDeleted": false,
+    "deletedAt": null,
+    "units": [
+        {
+            "id": 133,
+            "courseId": 11,
+            "title": "Feelings & Emotions",
+            "orderIndex": 1,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 212,
+                    "unitId": 133,
+                    "title": "Basic Emotions",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1597,
+                            "lessonId": 212,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'boldog' in English?",
+                                "answers": [
+                                    "sad",
+                                    "angry",
+                                    "happy",
+                                    "afraid"
+                                ],
+                                "correctAnswer": "happy"
+                            }
+                        },
+                        {
+                            "id": 1598,
+                            "lessonId": 212,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'I am nervous' in Hungarian?",
+                                "answers": [
+                                    "Dühös vagyok",
+                                    "Izgatott vagyok",
+                                    "Ideges vagyok",
+                                    "Félek"
+                                ],
+                                "correctAnswer": "Ideges vagyok"
+                            }
+                        },
+                        {
+                            "id": 1599,
+                            "lessonId": 212,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'She is very excited about the trip'",
+                                "correctAnswer": "Nagyon izgatott az utazás miatt"
+                            }
+                        },
+                        {
+                            "id": 1600,
+                            "lessonId": 212,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "I feel really __ today. (Ma nagyon boldognak érzem magam.)",
+                                "sentence": "I feel really __ today.",
+                                "correctAnswer": "happy"
+                            }
+                        },
+                        {
+                            "id": 1601,
+                            "lessonId": 212,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the emotions!",
+                                "pairs": [
+                                    {
+                                        "left": "jealous",
+                                        "right": "féltékeny"
+                                    },
+                                    {
+                                        "left": "proud",
+                                        "right": "büszke"
+                                    },
+                                    {
+                                        "left": "ashamed",
+                                        "right": "szégyenkezik"
+                                    },
+                                    {
+                                        "left": "surprised",
+                                        "right": "meglepett"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1602,
+                            "lessonId": 212,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Describe how you feel right now in Hungarian!",
+                                "expectedAnswer": "Jelenleg elégedett és nyugodt vagyok"
+                            }
+                        },
+                        {
+                            "id": 1603,
+                            "lessonId": 212,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How is the speaker feeling?",
+                                "audioUrl": "https://audio.example.com/hu/emotions/angry.mp3",
+                                "answers": [
+                                    "happy",
+                                    "sad",
+                                    "angry",
+                                    "scared"
+                                ],
+                                "correctAnswer": "angry"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 213,
+                    "unitId": 133,
+                    "title": "Expressing Emotions",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1604,
+                            "lessonId": 213,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'Tele vagyok energiával!' mean?",
+                                "answers": [
+                                    "I am tired",
+                                    "I am full of energy",
+                                    "I am feeling ill",
+                                    "I am stressed"
+                                ],
+                                "correctAnswer": "I am full of energy"
+                            }
+                        },
+                        {
+                            "id": 1605,
+                            "lessonId": 213,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'It made me very happy' in Hungarian?",
+                                "answers": [
+                                    "Ez nagyon boldoggá tett engem",
+                                    "Szomorú voltam emiatt",
+                                    "Ez meglepett",
+                                    "Dühös lettem"
+                                ],
+                                "correctAnswer": "Ez nagyon boldoggá tett engem"
+                            }
+                        },
+                        {
+                            "id": 1606,
+                            "lessonId": 213,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'I was worried about you'",
+                                "correctAnswer": "Aggódtam érted"
+                            }
+                        },
+                        {
+                            "id": 1607,
+                            "lessonId": 213,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "He burst into __ when he heard the news. (Sírva fakadt amikor meghallotta a hírt.)",
+                                "sentence": "He burst into __ when he heard the news.",
+                                "correctAnswer": "tears"
+                            }
+                        },
+                        {
+                            "id": 1608,
+                            "lessonId": 213,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the emotional expressions!",
+                                "pairs": [
+                                    {
+                                        "left": "to burst out laughing",
+                                        "right": "hangosan felnevetni"
+                                    },
+                                    {
+                                        "left": "to be heartbroken",
+                                        "right": "szívfájdalmas lenni"
+                                    },
+                                    {
+                                        "left": "to feel homesick",
+                                        "right": "honvágyat érezni"
+                                    },
+                                    {
+                                        "left": "to be in a good mood",
+                                        "right": "jó kedvben lenni"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1609,
+                            "lessonId": 213,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Describe a moment that made you very happy!",
+                                "expectedAnswer": "Nagyon boldog voltam amikor megtudtam hogy felvételt nyertem"
+                            }
+                        },
+                        {
+                            "id": 1610,
+                            "lessonId": 213,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What emotion is the speaker expressing?",
+                                "audioUrl": "https://audio.example.com/hu/emotions/excitement.mp3",
+                                "answers": [
+                                    "fear",
+                                    "sadness",
+                                    "excitement",
+                                    "relief"
+                                ],
+                                "correctAnswer": "excitement"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 134,
+            "courseId": 11,
+            "title": "Relationships & People",
+            "orderIndex": 2,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 214,
+                    "unitId": 134,
+                    "title": "Describing People",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1611,
+                            "lessonId": 214,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'megbízható' in English?",
+                                "answers": [
+                                    "funny",
+                                    "reliable",
+                                    "shy",
+                                    "generous"
+                                ],
+                                "correctAnswer": "reliable"
+                            }
+                        },
+                        {
+                            "id": 1612,
+                            "lessonId": 214,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'She has a great sense of humour'?",
+                                "answers": [
+                                    "Nagy a humorérzéke",
+                                    "Nagyon okos",
+                                    "Nagyon türelmes",
+                                    "Jó megjelenésű"
+                                ],
+                                "correctAnswer": "Nagy a humorérzéke"
+                            }
+                        },
+                        {
+                            "id": 1613,
+                            "lessonId": 214,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'He is tall with brown hair'",
+                                "correctAnswer": "Magas és barna hajú"
+                            }
+                        },
+                        {
+                            "id": 1614,
+                            "lessonId": 214,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "She is very __ and always helps others. (Nagyon nagylelkű és mindig segít másoknak.)",
+                                "sentence": "She is very __ and always helps others.",
+                                "correctAnswer": "generous"
+                            }
+                        },
+                        {
+                            "id": 1615,
+                            "lessonId": 214,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the personality traits!",
+                                "pairs": [
+                                    {
+                                        "left": "stubborn",
+                                        "right": "makacs"
+                                    },
+                                    {
+                                        "left": "patient",
+                                        "right": "türelmes"
+                                    },
+                                    {
+                                        "left": "creative",
+                                        "right": "kreatív"
+                                    },
+                                    {
+                                        "left": "ambitious",
+                                        "right": "ambiciózus"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1616,
+                            "lessonId": 214,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Describe a friend's personality in Hungarian!",
+                                "expectedAnswer": "A legjobb barátom nagyon vicces és megbízható"
+                            }
+                        },
+                        {
+                            "id": 1617,
+                            "lessonId": 214,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which personality trait is described?",
+                                "audioUrl": "https://audio.example.com/hu/people/shy.mp3",
+                                "answers": [
+                                    "confident",
+                                    "generous",
+                                    "shy",
+                                    "stubborn"
+                                ],
+                                "correctAnswer": "shy"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 215,
+                    "unitId": 134,
+                    "title": "Family & Relationships",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1618,
+                            "lessonId": 215,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'unokatestvér' in English?",
+                                "answers": [
+                                    "nephew",
+                                    "cousin",
+                                    "sibling",
+                                    "grandchild"
+                                ],
+                                "correctAnswer": "cousin"
+                            }
+                        },
+                        {
+                            "id": 1619,
+                            "lessonId": 215,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'They got married last year'?",
+                                "answers": [
+                                    "Tavaly elváltak",
+                                    "Tavaly összeházasodtak",
+                                    "Jegybe jegyeztek",
+                                    "Hosszú ideje ismerik egymást"
+                                ],
+                                "correctAnswer": "Tavaly összeházasodtak"
+                            }
+                        },
+                        {
+                            "id": 1620,
+                            "lessonId": 215,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'My parents have been married for 30 years'",
+                                "correctAnswer": "A szüleim 30 éve házasok"
+                            }
+                        },
+                        {
+                            "id": 1621,
+                            "lessonId": 215,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "We have been best friends __ we were children. (Gyerekkorunk óta legjobb barátok vagyunk.)",
+                                "sentence": "We have been best friends __ we were children.",
+                                "correctAnswer": "since"
+                            }
+                        },
+                        {
+                            "id": 1622,
+                            "lessonId": 215,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the relationship terms!",
+                                "pairs": [
+                                    {
+                                        "left": "engaged",
+                                        "right": "eljegyezve"
+                                    },
+                                    {
+                                        "left": "divorced",
+                                        "right": "elvált"
+                                    },
+                                    {
+                                        "left": "widow",
+                                        "right": "özvegy"
+                                    },
+                                    {
+                                        "left": "in-laws",
+                                        "right": "após és anyós"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1623,
+                            "lessonId": 215,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Describe your family in Hungarian!",
+                                "expectedAnswer": "A családomban négyen vagyunk szüleim egy nővérem és én"
+                            }
+                        },
+                        {
+                            "id": 1624,
+                            "lessonId": 215,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What family event is being discussed?",
+                                "audioUrl": "https://audio.example.com/hu/family/wedding.mp3",
+                                "answers": [
+                                    "birthday",
+                                    "wedding",
+                                    "graduation",
+                                    "anniversary"
+                                ],
+                                "correctAnswer": "wedding"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 135,
+            "courseId": 11,
+            "title": "Social Situations",
+            "orderIndex": 3,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 216,
+                    "unitId": 135,
+                    "title": "Making & Refusing Plans",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1625,
+                            "lessonId": 216,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you invite someone to the cinema in Hungarian?",
+                                "answers": [
+                                    "El tudsz jönni moziba?",
+                                    "Hogyan volt a film?",
+                                    "Melyik mozit ajánlod?",
+                                    "Mikor kezdődik a film?"
+                                ],
+                                "correctAnswer": "El tudsz jönni moziba?"
+                            }
+                        },
+                        {
+                            "id": 1626,
+                            "lessonId": 216,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'Sajnos nem tudok menni.' mean?",
+                                "answers": [
+                                    "I would love to come",
+                                    "Unfortunately I cannot come",
+                                    "I am not sure",
+                                    "Maybe another time"
+                                ],
+                                "correctAnswer": "Unfortunately I cannot come"
+                            }
+                        },
+                        {
+                            "id": 1627,
+                            "lessonId": 216,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'Shall we meet at seven?'",
+                                "correctAnswer": "Találkozzunk hétkor?"
+                            }
+                        },
+                        {
+                            "id": 1628,
+                            "lessonId": 216,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How about meeting __ Saturday? (Mi lenne, ha szombaton találkoznánk?)",
+                                "sentence": "How about meeting __ Saturday?",
+                                "correctAnswer": "on"
+                            }
+                        },
+                        {
+                            "id": 1629,
+                            "lessonId": 216,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the social phrases!",
+                                "pairs": [
+                                    {
+                                        "left": "What are you up to?",
+                                        "right": "Mi újság?"
+                                    },
+                                    {
+                                        "left": "Let us catch up",
+                                        "right": "Találkozzunk és csevegünk"
+                                    },
+                                    {
+                                        "left": "I am free on Friday",
+                                        "right": "Pénteken ráérek"
+                                    },
+                                    {
+                                        "left": "Rain check?",
+                                        "right": "Máskor jó lesz?"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1630,
+                            "lessonId": 216,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Invite a friend to a café in Hungarian!",
+                                "expectedAnswer": "Ráérsz ma délután egy kávéra?"
+                            }
+                        },
+                        {
+                            "id": 1631,
+                            "lessonId": 216,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What are they arranging?",
+                                "audioUrl": "https://audio.example.com/hu/social/dinner.mp3",
+                                "answers": [
+                                    "a party",
+                                    "dinner",
+                                    "a walk",
+                                    "a film"
+                                ],
+                                "correctAnswer": "dinner"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

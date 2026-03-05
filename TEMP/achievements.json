@@ -1,0 +1,405 @@
+[
+    {
+        "id": 1,
+        "name": "First Steps",
+        "description": "You completed your very first lesson!",
+        "earnCondition": {
+            "condition": "LESSONS_COMPLETED",
+            "value": "1"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/01_first_steps.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 2,
+        "name": "Eager Learner",
+        "description": "You completed 5 lessons!",
+        "earnCondition": {
+            "condition": "LESSONS_COMPLETED",
+            "value": "5"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/02_eager_learner.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 3,
+        "name": "Bookworm",
+        "description": "You completed 25 lessons!",
+        "earnCondition": {
+            "condition": "LESSONS_COMPLETED",
+            "value": "25"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/03_bookworm.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 4,
+        "name": "Graduate",
+        "description": "You completed your first unit!",
+        "earnCondition": {
+            "condition": "UNITS_COMPLETED",
+            "value": "1"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/04_graduate.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 5,
+        "name": "Course Champion",
+        "description": "You completed all units in a course!",
+        "earnCondition": {
+            "condition": "COURSES_COMPLETED",
+            "value": "1"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/05_course_champion.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 6,
+        "name": "Spark",
+        "description": "You studied 3 days in a row!",
+        "earnCondition": {
+            "condition": "STREAK_DAYS",
+            "value": "3"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/06_spark.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 7,
+        "name": "Week Warrior",
+        "description": "You studied 7 days in a row!",
+        "earnCondition": {
+            "condition": "STREAK_DAYS",
+            "value": "7"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/07_week_warrior.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 8,
+        "name": "Fortnight Fighter",
+        "description": "You studied 14 days in a row!",
+        "earnCondition": {
+            "condition": "STREAK_DAYS",
+            "value": "14"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/08_fortnight_fighter.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 9,
+        "name": "Month Master",
+        "description": "You studied 30 days in a row!",
+        "earnCondition": {
+            "condition": "STREAK_DAYS",
+            "value": "30"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/09_month_master.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 10,
+        "name": "Streak Sorcerer",
+        "description": "You studied 60 days in a row!",
+        "earnCondition": {
+            "condition": "STREAK_DAYS",
+            "value": "60"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/10_streak_sorcerer.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 11,
+        "name": "Diamond Devotee",
+        "description": "You studied 100 days in a row!",
+        "earnCondition": {
+            "condition": "STREAK_DAYS",
+            "value": "100"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/11_diamond_devotee.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 12,
+        "name": "First Words",
+        "description": "You learned 10 new words!",
+        "earnCondition": {
+            "condition": "WORDS_LEARNED",
+            "value": "10"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/12_first_words.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 13,
+        "name": "Vocabulary Builder",
+        "description": "You learned 50 words!",
+        "earnCondition": {
+            "condition": "WORDS_LEARNED",
+            "value": "50"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/13_vocabulary_builder.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 14,
+        "name": "Word Hoarder",
+        "description": "You learned 100 words!",
+        "earnCondition": {
+            "condition": "WORDS_LEARNED",
+            "value": "100"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/14_word_hoarder.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 15,
+        "name": "Vocabulary King",
+        "description": "You learned 300 words!",
+        "earnCondition": {
+            "condition": "WORDS_LEARNED",
+            "value": "300"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/15_vocabulary_king.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 16,
+        "name": "Lexicon Legend",
+        "description": "You learned 500 words!",
+        "earnCondition": {
+            "condition": "WORDS_LEARNED",
+            "value": "500"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/16_lexicon_legend.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 17,
+        "name": "Grammar Guru",
+        "description": "You completed all grammar exercises!",
+        "earnCondition": {
+            "condition": "GRAMMAR_EXERCISES_COMPLETED",
+            "value": "all"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/17_grammar_guru.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 18,
+        "name": "Grammar Scientist",
+        "description": "You scored 100% on 5 grammar quizzes in a row!",
+        "earnCondition": {
+            "condition": "GRAMMAR_PERFECT_STREAK",
+            "value": "5"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/18_grammar_scientist.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 19,
+        "name": "Sharp Shooter",
+        "description": "You scored 100% on a quiz!",
+        "earnCondition": {
+            "condition": "QUIZ_PERFECT_SCORE",
+            "value": "1"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/19_sharp_shooter.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 20,
+        "name": "Eagle Eye",
+        "description": "You completed 5 lessons in a row with zero mistakes!",
+        "earnCondition": {
+            "condition": "PERFECT_LESSONS_STREAK",
+            "value": "5"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/20_eagle_eye.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 21,
+        "name": "Speed Demon",
+        "description": "You finished a lesson in under 2 minutes!",
+        "earnCondition": {
+            "condition": "LESSON_COMPLETED_UNDER_SECONDS",
+            "value": "120"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/21_speed_demon.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 22,
+        "name": "Puzzle Master",
+        "description": "You completed 20 exercises without using hints!",
+        "earnCondition": {
+            "condition": "EXERCISES_NO_HINT",
+            "value": "20"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/22_puzzle_master.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 23,
+        "name": "Century Club",
+        "description": "You completed 100 lessons in total!",
+        "earnCondition": {
+            "condition": "LESSONS_COMPLETED",
+            "value": "100"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/23_century_club.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 24,
+        "name": "Social Butterfly",
+        "description": "You added 5 friends!",
+        "earnCondition": {
+            "condition": "FRIENDS_ADDED",
+            "value": "5"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/24_social_butterfly.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 25,
+        "name": "Recruiter",
+        "description": "You referred 5 friends to the app!",
+        "earnCondition": {
+            "condition": "REFERRALS_SENT",
+            "value": "5"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/25_recruiter.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 26,
+        "name": "Ambassador",
+        "description": "You referred 10 friends to the app!",
+        "earnCondition": {
+            "condition": "REFERRALS_SENT",
+            "value": "10"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/26_ambassador.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 27,
+        "name": "Study Buddy",
+        "description": "You studied together with a friend on the same day!",
+        "earnCondition": {
+            "condition": "STUDIED_WITH_FRIEND",
+            "value": "1"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/27_study_buddy.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 28,
+        "name": "Early Bird",
+        "description": "You completed a lesson before 8 AM!",
+        "earnCondition": {
+            "condition": "LESSON_COMPLETED_BEFORE_HOUR",
+            "value": "8"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/28_early_bird.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 29,
+        "name": "Night Owl",
+        "description": "You completed a lesson after 10 PM!",
+        "earnCondition": {
+            "condition": "LESSON_COMPLETED_AFTER_HOUR",
+            "value": "22"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/29_night_owl.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 30,
+        "name": "Midday Maestro",
+        "description": "You completed 10 lessons between 12 PM and 2 PM!",
+        "earnCondition": {
+            "condition": "LESSONS_COMPLETED_BETWEEN_HOURS",
+            "value": "12-14"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/30_midday_maestro.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    },
+    {
+        "id": 31,
+        "name": "Shooting Star",
+        "description": "You studied at the exact same time for 7 days in a row!",
+        "earnCondition": {
+            "condition": "SAME_TIME_STREAK_DAYS",
+            "value": "7"
+        },
+        "iconUrl": "https://cdn.example.com/achievements/31_shooting_star.svg",
+        "createdAt": "2026-02-25T17:36:56.000Z",
+        "isDeleted": false,
+        "deletedAt": null
+    }
+]

@@ -1,0 +1,703 @@
+{
+    "id": 10,
+    "title": "English-Hungarian: Education & Learning",
+    "description": "Navigate schools, study smarter, and talk about education in Hungarian!",
+    "createdAt": "2026-02-25T08:00:00.000Z",
+    "isDeleted": false,
+    "deletedAt": null,
+    "units": [
+        {
+            "id": 130,
+            "courseId": 10,
+            "title": "School & University",
+            "orderIndex": 1,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 207,
+                    "unitId": 130,
+                    "title": "School Subjects",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1562,
+                            "lessonId": 207,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'matematika' in English?",
+                                "answers": [
+                                    "physics",
+                                    "chemistry",
+                                    "maths",
+                                    "biology"
+                                ],
+                                "correctAnswer": "maths"
+                            }
+                        },
+                        {
+                            "id": 1563,
+                            "lessonId": 207,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'history' in Hungarian?",
+                                "answers": [
+                                    "földrajz",
+                                    "történelem",
+                                    "biológia",
+                                    "kémia"
+                                ],
+                                "correctAnswer": "történelem"
+                            }
+                        },
+                        {
+                            "id": 1564,
+                            "lessonId": 207,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'My favourite subject is art'",
+                                "correctAnswer": "A kedvenc tantárgyam a rajz"
+                            }
+                        },
+                        {
+                            "id": 1565,
+                            "lessonId": 207,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "We have __ lessons a week. (Hetente öt leckénk van.)",
+                                "sentence": "We have __ lessons a week.",
+                                "correctAnswer": "five"
+                            }
+                        },
+                        {
+                            "id": 1566,
+                            "lessonId": 207,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the school subjects!",
+                                "pairs": [
+                                    {
+                                        "left": "geography",
+                                        "right": "földrajz"
+                                    },
+                                    {
+                                        "left": "physics",
+                                        "right": "fizika"
+                                    },
+                                    {
+                                        "left": "literature",
+                                        "right": "irodalom"
+                                    },
+                                    {
+                                        "left": "PE",
+                                        "right": "testnevelés"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1567,
+                            "lessonId": 207,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Say which subjects you like and dislike in Hungarian!",
+                                "expectedAnswer": "Szeretem a matekot de nem szeretem a kémiát"
+                            }
+                        },
+                        {
+                            "id": 1568,
+                            "lessonId": 207,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which subject is the student talking about?",
+                                "audioUrl": "https://audio.example.com/hu/school/biology.mp3",
+                                "answers": [
+                                    "maths",
+                                    "history",
+                                    "biology",
+                                    "art"
+                                ],
+                                "correctAnswer": "biology"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 208,
+                    "unitId": 130,
+                    "title": "Classroom Language",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1569,
+                            "lessonId": 208,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'Kérem nyissák ki a könyvüket!' mean?",
+                                "answers": [
+                                    "Please close your books!",
+                                    "Please open your books!",
+                                    "Please take out your homework!",
+                                    "Please sit down!"
+                                ],
+                                "correctAnswer": "Please open your books!"
+                            }
+                        },
+                        {
+                            "id": 1570,
+                            "lessonId": 208,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'I do not understand' in Hungarian?",
+                                "answers": [
+                                    "Megértem",
+                                    "Nem értem",
+                                    "Tudom",
+                                    "Nem tudom"
+                                ],
+                                "correctAnswer": "Nem értem"
+                            }
+                        },
+                        {
+                            "id": 1571,
+                            "lessonId": 208,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'Can you repeat that please?'",
+                                "correctAnswer": "Meg tudná ismételni kérem?"
+                            }
+                        },
+                        {
+                            "id": 1572,
+                            "lessonId": 208,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Please __ your hand if you know the answer. (Emelje fel a kezét ha tudja a választ.)",
+                                "sentence": "Please __ your hand.",
+                                "correctAnswer": "raise"
+                            }
+                        },
+                        {
+                            "id": 1573,
+                            "lessonId": 208,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the classroom phrases!",
+                                "pairs": [
+                                    {
+                                        "left": "homework",
+                                        "right": "házi feladat"
+                                    },
+                                    {
+                                        "left": "exam",
+                                        "right": "vizsga"
+                                    },
+                                    {
+                                        "left": "grade",
+                                        "right": "jegy"
+                                    },
+                                    {
+                                        "left": "timetable",
+                                        "right": "órarend"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1574,
+                            "lessonId": 208,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Ask your teacher to explain something again in Hungarian!",
+                                "expectedAnswer": "Elnézést meg tudná magyarázni még egyszer?"
+                            }
+                        },
+                        {
+                            "id": 1575,
+                            "lessonId": 208,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is the teacher asking the students to do?",
+                                "audioUrl": "https://audio.example.com/hu/school/sit_down.mp3",
+                                "answers": [
+                                    "stand up",
+                                    "sit down",
+                                    "open books",
+                                    "be quiet"
+                                ],
+                                "correctAnswer": "sit down"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 131,
+            "courseId": 10,
+            "title": "Studying & Skills",
+            "orderIndex": 2,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 209,
+                    "unitId": 131,
+                    "title": "Study Habits",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1576,
+                            "lessonId": 209,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'ismétlés' mean?",
+                                "answers": [
+                                    "research",
+                                    "revision",
+                                    "essay",
+                                    "presentation"
+                                ],
+                                "correctAnswer": "revision"
+                            }
+                        },
+                        {
+                            "id": 1577,
+                            "lessonId": 209,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'I study best in the morning'?",
+                                "answers": [
+                                    "Reggel tanulok a legjobban",
+                                    "Este tanulok a legjobban",
+                                    "Nem szeretek tanulni",
+                                    "Nehezen tanulok"
+                                ],
+                                "correctAnswer": "Reggel tanulok a legjobban"
+                            }
+                        },
+                        {
+                            "id": 1578,
+                            "lessonId": 209,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'I need to revise for my exam'",
+                                "correctAnswer": "Fel kell készülnöm a vizsgámra"
+                            }
+                        },
+                        {
+                            "id": 1579,
+                            "lessonId": 209,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Taking good __ helps you remember information. (A jó jegyzetelés segít megjegyezni az információkat.)",
+                                "sentence": "Taking good __ helps you remember.",
+                                "correctAnswer": "notes"
+                            }
+                        },
+                        {
+                            "id": 1580,
+                            "lessonId": 209,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the study skills!",
+                                "pairs": [
+                                    {
+                                        "left": "to summarise",
+                                        "right": "összefoglalni"
+                                    },
+                                    {
+                                        "left": "to highlight",
+                                        "right": "kiemelni"
+                                    },
+                                    {
+                                        "left": "to memorise",
+                                        "right": "megjegyezni"
+                                    },
+                                    {
+                                        "left": "to research",
+                                        "right": "kutatni"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1581,
+                            "lessonId": 209,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Describe how you prepare for an exam in Hungarian!",
+                                "expectedAnswer": "Az ismétkélésnél összefoglalást készítek és kártyákon tanulok"
+                            }
+                        },
+                        {
+                            "id": 1582,
+                            "lessonId": 209,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What study method is described?",
+                                "audioUrl": "https://audio.example.com/hu/study/flashcards.mp3",
+                                "answers": [
+                                    "highlighting",
+                                    "flashcards",
+                                    "mind maps",
+                                    "group study"
+                                ],
+                                "correctAnswer": "flashcards"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 210,
+                    "unitId": 131,
+                    "title": "Language Learning Tips",
+                    "orderIndex": 2,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1583,
+                            "lessonId": 210,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What does 'szókincsbővítés' mean?",
+                                "answers": [
+                                    "grammar study",
+                                    "vocabulary building",
+                                    "pronunciation",
+                                    "listening practice"
+                                ],
+                                "correctAnswer": "vocabulary building"
+                            }
+                        },
+                        {
+                            "id": 1584,
+                            "lessonId": 210,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How do you say 'I practise speaking every day'?",
+                                "answers": [
+                                    "Minden nap gyakorlom a beszédet",
+                                    "Minden nap olvasok",
+                                    "Hetente egyszer tanulok",
+                                    "Csak írásban tanulok"
+                                ],
+                                "correctAnswer": "Minden nap gyakorlom a beszédet"
+                            }
+                        },
+                        {
+                            "id": 1585,
+                            "lessonId": 210,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'Make mistakes and learn from them'",
+                                "correctAnswer": "Kövess el hibákat és tanulj belőlük"
+                            }
+                        },
+                        {
+                            "id": 1586,
+                            "lessonId": 210,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Immersion means surrounding yourself with the __. (Az immerzió azt jelenti, hogy körülveszed magad a nyelvvel.)",
+                                "sentence": "Immersion means surrounding yourself with the __.",
+                                "correctAnswer": "language"
+                            }
+                        },
+                        {
+                            "id": 1587,
+                            "lessonId": 210,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the language learning tips!",
+                                "pairs": [
+                                    {
+                                        "left": "watch films",
+                                        "right": "filmeket nézni"
+                                    },
+                                    {
+                                        "left": "keep a diary",
+                                        "right": "naplót írni"
+                                    },
+                                    {
+                                        "left": "find a language partner",
+                                        "right": "nyelvtanulási partnert találni"
+                                    },
+                                    {
+                                        "left": "listen to podcasts",
+                                        "right": "podcasteket hallgatni"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1588,
+                            "lessonId": 210,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Share one tip for learning Hungarian in Hungarian!",
+                                "expectedAnswer": "Az egyik legjobb tipp ha minden nap legalább húsz percet tanulsz"
+                            }
+                        },
+                        {
+                            "id": 1589,
+                            "lessonId": 210,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What learning tip is given?",
+                                "audioUrl": "https://audio.example.com/hu/learning/diary.mp3",
+                                "answers": [
+                                    "watching films",
+                                    "keeping a diary",
+                                    "using flashcards",
+                                    "speaking practice"
+                                ],
+                                "correctAnswer": "keeping a diary"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 132,
+            "courseId": 10,
+            "title": "Hungarian Education System",
+            "orderIndex": 3,
+            "createdAt": "2026-02-25T08:00:00.000Z",
+            "isDeleted": false,
+            "deletedAt": null,
+            "lessons": [
+                {
+                    "id": 211,
+                    "unitId": 132,
+                    "title": "Schools & Universities",
+                    "orderIndex": 1,
+                    "createdAt": "2026-02-25T08:00:00.000Z",
+                    "isDeleted": false,
+                    "deletedAt": null,
+                    "exercises": [
+                        {
+                            "id": 1590,
+                            "lessonId": 211,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "What is 'általános iskola' in English?",
+                                "answers": [
+                                    "high school",
+                                    "primary school",
+                                    "university",
+                                    "kindergarten"
+                                ],
+                                "correctAnswer": "primary school"
+                            }
+                        },
+                        {
+                            "id": 1591,
+                            "lessonId": 211,
+                            "exerciseType": "choice",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "How many years does Hungarian high school last?",
+                                "answers": [
+                                    "3 years",
+                                    "4 years",
+                                    "5 years",
+                                    "6 years"
+                                ],
+                                "correctAnswer": "4 years"
+                            }
+                        },
+                        {
+                            "id": 1592,
+                            "lessonId": 211,
+                            "exerciseType": "typing",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Translate: 'I am in my second year at university'",
+                                "correctAnswer": "A második évet végzem az egyetemen"
+                            }
+                        },
+                        {
+                            "id": 1593,
+                            "lessonId": 211,
+                            "exerciseType": "fill_in",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "The university entrance exam is called '__ vizsga'. (Az egyetemi felvételi vizsgát érettségi vizsgának hívják.)",
+                                "sentence": "The university entrance exam is called '__ vizsga'.",
+                                "correctAnswer": "érettségi"
+                            }
+                        },
+                        {
+                            "id": 1594,
+                            "lessonId": 211,
+                            "exerciseType": "match",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Match the education levels!",
+                                "pairs": [
+                                    {
+                                        "left": "nursery",
+                                        "right": "bölcsőde"
+                                    },
+                                    {
+                                        "left": "kindergarten",
+                                        "right": "óvoda"
+                                    },
+                                    {
+                                        "left": "primary school",
+                                        "right": "általános iskola"
+                                    },
+                                    {
+                                        "left": "university",
+                                        "right": "egyetem"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1595,
+                            "lessonId": 211,
+                            "exerciseType": "speech",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Describe your educational background in Hungarian!",
+                                "expectedAnswer": "Általános iskolába és gimnáziumba jártam majd egyetemet végeztem"
+                            }
+                        },
+                        {
+                            "id": 1596,
+                            "lessonId": 211,
+                            "exerciseType": "listening",
+                            "isDeleted": false,
+                            "deletedAt": null,
+                            "createdAt": "2026-02-25T08:00:00.000Z",
+                            "exerciseContent": {
+                                "description": "Which level of education is being described?",
+                                "audioUrl": "https://audio.example.com/hu/edu/university.mp3",
+                                "answers": [
+                                    "primary school",
+                                    "high school",
+                                    "university",
+                                    "vocational school"
+                                ],
+                                "correctAnswer": "university"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
