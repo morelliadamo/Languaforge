@@ -10,4 +10,9 @@ import java.util.List;
 public interface LessonRepository extends JpaRepository<Lesson, Integer> {
     @Query("SELECT l.id FROM Lesson l WHERE l.unit.courseId = :courseId AND l.isDeleted = false")
     List<Integer> findLessonIdsByCourseId(@Param("courseId") Integer courseId);
+
+    @Query("SELECT l.id FROM Lesson l WHERE l.unit.id = :unitId AND l.isDeleted = false")
+    List<Integer> findLessonIdsByUnitId(Integer unitId);
+
+
 }

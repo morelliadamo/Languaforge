@@ -1,12 +1,15 @@
 package com.tengelyhatalmak.languaforge.service;
 
 
+import com.tengelyhatalmak.languaforge.domainevent.FriendAddedDE;
 import com.tengelyhatalmak.languaforge.model.Friendship;
 import com.tengelyhatalmak.languaforge.model.User;
 import com.tengelyhatalmak.languaforge.repository.FriendshipRepository;
 import com.tengelyhatalmak.languaforge.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -22,6 +25,8 @@ public class FriendshipServiceImpl implements FriendshipService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private ApplicationEventPublisher eventPublisher;
 
     @Override
     public Friendship saveFriendship(Friendship friendship) {
@@ -89,6 +94,7 @@ public class FriendshipServiceImpl implements FriendshipService {
     }
 
     @Override
+    @Transactional
     public Friendship sendFriendRequest(Integer user1Id, Integer user2Id) {
         new Friendship();
         Friendship sentFriendRequest = Friendship.builder()
@@ -99,7 +105,10 @@ public class FriendshipServiceImpl implements FriendshipService {
 
 
 
+        eventPublisher.publishEvent(new FriendAddedDE(this, user1Id, user2Id));
+
         return friendshipRepository.save(sentFriendRequest);
+
     }
 
     @Override

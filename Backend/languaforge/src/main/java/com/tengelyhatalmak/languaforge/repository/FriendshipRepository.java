@@ -4,6 +4,7 @@ import com.tengelyhatalmak.languaforge.model.Friendship;
 import com.tengelyhatalmak.languaforge.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -14,5 +15,10 @@ public interface FriendshipRepository extends JpaRepository<Friendship, Integer>
 
     @Query("SELECT fr FROM Friendship fr WHERE fr.user1Id = :user1Id AND fr.user2Id = :user2Id AND fr.isDeleted = false")
     Friendship findFriendshipByUserIdsStrict(Integer user1Id, Integer user2Id);
+
+
+
+    @Query("SELECT count(fr) FROM Friendship fr WHERE fr.user1Id = :userId AND fr.status != :rejectedStatus AND fr.isDeleted = false")
+    Integer countFriendsAddedByUserId(@Param("userId") Integer userId, @Param("rejectedStatus") Friendship.FriendshipStatus rejectedStatus);
 
 }

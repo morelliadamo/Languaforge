@@ -43,4 +43,7 @@ public interface UserXCourseRepository extends JpaRepository<UserXCourse, Intege
 
 
     int countByCourseId(Integer courseId);
+
+    @Query("SELECT COUNT(uc) FROM UserXCourse uc WHERE uc.user.id = :userId AND uc.progress >= 1.0 AND uc.course.isDeleted = false AND uc.user.isDeleted = false")
+    Integer findCompletedCourseCountByUserId(Integer userId);
 }

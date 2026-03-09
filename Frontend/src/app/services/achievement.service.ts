@@ -124,16 +124,4 @@ export class AchievementService {
   clearNewUnlock() {
     this.unlockedQueue.next(null);
   }
-
-  debugTriggerFakeUnlock() {
-    const fakeUnlock: AchievementUnlockedDTO = {
-      id: 1,
-      name: 'Első Lépések',
-      description: 'Teljesítetted az első leckédet!',
-      iconUrl: 'https://example.com/icons/first_steps.png',
-      earnedAt: new Date().toISOString(),
-    };
-
-    this.handleNewUnlock(fakeUnlock);
-  }
 }

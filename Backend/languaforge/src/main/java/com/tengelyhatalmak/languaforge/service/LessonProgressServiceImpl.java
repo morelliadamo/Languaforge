@@ -1,11 +1,13 @@
 package com.tengelyhatalmak.languaforge.service;
 
+import com.tengelyhatalmak.languaforge.domainevent.CourseCompletedDE;
 import com.tengelyhatalmak.languaforge.domainevent.LessonCompletedDE;
+import com.tengelyhatalmak.languaforge.domainevent.UnitCompletedDE;
 import com.tengelyhatalmak.languaforge.model.*;
 import com.tengelyhatalmak.languaforge.repository.*;
-import jakarta.transaction.Transactional;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -122,11 +124,6 @@ public class LessonProgressServiceImpl implements LessonProgressService {
 
         boolean isNowCompleted = existing.getCompletedExercises() >= existing.getExerciseCount();
 
-        System.out.println("=========wasCompletedBefore: " + wasCompletedBefore + "=========");
-        System.out.println("=========completedExercises: " + existing.getCompletedExercises() + "=========");
-        System.out.println("=========exerciseCount: " + existing.getExerciseCount() + "=========");
-        System.out.println("===========isNowCompleted: " + isNowCompleted + "=========");
-
         boolean alreadyHadActivityToday = false;
         if (isNowCompleted && !wasCompletedBefore) {
             Timestamp startOfDay = Timestamp.valueOf(LocalDateTime.now().toLocalDate().atStartOfDay());
@@ -156,6 +153,10 @@ public class LessonProgressServiceImpl implements LessonProgressService {
             streakService.incrementOrCreateStreak(existing.getUserId());
         }
 
+
+        if (isNowCompleted && !wasCompletedBefore) {
+            checkUnitCompletion(saved);
+        }
         updateCourseProgress(saved);
 
         return saved;
@@ -195,12 +196,48 @@ public class LessonProgressServiceImpl implements LessonProgressService {
                     userXCourseRepository.findUserXCoursesByUserIdAndCourseId(userId, courseId);
 
             if (userXCourse != null) {
+                boolean wasCompletedBefore = userXCourse.getProgress() >= 1.0;
                 userXCourse.setProgress(progress);
+                userXCourse.setCompletedAt(Timestamp.valueOf(LocalDateTime.now()));
                 userXCourseRepository.save(userXCourse);
+
+                if (userXCourse.getProgress() >= 1.0 && !wasCompletedBefore) {
+                    eventPublisher.publishEvent(new CourseCompletedDE(this, userXCourse.getUser().getId(), userXCourse.getCourse().getId()));
+                }
             }
 
         } catch (Exception e) {
             System.err.println("Error updating course progress: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private void checkUnitCompletion(LessonProgress lessonProgress) {
+        try {
+            Integer userId = lessonProgress.getUserId();
+
+            Lesson lesson = lessonRepository.findById(lessonProgress.getLessonId())
+                    .orElseThrow(() -> new RuntimeException("Lesson not found"));
+
+            Integer unitId = lesson.getUnit().getId();
+
+            List<Integer> unitLessonIds = lessonRepository.findLessonIdsByUnitId(unitId);
+
+            List<LessonProgress> userProgresses = lessonProgressRepository.findByUserId(userId);
+
+            boolean allCompleted = unitLessonIds.stream().allMatch(lessonId ->
+                    userProgresses.stream().anyMatch(lp ->
+                            lp.getLessonId().equals(lessonId)
+                                    && lp.getCompletedExercises() >= lp.getExerciseCount()
+                    )
+            );
+
+            if (allCompleted) {
+                eventPublisher.publishEvent(new UnitCompletedDE(this, userId, unitId));
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error checking unit completion: " + e.getMessage());
             e.printStackTrace();
         }
     }

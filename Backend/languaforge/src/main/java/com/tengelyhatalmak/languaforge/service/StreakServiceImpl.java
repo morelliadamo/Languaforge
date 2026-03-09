@@ -1,10 +1,13 @@
 package com.tengelyhatalmak.languaforge.service;
 
+import com.tengelyhatalmak.languaforge.domainevent.StreakAchievedDE;
 import com.tengelyhatalmak.languaforge.model.Streak;
 import com.tengelyhatalmak.languaforge.repository.StreakRepository;
 import com.tengelyhatalmak.languaforge.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -21,6 +24,9 @@ public class StreakServiceImpl implements StreakService{
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private ApplicationEventPublisher eventPublisher;
 
     @Override
     public Streak saveStreak(Streak streak) {
@@ -66,6 +72,9 @@ public class StreakServiceImpl implements StreakService{
                 .toLocalDate();
 
         if (lastActive.equals(today)) {
+            if (streak.getLongestStreak() >= 3){
+                eventPublisher.publishEvent(new StreakAchievedDE(this, streak.getUser().getId(), streak.getCurrentStreak()));
+            }
             return streak;
         }
 
@@ -74,6 +83,8 @@ public class StreakServiceImpl implements StreakService{
         }
 
         streak.setUpdatedAt(Timestamp.valueOf(LocalDateTime.now()));
+
+
 
         return streakRepository.save(streak);
     }
@@ -93,6 +104,7 @@ public class StreakServiceImpl implements StreakService{
     }
 
     @Override
+    @Transactional
     public Streak incrementOrCreateStreak(Integer userId) {
         try {
             Streak streak = streakRepository.findStreakByUserID(userId);
@@ -102,6 +114,10 @@ public class StreakServiceImpl implements StreakService{
 
             if (newCurrent > streak.getLongestStreak()) {
                 streak.setLongestStreak(newCurrent);
+            }
+
+            if (streak.getLongestStreak() >= 3){
+                eventPublisher.publishEvent(new StreakAchievedDE(this, streak.getUser().getId(), streak.getCurrentStreak()));
             }
 
             return streakRepository.save(streak);
@@ -115,6 +131,7 @@ public class StreakServiceImpl implements StreakService{
             newStreak.setUpdatedAt(Timestamp.valueOf(LocalDateTime.now()));
             return streakRepository.save(newStreak);
         }
+
     }
 
 

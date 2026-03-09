@@ -86,6 +86,11 @@ export class LoadedLessonComponent {
     const userId = Number(this.authService.getCurrentUserId());
     const lessonId = this.lesson.id;
 
+    this.streakService.getStreakByUserId(userId).subscribe({
+      next: (streak) => this.previousStreakValue.set(streak.currentStreak),
+      error: () => this.previousStreakValue.set(0),
+    });
+
     this.lessonProgressService
       .loadLessonProgressesByUserId(userId)
       .subscribe((progresses) => {
@@ -153,6 +158,7 @@ export class LoadedLessonComponent {
 
   private forceSaveProgress(completedCount: number) {
     if (!this.lessonProgress) return;
+    if (this.alreadyCompleted) return;
 
     this.lessonProgressService
       .updateLessonProgress(this.lessonProgress.id, completedCount)

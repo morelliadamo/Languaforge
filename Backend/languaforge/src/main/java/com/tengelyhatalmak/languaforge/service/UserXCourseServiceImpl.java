@@ -1,9 +1,11 @@
 package com.tengelyhatalmak.languaforge.service;
 
+import com.tengelyhatalmak.languaforge.domainevent.CourseCompletedDE;
 import com.tengelyhatalmak.languaforge.model.*;
 import com.tengelyhatalmak.languaforge.repository.UserXCourseRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.annotation.ReadOnlyProperty;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,8 @@ public class UserXCourseServiceImpl implements UserXCourseService{
 
     @Autowired
     private UserXCourseRepository userXCourseRepository;
+
+
 
     @Override
     public UserXCourse saveUserXCourse(UserXCourse userXCourse) {
@@ -69,11 +73,15 @@ public class UserXCourseServiceImpl implements UserXCourseService{
     }
 
     @Override
+    @org.springframework.transaction.annotation.Transactional
     public UserXCourse updateUserXCourse(UserXCourse userXCourse, Integer id) {
         UserXCourse existingUserXCourse = userXCourseRepository.findById(id).orElseThrow(() -> new RuntimeException("UserXCourse not found"));
         existingUserXCourse.setUser(userXCourse.getUser());
         existingUserXCourse.setCourse(userXCourse.getCourse());
+
         existingUserXCourse.setProgress(userXCourse.getProgress());
+
+
 
         return userXCourseRepository.save(existingUserXCourse);
     }
