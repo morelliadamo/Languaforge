@@ -1,7 +1,7 @@
-<div class="overlay" *ngIf="isLoading">
-  <div class="spinner"></div>
-  <p>Creating your account...</p>
-</div>
+<app-loading-overlay
+  [isLoading]="isLoading"
+  [message]="'Létrehozzuk a fiókodat...'"
+></app-loading-overlay>
 
 <app-header></app-header>
 

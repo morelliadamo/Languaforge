@@ -14,6 +14,7 @@ import { RegisterServiceService } from '../services/register-service.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
+import { LoadingOverlayComponent } from '../loading-overlay/loading-overlay.component';
 
 @Component({
   selector: 'app-register-page',
@@ -24,6 +25,7 @@ import { NgIf } from '@angular/common';
     ReactiveFormsModule,
     NgIf,
     RouterLink,
+    LoadingOverlayComponent,
   ],
   templateUrl: './register-page.component.html',
   styleUrl: './register-page.component.css',

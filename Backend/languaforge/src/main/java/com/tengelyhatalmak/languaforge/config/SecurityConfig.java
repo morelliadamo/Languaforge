@@ -2,6 +2,7 @@ package com.tengelyhatalmak.languaforge.config;
 
 
 import com.tengelyhatalmak.languaforge.security.JWTAuthFilter;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,8 +23,14 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http
                 .csrf(csrf -> csrf.disable())
+                .exceptionHandling(ex -> ex
+                        .authenticationEntryPoint((request, response, authException) ->
+                                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized"))
+                )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/register", "/auth/activate", "/auth/login", "/auth/refresh", "/ws" ).permitAll()
+                        .requestMatchers("/auth/register", "/auth/activate", "/auth/login", "/auth/refresh", "/ws", "/exerciseLogic/evaluateSpeech",
+                                "/lessonprogresses/count/completed","/courses/count", "/users/count","/courses/courseWith/mostUsers",
+                                        "/userXachievements/user/0","/users/count", "/courses/courseWith/bestReviews","/courses/14","/lessonprogresses/count/completed","/users/avatars/**").permitAll()
                         .requestMatchers("/**").authenticated().anyRequest().permitAll()
 //                                .requestMatchers("/**").permitAll() //for testing only
 

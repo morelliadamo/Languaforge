@@ -197,7 +197,8 @@
                     @if (startedCourses.length === 0 || !startedCourses) {
                       <p class="text-gray-500 text-center py-8">
                         Még nem kezdted el egyik kurzust sem! <br />
-                        Böngészd az elérhető kurzusokat alább!
+                        Böngészd az elérhető kurzusokat a Kurzusok menüpont
+                        alatt!
                       </p>
                     }
                     @for (course of startedCourses; track course.id) {
@@ -321,8 +322,9 @@
                       !availableCoursesToStart
                     ) {
                       <p class="text-gray-500 text-center py-8">
-                        Hiba csúszott a gépezetbe... <br />
-                        Látogass vissza később!
+                        Még nem kezdted el egyik kurzust sem! <br />
+                        Böngészd az elérhető kurzusokat a Kurzusok menüpont
+                        alatt!
                       </p>
                     }
                     @for (course of availableCoursesToStart; track course.id) {

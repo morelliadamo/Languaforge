@@ -1,4 +1,4 @@
-// note:  {
+// note: Soma needs to be skinned alive. Wtf is this? {
 //     "id": 213,
 //     "lessonId": 64,
 //     "exerciseContent": {
@@ -10,7 +10,7 @@
 //     "isDeleted": false,
 //     "deletedAt": null,
 //     "createdAt": "2026-02-25T10:00:00.000Z"
-// } wtf is this?
+// }
 
 export interface MatchPair {
   left: string;
