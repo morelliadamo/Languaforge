@@ -1,1 +1,151 @@
-<h1 class="text-center text-2xl text-green-600">Hello admin!</h1>
+<div class="bg-gray-50">
+  <app-header></app-header>
+
+  @if(userSettingsActivated){
+  <app-admin-user-settings
+    (close)="userSettingsActivated = false"
+  ></app-admin-user-settings>
+  } @if(dataManagementActivated){
+  <app-admin-data-management
+    (close)="dataManagementActivated = false"
+  ></app-admin-data-management>
+  } @if(!userSettingsActivated && !dataManagementActivated){
+  <div class="min-h-screen px-4 sm:px-6 lg:px-8 pb-12 pt-0">
+    <div class="max-w-7xl mx-auto">
+      <h2
+        class="text-2xl sm:text-3xl lg:text-4xl text-sky-500 font-bold mt-8 sm:mt-12 mb-6 sm:mb-10"
+      >
+        Admin vezérlőpult
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
+        <div
+          class="flex items-center justify-between rounded-2xl bg-white p-5 sm:p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100"
+        >
+          <div>
+            <div class="text-3xl sm:text-4xl font-bold text-gray-800">
+              Admin
+            </div>
+            <div class="text-xs sm:text-sm text-gray-500 font-medium mt-1">
+              Hozzáférési szint
+            </div>
+          </div>
+          <div
+            class="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center text-2xl"
+          >
+            🔑
+          </div>
+        </div>
+      </div>
+
+      <!-- Admin cards -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+      >
+        <!-- Global settings (coming soon) -->
+        <div
+          class="relative rounded-2xl bg-white p-6 sm:p-8 shadow-md border border-gray-100 flex flex-col overflow-hidden"
+        >
+          <div
+            class="flex items-center justify-center mb-6 bg-sky-50 rounded-xl p-5"
+          >
+            <img
+              src="AdminRelated/globalSettings.svg"
+              alt="Globális beállítások"
+              class="h-24 w-auto"
+            />
+          </div>
+
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="text-lg sm:text-xl font-semibold text-gray-900">
+              Globális beállítások
+            </h3>
+          </div>
+          <p class="text-sm text-gray-500 flex-grow leading-relaxed">
+            A globális beállítások lehetővé teszik a rendszer általános
+            működésének testreszabását és a LanguaForge egyéb részeinek
+            kezelését.
+          </p>
+          <button
+            class="mt-6 w-full px-4 py-2.5 bg-sky-500 text-white rounded-xl font-semibold"
+          >
+            Megnyitás
+          </button>
+
+          <div
+            class="absolute inset-0 bg-white/75 backdrop-blur-[6px] flex items-center justify-center rounded-2xl"
+          >
+            <span
+              class="rounded-full bg-sky-100 border border-sky-200 text-sky-600 px-4 py-1.5 text-sm font-bold"
+            >
+              🔒 Hamarosan
+            </span>
+          </div>
+        </div>
+
+        <!-- User Settings -->
+        <div
+          class="rounded-2xl bg-white p-6 sm:p-8 shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col"
+        >
+          <div
+            class="flex items-center justify-center mb-6 bg-violet-50 rounded-xl p-5"
+          >
+            <img
+              src="AdminRelated/userSettings.svg"
+              alt="Felhasználó-specifikus beállítások"
+              class="h-24 w-auto"
+            />
+          </div>
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="text-lg sm:text-xl font-semibold text-gray-900">
+              Felhasználó-specifikus beállítások
+            </h3>
+          </div>
+          <p class="text-sm text-gray-500 flex-grow leading-relaxed">
+            A felhasználó-specifikus beállítások lehetővé teszik az egyes
+            felhasználók adatainak, kurzusainak és beállításainak kezelését.
+          </p>
+          <button
+            (click)="openUserSettings()"
+            class="mt-6 w-full px-4 py-2.5 bg-violet-500 hover:bg-violet-600 active:bg-violet-700 text-white rounded-xl font-semibold transition-colors cursor-pointer"
+          >
+            Megnyitás
+          </button>
+        </div>
+
+        <!-- Data Management -->
+        <div
+          class="rounded-2xl bg-white p-6 sm:p-8 shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col md:col-span-2 lg:col-span-1"
+        >
+          <div
+            class="flex items-center justify-center mb-6 bg-emerald-50 rounded-xl p-5"
+          >
+            <img
+              src="AdminRelated/dataManagement.svg"
+              alt="Adatfeltöltés és módosítás"
+              class="h-24 w-auto"
+            />
+          </div>
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="text-lg sm:text-xl font-semibold text-gray-900">
+              Adatfeltöltés és módosítás
+            </h3>
+          </div>
+          <p class="text-sm text-gray-500 flex-grow leading-relaxed">
+            Az adatfeltöltés és módosítás lehetővé teszi a tananyagok, kurzusok,
+            egységek, leckék és egyéb adatok feltöltését, szerkesztését és
+            törlését.
+          </p>
+          <button
+            (click)="openDataManagement()"
+            class="mt-6 w-full px-4 py-2.5 bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 text-white rounded-xl font-semibold transition-colors cursor-pointer"
+          >
+            Megnyitás
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+  <app-footer></app-footer>
+</div>
