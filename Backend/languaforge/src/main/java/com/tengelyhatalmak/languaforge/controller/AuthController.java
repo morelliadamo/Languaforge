@@ -5,6 +5,7 @@ import com.tengelyhatalmak.languaforge.dto.LoginRequestDTO;
 import com.tengelyhatalmak.languaforge.dto.RefreshTokenRequestDTO;
 import com.tengelyhatalmak.languaforge.model.User;
 import com.tengelyhatalmak.languaforge.service.AuthService;
+import com.tengelyhatalmak.languaforge.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
+    @Autowired
+    private UserService userService;
 
     @PostMapping("/register")
     @Transactional
@@ -49,6 +52,13 @@ public class AuthController {
             return ResponseEntity.ok(Map.of("message", "Logged out successfully"));
         }
         return ResponseEntity.badRequest().body(Map.of("message", "Not logged in"));
+    }
+
+    @GetMapping("/isAdmin/{userId}")
+    public Boolean checkIfUserIsAdmin(@PathVariable Integer userId){
+        System.out.println(userService.findUserById(userId).getRoleId());
+        return userService.findUserById(userId).getRoleId() == 2;
+
     }
 
 }

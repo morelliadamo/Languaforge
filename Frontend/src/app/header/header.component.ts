@@ -15,6 +15,7 @@ export class HeaderComponent {
   router = inject(Router);
 
   isLoggedIn: boolean = this.authService.isLoggedIn();
+  isAdmin: boolean = false;
   sidebarOpen: boolean = false;
 
   toggleSidebar(): void {
@@ -29,5 +30,11 @@ export class HeaderComponent {
     this.authService.logout();
     this.closeSidebar();
     this.router.navigate(['/login']);
+  }
+
+  ngOnInit() {
+    this.authService.isAdmin().subscribe((isAdmin) => {
+      this.isAdmin = isAdmin;
+    });
   }
 }

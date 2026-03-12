@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { LoginRequest } from '../interfaces/LoginRequest';
 import { AuthResponse } from '../interfaces/AuthResponse';
+import { User } from '../interfaces/User';
 
 @Injectable({
   providedIn: 'root',
@@ -57,7 +58,6 @@ export class AuthServiceService {
     localStorage.setItem(this.accessTokenKey, response.accessToken);
     localStorage.setItem(this.refreshTokenKey, response.refreshToken);
 
-    // Store user ID if it's in the response
     if (response.userId) {
       localStorage.setItem(this.userIdKey, response.userId.toString());
     }
@@ -86,5 +86,11 @@ export class AuthServiceService {
       console.error('Error decoding token:', error);
       return null;
     }
+  }
+
+  isAdmin(): Observable<boolean> {
+    return this.http.get<boolean>(
+      `http://localhost:8080/auth/isAdmin/${this.getCurrentUserId()}`,
+    );
   }
 }

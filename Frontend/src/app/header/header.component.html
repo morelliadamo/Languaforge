@@ -71,6 +71,7 @@
     <button
       [routerLink]="'/my/courses'"
       class="text-left text-gray-700 font-semibold hover:text-sky-500 transition-colors duration-200 cursor-pointer"
+      (click)="closeSidebar()"
     >
       Kurzusok
     </button>
@@ -81,6 +82,7 @@
     <button
       [routerLink]="'/store'"
       class="text-left text-gray-700 font-semibold hover:text-amber-400 transition-colors duration-200 cursor-pointer"
+      (click)="closeSidebar()"
     >
       Bolt
     </button>
@@ -91,8 +93,19 @@
     <button
       [routerLink]="'/dashboard'"
       class="text-left text-gray-700 font-semibold hover:text-sky-500 transition-colors duration-200 cursor-pointer"
+      (click)="closeSidebar()"
     >
       Tanulóközpont
+    </button>
+    <hr class="border-gray-200" />
+  }
+  @if (router.url !== "/admin" && isAdmin) {
+    <button
+      [routerLink]="'/admin'"
+      class="text-left text-gray-700 font-semibold hover:text-sky-500 transition-colors duration-200 cursor-pointer"
+      (click)="closeSidebar()"
+    >
+      Adminisztráció
     </button>
     <hr class="border-gray-200" />
   }

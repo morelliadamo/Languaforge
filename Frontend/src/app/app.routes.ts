@@ -18,6 +18,8 @@ import { StoreComponent } from './store/store.component';
 import { LoadedCourseComponent } from './loaded-course/loaded-course.component';
 import { inject } from '@angular/core';
 import { AuthServiceService } from './services/auth-service.service';
+import { AdminHub } from './admin-hub/admin-hub';
+import { adminGuard } from './guards/admin-guard';
 
 export const routes: Routes = [
   { path: '', component: HomepageComponent, canActivate: [noAuthGuard] },
@@ -52,5 +54,7 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   { path: 'store', component: StoreComponent, canActivate: [authGuard] },
+  { path: 'admin', component: AdminHub, canActivate: [adminGuard] },
+
   { path: '**', redirectTo: '' },
 ];
