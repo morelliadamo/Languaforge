@@ -87,6 +87,7 @@ export interface Achievement {
 export interface LoginData {
   id: number;
   userId: number;
+  user: LoginDataUser;
   loginTime: string;
   deviceInfo: string | null;
   ipAddress: string | null;
@@ -104,4 +105,24 @@ export interface UserProfileData {
   completedCourses: Course[];
   achievements: Achievement[];
   achievementCount: number;
+}
+
+export interface LoginDataUser {
+  activationToken: string | null;
+  anonymized: boolean;
+  anonymizedAt: string | null;
+  avatarUrl: string | null;
+  bio: string | null;
+  createdAt: string;
+  deleted: boolean;
+  deletedAt: string | null;
+  email: string;
+  hibernateLazyInitializer: any;
+  id: number;
+  isActive: boolean;
+  lastLogin: string;
+  passwordHash: string;
+  role: any;
+  roleId: number;
+  username: string;
 }

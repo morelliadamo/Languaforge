@@ -1,1 +1,214 @@
-<p>admin-user-settings works!</p>
+<div class="min-h-screen px-4 sm:px-6 lg:px-8 pb-12 pt-0">
+  <div class="max-w-7xl mx-auto">
+    <!-- Header with back button -->
+    <div class="flex items-center gap-4 mt-8 sm:mt-12 mb-6 sm:mb-10">
+      <button
+        (click)="close.emit()"
+        class="p-2 rounded-lg bg-white shadow-md hover:shadow-lg border border-gray-100 transition-shadow cursor-pointer"
+        aria-label="Vissza"
+      >
+        <svg
+          class="w-5 h-5 text-gray-700"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"
+          />
+        </svg>
+      </button>
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl text-sky-500 font-bold">
+        Felhasználó-specifikus beállítások
+      </h2>
+    </div>
+
+    <!-- Users Table Card -->
+    <div
+      class="rounded-2xl bg-white p-6 sm:p-8 shadow-md hover:shadow-lg transition-shadow border border-gray-100"
+    >
+      <div class="flex items-center gap-3 mb-6">
+        <div
+          class="w-10 h-10 rounded-xl bg-violet-50 flex items-center justify-center text-xl"
+        >
+          👥
+        </div>
+        <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">
+          Felhasználók
+        </h3>
+      </div>
+
+      @if (latestUsers.length === 0) {
+      <p class="text-gray-500 text-center py-8">
+        Nincsenek megjeleníthető felhasználók.
+      </p>
+      } @else {
+      <!-- Desktop table (hidden on small screens) -->
+      <div
+        class="hidden md:block overflow-x-auto rounded-xl border border-gray-200"
+      >
+        <table class="w-full text-sm text-left">
+          <thead>
+            <tr class="bg-gray-50 border-b border-gray-200">
+              <th
+                class="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap"
+              >
+                Felhasználónév
+              </th>
+              <th
+                class="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap"
+              >
+                Email
+              </th>
+              <th
+                class="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap"
+              >
+                Szerepkör
+              </th>
+              <th
+                class="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap"
+              >
+                Státusz
+              </th>
+              <th
+                class="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap"
+              >
+                Törlés dátuma
+              </th>
+              <th
+                class="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap"
+              >
+                Regisztráció
+              </th>
+              <th
+                class="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap"
+              >
+                Utolsó bejelentkezés
+              </th>
+              <th
+                class="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap"
+              >
+                IP cím
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (user of latestUsers; track user.userId) {
+            <tr
+              class="border-b border-gray-100 hover:bg-gray-50 transition-colors"
+            >
+              <td class="px-4 py-3 text-gray-800 font-medium whitespace-nowrap">
+                {{ user.user.username }}
+              </td>
+              <td class="px-4 py-3 text-gray-600 whitespace-nowrap">
+                {{ user.user.email }}
+              </td>
+              <td class="px-4 py-3 whitespace-nowrap">
+                <span
+                  class="px-2.5 py-1 rounded-full text-xs font-semibold bg-sky-50 text-sky-700 border border-sky-200"
+                >
+                  {{ user.user.role.name }}
+                </span>
+              </td>
+              <td class="px-4 py-3 whitespace-nowrap">
+                @if (user.user.isActive) {
+                <span
+                  class="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200"
+                >
+                  Aktív
+                </span>
+                } @else {
+                <span
+                  class="px-2.5 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-200"
+                >
+                  Inaktív
+                </span>
+                }
+              </td>
+              <td class="px-4 py-3 text-gray-600 whitespace-nowrap">
+                {{ user.user.deletedAt || 'N/A' }}
+              </td>
+              <td class="px-4 py-3 text-gray-600 whitespace-nowrap">
+                {{ user.user.createdAt }}
+              </td>
+              <td class="px-4 py-3 text-gray-600 whitespace-nowrap">
+                {{ user.loginTime }}
+              </td>
+              <td class="px-4 py-3 text-gray-600 whitespace-nowrap">
+                {{ user.ipAddress || 'N/A' }}
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Mobile card layout (visible only on small screens) -->
+      <div class="md:hidden space-y-4">
+        @for (user of latestUsers; track user.userId) {
+        <div class="rounded-xl border border-gray-200 bg-gray-50 p-4 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-base font-semibold text-gray-800">
+              {{ user.user.username }}
+            </span>
+            @if (user.user.isActive) {
+            <span
+              class="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200"
+            >
+              Aktív
+            </span>
+            } @else {
+            <span
+              class="px-2.5 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-200"
+            >
+              Inaktív
+            </span>
+            }
+          </div>
+
+          <div class="grid grid-cols-1 gap-2 text-sm">
+            <div class="flex justify-between">
+              <span class="text-gray-500 font-medium">Email</span>
+              <span class="text-gray-700 text-right"
+                >{{ user.user.email }}</span
+              >
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500 font-medium">Szerepkör</span>
+              <span
+                class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-50 text-sky-700 border border-sky-200"
+              >
+                {{ user.user.role.name }}
+              </span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500 font-medium">Törlés dátuma</span>
+              <span class="text-gray-700"
+                >{{ user.user.deletedAt || 'N/A' }}</span
+              >
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500 font-medium">Regisztráció</span>
+              <span class="text-gray-700">{{ user.user.createdAt }}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500 font-medium"
+                >Utolsó bejelentkezés</span
+              >
+              <span class="text-gray-700">{{ user.loginTime }}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500 font-medium">IP cím</span>
+              <span class="text-gray-700">{{ user.ipAddress || 'N/A' }}</span>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+      }
+    </div>
+  </div>
+</div>
