@@ -1,4 +1,4 @@
-import { LoginData } from './../interfaces/UserProfile';
+import { LoginData, LoginDataUser } from './../interfaces/UserProfile';
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';

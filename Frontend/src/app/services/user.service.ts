@@ -11,6 +11,33 @@ export class UserService {
   constructor(private http: HttpClient) {}
   private readonly apiUrl = 'http://localhost:8080/users';
 
+  getUserById(userId: number) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.get<User>(`${this.apiUrl}/${userId}`, {
+      headers,
+    });
+  }
+
+  updateUser(userId: number, updatedData: Partial<User>) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    const updatePayload = {
+      ...updatedData,
+    };
+    return this.http.put<User>(
+      `${this.apiUrl}/updateUser/${userId}`,
+      updatePayload,
+      {
+        headers,
+      },
+    );
+  }
+
   loadUsernameByUserId(userId: number) {
     const token = localStorage.getItem('access_token');
     const headers = new HttpHeaders({

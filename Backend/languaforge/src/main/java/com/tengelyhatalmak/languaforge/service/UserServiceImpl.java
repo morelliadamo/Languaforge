@@ -54,14 +54,16 @@ public class UserServiceImpl implements UserService {
     public User updateUser(User user, Integer id) {
         User existingUser = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
-        existingUser.setUsername(user.getUsername());
-        existingUser.setEmail(user.getEmail());
-        existingUser.setAvatarUrl(user.getAvatarUrl());
-        existingUser.setBio(user.getBio());
-        existingUser.setPasswordHash(user.getPasswordHash());
-        existingUser.setRoleId(user.getRoleId());
-        existingUser.setLastLogin(user.getLastLogin());
-        existingUser.setAnonymized(user.isAnonymized());
+
+        if (user.getUsername() != null) existingUser.setUsername(user.getUsername());
+        if (user.getEmail() != null) existingUser.setEmail(user.getEmail());
+        if (user.getBio() != null) existingUser.setBio(user.getBio());
+        if (user.getAvatarUrl() != null) existingUser.setAvatarUrl(user.getAvatarUrl());
+        if (user.getPasswordHash() != null) existingUser.setPasswordHash(user.getPasswordHash());
+        if (user.getRoleId() != null) existingUser.setRoleId(user.getRoleId());
+        if (user.getLastLogin() != null) existingUser.setLastLogin(user.getLastLogin());
+        if(user.getAnonymizedAt() != null) existingUser.setAnonymizedAt(user.getAnonymizedAt());
+
         return userRepository.save(existingUser);
     }
 

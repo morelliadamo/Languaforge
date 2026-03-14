@@ -115,18 +115,26 @@
                 </span>
               </td>
               <td class="px-4 py-3 whitespace-nowrap">
-                @if (user.user.isActive) {
+                @if (user.user.isActive && user.user.deletedAt === null) {
                 <span
                   class="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200"
                 >
                   Aktív
                 </span>
-                } @else {
+                } @else if (user.user.deletedAt == null && !user.user.isActive)
+                {
                 <span
-                  class="px-2.5 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-200"
+                  class="px-2.5 py-1 rounded-full text-xs font-semibold bg-orange-50 text-orange-700 border border-orange-200"
                 >
                   Inaktív
                 </span>
+                } @else{
+                <span
+                  class="px-2.5 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-200"
+                >
+                  Törölve
+                </span>
+
                 }
               </td>
               <td class="px-4 py-3 text-gray-600 whitespace-nowrap">
@@ -158,17 +166,23 @@
             <span class="text-base font-semibold text-gray-800">
               {{ user.user.username }}
             </span>
-            @if (user.user.isActive) {
+            @if (user.user.isActive && user.user.deletedAt === null) {
             <span
               class="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200"
             >
               Aktív
             </span>
-            } @else {
+            } @else if (user.user.deletedAt == null && !user.user.isActive) {
+            <span
+              class="px-2.5 py-1 rounded-full text-xs font-semibold bg-orange-50 text-orange-700 border border-orange-200"
+            >
+              Inaktív
+            </span>
+            } @else{
             <span
               class="px-2.5 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-200"
             >
-              Inaktív
+              Törölve
             </span>
             }
           </div>
@@ -513,7 +527,7 @@
               <td class="px-4 py-3 whitespace-nowrap">
                 @if (user.user.deleted) {
                 <span
-                  class="px-2.5 py-1 rounded-full text-xs font-semibold bg-orange-50 text-orange-700 border border-orange-200"
+                  class="px-2.5 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-200"
                   >Törölve</span
                 >
                 } @else if (user.user.isActive) {
@@ -523,7 +537,7 @@
                 >
                 } @else {
                 <span
-                  class="px-2.5 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-200"
+                  class="px-2.5 py-1 rounded-full text-xs font-semibold bg-orange-50 text-orange-700 border border-orange-200"
                   >Inaktív</span
                 >
                 }

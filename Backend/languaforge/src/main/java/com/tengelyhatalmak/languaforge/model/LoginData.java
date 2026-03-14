@@ -28,7 +28,7 @@ public class LoginData {
     @Column(name = "id")
     private Integer id;
 
-    @JsonIgnoreProperties({"leaderboardList", "scores", "reviews", "achievementsOfUser", "userXCourses", "loginDataList", "lessonProgresses", "streak"})
+    @JsonIgnoreProperties({"leaderboardList", "scores", "loginDataList"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;

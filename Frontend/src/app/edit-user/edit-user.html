@@ -23,7 +23,7 @@
     </button>
 
     <!-- User header -->
-    <div class="flex flex-col items-center text-center mb-6">
+    <div class="flex flex-col items-center text-center mb-4">
       <img
         [src]="user.user.avatarUrl || 'https://ui-avatars.com/api/?name=' + user.user.username + '&background=e0f2fe&color=0284c7&size=128'"
         [alt]="user.user.username"
@@ -44,7 +44,7 @@
         </span>
         @if (user.user.deleted) {
         <span
-          class="px-2.5 py-1 rounded-full text-xs font-semibold bg-orange-50 text-orange-700 border border-orange-200"
+          class="px-2.5 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-200"
           >Törölve</span
         >
         } @else if (user.user.isActive) {
@@ -54,13 +54,52 @@
         >
         } @else {
         <span
-          class="px-2.5 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-200"
+          class="px-2.5 py-1 rounded-full text-xs font-semibold bg-orange-50 text-orange-700 border border-orange-200"
           >Inaktív</span
         >
         }
       </div>
     </div>
 
+    <!-- Tabs -->
+    <div class="flex border-b border-gray-100 mb-6 -mx-8 px-8">
+      <button
+        (click)="setTab('summary')"
+        [ngClass]="
+          activeTab === 'summary'
+            ? 'border-b-2 border-sky-500 text-sky-500 font-semibold'
+            : 'text-gray-500 hover:text-gray-700'
+        "
+        class="flex-1 sm:flex-none px-4 sm:px-6 py-3 text-sm transition-colors cursor-pointer"
+      >
+        Összegzés
+      </button>
+      <button
+        (click)="setTab('edit')"
+        [ngClass]="
+          activeTab === 'edit'
+            ? 'border-b-2 border-sky-500 text-sky-500 font-semibold'
+            : 'text-gray-500 hover:text-gray-700'
+        "
+        class="flex-1 sm:flex-none px-4 sm:px-6 py-3 text-sm transition-colors cursor-pointer"
+      >
+        Adatok szerkesztése
+      </button>
+      <button
+        (click)="setTab('manage')"
+        [ngClass]="
+          activeTab === 'manage'
+            ? 'border-b-2 border-sky-500 text-sky-500 font-semibold'
+            : 'text-gray-500 hover:text-gray-700'
+        "
+        class="flex-1 sm:flex-none px-4 sm:px-6 py-3 text-sm transition-colors cursor-pointer"
+      >
+        Kezelés
+      </button>
+    </div>
+
+    <!-- Summary tab -->
+    @if (activeTab === 'summary') {
     <!-- Bio section -->
     <div class="mb-6">
       <h3
@@ -70,7 +109,7 @@
       </h3>
       <div class="rounded-xl bg-gray-50 border border-gray-200 px-4 py-3">
         <p class="text-sm text-gray-700 leading-relaxed">
-          {{ user.user.bio || 'Nincs megadva bemutatkozás.' }}
+          {{ user.user.bio || '-' }}
         </p>
       </div>
     </div>
@@ -123,6 +162,7 @@
             >{{ user.deviceInfo || 'N/A' }}</span
           >
         </div>
+
         @if (user.user.deleted) {
         <div
           class="flex justify-between items-center rounded-lg bg-orange-50 border border-orange-100 px-4 py-2.5"
@@ -135,6 +175,73 @@
         }
       </div>
     </div>
+    }
+
+    <!-- Edit user data tab -->
+    @if (activeTab === 'edit') {
+    <div class="flex flex-col items-center justify-center py-12 text-center">
+      <h2 class="text-sm text-gray-400">Felhasználói adatok szerkesztése</h2>
+
+      <form class="w-full max-w-md mt-6 flex flex-col items-center gap-4">
+        <label for="username">Felhasználónév</label>
+        <input
+          id="username"
+          name="username"
+          type="text"
+          placeholder="Felhasználónév"
+          class="w-full max-w-md px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-colors mb-4"
+          [(ngModel)]="username"
+        />
+        <label for="email">Email cím</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="Email cím"
+          class="w-full max-w-md px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-colors mb-4"
+          [(ngModel)]="email"
+        />
+
+        <label for="bio">Bemutatkozás</label>
+        <textarea
+          name="bio"
+          id="bio"
+          placeholder="Bemutatkozás"
+          class="w-full max-w-md px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-colors mb-4 resize-none"
+          [(ngModel)]="bio"
+        ></textarea>
+
+        <button (click)="saveChanges()">Változtatások mentése</button>
+      </form>
+    </div>
+    }
+
+    <!-- Manage user tab -->
+    @if (activeTab === 'manage') {
+    <div class="flex flex-col items-center justify-center py-12 text-center">
+      <svg
+        class="w-12 h-12 text-gray-300 mb-3"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.5"
+          d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+        />
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.5"
+          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+        />
+      </svg>
+      <p class="text-sm text-gray-400">Felhasználó kezelése</p>
+      <p class="text-xs text-gray-300 mt-1">Hamarosan elérhető</p>
+    </div>
+    }
 
     <!-- Close button -->
     <div class="mt-6">

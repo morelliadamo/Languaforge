@@ -26,7 +26,6 @@ import { AchievementService } from '../services/achievement.service';
     FooterComponent,
     LoadingOverlayComponent,
     ActivityHeatmapComponent,
-    AchievementUnlocked,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',

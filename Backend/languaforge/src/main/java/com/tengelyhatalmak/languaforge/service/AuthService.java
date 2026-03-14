@@ -255,6 +255,10 @@ public class AuthService {
             return new ResponseEntity<>("Activate your account first!", HttpStatus.FORBIDDEN);
         }
 
+        if (user.getDeletedAt() != null) {
+            return new ResponseEntity<>("Your account was deleted!", HttpStatus.FORBIDDEN);
+        }
+
         if (!userService.checkPassword(loginRequest.getPassword(), user.getPasswordHash())) {
             return new ResponseEntity<>("Invalid credentials", HttpStatus.UNAUTHORIZED);
         }
