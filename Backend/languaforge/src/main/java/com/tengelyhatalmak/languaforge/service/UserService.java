@@ -9,6 +9,7 @@ public interface UserService {
     List<User> findAllUsers();
     User findUserById(Integer id);
     List<User> findUsersByUsernameLike(String username);
+    List<User> findUsersWhoNeverLoggedIn();
     Integer countUsers();
 
     User updateUser(User user, Integer id);

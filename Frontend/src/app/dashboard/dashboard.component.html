@@ -254,7 +254,11 @@
                               "
                               class="w-full px-4 py-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 hover:cursor-pointer rounded-lg font-semibold transition-all"
                             >
-                              Folytatás
+                              @if (course.progress >= 100) {
+                                Gyakorlás
+                              } @else {
+                                Folytatás
+                              }
                             </button>
                           </div>
                         </div>

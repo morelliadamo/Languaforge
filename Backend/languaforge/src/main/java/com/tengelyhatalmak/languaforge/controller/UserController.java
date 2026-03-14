@@ -69,6 +69,13 @@ public class UserController {
 
     }
 
+
+    @GetMapping("/neverLoggedIn")
+    public List<User> getUsersWhoNeverLoggedIn() {
+        return userService.findUsersWhoNeverLoggedIn();
+    }
+
+
     @GetMapping("getUserByIdAsFriendDTO/{userId}")
     public UserAsFriendSearchResultDTO getUserByIdAsFriendDTO(@PathVariable Integer userId){
         User userToTransform = userService.findUserById(userId);

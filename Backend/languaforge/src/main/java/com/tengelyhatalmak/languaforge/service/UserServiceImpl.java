@@ -41,6 +41,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> findUsersWhoNeverLoggedIn() {
+        return userRepository.findUsersByLastLoginIsNull();
+    }
+
+    @Override
     public Integer countUsers() {
         return userRepository.countUsersByIdGreaterThan((0));
     }

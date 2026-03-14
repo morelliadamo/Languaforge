@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,4 +37,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("SELECT u FROM User u WHERE u.username LIKE %:username% AND u.isDeleted = false")
     List<User> findUsersByUsernameLike(String username);
 
+
+    @Query("SELECT u FROM User u WHERE u.lastLogin = null AND u.isDeleted = false")
+    List<User> findUsersByLastLoginIsNull();
 }

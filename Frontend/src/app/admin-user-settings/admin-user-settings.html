@@ -26,7 +26,7 @@
       </h2>
     </div>
 
-    <!-- Users Table Card -->
+    <!-- Latest Users Table Card -->
     <div
       class="rounded-2xl bg-white p-6 sm:p-8 shadow-md hover:shadow-lg transition-shadow border border-gray-100"
     >
@@ -37,7 +37,7 @@
           👥
         </div>
         <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">
-          Felhasználók
+          Legutóbbi felhasználók
         </h3>
       </div>
 
@@ -66,7 +66,7 @@
               <th
                 class="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap"
               >
-                Szerepkör
+                Szerep
               </th>
               <th
                 class="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap"
@@ -98,7 +98,8 @@
           <tbody>
             @for (user of latestUsers; track user.userId) {
             <tr
-              class="border-b border-gray-100 hover:bg-gray-50 transition-colors"
+              (click)="selectedUser = user"
+              class="border-b border-gray-100 hover:bg-gray-50 transition-colors cursor-pointer"
             >
               <td class="px-4 py-3 text-gray-800 font-medium whitespace-nowrap">
                 {{ user.user.username }}
@@ -149,7 +150,10 @@
       <!-- Mobile card layout (visible only on small screens) -->
       <div class="md:hidden space-y-4">
         @for (user of latestUsers; track user.userId) {
-        <div class="rounded-xl border border-gray-200 bg-gray-50 p-4 space-y-3">
+        <div
+          (click)="selectedUser = user"
+          class="rounded-xl border border-gray-200 bg-gray-50 p-4 space-y-3 cursor-pointer hover:shadow-md transition-shadow"
+        >
           <div class="flex items-center justify-between">
             <span class="text-base font-semibold text-gray-800">
               {{ user.user.username }}
@@ -177,7 +181,7 @@
               >
             </div>
             <div class="flex justify-between">
-              <span class="text-gray-500 font-medium">Szerepkör</span>
+              <span class="text-gray-500 font-medium">Szerep</span>
               <span
                 class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-50 text-sky-700 border border-sky-200"
               >
@@ -210,5 +214,415 @@
       </div>
       }
     </div>
+
+    <!-- Search for Users Section -->
+    <div
+      class="mt-8 rounded-2xl bg-white p-6 sm:p-8 shadow-md hover:shadow-lg transition-shadow border border-gray-100"
+    >
+      <div class="flex items-center gap-3 mb-6">
+        <div
+          class="w-10 h-10 rounded-xl bg-sky-50 flex items-center justify-center text-xl"
+        >
+          🔍
+        </div>
+        <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">
+          Felhasználó keresése
+        </h3>
+      </div>
+
+      <!-- Search bar with dropdown -->
+      <div class="flex flex-col sm:flex-row gap-3 mb-6">
+        <div class="relative sm:w-48 w-full">
+          <select
+            [(ngModel)]="searchField"
+            class="w-full appearance-none rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 pr-10 text-sm text-gray-700 font-medium focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-300 transition-all cursor-pointer"
+          >
+            <option value="username">Felhasználónév</option>
+            <option value="email">Email</option>
+            <option value="role">Szerep</option>
+            <option value="ipAddress">IP cím</option>
+          </select>
+          <svg
+            class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </div>
+        <div class="relative flex-1">
+          <input
+            type="text"
+            [(ngModel)]="searchQuery"
+            placeholder="Keresés..."
+            class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 pl-10 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-300 transition-all"
+          />
+          <svg
+            class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+        </div>
+        <button
+          (click)="search()"
+          class="rounded-xl bg-sky-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-600 active:bg-sky-700 transition-colors cursor-pointer"
+        >
+          Keresés
+        </button>
+      </div>
+
+      <!-- Filters and sorting -->
+      <div class="flex flex-col lg:flex-row gap-4 mb-6">
+        <!-- Filters -->
+        <div class="flex flex-col sm:flex-row gap-3 flex-1">
+          <div class="flex items-center gap-2">
+            <span class="text-sm font-medium text-gray-500 whitespace-nowrap"
+              >Szűrők:</span
+            >
+          </div>
+          <div class="relative sm:w-40 w-full">
+            <select
+              [(ngModel)]="filterStatus"
+              class="w-full appearance-none rounded-xl border border-gray-200 bg-gray-50 px-4 py-2 pr-10 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-300 transition-all cursor-pointer"
+            >
+              <option value="all">Összes státusz</option>
+              <option value="active">Aktív</option>
+              <option value="inactive">Inaktív</option>
+            </select>
+            <svg
+              class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </div>
+          <div class="relative sm:w-40 w-full">
+            <select
+              [(ngModel)]="filterRole"
+              class="w-full appearance-none rounded-xl border border-gray-200 bg-gray-50 px-4 py-2 pr-10 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-300 transition-all cursor-pointer"
+            >
+              <option value="all">Összes szerep</option>
+              <option value="admin">Admin</option>
+              <option value="user">Felhasználó</option>
+            </select>
+            <svg
+              class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </div>
+          <div class="relative sm:w-44 w-full">
+            <select
+              [(ngModel)]="filterDeleted"
+              class="w-full appearance-none rounded-xl border border-gray-200 bg-gray-50 px-4 py-2 pr-10 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-300 transition-all cursor-pointer"
+            >
+              <option value="all">Összes (törölt is)</option>
+              <option value="notDeleted">Nem törölt</option>
+              <option value="deleted">Törölt</option>
+            </select>
+            <svg
+              class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Sorting -->
+        <div class="flex flex-col sm:flex-row gap-3">
+          <div class="flex items-center gap-2">
+            <span class="text-sm font-medium text-gray-500 whitespace-nowrap"
+              >Rendezés:</span
+            >
+          </div>
+          <div class="relative sm:w-48 w-full">
+            <select
+              [(ngModel)]="sortField"
+              class="w-full appearance-none rounded-xl border border-gray-200 bg-gray-50 px-4 py-2 pr-10 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-300 transition-all cursor-pointer"
+            >
+              <option value="username">Felhasználónév</option>
+              <option value="email">Email</option>
+              <option value="createdAt">Regisztráció</option>
+              <option value="lastLogin">Utolsó bejelentkezés</option>
+              <option value="role">Szerep</option>
+            </select>
+            <svg
+              class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </div>
+          <button
+            (click)="sortDirection = sortDirection === 'asc' ? 'desc' : 'asc'"
+            class="flex items-center gap-1.5 rounded-xl border border-gray-200 bg-gray-50 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors cursor-pointer"
+          >
+            @if (sortDirection === 'asc') {
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 15l7-7 7 7"
+              />
+            </svg>
+            <span>Növekvő</span>
+            } @else {
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+            <span>Csökkenő</span>
+            }
+          </button>
+        </div>
+      </div>
+
+      <!-- Search Results Table -->
+      @if (searchResults.length === 0) {
+      <p class="text-gray-500 text-center py-8">
+        Nincs találat. Használja a keresőt a felhasználók megtalálásához.
+      </p>
+      } @else {
+      <!-- Desktop table (hidden on small screens) -->
+      <div
+        class="hidden md:block overflow-x-auto rounded-xl border border-gray-200"
+      >
+        <table class="w-full text-sm text-left">
+          <thead>
+            <tr class="bg-gray-50 border-b border-gray-200">
+              <th
+                class="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap"
+              >
+                Felhasználónév
+              </th>
+              <th
+                class="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap"
+              >
+                Email
+              </th>
+              <th
+                class="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap"
+              >
+                Szerep
+              </th>
+              <th
+                class="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap"
+              >
+                Státusz
+              </th>
+              <th
+                class="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap"
+              >
+                Törlés dátuma
+              </th>
+              <th
+                class="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap"
+              >
+                Regisztráció
+              </th>
+              <th
+                class="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap"
+              >
+                Utolsó bejelentkezés
+              </th>
+              <th
+                class="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap"
+              >
+                IP cím
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (user of searchResults; track user.userId) {
+            <tr
+              (click)="selectedUser = user"
+              class="border-b border-gray-100 hover:bg-gray-50 transition-colors cursor-pointer"
+            >
+              <td class="px-4 py-3 text-gray-800 font-medium whitespace-nowrap">
+                {{ user.user.username }}
+              </td>
+              <td class="px-4 py-3 text-gray-600 whitespace-nowrap">
+                {{ user.user.email }}
+              </td>
+              <td class="px-4 py-3 whitespace-nowrap">
+                <span
+                  class="px-2.5 py-1 rounded-full text-xs font-semibold bg-sky-50 text-sky-700 border border-sky-200"
+                >
+                  {{ user.user.role.name }}
+                </span>
+              </td>
+              <td class="px-4 py-3 whitespace-nowrap">
+                @if (user.user.deleted) {
+                <span
+                  class="px-2.5 py-1 rounded-full text-xs font-semibold bg-orange-50 text-orange-700 border border-orange-200"
+                  >Törölve</span
+                >
+                } @else if (user.user.isActive) {
+                <span
+                  class="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200"
+                  >Aktív</span
+                >
+                } @else {
+                <span
+                  class="px-2.5 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-200"
+                  >Inaktív</span
+                >
+                }
+              </td>
+              <td class="px-4 py-3 text-gray-600 whitespace-nowrap">
+                {{ user.user.deletedAt || 'N/A' }}
+              </td>
+              <td class="px-4 py-3 text-gray-600 whitespace-nowrap">
+                {{ user.user.createdAt || 'N/A' }}
+              </td>
+              <td class="px-4 py-3 text-gray-600 whitespace-nowrap">
+                {{ user.loginTime || 'N/A' }}
+              </td>
+              <td class="px-4 py-3 text-gray-600 whitespace-nowrap">
+                {{ user.ipAddress || 'N/A' }}
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Mobile card layout (visible only on small screens) -->
+      <div class="md:hidden space-y-4">
+        @for (user of searchResults; track user.userId) {
+        <div
+          (click)="selectedUser = user"
+          class="rounded-xl border border-gray-200 bg-gray-50 p-4 space-y-3 cursor-pointer hover:shadow-md transition-shadow"
+        >
+          <div class="flex items-center justify-between">
+            <span class="text-base font-semibold text-gray-800"
+              >{{ user.user.username }}</span
+            >
+            @if (user.user.deleted) {
+            <span
+              class="px-2.5 py-1 rounded-full text-xs font-semibold bg-orange-50 text-orange-700 border border-orange-200"
+              >Törölve</span
+            >
+            } @else if (user.user.isActive) {
+            <span
+              class="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200"
+              >Aktív</span
+            >
+            } @else {
+            <span
+              class="px-2.5 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-200"
+              >Inaktív</span
+            >
+            }
+          </div>
+
+          <div class="grid grid-cols-1 gap-2 text-sm">
+            <div class="flex justify-between">
+              <span class="text-gray-500 font-medium">Email</span>
+              <span class="text-gray-700 text-right"
+                >{{ user.user.email }}</span
+              >
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500 font-medium">Szerep</span>
+              <span
+                class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-50 text-sky-700 border border-sky-200"
+                >{{ user.user.role.name }}</span
+              >
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500 font-medium">Törlés dátuma</span>
+              <span class="text-gray-700"
+                >{{ user.user.deletedAt || 'N/A' }}</span
+              >
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500 font-medium">Regisztráció</span>
+              <span class="text-gray-700"
+                >{{ user.user.createdAt || 'N/A' }}</span
+              >
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500 font-medium"
+                >Utolsó bejelentkezés</span
+              >
+              <span class="text-gray-700">{{ user.loginTime || 'N/A' }}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500 font-medium">IP cím</span>
+              <span class="text-gray-700">{{ user.ipAddress || 'N/A' }}</span>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+      }
+    </div>
   </div>
 </div>
+
+@if (selectedUser) {
+<app-edit-user
+  [user]="selectedUser"
+  (close)="selectedUser = null"
+></app-edit-user>
+}

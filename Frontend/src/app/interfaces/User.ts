@@ -5,4 +5,10 @@ export interface User {
   roleId: number;
   avatarUrl: string | null | undefined;
   bio: string | null;
+  createdAt?: string;
+  lastLogin?: string;
+  deleted?: boolean;
+  deletedAt?: string | null;
+  isActive?: boolean;
+  role?: any;
 }
