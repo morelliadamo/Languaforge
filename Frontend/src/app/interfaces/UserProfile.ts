@@ -1,3 +1,5 @@
+import { Unit } from './Unit';
+
 export interface UserProfile {
   id: number;
   username: string;
@@ -57,6 +59,7 @@ export interface Course {
   id: number;
   title: string;
   description: string;
+  units: Unit[] | any[] | null;
   createdAt: string;
   isDeleted: boolean;
   deletedAt: string | null;

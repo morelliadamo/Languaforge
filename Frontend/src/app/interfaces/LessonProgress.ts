@@ -3,9 +3,9 @@ import { User } from './User';
 
 export interface LessonProgress {
   id: number;
-  user: User[];
+  user?: User;
   userId: number;
-  lesson: Lesson[];
+  lesson?: Lesson;
   lessonId: number;
   exerciseCount: number;
   completedExercises: number;

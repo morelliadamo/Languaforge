@@ -1,7 +1,9 @@
 package com.tengelyhatalmak.languaforge.repository;
 
 import com.tengelyhatalmak.languaforge.model.LessonProgress;
+import jakarta.persistence.Id;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -27,4 +29,21 @@ public interface LessonProgressRepository extends JpaRepository<LessonProgress, 
     @Query("SELECT CASE WHEN (COUNT(lp) > 0) THEN true ELSE false END FROM LessonProgress lp WHERE lp.userId = :userId AND lp.completedAt >= :startOfDay AND lp.completedAt < :endOfDay")
     boolean existsAnyCompletionToday(@Param("userId") Integer userId, @Param("startOfDay") Timestamp startOfDay, @Param("endOfDay") Timestamp endOfDay
     );
+
+
+    @Modifying
+    @Query("""
+    DELETE FROM LessonProgress lp
+    WHERE lp.userId = :userId
+    AND lp.lessonId IN (
+        SELECT l.id
+        FROM Lesson l
+        WHERE l.unit.course.id = :courseId
+    )
+""")
+    void deleteLessonProgressByUserIdAndCourseId(
+            @Param("userId") Integer userId,
+            @Param("courseId") Integer courseId
+    );
+
 }

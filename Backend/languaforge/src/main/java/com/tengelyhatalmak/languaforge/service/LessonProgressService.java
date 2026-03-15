@@ -23,4 +23,5 @@ public interface LessonProgressService {
     LessonProgress softDeleteLessonProgress(Integer id);
     void deleteLessonProgress(Integer id);
 
+    void deleteLessonProgressesByUserIdAndCourseId(int userId, int courseId);
 }

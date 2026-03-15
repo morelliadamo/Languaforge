@@ -111,6 +111,8 @@ public class LessonProgressServiceImpl implements LessonProgressService {
     }
 
 
+
+
     @Override
     @Transactional
     public LessonProgress updateLessonProgress(LessonProgress lessonProgress, Integer id) {
@@ -264,5 +266,12 @@ public class LessonProgressServiceImpl implements LessonProgressService {
     @Override
     public void deleteLessonProgress(Integer id) {
         lessonProgressRepository.deleteById(id);
+    }
+
+    @Override
+    @Transactional
+    public void deleteLessonProgressesByUserIdAndCourseId(int userId, int courseId) {
+        lessonProgressRepository.deleteLessonProgressByUserIdAndCourseId(userId, courseId);
+        System.out.println("Lesson progresses with userId:"+userId+" and courseId:"+courseId+" deleted successfully.");
     }
 }

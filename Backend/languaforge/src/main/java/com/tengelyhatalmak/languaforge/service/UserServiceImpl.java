@@ -61,6 +61,7 @@ public class UserServiceImpl implements UserService {
         if (user.getAvatarUrl() != null) existingUser.setAvatarUrl(user.getAvatarUrl());
         if (user.getPasswordHash() != null) existingUser.setPasswordHash(user.getPasswordHash());
         if (user.getRoleId() != null) existingUser.setRoleId(user.getRoleId());
+        if (user.getRole() != null) existingUser.setRole(user.getRole());
         if (user.getLastLogin() != null) existingUser.setLastLogin(user.getLastLogin());
         if(user.getAnonymizedAt() != null) existingUser.setAnonymizedAt(user.getAnonymizedAt());
 

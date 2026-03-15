@@ -67,6 +67,7 @@ public class LessonProgressController {
         return lessonProgressService.updateLessonProgress(lessonProgress, id);
     }
 
+
     @PatchMapping("/softDeleteLessonProgress/{id}")
     public LessonProgress softDeleteLessonProgress(@PathVariable Integer id){
         return lessonProgressService.softDeleteLessonProgress(id);

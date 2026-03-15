@@ -9,6 +9,8 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.annotation.ReadOnlyProperty;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -17,6 +19,8 @@ public class UserXCourseServiceImpl implements UserXCourseService{
     @Autowired
     private UserXCourseRepository userXCourseRepository;
 
+    @Autowired
+    private LessonProgressService lessonProgressService;
 
 
     @Override
@@ -88,6 +92,22 @@ public class UserXCourseServiceImpl implements UserXCourseService{
 
     @Override
     public void deleteUserXCourseById(Integer id) {
+
+
+        int userId;
+        int courseId;
+
+
+       UserXCourse userXCourseToDelete = userXCourseRepository.findById(id).orElseThrow(() -> new RuntimeException("UserXCourse not found"));
+
+       userId = userXCourseToDelete.getUser().getId();
+       courseId = userXCourseToDelete.getCourse().getId();
+
+       lessonProgressService.deleteLessonProgressesByUserIdAndCourseId(userId, courseId);
+
+
+
+
         System.out.println("Deleting UserXCourse with id: " + id);
         userXCourseRepository.deleteById(id);
     }

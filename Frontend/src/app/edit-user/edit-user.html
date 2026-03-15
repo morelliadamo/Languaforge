@@ -179,40 +179,384 @@
 
     <!-- Edit user data tab -->
     @if (activeTab === 'edit') {
-    <div class="flex flex-col items-center justify-center py-12 text-center">
-      <h2 class="text-sm text-gray-400">Felhasználói adatok szerkesztése</h2>
+    <div class="space-y-6">
+      <!-- User info form -->
+      <div>
+        <h3
+          class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3"
+        >
+          Felhasználói adatok
+        </h3>
+        <form class="space-y-4">
+          <div>
+            <label
+              for="username"
+              class="block text-sm font-medium text-gray-600 mb-1"
+              >Felhasználónév</label
+            >
+            <input
+              id="username"
+              name="username"
+              type="text"
+              placeholder="Felhasználónév"
+              class="w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-colors"
+              [(ngModel)]="username"
+            />
+          </div>
+          <div>
+            <label
+              for="email"
+              class="block text-sm font-medium text-gray-600 mb-1"
+              >Email cím</label
+            >
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Email cím"
+              class="w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-colors"
+              [(ngModel)]="email"
+            />
+          </div>
+          <div>
+            <label
+              for="bio"
+              class="block text-sm font-medium text-gray-600 mb-1"
+              >Bemutatkozás</label
+            >
+            <textarea
+              name="bio"
+              id="bio"
+              placeholder="Bemutatkozás"
+              rows="3"
+              class="w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-colors resize-none"
+              [(ngModel)]="bio"
+            ></textarea>
+          </div>
+          <button
+            type="button"
+            (click)="saveChanges()"
+            class="w-full px-4 py-2.5 rounded-xl bg-sky-500 text-white font-semibold text-sm hover:bg-sky-600 transition-colors cursor-pointer hover:transform hover:scale-105 active:scale-95 active:bg-sky-700"
+          >
+            {{ saveButtonText }}
+          </button>
+        </form>
+      </div>
 
-      <form class="w-full max-w-md mt-6 flex flex-col items-center gap-4">
-        <label for="username">Felhasználónév</label>
-        <input
-          id="username"
-          name="username"
-          type="text"
-          placeholder="Felhasználónév"
-          class="w-full max-w-md px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-colors mb-4"
-          [(ngModel)]="username"
-        />
-        <label for="email">Email cím</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          placeholder="Email cím"
-          class="w-full max-w-md px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-colors mb-4"
-          [(ngModel)]="email"
-        />
+      <!-- Courses section -->
+      <div>
+        <h3
+          class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3"
+        >
+          Kurzusok
+        </h3>
+        @if (!coursesOfUser || coursesOfUser.length === 0) {
+        <div
+          class="rounded-xl bg-gray-50 border border-gray-200 px-4 py-6 text-center"
+        >
+          <p class="text-sm text-gray-400">
+            Ennek a felhasználónak még nincsenek kurzusai.
+          </p>
+        </div>
+        } @else {
+        <div class="space-y-3">
+          @for (course of coursesOfUser; track course.id) {
+          <div
+            class="rounded-xl bg-gray-50 border border-gray-200 overflow-hidden"
+          >
+            <!-- Course header -->
+            <div class="flex items-center justify-between px-4 py-3">
+              <div class="flex-1 min-w-0">
+                <h4 class="text-sm font-semibold text-gray-800 truncate">
+                  {{ course.course.title }}
+                </h4>
+                <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1">
+                  <span class="text-xs text-gray-400"
+                    >Beiratkozás: {{ course.enrolledAt | date:'yyyy.MM.dd.'
+                    }}</span
+                  >
+                  @if (course.completedAt) {
+                  <span
+                    class="px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200"
+                    >Teljesítve</span
+                  >
+                  } @else {
+                  <span class="text-xs text-gray-400"
+                    >Haladás: {{ course.progress }}%</span
+                  >
+                  }
+                </div>
+              </div>
+              <button
+                type="button"
+                (click)="removeCourse(course.id)"
+                class="ml-3 p-1.5 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors cursor-pointer flex-shrink-0"
+                title="Kurzus eltávolítása"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+          }
+        </div>
+        }
 
-        <label for="bio">Bemutatkozás</label>
-        <textarea
-          name="bio"
-          id="bio"
-          placeholder="Bemutatkozás"
-          class="w-full max-w-md px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-colors mb-4 resize-none"
-          [(ngModel)]="bio"
-        ></textarea>
+        <!-- Add course button -->
+        <div class="mt-3 relative">
+          <button
+            type="button"
+            (click)="toggleCourseDropdown()"
+            class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border-2 border-dashed border-gray-300 text-gray-500 text-sm font-medium hover:border-sky-400 hover:text-sky-500 transition-colors cursor-pointer"
+          >
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 4v16m8-8H4"
+              />
+            </svg>
+            Kurzus hozzáadása
+          </button>
+          @if (showCourseDropdown) {
+          <div
+            class="absolute z-20 mt-1 w-full max-h-48 overflow-y-auto rounded-xl bg-white border border-gray-200 shadow-lg"
+          >
+            @if (getAvailableCourses().length === 0) {
+            <div class="px-4 py-3 text-sm text-gray-400 text-center">
+              Nincs elérhető kurzus
+            </div>
+            } @else { @for (course of getAvailableCourses(); track course.id) {
+            <button
+              type="button"
+              (click)="addCourseToUser(course)"
+              class="w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-sky-50 hover:text-sky-700 transition-colors cursor-pointer border-b border-gray-100 last:border-b-0"
+            >
+              {{ course.title }}
+            </button>
+            } }
+          </div>
+          }
+        </div>
+      </div>
 
-        <button (click)="saveChanges()">Változtatások mentése</button>
-      </form>
+      <!-- Lesson progresses grouped by course -->
+      <div>
+        <h3
+          class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3"
+        >
+          Lecke haladások
+        </h3>
+        @if (!lessonProgressesOfUser || lessonProgressesOfUser.length === 0) {
+        <div
+          class="rounded-xl bg-gray-50 border border-gray-200 px-4 py-6 text-center"
+        >
+          <p class="text-sm text-gray-400">Nincsenek lecke haladások.</p>
+        </div>
+        } @else {
+        <div class="space-y-3">
+          @for (entry of progressesByCourse | keyvalue; track entry.key) {
+          <div
+            class="rounded-xl bg-gray-50 border border-gray-200 overflow-hidden"
+          >
+            <div class="px-4 py-2.5 border-b border-gray-200">
+              <span
+                class="text-xs font-semibold text-gray-500 uppercase tracking-wider"
+                >{{ entry.key }}</span
+              >
+            </div>
+            <div class="px-4 py-2 space-y-1.5">
+              @for (progress of entry.value; track progress.id) {
+              <div
+                class="flex flex-col sm:flex-row sm:items-center gap-2 rounded-lg bg-white border border-gray-100 px-3 py-2"
+              >
+                @if (editingProgressId === progress.id) {
+                <!-- Edit mode -->
+                <div class="flex-1 space-y-2 w-full">
+                  <div class="flex flex-col sm:flex-row gap-2">
+                    <div class="flex-1">
+                      <label class="text-xs text-gray-500"
+                        >Feladatok száma</label
+                      >
+                      <input
+                        type="number"
+                        [(ngModel)]="editExerciseCount"
+                        min="0"
+                        class="w-full px-2.5 py-1.5 rounded-md border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
+                        [disabled]="true"
+                      />
+                    </div>
+                    <div class="flex-1">
+                      <label class="text-xs text-gray-500"
+                        >Teljesített feladatok</label
+                      >
+                      <input
+                        type="number"
+                        [(ngModel)]="editCompletedExercises"
+                        min="0"
+                        [max]="editExerciseCount"
+                        class="w-full px-2.5 py-1.5 rounded-md border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
+                      />
+                    </div>
+                  </div>
+                  <label
+                    class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      [(ngModel)]="editLessonCompleted"
+                      class="rounded border-gray-300 text-sky-500 focus:ring-sky-500"
+                    />
+                    Lecke teljesítve
+                  </label>
+                  <div class="flex gap-2">
+                    <button
+                      type="button"
+                      (click)="saveEditProgress(progress)"
+                      class="px-3 py-1.5 rounded-lg bg-sky-500 text-white text-xs font-medium hover:bg-sky-600 transition-colors cursor-pointer"
+                    >
+                      Mentés
+                    </button>
+                    <button
+                      type="button"
+                      (click)="cancelEditProgress()"
+                      class="px-3 py-1.5 rounded-lg border border-gray-200 text-gray-600 text-xs font-medium hover:bg-gray-50 transition-colors cursor-pointer"
+                    >
+                      Mégse
+                    </button>
+                  </div>
+                </div>
+                } @else {
+                <!-- Display mode -->
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2">
+                    <span class="text-sm font-medium text-gray-700 truncate">
+                      {{ getLessonTitle(progress) }}
+                    </span>
+                    @if (progress.lessonCompleted) {
+                    <span
+                      class="px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200 flex-shrink-0"
+                      >Teljesítve</span
+                    >
+                    } @else {
+                    <span
+                      class="px-2 py-0.5 rounded-full text-xs font-medium bg-orange-50 text-orange-700 border border-orange-200 flex-shrink-0"
+                      >Folyamatban</span
+                    >
+                    }
+                  </div>
+                  <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1">
+                    <span class="text-xs text-gray-400"
+                      >Feladatok: {{ progress.completedExercises }}/{{
+                      progress.exerciseCount }}</span
+                    >
+                    @if (progress.completedAt) {
+                    <span class="text-xs text-gray-400"
+                      >Teljesítve: {{ progress.completedAt | date:'yyyy.MM.dd.'
+                      }}</span
+                    >
+                    }
+                  </div>
+                </div>
+                <div class="flex items-center gap-1 flex-shrink-0">
+                  <button
+                    type="button"
+                    (click)="toggleLessonCompleted(progress)"
+                    class="p-1.5 rounded-lg transition-colors cursor-pointer"
+                    [ngClass]="progress.lessonCompleted
+                      ? 'text-emerald-500 hover:text-orange-500 hover:bg-orange-50'
+                      : 'text-gray-400 hover:text-emerald-500 hover:bg-emerald-50'"
+                    [title]="progress.lessonCompleted ? 'Visszavonás' : 'Teljesítettnek jelölés'"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    type="button"
+                    (click)="startEditProgress(progress)"
+                    class="p-1.5 rounded-lg text-gray-400 hover:text-sky-500 hover:bg-sky-50 transition-colors cursor-pointer"
+                    title="Szerkesztés"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    type="button"
+                    (click)="removeProgress(progress.id)"
+                    class="p-1.5 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors cursor-pointer"
+                    title="Törlés"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                }
+              </div>
+              }
+            </div>
+          </div>
+          }
+        </div>
+        }
+      </div>
+      <button
+        type="button"
+        (click)="saveCourseChanges()"
+        [disabled]="savingCourses"
+        class="w-full px-4 py-2.5 rounded-xl bg-sky-500 text-white font-semibold text-sm hover:bg-sky-600 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed hover:transform hover:scale-105 active:scale-95 active:bg-sky-700"
+      >
+        {{ savingCourses ? 'Mentés...' : 'Kurzus-tevékenység mentése' }}
+      </button>
     </div>
     }
 

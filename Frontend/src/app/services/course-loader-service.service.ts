@@ -6,6 +6,7 @@ import { Lesson } from '../interfaces/Lesson';
 import { Course } from '../interfaces/Course';
 import { UserXCourse } from '../interfaces/UserProfile';
 import { AuthServiceService } from './auth-service.service';
+import { LessonProgress } from '../interfaces/LessonProgress';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,19 @@ import { AuthServiceService } from './auth-service.service';
 export class CourseLoaderServiceService {
   constructor(private http: HttpClient) {}
   private apiUrl = 'http://localhost:8080/userXcourses';
+  private apiUrl2 = 'http://localhost:8080/lessonprogresses';
   private authService = inject(AuthServiceService);
+
+  getLessonProgressesByUserId(userId: number) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.get<LessonProgress[]>(`${this.apiUrl2}/user/${userId}`, {
+      headers,
+    });
+  }
 
   loadUserCourses(username: string) {
     console.log('Loading courses for user:', username);
@@ -139,6 +152,36 @@ export class CourseLoaderServiceService {
       requestBody,
       { headers },
     );
+  }
+
+  createUserXCourseForUser(courseId: number, userId: number) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    const requestBody = {
+      courseId: courseId,
+      userId: userId,
+      progress: 0,
+      enrolledAt: new Date().toISOString(),
+      completedAt: null,
+    };
+    return this.http.post(
+      `${this.apiUrl}/enroll/${courseId}/user/${userId}`,
+      requestBody,
+      { headers },
+    );
+  }
+
+  deleteUserXCourse(userXCourseId: number) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.delete(`${this.apiUrl}/delete/${userXCourseId}`, {
+      headers,
+    });
   }
 
   countCourses() {
