@@ -1,7 +1,9 @@
+import { AchievementService } from './../services/achievement.service';
 import { CourseLoaderServiceService } from './../services/course-loader-service.service';
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { NgClass, DatePipe, KeyValuePipe } from '@angular/common';
 import {
+  Achievement,
   AchievementOfUser,
   LoginData,
   Streak,
@@ -29,13 +31,14 @@ export class EditUser {
   private userService = inject(UserService);
   private courseLoaderService = inject(CourseLoaderServiceService);
   private lessonProgressService = inject(LessonProgressService);
+  private achievementService = inject(AchievementService);
 
   activeTab: 'summary' | 'edit' | 'manage' = 'summary';
 
   username: string = '';
   email: string = '';
   bio: string = '';
-  achievementsOfUser: AchievementOfUser[] | null | undefined = null;
+  achievementsOfUser: AchievementOfUser[] | null = null;
   coursesOfUser: UserXCourse[] | null = null;
   lessonProgressesOfUser: LessonProgress[] | null = null;
   streakOFUser: Streak | null = null;
@@ -45,20 +48,19 @@ export class EditUser {
 
   editedBy: AdminEditedByDTO | null = null;
 
-  // Change tracking
   removedCourseIds: Set<number> = new Set();
   removedProgressIds: Set<number> = new Set();
   editedProgresses: Map<number, Partial<LessonProgress>> = new Map();
 
-  // Add course
   allCourses: Course[] = [];
   showCourseDropdown: boolean = false;
   savingCourses: boolean = false;
 
-  // Maps lessonId → { courseTitle, lessonTitle }
+  unearnedAchievements: Achievement[] = [];
+  showAchievementDropdown: boolean = false;
+
   lessonCourseMap: Map<number, { courseTitle: string; lessonTitle: string }> =
     new Map();
-  // Progresses grouped by course title
   progressesByCourse: Map<string, LessonProgress[]> = new Map();
 
   setTab(tab: 'summary' | 'edit' | 'manage') {
@@ -82,7 +84,7 @@ export class EditUser {
         this.username = user.username;
         this.email = user.email;
         this.bio = user.bio || '';
-        this.achievementsOfUser = user.achievementsOfUser || null || undefined;
+        this.achievementsOfUser = user.achievementsOfUser || null;
         this.coursesOfUser = user.userXCourses || null;
         this.streakOFUser = user.streak || null;
         this.reviewsOfUser = user.reviews;
@@ -166,14 +168,13 @@ export class EditUser {
       username: this.username,
       email: this.email,
       bio: this.bio,
-      roleId: this.user.user.roleId, // ← explicitly send the current roleId
+      roleId: this.user.user.roleId,
     };
     this.userService.updateUser(this.user.user.id, updatedData).subscribe({
       next: (updatedUser) => {
         this.user.user.username = updatedUser.username;
         this.user.user.email = updatedUser.email;
         this.user.user.bio = updatedUser.bio;
-        // role/roleId are not updated from the response — we only changed name/email/bio
       },
       error: (err) => {
         console.error('Error updating user:', err);
@@ -242,6 +243,23 @@ export class EditUser {
     }
   }
 
+  removeAchievement(userXAchievementId: number) {
+    this.achievementService
+      .hardDeleteUserXAchievement(userXAchievementId)
+      .subscribe({
+        next: () => {
+          if (this.achievementsOfUser) {
+            this.achievementsOfUser = this.achievementsOfUser.filter(
+              (a) => a.id !== userXAchievementId,
+            );
+          }
+        },
+        error: (err) => {
+          console.error('Error removing achievement:', err);
+        },
+      });
+  }
+
   startEditProgress(progress: LessonProgress) {
     this.editingProgressId = progress.id;
     this.editExerciseCount = progress.exerciseCount;
@@ -288,6 +306,42 @@ export class EditUser {
         },
       });
     }
+  }
+
+  toggleAchievementDropdown() {
+    this.showAchievementDropdown = !this.showAchievementDropdown;
+    if (this.showAchievementDropdown) {
+      this.achievementService
+        .loadUnearnedAchievements(this.user.user.id)
+        .subscribe({
+          next: (achievements) => {
+            this.unearnedAchievements = achievements;
+          },
+          error: (err) => {
+            console.error('Error loading unearned achievements:', err);
+          },
+        });
+    }
+  }
+
+  addAchievementToUser(achievement: Achievement) {
+    this.achievementService
+      .createUserXAchievement(this.user.user.id, achievement.id)
+      .subscribe({
+        next: (newUxa: AchievementOfUser) => {
+          if (!this.achievementsOfUser) {
+            this.achievementsOfUser = [];
+          }
+          this.achievementsOfUser.push(newUxa);
+          this.unearnedAchievements = this.unearnedAchievements.filter(
+            (a) => a.id !== achievement.id,
+          );
+          this.showAchievementDropdown = false;
+        },
+        error: (err) => {
+          console.error('Error adding achievement to user:', err);
+        },
+      });
   }
 
   getAvailableCourses(): Course[] {

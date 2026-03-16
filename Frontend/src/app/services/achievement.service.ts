@@ -3,7 +3,7 @@ import { BehaviorSubject, filter, map, Subject, tap } from 'rxjs';
 import { AchievementUnlockedDTO } from '../interfaces/AchievementUnlocked';
 import { Achievement } from '../interfaces/UserProfile';
 import { RxStompService } from './rx-stomp-service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { AuthServiceService } from './auth-service.service';
 
@@ -19,7 +19,6 @@ export class AchievementService {
 
   private unlockedSignal = signal<AchievementUnlockedDTO | null>(null);
 
-  // Public read-only signal
   unlocked = this.unlockedSignal.asReadonly();
 
   earnedAchievements = signal<Achievement[]>([]);
@@ -36,17 +35,6 @@ export class AchievementService {
     this.loadEarnedAchievements();
   }
 
-  // private connectWebSocket() {
-  //   this.rxStomp
-  //     .watch('user/topic/achievements/unlocked')
-  //     .pipe(
-  //       map((message) => JSON.parse(message.body) as AchievementUnlockedDTO),
-  //       filter((achievement) => !!achievement?.id),
-  //     )
-  //     .subscribe((unlocked) => {
-  //       this.handleNewUnlock(unlocked);
-  //     });
-  // }
   private connectWebSocket() {
     this.rxStomp
       .watch('/topic/achievements/unlocked')
@@ -119,6 +107,42 @@ export class AchievementService {
           console.error('Failed to load earned achievements', err);
         },
       });
+  }
+
+  loadUnearnedAchievements(userId: number) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.get<Achievement[]>(
+      `${this.apiUrl}/user/${userId}/unearned`,
+      {
+        headers,
+      },
+    );
+  }
+
+  createUserXAchievement(userId: number, achievementId: number) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.post<any>(
+      `${this.apiUrl}/createUserXAchievement`,
+      { userId, achievementId },
+      { headers },
+    );
+  }
+
+  hardDeleteUserXAchievement(id: number) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.delete<void>(
+      `${this.apiUrl}/hardDeleteUserXAchievement/${id}`,
+      { headers },
+    );
   }
 
   clearNewUnlock() {

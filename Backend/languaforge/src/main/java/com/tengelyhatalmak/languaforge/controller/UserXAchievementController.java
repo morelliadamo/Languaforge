@@ -3,6 +3,7 @@ package com.tengelyhatalmak.languaforge.controller;
 import com.tengelyhatalmak.languaforge.model.Achievement;
 import com.tengelyhatalmak.languaforge.model.User;
 import com.tengelyhatalmak.languaforge.model.UserXAchievement;
+import com.tengelyhatalmak.languaforge.service.AchievementService;
 import com.tengelyhatalmak.languaforge.service.UserXAchievementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,8 @@ public class UserXAchievementController {
 
     @Autowired
     private UserXAchievementService userXAchievementService;
+    @Autowired
+    private AchievementService achievementService;
 
 
     @GetMapping("/")
@@ -32,6 +35,17 @@ public class UserXAchievementController {
     @GetMapping("/user/{userId}")
     public List<Achievement> getAchievementsByUserId(@PathVariable Integer userId){
         return userXAchievementService.findAchievementsByUserId(userId);
+    }
+
+
+    @GetMapping("/user/{userId}/unearned")
+    public List<Achievement> getUnearnedAchievementsByUserId(@PathVariable Integer userId){
+        List<Achievement> earnedAchievements = userXAchievementService.findAchievementsByUserId(userId);
+
+        return achievementService.findAllAchievements()
+                .stream()
+                .filter(a -> !earnedAchievements.contains(a))
+                .toList();
     }
 
     @GetMapping("/achievement/{achievementName}")

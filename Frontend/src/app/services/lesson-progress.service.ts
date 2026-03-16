@@ -89,8 +89,8 @@ export class LessonProgressService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
-    return this.http.delete(
-      `${this.apiUrl}/deleteLessonProgress/${lessonProgressId}`,
+    return this.http.delete<LessonProgress>(
+      `${this.apiUrl}/hardDeleteLessonProgress/${lessonProgressId}`,
       { headers },
     );
   }
