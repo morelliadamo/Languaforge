@@ -17,6 +17,9 @@ import { LessonProgress } from '../interfaces/LessonProgress';
 import { LessonProgressService } from '../services/lesson-progress.service';
 import { Course } from '../interfaces/Course';
 import { forkJoin, timeout } from 'rxjs';
+import { FriendshipService } from '../services/friendship.service';
+import { Friendship } from '../interfaces/Friendship';
+import { UserAsFriendSearchResultDTO } from '../interfaces/UserAsFriendSearchResultDTO';
 
 @Component({
   selector: 'app-edit-user',
@@ -32,6 +35,7 @@ export class EditUser {
   private courseLoaderService = inject(CourseLoaderServiceService);
   private lessonProgressService = inject(LessonProgressService);
   private achievementService = inject(AchievementService);
+  private friendshipService = inject(FriendshipService);
 
   activeTab: 'summary' | 'edit' | 'manage' = 'summary';
 
@@ -43,6 +47,8 @@ export class EditUser {
   lessonProgressesOfUser: LessonProgress[] | null = null;
   streakOFUser: Streak | null = null;
   reviewsOfUser: any | null = null;
+  friendsOfUser: Friendship[] | null = null;
+  friendsAsUsersOfUser: User[] | null = null;
 
   saveButtonText: string = 'Adatok mentése';
 
@@ -90,6 +96,7 @@ export class EditUser {
         this.reviewsOfUser = user.reviews;
         this.buildLessonCourseMap();
         this.groupProgressesByCourse();
+        this.getFriendsOfUser();
       },
       error: (err) => {
         console.error('Error loading user details:', err);
@@ -367,5 +374,177 @@ export class EditUser {
           console.error('Error adding course to user:', err);
         },
       });
+  }
+
+  getFriendsOfUser() {
+    this.friendshipService
+      .loadFriendshipsByUserId(this.user.user.id)
+      .subscribe({
+        next: (friendships) => {
+          console.log('Friendships loaded:', friendships);
+          this.friendsOfUser = friendships;
+          this.getFriendsAsUsersOfUserById();
+        },
+
+        error: (err) => {
+          console.error('Error loading friendships:', err);
+        },
+      });
+  }
+
+  getFriendsAsUsersOfUserById() {
+    if (!this.friendsOfUser) return;
+    const friendIds: number[] = this.friendsOfUser.map((f) =>
+      f.user1Id === this.user.user.id ? f.user2Id : f.user1Id,
+    );
+
+    this.userService.getUsersByIds(friendIds).subscribe({
+      next: (users) => {
+        console.log(users);
+
+        this.friendsAsUsersOfUser = users;
+      },
+      error: (err) => {
+        console.error('Error loading friend user details:', err);
+      },
+    });
+  }
+
+  showFriendSearch: boolean = false;
+  friendSearchQuery: string = '';
+  friendSearchResults: UserAsFriendSearchResultDTO[] = [];
+  friendSearching: boolean = false;
+
+  toggleFriendSearch() {
+    this.showFriendSearch = !this.showFriendSearch;
+    if (!this.showFriendSearch) {
+      this.friendSearchQuery = '';
+      this.friendSearchResults = [];
+    }
+  }
+
+  searchFriends() {
+    const query = this.friendSearchQuery.trim();
+    if (!query) return;
+
+    this.friendSearching = true;
+    this.userService.findUsersByUsernameLike(query).subscribe({
+      next: (users) => {
+        this.friendSearchResults = users.filter(
+          (u) => u.id !== this.user.user.id,
+        );
+        this.friendSearching = false;
+      },
+      error: (err) => {
+        console.error('Error searching users:', err);
+        this.friendSearching = false;
+      },
+    });
+  }
+
+  isAlreadyFriend(userId: number): boolean {
+    return !!this.friendsOfUser?.some(
+      (f) => f.user1Id === userId || f.user2Id === userId,
+    );
+  }
+
+  addFriend(targetUserId: number) {
+    this.friendshipService
+      .sendFriendRequest(this.user.user.id, targetUserId)
+      .subscribe({
+        next: () => {
+          this.getFriendsOfUser();
+          this.showFriendSearch = false;
+          this.friendSearchQuery = '';
+          this.friendSearchResults = [];
+        },
+        error: (err) => {
+          console.error('Error sending friend request:', err);
+        },
+      });
+  }
+
+  removeFriendship(friendship: Friendship) {
+    this.friendshipService
+      .removeFriend(friendship.user1Id, friendship.user2Id)
+      .subscribe({
+        next: () => {
+          this.friendsOfUser =
+            this.friendsOfUser?.filter((f) => f.id !== friendship.id) ?? null;
+          this.friendsAsUsersOfUser =
+            this.friendsAsUsersOfUser?.filter(
+              (u) => u.id !== friendship.user1Id && u.id !== friendship.user2Id,
+            ) ?? null;
+        },
+        error: (err) => {
+          console.error('Error removing friendship:', err);
+        },
+      });
+  }
+
+  changeFriendshipStatus(
+    friendship: Friendship,
+    newStatus: 'accepted' | 'rejected',
+  ) {
+    const obs =
+      newStatus === 'accepted'
+        ? this.friendshipService.acceptFriendRequest(
+            friendship.user2Id,
+            friendship.user1Id,
+          )
+        : this.friendshipService.rejectFriendRequest(
+            friendship.user2Id,
+            friendship.user1Id,
+          );
+
+    obs.subscribe({
+      next: () => {
+        friendship.status = newStatus;
+      },
+      error: (err) => {
+        console.error('Error changing friendship status:', err);
+      },
+    });
+  }
+
+  getFriendName(friendship: Friendship): string {
+    const otherUserId =
+      friendship.user1Id === this.user.user.id
+        ? friendship.user2Id
+        : friendship.user1Id;
+    const friendUser = this.friendsAsUsersOfUser?.find(
+      (u) => u.id === otherUserId,
+    );
+    if (friendUser) return friendUser.username;
+    if (friendship.user1Id === this.user.user.id) {
+      return friendship.user2Name ?? `#${otherUserId}`;
+    }
+    return friendship.user1Name ?? `#${otherUserId}`;
+  }
+
+  getStatusBadgeClass(status: string): string {
+    switch (status) {
+      case 'accepted':
+        return 'bg-emerald-50 text-emerald-700 border-emerald-200';
+      case 'pending':
+        return 'bg-orange-50 text-orange-700 border-orange-200';
+      case 'rejected':
+        return 'bg-red-50 text-red-700 border-red-200';
+      default:
+        return 'bg-gray-50 text-gray-700 border-gray-200';
+    }
+  }
+
+  getStatusLabel(status: string): string {
+    switch (status) {
+      case 'accepted':
+        return 'Elfogadva';
+      case 'pending':
+        return 'Függőben';
+      case 'rejected':
+        return 'Elutasítva';
+      default:
+        return status;
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Friendship } from '../interfaces/Friendship';
 import { User } from '../interfaces/User';
@@ -18,6 +18,20 @@ export class UserService {
     });
     return this.http.get<User>(`${this.apiUrl}/${userId}`, {
       headers,
+    });
+  }
+
+  getUsersByIds(userIds: number[]) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    const params = new HttpParams().set('userIds', userIds.join(','));
+
+    return this.http.get<User[]>(`${this.apiUrl}/bulkSearchByIds`, {
+      headers,
+      params,
     });
   }
 

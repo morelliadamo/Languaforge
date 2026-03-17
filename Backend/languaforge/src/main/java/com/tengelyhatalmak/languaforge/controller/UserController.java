@@ -69,6 +69,11 @@ public class UserController {
 
     }
 
+    @GetMapping("/bulkSearchByIds")
+    public List<User> bulkSearchUsersByIds(@RequestParam int[] userIds) {
+        return userService.findUsersByIds(userIds);
+    }
+
 
     @GetMapping("/neverLoggedIn")
     public List<User> getUsersWhoNeverLoggedIn() {

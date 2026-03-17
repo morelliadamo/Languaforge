@@ -671,6 +671,207 @@
         </div>
       </div>
     </div>
+    <!-- Friends section -->
+    <div>
+      <h3
+        class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3"
+      >
+        Barátok
+      </h3>
+      @if (!friendsOfUser || friendsOfUser.length === 0) {
+      <div
+        class="rounded-xl bg-gray-50 border border-gray-200 px-4 py-6 text-center"
+      >
+        <p class="text-sm text-gray-400">Nincsenek barátok.</p>
+      </div>
+      } @else {
+      <div class="space-y-3">
+        @for (friendship of friendsOfUser; track friendship.id) {
+        <div
+          class="rounded-xl bg-gray-50 border border-gray-200 overflow-hidden"
+        >
+          <div
+            class="flex flex-col sm:flex-row sm:items-center gap-2 px-4 py-3"
+          >
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-semibold text-gray-800 truncate">
+                  {{ getFriendName(friendship) }}
+                </span>
+                <span
+                  class="px-2 py-0.5 rounded-full text-xs font-medium border flex-shrink-0"
+                  [ngClass]="getStatusBadgeClass(friendship.status)"
+                >
+                  {{ getStatusLabel(friendship.status) }}
+                </span>
+              </div>
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1">
+                <span class="text-xs text-gray-400">
+                  {{ friendship.user1Id === user.user.id ? 'Küldő' : 'Fogadó' }}
+                </span>
+                <span class="text-xs text-gray-400">
+                  Felhasználó #{{ friendship.user1Id === user.user.id ?
+                  friendship.user2Id : friendship.user1Id }}
+                </span>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 flex-shrink-0">
+              @if (friendship.status !== 'accepted') {
+              <button
+                type="button"
+                (click)="changeFriendshipStatus(friendship, 'accepted')"
+                class="p-1.5 rounded-lg text-gray-400 hover:text-emerald-500 hover:bg-emerald-50 transition-colors cursor-pointer"
+                title="Elfogadás"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </button>
+              } @if (friendship.status !== 'rejected') {
+              <button
+                type="button"
+                (click)="changeFriendshipStatus(friendship, 'rejected')"
+                class="p-1.5 rounded-lg text-gray-400 hover:text-orange-500 hover:bg-orange-50 transition-colors cursor-pointer"
+                title="Elutasítás"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"
+                  />
+                </svg>
+              </button>
+              }
+              <button
+                type="button"
+                (click)="removeFriendship(friendship)"
+                class="p-1.5 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors cursor-pointer"
+                title="Törlés"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+      }
+
+      <!-- Add friend button & search -->
+      <div class="mt-3 relative">
+        <button
+          type="button"
+          (click)="toggleFriendSearch()"
+          class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border-2 border-dashed border-gray-300 text-gray-500 text-sm font-medium hover:border-sky-400 hover:text-sky-500 transition-colors cursor-pointer"
+        >
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 4v16m8-8H4"
+            />
+          </svg>
+          Barát hozzáadása
+        </button>
+        @if (showFriendSearch) {
+        <div
+          class="absolute z-20 mt-1 w-full rounded-xl bg-white border border-gray-200 shadow-lg"
+        >
+          <div class="p-3">
+            <div class="flex gap-2">
+              <input
+                type="text"
+                placeholder="Felhasználónév keresése..."
+                class="flex-1 px-3 py-2 rounded-lg border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-colors"
+                [(ngModel)]="friendSearchQuery"
+                (keyup.enter)="searchFriends()"
+              />
+              <button
+                type="button"
+                (click)="searchFriends()"
+                [disabled]="friendSearching"
+                class="px-3 py-2 rounded-lg bg-sky-500 text-white text-sm font-medium hover:bg-sky-600 transition-colors cursor-pointer disabled:opacity-50"
+              >
+                @if (friendSearching) { ... } @else { Keresés }
+              </button>
+            </div>
+          </div>
+          @if (friendSearchResults.length > 0) {
+          <div class="max-h-48 overflow-y-auto border-t border-gray-100">
+            @for (result of friendSearchResults; track result.id) {
+            <button
+              type="button"
+              (click)="addFriend(result.id)"
+              [disabled]="isAlreadyFriend(result.id)"
+              class="w-full text-left px-4 py-2.5 text-sm transition-colors cursor-pointer border-b border-gray-100 last:border-b-0 flex items-center justify-between gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+              [ngClass]="isAlreadyFriend(result.id) ? 'bg-gray-50 text-gray-400' : 'text-gray-700 hover:bg-sky-50 hover:text-sky-700'"
+            >
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="truncate font-medium">{{ result.username }}</span>
+                <span class="text-xs text-gray-400 flex-shrink-0"
+                  >#{{ result.id }}</span
+                >
+              </div>
+              @if (isAlreadyFriend(result.id)) {
+              <span class="text-xs text-gray-400 flex-shrink-0">Már barát</span>
+              } @else {
+              <svg
+                class="w-4 h-4 flex-shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 4v16m8-8H4"
+                />
+              </svg>
+              }
+            </button>
+            }
+          </div>
+          }
+        </div>
+        }
+      </div>
+    </div>
     }
 
     <!-- Manage user tab -->

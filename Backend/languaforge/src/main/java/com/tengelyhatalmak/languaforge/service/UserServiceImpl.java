@@ -1,5 +1,6 @@
 package com.tengelyhatalmak.languaforge.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findUsersWhoNeverLoggedIn() {
         return userRepository.findUsersByLastLoginIsNull();
+    }
+
+    @Override
+    public List<User> findUsersByIds(int[] userIds) {
+        List<User> usersToReturn = new ArrayList<>();
+
+        for (int id : userIds) {
+            userRepository.findById(id).ifPresent(usersToReturn::add);
+        }
+
+        return usersToReturn;
     }
 
     @Override

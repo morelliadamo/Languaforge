@@ -126,9 +126,12 @@ export class ProfilePageComponent implements OnInit {
         pending: this.friendshipService.loadPendingFriendshipsByUserId(
           this.userId,
         ),
-      }).subscribe(({ friends, pending }) => {
-        // Build pending user ID set first
-        const pendingUserIds = new Set<number>();
+        rejected: this.friendshipService.loadRejectedFriendshipsByUserId(
+          this.userId,
+        ),
+      }).subscribe(({ friends, pending, rejected }) => {
+        // Build excluded user ID set (pending + rejected)
+        const excludedUserIds = new Set<number>();
         const currentId = this.userId!;
 
         for (const f of pending) {
@@ -140,7 +143,7 @@ export class ProfilePageComponent implements OnInit {
               avatarUrl: null as string | null,
             };
             this.sentRequests.push(entry);
-            pendingUserIds.add(f.user2Id);
+            excludedUserIds.add(f.user2Id);
             this.userService.getUserByIdAsFriendDTO(f.user2Id).subscribe({
               next: (dto) => {
                 entry.username = dto.username;
@@ -155,7 +158,7 @@ export class ProfilePageComponent implements OnInit {
               avatarUrl: null as string | null,
             };
             this.receivedRequests.push(entry);
-            pendingUserIds.add(f.user1Id);
+            excludedUserIds.add(f.user1Id);
             this.userService.getUserByIdAsFriendDTO(f.user1Id).subscribe({
               next: (dto) => {
                 entry.username = dto.username;
@@ -165,8 +168,17 @@ export class ProfilePageComponent implements OnInit {
           }
         }
 
-        // Filter out pending users from friends list
-        this.friends = friends.filter((f) => !pendingUserIds.has(f.id!));
+        // Collect rejected user IDs
+        for (const f of rejected) {
+          if (f.user1Id === currentId) {
+            excludedUserIds.add(f.user2Id);
+          } else {
+            excludedUserIds.add(f.user1Id);
+          }
+        }
+
+        // Filter out pending and rejected users from friends list
+        this.friends = friends.filter((f) => !excludedUserIds.has(f.id!));
         this.profile.friendCount = this.friends.length;
 
         // Load avatars for accepted friends
