@@ -39,6 +39,16 @@ public class UserXItemController {
         return userXItemService.updateUserXItem(userXItem, id);
     }
 
+    @PatchMapping("/user/{userId}/incrementUserXItemQuantity/{type}/{incrementBy}")
+    public void incrementUserXItemQuantity(@PathVariable Integer userId, @PathVariable String type, @PathVariable Integer incrementBy){
+        userXItemService.incrementUserXItemQuantity(userId, type, incrementBy);
+    }
+
+    @PatchMapping("/user/{userId}/decrementUserXItemQuantity/{type}/{decrementBy}")
+    public void decrementUserXItemQuantity(@PathVariable Integer userId, @PathVariable String type, @PathVariable Integer decrementBy){
+        userXItemService.decrementUserXItemQuantity(userId, type, decrementBy);
+    }
+
     @DeleteMapping("/deleteUserXItem/{id}")
     public String deleteUserXItem(@PathVariable Integer id){
     return userXItemService.deleteUserXItemById(id);

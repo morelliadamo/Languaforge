@@ -13,6 +13,9 @@ public interface UserXItemService {
     List<UserXItem> findUserXItemsByUserId(Integer userId);
 
     UserXItem updateUserXItem(UserXItem userXItem, Integer id);
+    void incrementUserXItemQuantity(Integer userId, String type, Integer incrementBy);
+    void decrementUserXItemQuantity(Integer userId, String type, Integer decrementBy);
+
 
     String deleteUserXItemById(Integer id);
 

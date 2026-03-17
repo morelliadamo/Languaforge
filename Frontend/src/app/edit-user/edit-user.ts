@@ -20,6 +20,9 @@ import { forkJoin, timeout } from 'rxjs';
 import { FriendshipService } from '../services/friendship.service';
 import { Friendship } from '../interfaces/Friendship';
 import { UserAsFriendSearchResultDTO } from '../interfaces/UserAsFriendSearchResultDTO';
+import { InventoryComponent } from '../inventory/inventory.component';
+import { UserXItemInventory } from '../interfaces/UserXItem';
+import { StoreService } from '../services/store.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -36,6 +39,7 @@ export class EditUser {
   private lessonProgressService = inject(LessonProgressService);
   private achievementService = inject(AchievementService);
   private friendshipService = inject(FriendshipService);
+  private storeService = inject(StoreService);
 
   activeTab: 'summary' | 'edit' | 'manage' = 'summary';
 
@@ -49,6 +53,12 @@ export class EditUser {
   reviewsOfUser: any | null = null;
   friendsOfUser: Friendship[] | null = null;
   friendsAsUsersOfUser: User[] | null = null;
+  itemsOfUser: UserXItemInventory[] | null = null;
+
+  heartCount: number = 0;
+  hintCount: number = 0;
+  freezeCount: number = 0;
+  courseSlotCount: number = 0;
 
   saveButtonText: string = 'Adatok mentése';
 
@@ -97,6 +107,7 @@ export class EditUser {
         this.buildLessonCourseMap();
         this.groupProgressesByCourse();
         this.getFriendsOfUser();
+        this.getUserItems();
       },
       error: (err) => {
         console.error('Error loading user details:', err);
@@ -546,5 +557,149 @@ export class EditUser {
       default:
         return status;
     }
+  }
+
+  getUserItems() {
+    this.storeService.getUserItems(this.user.user.id).subscribe({
+      next: (items) => {
+        this.itemsOfUser = items.map((i) => ({
+          id: i.id,
+          itemId: i.itemId,
+          userId: i.userId,
+          amount: this.getItemAmount(i.storeItem.type),
+          emoji: this.getItemEmoji(i.storeItem.type),
+          label: this.getItemLabel(i.storeItem.type),
+        }));
+        this.computeItemCounts();
+      },
+      error: (err) => {
+        console.error('Error loading user items:', err);
+      },
+    });
+  }
+
+  computeItemCounts() {
+    this.heartCount = 0;
+    this.hintCount = 0;
+    this.freezeCount = 0;
+    this.courseSlotCount = 0;
+    if (!this.itemsOfUser) return;
+    for (const item of this.itemsOfUser) {
+      switch (item.label) {
+        case 'Szív':
+          this.heartCount += item.amount;
+          break;
+        case 'Tipp':
+          this.hintCount += item.amount;
+          break;
+        case 'Fagyasztás':
+          this.freezeCount += item.amount;
+          break;
+        case 'Kurzushely':
+          this.courseSlotCount += item.amount;
+          break;
+      }
+    }
+  }
+
+  incrementItem(category: 'heart' | 'hint' | 'freeze' | 'courseSlot') {
+    switch (category) {
+      case 'heart':
+        this.heartCount += 5;
+        this.storeService
+          .incrementUserItem(this.user.user.id, 'hearts', 1)
+          .subscribe();
+        break;
+      case 'hint':
+        this.hintCount += 5;
+        this.storeService
+          .incrementUserItem(this.user.user.id, 'hints', 1)
+          .subscribe();
+        break;
+      case 'freeze':
+        this.freezeCount++;
+        this.storeService
+          .incrementUserItem(this.user.user.id, 'freezes', 1)
+          .subscribe();
+        break;
+      case 'courseSlot':
+        this.courseSlotCount++;
+        this.storeService
+          .incrementUserItem(this.user.user.id, 'course_slots', 1)
+          .subscribe();
+        break;
+    }
+  }
+
+  decrementItem(category: 'heart' | 'hint' | 'freeze' | 'courseSlot') {
+    switch (category) {
+      case 'heart':
+        if (this.heartCount > 0) this.heartCount -= 5;
+        this.storeService
+          .decrementUserItem(this.user.user.id, 'hearts', 1)
+          .subscribe();
+        break;
+      case 'hint':
+        if (this.hintCount > 0) this.hintCount -= 5;
+        this.storeService
+          .decrementUserItem(this.user.user.id, 'hints', 1)
+          .subscribe();
+        break;
+      case 'freeze':
+        if (this.freezeCount > 0) this.freezeCount--;
+        this.storeService
+          .decrementUserItem(this.user.user.id, 'freezes', 1)
+          .subscribe();
+        break;
+      case 'courseSlot':
+        if (this.courseSlotCount > 0) this.courseSlotCount--;
+        this.storeService
+          .decrementUserItem(this.user.user.id, 'course_slots', 1)
+          .subscribe();
+
+        break;
+    }
+  }
+
+  getItemEmoji(type: string): string {
+    const map: Record<string, string> = {
+      hearts5: '❤️',
+      hearts10: '❤️',
+      hearts25: '❤️',
+      hints5: '💡',
+      hints10: '💡',
+      hints25: '💡',
+      freeze: '🧊',
+      course_slot: '📦',
+    };
+    return map[type] || '';
+  }
+
+  getItemLabel(type: string): string {
+    const map: Record<string, string> = {
+      hearts5: 'Szív',
+      hearts10: 'Szív',
+      hearts25: 'Szív',
+      hints5: 'Tipp',
+      hints10: 'Tipp',
+      hints25: 'Tipp',
+      freeze: 'Fagyasztás',
+      course_slot: 'Kurzushely',
+    };
+    return map[type] || '';
+  }
+
+  getItemAmount(type: string): number {
+    const map: Record<string, number> = {
+      hearts5: 5,
+      hearts10: 10,
+      hearts25: 25,
+      hints5: 5,
+      hints10: 10,
+      hints25: 25,
+      freeze: 1,
+      course_slot: 1,
+    };
+    return map[type] || 0;
   }
 }

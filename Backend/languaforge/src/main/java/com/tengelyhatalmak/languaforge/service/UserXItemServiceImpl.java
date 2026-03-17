@@ -67,6 +67,124 @@ public class UserXItemServiceImpl implements UserXItemService{
     }
 
     @Override
+    public void incrementUserXItemQuantity(Integer userId, String type, Integer incrementBy) {
+        switch (type) {
+            case "hearts":
+
+                UserXItem heartsToAdd = UserXItem.builder()
+                        .userId(userId)
+                        .itemId(1)
+                        .storeItem(storeItemRepository.findById(1).orElseThrow(() -> new RuntimeException("StoreItem not found with id: 1")))
+                        .user(userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found with id: " + userId)))
+                        .amount(incrementBy)
+                        .build();
+                userXItemRepository.save(heartsToAdd);
+                System.out.println("Hearts incremented for user with id: " + userId + " by " + incrementBy);
+                break;
+            case "hints":
+                UserXItem hintsToAdd = UserXItem.builder()
+                        .userId(userId)
+                        .itemId(4)
+                        .storeItem(storeItemRepository.findById(4).orElseThrow(() -> new RuntimeException("StoreItem not found with id: 1")))
+                        .user(userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found with id: " + userId)))
+                        .amount(incrementBy)
+                        .build();
+                userXItemRepository.save(hintsToAdd);
+                System.out.println("Hints incremented for user with id: " + userId + " by " + incrementBy);
+                break;
+            case "freezes":
+                UserXItem freezesToAdd = UserXItem.builder()
+                        .userId(userId)
+                        .itemId(7)
+                        .storeItem(storeItemRepository.findById(7).orElseThrow(() -> new RuntimeException("StoreItem not found with id: 1")))
+                        .user(userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found with id: " + userId)))
+                        .amount(incrementBy)
+                        .build();
+                userXItemRepository.save(freezesToAdd);
+                System.out.println("Freezes incremented for user with id: " + userId + " by " + incrementBy);
+                break;
+            case "course_slots":
+                UserXItem courseSlotsToAdd = UserXItem.builder()
+                        .userId(userId)
+                        .itemId(8)
+                        .storeItem(storeItemRepository.findById(8).orElseThrow(() -> new RuntimeException("StoreItem not found with id: 1")))
+                        .user(userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found with id: " + userId)))
+                        .amount(incrementBy)
+                        .build();
+                userXItemRepository.save(courseSlotsToAdd);
+                System.out.println("Course slots incremented for user with id: " + userId + " by " + incrementBy);
+                break;
+
+                default:
+                    throw new IllegalArgumentException("Invalid item type: " + type);
+        }
+    }
+
+    @Override
+    public void decrementUserXItemQuantity(Integer userId, String type, Integer decrementBy) {
+        switch (type){
+            case "hearts":
+                try{
+                    UserXItem itemToRemove = userXItemRepository.findByItemIdAndUserId(userId, 1);
+                    if (itemToRemove != null) {
+                        userXItemRepository.delete(itemToRemove);
+
+                        System.out.println("Hearts decremented for user with id: " + userId + " by " + decrementBy);
+                    } else {
+                        System.out.println("No hearts to decrement for user with id: " + userId);
+                    }
+                } catch (Exception e) {
+                    System.out.println("Error decrementing hearts for user with id: " + userId + ": " + e.getMessage());
+                }
+                break;
+            case "hints":
+                try{
+                    UserXItem itemToRemove = userXItemRepository.findByItemIdAndUserId(userId, 4);
+                    if (itemToRemove != null) {
+                        userXItemRepository.delete(itemToRemove);
+                        System.out.println("Hints decremented for user with id: " + userId + " by " + decrementBy);
+                    } else {
+                        System.out.println("No hints to decrement for user with id: " + userId);
+                    }
+                } catch (Exception e) {
+                    System.out.println("Error decrementing hints for user with id: " + userId + ": " + e.getMessage());
+                }
+                break;
+            case "freezes":
+                try {
+                    UserXItem itemToRemove = userXItemRepository.findByItemIdAndUserId(userId, 7);
+                    if (itemToRemove != null) {
+                        userXItemRepository.delete(itemToRemove);
+
+                        System.out.println("Freezes decremented for user with id: " + userId + " by " + decrementBy);
+                    } else {
+                        System.out.println("No freezes to decrement for user with id: " + userId);
+                    }
+                } catch (Exception e) {
+                    System.out.println("Error decrementing freezes for user with id: " + userId + ": " + e.getMessage());
+                }
+                break;
+            case "course_slots":
+                try {
+                    UserXItem itemToRemove = userXItemRepository.findByItemIdAndUserId(userId, 8);
+                    if (itemToRemove != null) {
+                        userXItemRepository.delete(itemToRemove);
+
+                        System.out.println("Course slots decremented for user with id: " + userId + " by " + decrementBy);
+                    } else {
+                        System.out.println("No course slots to decrement for user with id: " + userId);
+                    }
+                } catch (Exception e) {
+                    System.out.println("Error decrementing course slots for user with id: " + userId + ": " + e.getMessage());
+                }
+                break;
+
+            default:
+                throw new IllegalArgumentException("Invalid item type: " + type);
+        }
+    }
+
+    @Override
     public String deleteUserXItemById(Integer id) {
         userXItemRepository.deleteById(id);
 

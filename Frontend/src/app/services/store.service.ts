@@ -32,4 +32,30 @@ export class StoreService {
       headers: headers,
     });
   }
+
+  incrementUserItem(userId: number, type: string, incrementBy: number) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.patch(
+      `${this.apiUrl2}user/${userId}/incrementUserXItemQuantity/${type}/${incrementBy}`,
+      null,
+      { headers },
+    );
+  }
+
+  decrementUserItem(userId: number, type: string, decrementBy: number) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.patch(
+      `${this.apiUrl2}user/${userId}/decrementUserXItemQuantity/${type}/${decrementBy}`,
+      null,
+      { headers },
+    );
+  }
 }

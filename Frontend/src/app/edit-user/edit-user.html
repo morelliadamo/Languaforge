@@ -872,6 +872,248 @@
         }
       </div>
     </div>
+
+    <!-- User items section -->
+    <div>
+      <h3
+        class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3"
+      >
+        Tárgyak
+      </h3>
+      @if (!itemsOfUser || itemsOfUser.length === 0) {
+      <div
+        class="rounded-xl bg-gray-50 border border-gray-200 px-4 py-6 text-center"
+      >
+        <p class="text-sm text-gray-400">Nincsenek tárgyak.</p>
+      </div>
+      } @else {
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <!-- Hearts -->
+        <div class="rounded-xl bg-gray-50 border border-gray-200 px-4 py-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">❤️</span>
+              <div>
+                <!-- <h4 class="text-sm font-semibold text-gray-800">Szív</h4> -->
+              </div>
+            </div>
+            <div class="flex items-center gap-2 flex-shrink-0">
+              <button
+                type="button"
+                (click)="decrementItem('heart')"
+                [disabled]="heartCount <= 0"
+                class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M20 12H4"
+                  />
+                </svg>
+              </button>
+              <span class="w-10 text-center text-sm font-bold text-gray-800"
+                >{{ heartCount }}</span
+              >
+              <button
+                type="button"
+                (click)="incrementItem('heart')"
+                class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 4v16m8-8H4"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hints -->
+        <div class="rounded-xl bg-gray-50 border border-gray-200 px-4 py-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">💡</span>
+              <div>
+                <!-- <h4 class="text-sm font-semibold text-gray-800">Tipp</h4> -->
+              </div>
+            </div>
+            <div class="flex items-center gap-2 flex-shrink-0">
+              <button
+                type="button"
+                (click)="decrementItem('hint')"
+                [disabled]="hintCount <= 0"
+                class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M20 12H4"
+                  />
+                </svg>
+              </button>
+              <span class="w-10 text-center text-sm font-bold text-gray-800"
+                >{{ hintCount }}</span
+              >
+              <button
+                type="button"
+                (click)="incrementItem('hint')"
+                class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 4v16m8-8H4"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Freeze -->
+        <div class="rounded-xl bg-gray-50 border border-gray-200 px-4 py-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">🧊</span>
+              <div>
+                <!-- <h4 class="text-sm font-semibold text-gray-800">Fagyasztás</h4> -->
+              </div>
+            </div>
+            <div class="flex items-center gap-2 flex-shrink-0">
+              <button
+                type="button"
+                (click)="decrementItem('freeze')"
+                [disabled]="freezeCount <= 0"
+                class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M20 12H4"
+                  />
+                </svg>
+              </button>
+              <span class="w-10 text-center text-sm font-bold text-gray-800"
+                >{{ freezeCount }}</span
+              >
+              <button
+                type="button"
+                (click)="incrementItem('freeze')"
+                class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 4v16m8-8H4"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course Slot -->
+        <div class="rounded-xl bg-gray-50 border border-gray-200 px-4 py-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">📦</span>
+              <div>
+                <!-- <h4 class="text-sm font-semibold text-gray-800">Kurzushely</h4> -->
+              </div>
+            </div>
+            <div class="flex items-center gap-2 flex-shrink-0">
+              <button
+                type="button"
+                (click)="decrementItem('courseSlot')"
+                [disabled]="courseSlotCount <= 0"
+                class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M20 12H4"
+                  />
+                </svg>
+              </button>
+              <span class="w-10 text-center text-sm font-bold text-gray-800"
+                >{{ courseSlotCount }}</span
+              >
+              <button
+                type="button"
+                (click)="incrementItem('courseSlot')"
+                class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 4v16m8-8H4"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
     }
 
     <!-- Manage user tab -->
