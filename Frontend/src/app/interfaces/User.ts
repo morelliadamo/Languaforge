@@ -25,5 +25,4 @@ export interface User {
   leaderboardList?: any[];
   lessonProgresses?: any[];
   reviews?: any[];
-  scores?: any[];
 }
