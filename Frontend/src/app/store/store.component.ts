@@ -30,9 +30,11 @@ export class StoreComponent {
 
   getEmoji(type: string): string {
     const map: Record<string, string> = {
-      hearts5: '❤️',
-      hearts10: '❤️❤️',
-      hearts25: '❤️✨',
+
+      hearts1: '❤️',
+      hearts5: '❤️❤️',
+      hearts10: '❤️❤️❤️',
+      hearts25: '❤️❤️❤️✨',
       hints5: '💡',
       hints10: '💡💡',
       hints25: '💡✨',

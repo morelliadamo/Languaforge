@@ -22,21 +22,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * Registration flow E2E tests (REG-01 through REG-06).
- * Tests valid registration, duplicate email, validation errors, and navigation.
- * Extends BaseTest for Allure listener, cookie clearing, and browser lifecycle.
- *
- * Allure hierarchy: Epic("Authentication") > Feature("Register")
- * Tags: "register" (all tests), "smoke" (happy path only)
- * Parameterized: REG-02/03/04/05 consolidated into one @ParameterizedTest (ADV-02)
- *
- * IMPORTANT Angular behavior: The register button has NO [disabled] binding —
- * it is ALWAYS clickable. The register() method checks registerForm.valid;
- * if invalid, it calls markAllAsTouched() but does NOT submit the API call.
- * Only emailTakenError (server 409) produces a visible error message (.text-red-600).
- * For REG-03/04/05, we verify the form did NOT navigate to success page.
- */
+
 @DisplayName("Register Tests")
 @Epic("Authentication")
 @Feature("Register")

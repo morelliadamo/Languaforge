@@ -22,9 +22,10 @@ export class BuyItemComponent {
 
   getEmoji(type: string): string {
     const map: Record<string, string> = {
-      hearts5: '❤️',
-      hearts10: '❤️❤️',
-      hearts25: '❤️✨',
+      hearts1: '❤️',
+      hearts5: '❤️❤️',
+      hearts10: '❤️❤️❤️',
+      hearts25: '❤️❤️❤️✨',
       hints5: '💡',
       hints10: '💡💡',
       hints25: '💡✨',
@@ -40,7 +41,34 @@ export class BuyItemComponent {
     }
   }
 
-  confirmPurchase() {
+  // confirmPurchase() {
+  //   if (!this.item || this.purchasing) return;
+  //   this.purchasing = true;
+  //   this.purchaseError = '';
+  //
+  //   const token = localStorage.getItem('access_token');
+  //   const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+  //   const userId = this.authService.getCurrentUserId();
+  //
+  //   this.http
+  //     .post(
+  //       `http://localhost:8080/userXitems/createUserXItem`,
+  //       { itemId: this.item.id, userId: Number(userId) },
+  //       { headers },
+  //     )
+  //     .subscribe({
+  //       next: () => {
+  //         this.purchasing = false;
+  //         this.purchaseSuccess = true;
+  //       },
+  //       error: (err) => {
+  //         this.purchasing = false;
+  //         this.purchaseError =
+  //           err.error?.message ?? 'Hiba történt a vásárlás során.';
+  //       },
+  //     });
+  // }
+  confirmPurchase(incrementBy?: number) {
     if (!this.item || this.purchasing) return;
     this.purchasing = true;
     this.purchaseError = '';
@@ -49,10 +77,27 @@ export class BuyItemComponent {
     const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
     const userId = this.authService.getCurrentUserId();
 
+    let itemType: string = "";
+
+    if (this.item.type.startsWith("hearts")){
+      itemType = "hearts";
+    }
+    else if (this.item.type.startsWith("hints")){
+      itemType = "hints";
+    }
+    else if (this.item.type == "freeze"){
+      itemType = "freezes";
+    }
+    else if (this.item.type.startsWith("course")){
+      itemType = "course_slots";
+    }
+
+
+    incrementBy == 0 || incrementBy == null ? incrementBy = 1 : incrementBy = incrementBy;
+
     this.http
-      .post(
-        `http://localhost:8080/userXitems/createUserXItem`,
-        { itemId: this.item.id, userId: Number(userId) },
+      .patch(
+        `http://localhost:8080/userXitems/user/${userId}/incrementUserXItemQuantity/${itemType}/${incrementBy}`,
         { headers },
       )
       .subscribe({

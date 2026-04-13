@@ -605,7 +605,7 @@ export class EditUser {
   incrementItem(category: 'heart' | 'hint' | 'freeze' | 'courseSlot') {
     switch (category) {
       case 'heart':
-        this.heartCount += 5;
+        this.heartCount += 1;
         this.storeService
           .incrementUserItem(this.user.user.id, 'hearts', 1)
           .subscribe();
@@ -634,7 +634,7 @@ export class EditUser {
   decrementItem(category: 'heart' | 'hint' | 'freeze' | 'courseSlot') {
     switch (category) {
       case 'heart':
-        if (this.heartCount > 0) this.heartCount -= 5;
+        if (this.heartCount > 0) this.heartCount -= 1;
         this.storeService
           .decrementUserItem(this.user.user.id, 'hearts', 1)
           .subscribe();
