@@ -8,6 +8,7 @@ import { StreakService } from './services/streak-service';
 import { AuthServiceService } from './services/auth-service.service';
 import { StreakChangedComponent } from './streak-changed/streak-changed';
 import { Streak } from './interfaces/UserProfile';
+import {InventoryComponent} from './inventory/inventory.component';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, AchievementUnlocked, StreakChangedComponent],

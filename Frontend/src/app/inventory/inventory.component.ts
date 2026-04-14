@@ -4,6 +4,7 @@ import { StoreService } from '../services/store.service';
 import { AuthServiceService } from '../services/auth-service.service';
 import { UserXItem, UserXItemInventory } from '../interfaces/UserXItem';
 import { User } from '../interfaces/User';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-inventory',
@@ -12,12 +13,21 @@ import { User } from '../interfaces/User';
   styleUrl: './inventory.component.css',
 })
 export class InventoryComponent {
+
+
   loaded = false;
 
   items: UserXItemInventory[] = [];
 
   private storeService = inject(StoreService);
   private authService = inject(AuthServiceService);
+  private router = inject(Router);
+
+
+  get currentRoute(): string {
+    return this.router.url;
+  }
+
 
   numberOfHearts: number = 0;
   numberOfHints: number = 0;
@@ -25,12 +35,14 @@ export class InventoryComponent {
   numberOfCourseSlots: number = 0;
 
   ngOnInit() {
+
+
     const userId = Number(this.authService.getCurrentUserId());
     if (!userId) return;
 
     this.storeService.getUserItems(userId).subscribe({
       next: (items) => {
-        console.log(items);
+        console.log("items: "+items);
         for (const i of items) {
           console.log(i);
 
@@ -38,33 +50,39 @@ export class InventoryComponent {
             id: i.id,
             itemId: i.itemId,
             userId: i.userId,
-            amount: this.getAmount(i.storeItem.type),
+            amount: i.amount,
             emoji: this.getEmoji(i.storeItem.type),
             label: this.getLabel(i.storeItem.type),
           };
           this.items.push(uxi);
 
-          switch (i.storeItem.type) {
-            case 'hearts5':
-            case 'hearts10':
-            case 'hearts25':
-              this.numberOfHearts += this.getAmount(i.storeItem.type);
+
+
+          switch (i.itemId){
+            case 1:
+              this.numberOfHearts += i.amount;
               break;
-            case 'hints5':
-            case 'hints10':
-            case 'hints25':
-              this.numberOfHints += this.getAmount(i.storeItem.type);
+            case 2:
+              this.numberOfHints += i.amount;
               break;
-            case 'freeze':
-              this.numberOfFreezes += this.getAmount(i.storeItem.type);
+            case 3:
+              this.numberOfFreezes += i.amount;
               break;
-            case 'course_slot':
-              this.numberOfCourseSlots += this.getAmount(i.storeItem.type);
+            case 4:
+              this.numberOfCourseSlots += i.amount;
               break;
           }
-        }
+
+
+
+          }
+
+
+
 
         this.loaded = true;
+
+
         console.log(this.items);
         console.log(this.numberOfHearts);
       },
@@ -85,6 +103,8 @@ export class InventoryComponent {
       hints25: '💡',
       freeze: '🧊',
       course_slot: '📦',
+      hearts1: '❤️',
+      hints1: '💡'
     };
     return map[type] || '';
   }
@@ -92,9 +112,11 @@ export class InventoryComponent {
   getLabel(type: string): string {
     const map: Record<string, string> = {
       hearts5: 'Szív',
+      hearts1: 'Szív',
       hearts10: 'Szív',
       hearts25: 'Szív',
       hints5: 'Tipp',
+      hints1: 'Tipp',
       hints10: 'Tipp',
       hints25: 'Tipp',
       freeze: 'Fagyasztás',
@@ -116,4 +138,8 @@ export class InventoryComponent {
     };
     return map[type] || 0;
   }
+
+
+
+
 }

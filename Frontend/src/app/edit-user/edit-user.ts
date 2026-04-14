@@ -562,11 +562,12 @@ export class EditUser {
   getUserItems() {
     this.storeService.getUserItems(this.user.user.id).subscribe({
       next: (items) => {
+        console.log(items[0])
         this.itemsOfUser = items.map((i) => ({
           id: i.id,
           itemId: i.itemId,
           userId: i.userId,
-          amount: this.getItemAmount(i.storeItem.type),
+          amount: i.amount,
           emoji: this.getItemEmoji(i.storeItem.type),
           label: this.getItemLabel(i.storeItem.type),
         }));
@@ -585,17 +586,18 @@ export class EditUser {
     this.courseSlotCount = 0;
     if (!this.itemsOfUser) return;
     for (const item of this.itemsOfUser) {
-      switch (item.label) {
-        case 'Szív':
+      console.log("item: "+item.itemId, item.userId, item.amount)
+      switch (item.itemId) {
+        case 1:
           this.heartCount += item.amount;
           break;
-        case 'Tipp':
+        case 2:
           this.hintCount += item.amount;
           break;
-        case 'Fagyasztás':
+        case 3:
           this.freezeCount += item.amount;
           break;
-        case 'Kurzushely':
+        case 4:
           this.courseSlotCount += item.amount;
           break;
       }
@@ -611,19 +613,19 @@ export class EditUser {
           .subscribe();
         break;
       case 'hint':
-        this.hintCount += 5;
+        this.hintCount += 1;
         this.storeService
           .incrementUserItem(this.user.user.id, 'hints', 1)
           .subscribe();
         break;
       case 'freeze':
-        this.freezeCount++;
+        this.freezeCount += 1;
         this.storeService
           .incrementUserItem(this.user.user.id, 'freezes', 1)
           .subscribe();
         break;
       case 'courseSlot':
-        this.courseSlotCount++;
+        this.courseSlotCount += 1;
         this.storeService
           .incrementUserItem(this.user.user.id, 'course_slots', 1)
           .subscribe();
@@ -640,19 +642,19 @@ export class EditUser {
           .subscribe();
         break;
       case 'hint':
-        if (this.hintCount > 0) this.hintCount -= 5;
+        if (this.hintCount > 0) this.hintCount -= 1;
         this.storeService
           .decrementUserItem(this.user.user.id, 'hints', 1)
           .subscribe();
         break;
       case 'freeze':
-        if (this.freezeCount > 0) this.freezeCount--;
+        if (this.freezeCount > 0) this.freezeCount -= 1;
         this.storeService
           .decrementUserItem(this.user.user.id, 'freezes', 1)
           .subscribe();
         break;
       case 'courseSlot':
-        if (this.courseSlotCount > 0) this.courseSlotCount--;
+        if (this.courseSlotCount > 0) this.courseSlotCount -= 1;
         this.storeService
           .decrementUserItem(this.user.user.id, 'course_slots', 1)
           .subscribe();
@@ -663,9 +665,11 @@ export class EditUser {
 
   getItemEmoji(type: string): string {
     const map: Record<string, string> = {
+      hearts1: '❤️',
       hearts5: '❤️',
       hearts10: '❤️',
       hearts25: '❤️',
+      hints1: '💡',
       hints5: '💡',
       hints10: '💡',
       hints25: '💡',
@@ -677,9 +681,11 @@ export class EditUser {
 
   getItemLabel(type: string): string {
     const map: Record<string, string> = {
+      hearts1: 'Szív',
       hearts5: 'Szív',
       hearts10: 'Szív',
       hearts25: 'Szív',
+      hints1: 'Tipp',
       hints5: 'Tipp',
       hints10: 'Tipp',
       hints25: 'Tipp',
