@@ -15,6 +15,7 @@ import { LoadedLessonComponent } from '../loaded-lesson/loaded-lesson.component'
 import { InlineSvgDirective } from '../directives/inline-svg.directive';
 import { LessonProgressService } from '../services/lesson-progress.service';
 import { LessonProgress } from '../interfaces/LessonProgress';
+import { InventoryComponent } from '../inventory/inventory.component';
 
 @Component({
   selector: 'app-loaded-course',
@@ -23,6 +24,7 @@ import { LessonProgress } from '../interfaces/LessonProgress';
     FooterComponent,
     LoadingOverlayComponent,
     LoadedLessonComponent,
+    InventoryComponent,
   ],
   templateUrl: './loaded-course.component.html',
   styleUrl: './loaded-course.component.css',

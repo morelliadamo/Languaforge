@@ -58,5 +58,56 @@
 }
 
 @if (this.currentRoute.includes("/my/courses")) {
-  <h1>TEST</h1>
+  <div class="fixed left-0 top-1/2 -translate-y-1/2 z-50">
+    @if (!inventoryOpen) {
+      <button
+        (click)="inventoryOpen = true"
+        class="bg-white border border-gray-200 rounded-r-2xl shadow-md px-2 py-4 flex flex-col items-center gap-2 hover:shadow-lg transition-all cursor-pointer"
+      >
+        <span class="text-xl">🎒</span>
+        <span
+          class="text-[10px] text-gray-500 font-large writing-vertical font-bold"
+          >Tárgyak</span
+        >
+      </button>
+    } @else {
+      <div
+        class="bg-white border border-gray-200 rounded-r-2xl shadow-lg p-4 sm:p-5 w-36 sm:w-44 flex flex-col gap-3 animate-slide-in"
+      >
+        <div class="flex items-center justify-between mb-1">
+          <h3 class="text-sm font-bold text-gray-800">🎒 Tárgyak</h3>
+          <button
+            (click)="inventoryOpen = false"
+            class="text-gray-400 hover:text-gray-600 text-lg leading-none cursor-pointer"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div
+          class="flex items-center gap-3 border border-gray-100 rounded-xl p-3"
+        >
+          <span class="text-2xl">❤️</span>
+          <div>
+            <div class="text-lg font-bold text-sky-500">
+              {{ numberOfHearts }}
+            </div>
+            <div class="text-[10px] text-gray-500 font-medium">Szív</div>
+          </div>
+        </div>
+
+        <div
+          class="flex items-center gap-3 border border-gray-100 rounded-xl p-3"
+        >
+          <span class="text-2xl">💡</span>
+          <div>
+            <div class="text-lg font-bold text-sky-500">
+              {{ numberOfHints }}
+            </div>
+            <div class="text-[10px] text-gray-500 font-medium">Tipp</div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
 }
