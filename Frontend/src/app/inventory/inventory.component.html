@@ -57,7 +57,169 @@
   }
 }
 
-@if (this.currentRoute.includes("/my/courses")) {
+@if (
+  (this.currentRoute.includes("/my/courses/") ||
+    this.currentRoute.includes("/dashboard") ||
+    this.currentRoute.includes("/store")) &&
+  this.currentRoute != "my/courses"
+) {
+  <div class="fixed left-0 top-1/2 -translate-y-1/2 z-50">
+    @if (inventoryOpen) {
+      <button
+        (click)="inventoryOpen = true"
+        class="bg-white border border-gray-200 rounded-r-2xl shadow-md px-2 py-4 flex flex-col items-center gap-2 hover:shadow-lg transition-all cursor-pointer"
+      >
+        <span class="text-xl">🎒</span>
+        <span
+          class="text-[10px] text-gray-500 font-large writing-vertical font-bold"
+          >Tárgyaim</span
+        >
+      </button>
+    } @else {
+      <div
+        class="bg-white border border-gray-200 rounded-r-2xl shadow-lg p-4 sm:p-5 w-36 sm:w-44 flex flex-col gap-3 animate-slide-in"
+      >
+        <div class="flex items-center justify-between mb-1">
+          <h3 class="text-sm font-bold text-gray-800">🎒 Tárgyaim</h3>
+          <!-- <button
+            (click)="inventoryOpen = true"
+            class="text-gray-400 hover:text-gray-600 text-lg leading-none cursor-pointer"
+          >
+            ✕
+          </button> -->
+        </div>
+
+        <div
+          class="flex items-center gap-3 border border-gray-100 rounded-xl p-3"
+          [class.delta-background-positive]="
+            heartsChangedBy !== null && heartsChangedBy > 0
+          "
+          [class.delta-background-negative]="
+            heartsChangedBy !== null && heartsChangedBy < 0
+          "
+        >
+          <span class="text-2xl">❤️</span>
+          <div>
+            <div class="relative">
+              <div class="text-lg font-bold text-sky-500">
+                {{ numberOfHearts }}
+              </div>
+              @if (heartsChangedBy !== null) {
+                <span
+                  class="delta-badge"
+                  [class.delta-positive]="heartsChangedBy > 0"
+                  [class.delta-negative]="heartsChangedBy < 0"
+                >
+                  {{ heartsChangedBy > 0 ? "+" : "" }}{{ heartsChangedBy }}
+                </span>
+              }
+            </div>
+            <div class="text-[10px] text-gray-500 font-medium">Szív</div>
+          </div>
+        </div>
+
+        <div
+          class="flex items-center gap-3 border border-gray-100 rounded-xl p-3"
+          [class.delta-background-positive]="
+            hintsChangedBy !== null && hintsChangedBy > 0
+          "
+          [class.delta-background-negative]="
+            hintsChangedBy !== null && hintsChangedBy < 0
+          "
+        >
+          <span class="text-2xl">💡</span>
+          <div>
+            <div class="relative">
+              <div class="text-lg font-bold text-sky-500">
+                {{ numberOfHints }}
+              </div>
+              @if (hintsChangedBy !== null) {
+                <span
+                  class="delta-badge"
+                  [class.delta-positive]="hintsChangedBy > 0"
+                  [class.delta-negative]="hintsChangedBy < 0"
+                >
+                  {{ hintsChangedBy > 0 ? "+" : "" }}{{ hintsChangedBy }}
+                </span>
+              }
+            </div>
+            <div class="text-[10px] text-gray-500 font-medium">Tipp</div>
+          </div>
+        </div>
+
+        @if (
+          this.currentRoute.includes("/dashboard") ||
+          this.currentRoute.includes("/store")
+        ) {
+          <div
+            class="flex items-center gap-3 border border-gray-100 rounded-xl p-3"
+            [class.delta-background-positive]="
+              freezesChangedBy !== null && freezesChangedBy > 0
+            "
+            [class.delta-background-negative]="
+              freezesChangedBy !== null && freezesChangedBy < 0
+            "
+          >
+            <span class="text-2xl">🧊</span>
+            <div>
+              <div class="relative">
+                <div class="text-lg font-bold text-sky-500">
+                  {{ numberOfFreezes }}
+                </div>
+                @if (freezesChangedBy !== null) {
+                  <span
+                    class="delta-badge"
+                    [class.delta-positive]="freezesChangedBy > 0"
+                    [class.delta-negative]="freezesChangedBy < 0"
+                  >
+                    {{ freezesChangedBy > 0 ? "+" : "" }}{{ freezesChangedBy }}
+                  </span>
+                }
+              </div>
+              <div class="text-[10px] text-gray-500 font-medium">
+                Fagyasztás
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="flex items-center gap-3 border border-gray-100 rounded-xl p-3"
+            [class.delta-background-positive]="
+              courseSlotsChangedBy !== null && courseSlotsChangedBy > 0
+            "
+            [class.delta-background-negative]="
+              courseSlotsChangedBy !== null && courseSlotsChangedBy < 0
+            "
+          >
+            <span class="text-2xl">📦</span>
+            <div>
+              <div class="relative">
+                <div class="text-lg font-bold text-sky-500">
+                  {{ numberOfCourseSlots }}
+                </div>
+                @if (courseSlotsChangedBy !== null) {
+                  <span
+                    class="delta-badge"
+                    [class.delta-positive]="courseSlotsChangedBy > 0"
+                    [class.delta-negative]="courseSlotsChangedBy < 0"
+                  >
+                    {{ courseSlotsChangedBy > 0 ? "+" : ""
+                    }}{{ courseSlotsChangedBy }}
+                  </span>
+                }
+              </div>
+              <div class="text-[10px] text-gray-500 font-medium">
+                Kurzushely
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+}
+
+@if (this.currentRoute == "/my/courses") {
   <div class="fixed left-0 top-1/2 -translate-y-1/2 z-50">
     @if (!inventoryOpen) {
       <button
@@ -67,7 +229,7 @@
         <span class="text-xl">🎒</span>
         <span
           class="text-[10px] text-gray-500 font-large writing-vertical font-bold"
-          >Tárgyak</span
+          >Tárgyaim</span
         >
       </button>
     } @else {
@@ -75,7 +237,7 @@
         class="bg-white border border-gray-200 rounded-r-2xl shadow-lg p-4 sm:p-5 w-36 sm:w-44 flex flex-col gap-3 animate-slide-in"
       >
         <div class="flex items-center justify-between mb-1">
-          <h3 class="text-sm font-bold text-gray-800">🎒 Tárgyak</h3>
+          <h3 class="text-sm font-bold text-gray-800">🎒 Tárgyaim</h3>
           <button
             (click)="inventoryOpen = false"
             class="text-gray-400 hover:text-gray-600 text-lg leading-none cursor-pointer"
@@ -86,25 +248,31 @@
 
         <div
           class="flex items-center gap-3 border border-gray-100 rounded-xl p-3"
+          [class.delta-background-positive]="
+            courseSlotsChangedBy !== null && courseSlotsChangedBy > 0
+          "
+          [class.delta-background-negative]="
+            courseSlotsChangedBy !== null && courseSlotsChangedBy < 0
+          "
         >
-          <span class="text-2xl">❤️</span>
+          <span class="text-2xl">📦</span>
           <div>
-            <div class="text-lg font-bold text-sky-500">
-              {{ numberOfHearts }}
+            <div class="relative">
+              <div class="text-lg font-bold text-sky-500">
+                {{ numberOfCourseSlots }}
+              </div>
+              @if (courseSlotsChangedBy !== null) {
+                <span
+                  class="delta-badge"
+                  [class.delta-positive]="courseSlotsChangedBy > 0"
+                  [class.delta-negative]="courseSlotsChangedBy < 0"
+                >
+                  {{ courseSlotsChangedBy > 0 ? "+" : ""
+                  }}{{ courseSlotsChangedBy }}
+                </span>
+              }
             </div>
-            <div class="text-[10px] text-gray-500 font-medium">Szív</div>
-          </div>
-        </div>
-
-        <div
-          class="flex items-center gap-3 border border-gray-100 rounded-xl p-3"
-        >
-          <span class="text-2xl">💡</span>
-          <div>
-            <div class="text-lg font-bold text-sky-500">
-              {{ numberOfHints }}
-            </div>
-            <div class="text-[10px] text-gray-500 font-medium">Tipp</div>
+            <div class="text-[10px] text-gray-500 font-medium">Kurzushely</div>
           </div>
         </div>
       </div>

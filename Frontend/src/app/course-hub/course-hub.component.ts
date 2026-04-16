@@ -8,11 +8,16 @@ import { CourseLogicService } from '../services/course-logic.service';
 import { UtilService } from '../services/util.service';
 import { Course } from '../interfaces/Course';
 import { UserXCourse } from '../interfaces/UserProfile';
-import {InventoryComponent} from '../inventory/inventory.component';
+import { InventoryComponent } from '../inventory/inventory.component';
 
 @Component({
   selector: 'app-course-hub',
-  imports: [FooterComponent, HeaderComponent, LoadingOverlayComponent, InventoryComponent],
+  imports: [
+    FooterComponent,
+    HeaderComponent,
+    LoadingOverlayComponent,
+    InventoryComponent,
+  ],
   templateUrl: './course-hub.component.html',
   styleUrl: './course-hub.component.css',
 })

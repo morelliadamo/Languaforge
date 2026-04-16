@@ -1,5 +1,8 @@
+import { UserXItem } from './../interfaces/UserXItem';
+import { StoreService } from './../services/store.service';
 import { CourseLoaderServiceService } from './../services/course-loader-service.service';
-import { Component, inject } from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CourseLogicService } from '../services/course-logic.service';
 import { Course } from '../interfaces/Course';
 import { Unit } from '../interfaces/Unit';
@@ -36,6 +39,7 @@ export class LoadedCourseComponent {
   private route = inject(ActivatedRoute);
   private utilService = inject(UtilService);
   private lessonProgressService = inject(LessonProgressService);
+  private storeService = inject(StoreService);
 
   isLoading: boolean = true;
   progressLoaded: boolean = false;
@@ -48,6 +52,12 @@ export class LoadedCourseComponent {
   lessonActivated: boolean = false;
   activatedLesson: Lesson | null = null;
   lessonProgresses: LessonProgress[] = [];
+
+  numberOfHearts: number = 0;
+  numberOfHints: number = 0;
+  showNoHeartsMessage: boolean = false;
+
+  private destroyRef = inject(DestroyRef);
 
   toggleUnit(unitId: number): void {
     if (this.expandedUnitIds.has(unitId)) {
@@ -93,6 +103,21 @@ export class LoadedCourseComponent {
             this.isLoading = false;
           });
       });
+
+    this.storeService.getUserHearts(userId).subscribe((item: UserXItem) => {
+      this.numberOfHearts = item.amount;
+    });
+
+    this.storeService.getUserHints(userId).subscribe((item: UserXItem) => {
+      this.numberOfHints = item.amount;
+    });
+
+    this.storeService.itemChanged
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(({ type, changedBy }) => {
+        if (type === 'hearts') this.numberOfHearts += changedBy;
+        if (type === 'hints') this.numberOfHints += changedBy;
+      });
   }
 
   isLessonUnlocked(unit: Unit, lessonIndex: number): boolean {
@@ -117,6 +142,10 @@ export class LoadedCourseComponent {
   }
 
   startLesson(lessonId: number) {
+    if (this.numberOfHearts <= 0) {
+      this.showNoHeartsMessage = true;
+      return;
+    }
     this.lessonActivated = true;
     this.courseActivated = false;
     this.activatedLesson =

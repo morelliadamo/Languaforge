@@ -2,6 +2,7 @@ import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { StoreItem } from '../interfaces/StoreItem';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthServiceService } from '../services/auth-service.service';
+import { StoreService } from '../services/store.service';
 
 @Component({
   selector: 'app-buy-item',
@@ -14,7 +15,9 @@ export class BuyItemComponent {
   @Output() close = new EventEmitter<void>();
 
   private http = inject(HttpClient);
+
   private authService = inject(AuthServiceService);
+  private storeService = inject(StoreService);
 
   purchasing = false;
   purchaseSuccess = false;
@@ -77,29 +80,24 @@ export class BuyItemComponent {
     const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
     const userId = this.authService.getCurrentUserId();
 
-    let itemType: string = "";
+    let itemType: string = '';
 
-    if (this.item.type.startsWith("hearts")){
-      itemType = "hearts";
-    }
-    else if (this.item.type.startsWith("hints")){
-      itemType = "hints";
-    }
-    else if (this.item.type == "freeze"){
-      itemType = "freezes";
-    }
-    else if (this.item.type.startsWith("course")){
-      itemType = "course_slots";
+    if (this.item.type.startsWith('hearts')) {
+      itemType = 'hearts';
+    } else if (this.item.type.startsWith('hints')) {
+      itemType = 'hints';
+    } else if (this.item.type == 'freeze') {
+      itemType = 'freezes';
+    } else if (this.item.type.startsWith('course')) {
+      itemType = 'course_slots';
     }
 
+    incrementBy == 0 || incrementBy == null
+      ? (incrementBy = 1)
+      : (incrementBy = incrementBy);
 
-    incrementBy == 0 || incrementBy == null ? incrementBy = 1 : incrementBy = incrementBy;
-
-    this.http
-      .patch(
-        `http://localhost:8080/userXitems/user/${userId}/incrementUserXItemQuantity/${itemType}/${incrementBy}`,
-        { headers },
-      )
+    this.storeService
+      .incrementUserItem(userId!, itemType, incrementBy)
       .subscribe({
         next: () => {
           this.purchasing = false;

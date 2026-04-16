@@ -4,9 +4,15 @@ import { StoreService } from '../services/store.service';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { BuyItemComponent } from '../buy-item/buy-item.component';
+import { InventoryComponent } from '../inventory/inventory.component';
 @Component({
   selector: 'app-store',
-  imports: [HeaderComponent, FooterComponent, BuyItemComponent],
+  imports: [
+    HeaderComponent,
+    FooterComponent,
+    BuyItemComponent,
+    InventoryComponent,
+  ],
   templateUrl: './store.component.html',
   styleUrl: './store.component.css',
 })

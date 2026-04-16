@@ -1,10 +1,12 @@
 import { StoreItem } from './../interfaces/StoreItem';
-import { Component, inject } from '@angular/core';
+import { Component, inject, DestroyRef } from '@angular/core';
 import { StoreService } from '../services/store.service';
 import { AuthServiceService } from '../services/auth-service.service';
 import { UserXItem, UserXItemInventory } from '../interfaces/UserXItem';
 import { User } from '../interfaces/User';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-inventory',
@@ -13,7 +15,6 @@ import {Router} from '@angular/router';
   styleUrl: './inventory.component.css',
 })
 export class InventoryComponent {
-
   inventoryOpen = false;
 
   loaded = false;
@@ -22,28 +23,32 @@ export class InventoryComponent {
 
   private storeService = inject(StoreService);
   private authService = inject(AuthServiceService);
+
   private router = inject(Router);
 
+  private destroyRef = inject(DestroyRef);
 
   get currentRoute(): string {
     return this.router.url;
   }
-
 
   numberOfHearts: number = 0;
   numberOfHints: number = 0;
   numberOfFreezes: number = 0;
   numberOfCourseSlots: number = 0;
 
+  heartsChangedBy: number | null = null;
+  hintsChangedBy: number | null = null;
+  freezesChangedBy: number | null = null;
+  courseSlotsChangedBy: number | null = null;
+
   ngOnInit() {
-
-
     const userId = Number(this.authService.getCurrentUserId());
     if (!userId) return;
 
     this.storeService.getUserItems(userId).subscribe({
       next: (items) => {
-        console.log("items: "+items);
+        console.log('items: ' + items);
         for (const i of items) {
           console.log(i);
 
@@ -57,9 +62,7 @@ export class InventoryComponent {
           };
           this.items.push(uxi);
 
-
-
-          switch (i.itemId){
+          switch (i.itemId) {
             case 1:
               this.numberOfHearts += i.amount;
               break;
@@ -73,16 +76,9 @@ export class InventoryComponent {
               this.numberOfCourseSlots += i.amount;
               break;
           }
-
-
-
-          }
-
-
-
+        }
 
         this.loaded = true;
-
 
         console.log(this.items);
         console.log(this.numberOfHearts);
@@ -92,6 +88,44 @@ export class InventoryComponent {
         this.loaded = true;
       },
     });
+
+    this.storeService.itemChanged
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(({ type, changedBy }) => {
+        let target: keyof this | null = null;
+        switch (type) {
+          case 'hearts':
+            this.numberOfHearts += changedBy;
+            this.flashChangedBy('hearts', changedBy);
+            break;
+          case 'hints':
+            this.numberOfHints += changedBy;
+            this.flashChangedBy('hints', changedBy);
+            break;
+          case 'freezes':
+            this.numberOfFreezes += changedBy;
+            this.flashChangedBy('freezes', changedBy);
+            break;
+          case 'course_slots':
+            this.numberOfCourseSlots += changedBy;
+            this.flashChangedBy('courseSlots', changedBy);
+            break;
+        }
+      });
+  }
+
+  private flashChangedByTimers: Record<string, any> = {};
+  flashChangedBy(
+    item: 'hearts' | 'hints' | 'freezes' | 'courseSlots',
+    delta: number,
+  ) {
+    const key = (item + 'ChangedBy') as keyof this;
+    clearTimeout(this.flashChangedByTimers[item]);
+    (this as any)[key] = delta;
+    this.flashChangedByTimers[item] = setTimeout(
+      () => ((this as any)[key] = null),
+      1500,
+    );
   }
 
   getEmoji(type: string): string {
@@ -105,7 +139,7 @@ export class InventoryComponent {
       freeze: '🧊',
       course_slot: '📦',
       hearts1: '❤️',
-      hints1: '💡'
+      hints1: '💡',
     };
     return map[type] || '';
   }
@@ -139,8 +173,4 @@ export class InventoryComponent {
     };
     return map[type] || 0;
   }
-
-
-
-
 }

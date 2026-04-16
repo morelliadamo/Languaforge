@@ -67,3 +67,65 @@
   writing-mode: vertical-rl;
   text-orientation: mixed;
 }
+
+@keyframes float-up-fade {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+.delta-badge {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  pointer-events: none;
+  animation: float-up-fade 1.5s ease-out forwards;
+}
+
+.delta-positive {
+  color: #22c55e;
+}
+.delta-negative {
+  color: #ef4444;
+}
+
+@keyframes flash-green {
+  0% {
+    background-color: transparent;
+  }
+  20% {
+    background-color: rgba(34, 197, 94, 0.25);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+@keyframes flash-red {
+  0% {
+    background-color: transparent;
+  }
+  20% {
+    background-color: rgba(239, 68, 68, 0.25);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.delta-background-positive {
+  animation: flash-green 1.5s ease-in-out;
+  border-radius: inherit;
+}
+
+.delta-background-negative {
+  animation: flash-red 1.5s ease-in-out;
+  border-radius: inherit;
+}

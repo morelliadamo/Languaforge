@@ -10,14 +10,17 @@ import {
 import { Lesson } from './../interfaces/Lesson';
 import {
   Component,
+  DestroyRef,
   EventEmitter,
   inject,
   Input,
   Output,
   signal,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { HoverableTextComponent } from '../hoverable-text-component/hoverable-text-component';
 import { FormsModule } from '@angular/forms';
+import { StoreService } from '../services/store.service';
 
 @Component({
   selector: 'app-loaded-lesson',
@@ -66,6 +69,12 @@ export class LoadedLessonComponent {
   private lessonProgress: LessonProgress | null = null;
   private alreadyCompleted: boolean = false;
 
+  private storeService = inject(StoreService);
+  private destroyRef = inject(DestroyRef);
+
+  numberOfHearts: number = 0;
+  outOfHearts: boolean = false;
+
   get currentExercise(): Exercise | null {
     return this.lessonContent[this.currentIndex] ?? null;
   }
@@ -99,6 +108,17 @@ export class LoadedLessonComponent {
         this.initMatchExercise();
       }
     }
+
+    const userId = Number(this.authService.getCurrentUserId());
+    this.storeService.getUserHearts(userId).subscribe((item) => {
+      this.numberOfHearts = item.amount;
+    });
+
+    this.storeService.itemChanged
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(({ type, changedBy }) => {
+        if (type === 'hearts') this.numberOfHearts += changedBy;
+      });
   }
 
   private initProgress() {
@@ -421,6 +441,13 @@ export class LoadedLessonComponent {
         }
       }
     } else {
+      this.storeService
+        .decrementUserItem(this.authService.getCurrentUserId()!, 'hearts', 1)
+        .subscribe(() => {
+          if (this.numberOfHearts <= 0) {
+            this.outOfHearts = true;
+          }
+        });
       this.lessonContent.push(exercise);
     }
   }

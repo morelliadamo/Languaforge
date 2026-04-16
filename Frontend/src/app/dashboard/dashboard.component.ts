@@ -17,6 +17,7 @@ import { ActivityHeatmapComponent } from '../activity-heatmap/activity-heatmap.c
 import { CourseLogicService } from '../services/course-logic.service';
 import { AchievementUnlocked } from '../achievement-unlocked/achievement-unlocked';
 import { AchievementService } from '../services/achievement.service';
+import { InventoryComponent } from '../inventory/inventory.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,6 +27,7 @@ import { AchievementService } from '../services/achievement.service';
     FooterComponent,
     LoadingOverlayComponent,
     ActivityHeatmapComponent,
+    InventoryComponent,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
