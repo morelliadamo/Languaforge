@@ -7,10 +7,11 @@ import { User } from '../interfaces/User';
 import { Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { takeUntil } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-inventory',
-  imports: [],
+  imports: [AsyncPipe],
   templateUrl: './inventory.component.html',
   styleUrl: './inventory.component.css',
 })
@@ -27,6 +28,8 @@ export class InventoryComponent {
   private router = inject(Router);
 
   private destroyRef = inject(DestroyRef);
+
+  nextRefillAt = this.storeService.remainingSecsUntilRefill;
 
   get currentRoute(): string {
     return this.router.url;
@@ -45,6 +48,8 @@ export class InventoryComponent {
   ngOnInit() {
     const userId = Number(this.authService.getCurrentUserId());
     if (!userId) return;
+
+    this.storeService.getTimeRemainingUntilNextItemRefill();
 
     this.storeService.getUserItems(userId).subscribe({
       next: (items) => {
@@ -172,5 +177,11 @@ export class InventoryComponent {
       course_slot: 1,
     };
     return map[type] || 0;
+  }
+
+  formatTime(seconds: number): string {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    return `${m}:${s.toString().padStart(2, '0')}`;
   }
 }

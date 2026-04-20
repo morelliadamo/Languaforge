@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { StoreItem } from '../interfaces/StoreItem';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { BehaviorSubject, interval, Subject, Subscription, timer } from 'rxjs';
+import { map, take, tap } from 'rxjs/operators';
 import { UserXItem } from '../interfaces/UserXItem';
 import { User } from '../interfaces/User';
 @Injectable({
@@ -11,10 +11,14 @@ import { User } from '../interfaces/User';
 export class StoreService {
   constructor(private http: HttpClient) {}
 
+  private refillSubscription?: Subscription;
+
   private apiUrl = 'http://localhost:8080/storeItems/';
   private apiUrl2 = 'http://localhost:8080/userXitems/';
 
   itemChanged = new Subject<{ type: string; changedBy: number }>();
+
+  remainingSecsUntilRefill = new BehaviorSubject<number>(0);
 
   getStoreItems() {
     const token = localStorage.getItem('access_token');
@@ -90,5 +94,43 @@ export class StoreService {
       .pipe(
         tap(() => this.itemChanged.next({ type, changedBy: -decrementBy })),
       );
+  }
+
+  getTimeRemainingUntilNextItemRefill() {
+    this.refillSubscription?.unsubscribe();
+
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    this.refillSubscription = this.http
+      .get<{
+        remainingMillis: number;
+      }>('http://localhost:8080/schedules/nextItemRefill', { headers })
+      .subscribe((res) => {
+        let remaining = Math.floor(res.remainingMillis / 1000);
+
+        if (remaining <= 0) {
+          this.remainingSecsUntilRefill.next(0);
+          this.refillSubscription = timer(5000).subscribe(() =>
+            this.getTimeRemainingUntilNextItemRefill(),
+          );
+          return;
+        }
+
+        this.remainingSecsUntilRefill.next(remaining);
+
+        this.refillSubscription = interval(1000)
+          .pipe(
+            take(remaining),
+            map((i) => remaining - i - 1),
+          )
+          .subscribe(
+            (sec) => this.remainingSecsUntilRefill.next(sec),
+            undefined,
+            () => this.getTimeRemainingUntilNextItemRefill(),
+          );
+      });
   }
 }

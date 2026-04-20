@@ -28,10 +28,12 @@ public class StoreItem {
     private String description;
 
 
-    private enum Type {
+    enum Type {
+        hearts1,
         hearts5,
         hearts10,
         hearts25,
+        hints1,
         hints5,
         hints10,
         hints25,

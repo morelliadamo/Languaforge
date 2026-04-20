@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -47,4 +48,5 @@ public class UserXItem {
     protected void onCreate() {
         createdAt = Timestamp.valueOf(LocalDateTime.now());
     }
+
 }
