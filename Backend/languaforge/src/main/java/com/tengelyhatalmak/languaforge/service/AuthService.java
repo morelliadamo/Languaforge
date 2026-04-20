@@ -2,10 +2,7 @@ package com.tengelyhatalmak.languaforge.service;
 
 import com.tengelyhatalmak.languaforge.dto.LoginRequestDTO;
 import com.tengelyhatalmak.languaforge.dto.LoginResponseDTO;
-import com.tengelyhatalmak.languaforge.model.LoginData;
-import com.tengelyhatalmak.languaforge.model.User;
-import com.tengelyhatalmak.languaforge.model.UserXCourse;
-import com.tengelyhatalmak.languaforge.model.UserXItem;
+import com.tengelyhatalmak.languaforge.model.*;
 import com.tengelyhatalmak.languaforge.repository.*;
 import com.tengelyhatalmak.languaforge.util.JWTUtil;
 import jakarta.transaction.Transactional;
@@ -34,6 +31,7 @@ public class AuthService {
     private final CourseRepository courseRepository;
     private final UserXItemRepository userXItemRepository;
     private final StoreItemRepository storeItemRepository;
+    private final StreakRepository streakRepository;
 
 
     public ResponseEntity registerUser(User user) {
@@ -136,6 +134,18 @@ public class AuthService {
                         .build()
         );
 
+        //creating initial streak
+        streakRepository.save(
+                Streak.builder()
+                        .user(user)
+                        .currentStreak(1)
+                        .longestStreak(1)
+                        .isFrozen(false)
+                        .updatedAt(Timestamp.valueOf(LocalDateTime.now()))
+                        .isDeleted(false)
+                        .deletedAt(null)
+                        .build()
+        );
 
         return ResponseEntity.ok()
                 .contentType(MediaType.TEXT_HTML)
