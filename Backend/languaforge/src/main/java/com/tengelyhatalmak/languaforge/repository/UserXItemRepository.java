@@ -10,8 +10,8 @@ import java.util.List;
 public interface UserXItemRepository extends JpaRepository<UserXItem, Integer> {
     List<UserXItem> findByUserId(Integer userId);
 
-    @Query("SELECT uxi FROM UserXItem uxi WHERE uxi.userId = :userId AND uxi.itemId = :itemId AND uxi.amount > 0 ORDER BY uxi.id DESC LIMIT 1")
-    UserXItem findByItemIdAndUserId(Integer userId, Integer itemId);
+    @Query("SELECT uxi FROM UserXItem uxi WHERE uxi.userId = :userId AND uxi.itemId = :itemId ORDER BY uxi.id DESC LIMIT 1")
+    UserXItem findByUserIdAndItemId(Integer userId, Integer itemId);
 
     @Modifying
     @Query("UPDATE UserXItem uxi SET uxi.amount = uxi.amount + 1 WHERE uxi.storeItem.id = 1 AND uxi.amount < 10")

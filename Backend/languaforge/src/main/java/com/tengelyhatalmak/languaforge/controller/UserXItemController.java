@@ -24,6 +24,11 @@ public class UserXItemController {
         return userXItemService.findUserXItemById(id);
     }
 
+    @GetMapping("/user/{userId}/item/{itemId}")
+    public UserXItem getUserXItemByUserIdAndItemId(@PathVariable Integer userId, @PathVariable Integer itemId){
+        return userXItemService.findUserXItemsByUserIdAndItemId(userId, itemId);
+    }
+
     @GetMapping("/user/{userId}")
     public List<UserXItem> getUserXItemsByUserId(@PathVariable Integer userId){
         return userXItemService.findUserXItemsByUserId(userId);

@@ -19,8 +19,6 @@ public class ScheduleController {
     @Autowired
     private final ItemRefillSchedule itemRefillSchedule;
 
-
-
     @GetMapping("/nextItemRefill")
     public Map<String, Long> getTimeUntilNextRefill(){
         long remainingMillis = Duration.between(Instant.now(), itemRefillSchedule.getNextRefillAt()).toMillis();

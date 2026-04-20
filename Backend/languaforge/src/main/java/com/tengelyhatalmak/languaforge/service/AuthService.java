@@ -5,9 +5,8 @@ import com.tengelyhatalmak.languaforge.dto.LoginResponseDTO;
 import com.tengelyhatalmak.languaforge.model.LoginData;
 import com.tengelyhatalmak.languaforge.model.User;
 import com.tengelyhatalmak.languaforge.model.UserXCourse;
-import com.tengelyhatalmak.languaforge.repository.CourseRepository;
-import com.tengelyhatalmak.languaforge.repository.UserRepository;
-import com.tengelyhatalmak.languaforge.repository.UserXCourseRepository;
+import com.tengelyhatalmak.languaforge.model.UserXItem;
+import com.tengelyhatalmak.languaforge.repository.*;
 import com.tengelyhatalmak.languaforge.util.JWTUtil;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -33,8 +32,8 @@ public class AuthService {
     private final JWTUtil jwtUtil;
     private final UserXCourseRepository userXCourseRepository;
     private final CourseRepository courseRepository;
-
-
+    private final UserXItemRepository userXItemRepository;
+    private final StoreItemRepository storeItemRepository;
 
 
     public ResponseEntity registerUser(User user) {
@@ -60,6 +59,7 @@ public class AuthService {
             String activationToken = UUID.randomUUID().toString();
             user.setActivationToken(activationToken);
             user.setIsActive(false);
+
             userRepository.save(user);
 //            userXCourseRepository.save(new UserXCourse(user, courseRepository.findById(3).orElseThrow(()->new RuntimeException("No course with id 3")))); //temporary, only course with id of 3 available currently
 
@@ -84,6 +84,58 @@ public class AuthService {
         user.setIsActive(true);
         user.setActivationToken(null);
         userService.saveUser(user);
+
+
+        //hearts container
+        userXItemRepository.save(
+                UserXItem.builder()
+                        .user(user)
+                        .userId(user.getId())
+                        .itemId(1)
+                        .storeItem(storeItemRepository.findById(1).orElseThrow(() -> new RuntimeException("No StoreItem found with id 1")))
+                        .amount(10)
+                        .createdAt(Timestamp.valueOf(LocalDateTime.now()))
+                        .build()
+            );
+
+        //hints container
+        userXItemRepository.save(
+                UserXItem.builder()
+                        .user(user)
+                        .userId(user.getId())
+                        .itemId(2)
+                        .storeItem(storeItemRepository.findById(2).orElseThrow(() -> new RuntimeException("No StoreItem found with id 1")))
+                        .amount(10)
+                        .createdAt(Timestamp.valueOf(LocalDateTime.now()))
+                        .build()
+            );
+
+
+        //freezes container
+        userXItemRepository.save(
+                UserXItem.builder()
+                        .user(user)
+                        .userId(user.getId())
+                        .itemId(3)
+                        .storeItem(storeItemRepository.findById(3).orElseThrow(() -> new RuntimeException("No StoreItem found with id 1")))
+                        .amount(0)
+                        .createdAt(Timestamp.valueOf(LocalDateTime.now()))
+                        .build()
+        );
+
+
+        //course slots container
+        userXItemRepository.save(
+                UserXItem.builder()
+                        .user(user)
+                        .userId(user.getId())
+                        .itemId(4)
+                        .storeItem(storeItemRepository.findById(4).orElseThrow(() -> new RuntimeException("No StoreItem found with id 1")))
+                        .amount(0)
+                        .createdAt(Timestamp.valueOf(LocalDateTime.now()))
+                        .build()
+        );
+
 
         return ResponseEntity.ok()
                 .contentType(MediaType.TEXT_HTML)
