@@ -9,6 +9,7 @@ import { UtilService } from '../services/util.service';
 import { Course } from '../interfaces/Course';
 import { UserXCourse } from '../interfaces/UserProfile';
 import { InventoryComponent } from '../inventory/inventory.component';
+import { StoreService } from '../services/store.service';
 
 @Component({
   selector: 'app-course-hub',
@@ -25,6 +26,7 @@ export class CourseHubComponent implements OnInit {
   private authService = inject(AuthServiceService);
   private courseLoader = inject(CourseLoaderServiceService);
   private utilService = inject(UtilService);
+  private storeService = inject(StoreService);
   courseLogicService = inject(CourseLogicService);
 
   isLoading = true;
@@ -114,6 +116,14 @@ export class CourseHubComponent implements OnInit {
       });
       allLoaded = true;
       checkDone();
+    });
+
+    this.storeService.getUserCourseSlots(userId).subscribe((courseSlots) => {
+      this.maxCourseSlots += courseSlots.amount;
+      console.log(
+        'course slots user has--------------------',
+        courseSlots.amount,
+      );
     });
   }
 
@@ -225,7 +235,6 @@ export class CourseHubComponent implements OnInit {
 
   isEnglishRequired(course: Course): boolean {
     if (course.description.toLowerCase().split(' ').includes('learn')) {
-      console.log(course.description);
     }
 
     return course.description.toLowerCase().split(' ').includes('learn');

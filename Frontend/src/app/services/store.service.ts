@@ -64,6 +64,17 @@ export class StoreService {
     });
   }
 
+  getUserCourseSlots(userId: number) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.get<UserXItem>(`${this.apiUrl2}user/${userId}/item/4`, {
+      headers: headers,
+    });
+  }
+
   incrementUserItem(userId: number, type: string, incrementBy: number) {
     const token = localStorage.getItem('access_token');
     const headers = new HttpHeaders({
