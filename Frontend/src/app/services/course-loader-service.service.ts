@@ -193,4 +193,14 @@ export class CourseLoaderServiceService {
       headers,
     });
   }
+
+  getAllCourses() {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.get<any>('http://localhost:8080/courses/', {
+      headers,
+    });
+  }
 }

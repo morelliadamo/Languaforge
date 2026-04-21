@@ -72,7 +72,7 @@
   <div class="fixed left-0 top-1/2 -translate-y-1/2 z-50">
     @if (inventoryOpen) {
       <button
-        (click)="inventoryOpen = true"
+        (click)="inventoryOpen = false"
         class="bg-white border border-gray-200 rounded-r-2xl shadow-md px-2 py-4 flex flex-col items-center gap-2 hover:shadow-lg transition-all cursor-pointer"
       >
         <span class="text-xl">🎒</span>
@@ -87,12 +87,12 @@
       >
         <div class="flex items-center justify-between mb-1">
           <h3 class="text-sm font-bold text-gray-800">🎒 Tárgyaim</h3>
-          <!-- <button
+          <button
             (click)="inventoryOpen = true"
             class="text-gray-400 hover:text-gray-600 text-lg leading-none cursor-pointer"
           >
             ✕
-          </button> -->
+          </button>
         </div>
 
         <div

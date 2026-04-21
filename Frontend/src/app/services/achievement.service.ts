@@ -12,6 +12,7 @@ import { AuthServiceService } from './auth-service.service';
 })
 export class AchievementService {
   private apiUrl = 'http://localhost:8080/userXachievements';
+  private apiUrl2 = 'http://localhost:8080/achievements';
 
   private unlockedQueue = new BehaviorSubject<AchievementUnlockedDTO | null>(
     null,
@@ -65,34 +66,7 @@ export class AchievementService {
 
     // Load earned achievements
     this.loadEarnedAchievements();
-
-    // Remove toastr if you no longer want it
-    // this.toastr.success(...);
   }
-  // private handleNewUnlock(unlocked: AchievementUnlockedDTO) {
-  //   this.unlockedQueue.next(unlocked);
-  //   setTimeout(() => this.unlockedQueue.next(null), 8000);
-
-  //   this.toastr.success(
-  //     // unlocked.description || 'Szép munka! Egy új Teljesítményt értél el!',
-  //     // `Feloldott Teljesítmény: ${unlocked.name}`,
-  //     // {
-  //     //   timeOut: 8000,
-  //     //   positionClass: 'toast-top-center',
-  //     //   progressBar: true,
-  //     //   closeButton: true,
-  //     //   tapToDismiss: false,
-  //     //   enableHtml: true,
-  //     // },
-  //     unlocked.description || 'Szép munka! Egy új Teljesítményt értél el!',
-  //     `Feloldott Teljesítmény: ${unlocked.name}`,
-  //     {
-  //       enableHtml: true,
-  //       html: `<div style="display: flex; align-items: center;"><img src="${unlocked.iconUrl}" alt="${unlocked.name}" style="width: 24px; height: 24px; margin-right: 8px;">${unlocked.description}</div>`,
-  //     },
-  //   );
-  //   this.loadEarnedAchievements();
-  // }
 
   private loadEarnedAchievements() {
     this.http
@@ -147,5 +121,14 @@ export class AchievementService {
 
   clearNewUnlock() {
     this.unlockedQueue.next(null);
+  }
+
+  getAllAchievements() {
+    const token = localStorage.getItem('access-token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.get<any>(`${this.apiUrl2}/`);
   }
 }

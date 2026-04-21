@@ -102,8 +102,8 @@ export class CourseHubComponent implements OnInit {
           course.color = this.utilService.stringToColor(course.title);
           return course;
         });
-        this.completedCourses = mapped.filter((c) => c.progress >= 100);
-        this.startedCourses = mapped.filter((c) => c.progress < 100);
+        this.completedCourses = mapped.filter((c) => c.progress! >= 100);
+        this.startedCourses = mapped.filter((c) => c.progress! < 100);
         startedLoaded = true;
         checkDone();
       });
@@ -120,10 +120,6 @@ export class CourseHubComponent implements OnInit {
 
     this.storeService.getUserCourseSlots(userId).subscribe((courseSlots) => {
       this.maxCourseSlots += courseSlots.amount;
-      console.log(
-        'course slots user has--------------------',
-        courseSlots.amount,
-      );
     });
   }
 
