@@ -74,6 +74,7 @@ export class LoadedLessonComponent {
 
   numberOfHearts: number = 0;
   outOfHearts: boolean = false;
+  numberOfHints: number = 0;
 
   get currentExercise(): Exercise | null {
     return this.lessonContent[this.currentIndex] ?? null;
@@ -114,10 +115,15 @@ export class LoadedLessonComponent {
       this.numberOfHearts = item.amount;
     });
 
+    this.storeService.getUserHints(userId).subscribe((item) => {
+      this.numberOfHints = item.amount;
+    });
+
     this.storeService.itemChanged
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(({ type, changedBy }) => {
         if (type === 'hearts') this.numberOfHearts += changedBy;
+        if (type === 'hints') this.numberOfHints += changedBy;
       });
   }
 
@@ -286,6 +292,13 @@ export class LoadedLessonComponent {
 
   closeLesson() {
     this.lessonClosed.emit();
+  }
+
+  onHintUsed(): void {
+    if (this.numberOfHints <= 0) return;
+    const userId = this.authService.getCurrentUserId();
+    if (!userId) return;
+    this.storeService.decrementUserItem(Number(userId), 'hints', 1).subscribe();
   }
 
   // ─── Exercise type helpers ───

@@ -1,8 +1,10 @@
 import {
   Component,
+  EventEmitter,
   inject,
   Input,
   OnChanges,
+  Output,
   signal,
   SimpleChanges,
 } from '@angular/core';
@@ -26,6 +28,11 @@ export class HoverableTextComponent implements OnChanges {
 
   @Input() textClass: string = 'text-xl sm:text-2xl font-bold text-gray-800';
 
+  /** When true, tooltip only appears on click (not hover) */
+  @Input() clickToReveal: boolean = false;
+
+  @Output() hintUsed = new EventEmitter<void>();
+
   private definitionService = inject(WordDefinitionService);
 
   words: HoverableWord[] = [];
@@ -33,10 +40,13 @@ export class HoverableTextComponent implements OnChanges {
   activeWord = signal<string | null>(null);
   tooltipPosition = signal<{ x: number; y: number }>({ x: 0, y: 0 });
 
+  private usedHintWords = new Set<string>();
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['text']) {
       this.parseText();
       this.prefetchDefinitions();
+      this.usedHintWords.clear();
     }
   }
 
@@ -142,7 +152,7 @@ export class HoverableTextComponent implements OnChanges {
   }
 
   onWordHover(word: HoverableWord, event: MouseEvent): void {
-    if (!word.isWord) return;
+    if (!word.isWord || this.clickToReveal) return;
     const key = word.clean.toLowerCase();
     if (this.definitions()[key]) {
       this.activeWord.set(key);
@@ -154,7 +164,31 @@ export class HoverableTextComponent implements OnChanges {
     }
   }
 
+  onWordClick(word: HoverableWord, event: MouseEvent): void {
+    if (!word.isWord) return;
+    const key = word.clean.toLowerCase();
+    if (!this.definitions()[key]) return;
+
+    if (this.clickToReveal) {
+      const rect = (event.target as HTMLElement).getBoundingClientRect();
+      if (this.activeWord() === key) {
+        this.activeWord.set(null);
+        return;
+      }
+      this.activeWord.set(key);
+      this.tooltipPosition.set({
+        x: rect.left + rect.width / 2,
+        y: rect.top,
+      });
+      if (!this.usedHintWords.has(key)) {
+        this.usedHintWords.add(key);
+        this.hintUsed.emit();
+      }
+    }
+  }
+
   onWordLeave(): void {
+    if (this.clickToReveal) return;
     this.activeWord.set(null);
   }
 

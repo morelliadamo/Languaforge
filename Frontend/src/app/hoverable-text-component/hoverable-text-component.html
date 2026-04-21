@@ -9,6 +9,7 @@
       }"
       (mouseenter)="onWordHover(word, $event)"
       (mouseleave)="onWordLeave()"
+      (click)="onWordClick(word, $event)"
       >{{ word.display }}</span
     >
     <ng-template #plainText>{{ word.display }}</ng-template>
