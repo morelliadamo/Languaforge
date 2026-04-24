@@ -24,9 +24,9 @@ export class UserProfileDataService {
         completedCourses: userProfile.userXCourses
           .filter((uxc) => uxc.completedAt !== null)
           .map((uxc) => uxc.course),
-        achievements: userProfile.achievementsOfUser
-          .filter((a) => !a.isDeleted)
-          .map((a) => a.achievement),
+        achievements: userProfile.achievementsOfUser.filter(
+          (a) => !a.isDeleted,
+        ),
         achievementCount: userProfile.achievementsOfUser.filter(
           (a) => !a.isDeleted,
         ).length,

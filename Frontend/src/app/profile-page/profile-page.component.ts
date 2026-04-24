@@ -112,11 +112,13 @@ export class ProfilePageComponent implements OnInit {
           }
 
           if (data.achievements?.length > 0) {
-            this.achievements = data.achievements.map((a: any) => ({
-              icon: a.iconUrl ?? '🏆',
-              name: a.name,
-              description: a.description,
-              earnedAt: a.createdAt,
+            console.log('ACH: ' + data.achievements[0].earnedAt);
+
+            this.achievements = data.achievements.map((a) => ({
+              icon: a.achievement.iconUrl ?? '🏆',
+              name: a.achievement.name,
+              description: a.achievement.description,
+              earnedAt: a.earnedAt,
             }));
           }
         });

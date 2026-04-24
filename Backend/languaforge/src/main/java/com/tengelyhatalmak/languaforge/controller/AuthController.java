@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/auth")
@@ -55,10 +56,13 @@ public class AuthController {
     }
 
     @GetMapping("/isAdmin/{userId}")
-    public Boolean checkIfUserIsAdmin(@PathVariable Integer userId){
-        System.out.println(userService.findUserById(userId).getRoleId());
-        return userService.findUserById(userId).getRoleId() == 2;
-
+    public Boolean checkIfUserIsAdmin(@PathVariable Optional<Integer> userId){
+        if (userId.isEmpty()) {
+            System.out.println("No user logged in");
+            return null;
+        } else {
+            return userService.findUserById(userId.get()).getRoleId() == 2;
+        }
     }
 
 }

@@ -8,7 +8,7 @@
 //   deletedAt: string | null;
 // }
 
-import { Course, Achievement } from './UserProfile';
+import { Course, Achievement, AchievementOfUser } from './UserProfile';
 
 // export interface AchievementOfUser {
 //   id: number;
@@ -78,7 +78,7 @@ export interface UserProfileData {
   currentStreak: number;
   longestStreak: number;
   completedCourses: Course[];
-  achievements: Achievement[];
+  achievements: AchievementOfUser[];
   achievementCount: number;
   avatarUrl: string | null;
   bio: string | null;

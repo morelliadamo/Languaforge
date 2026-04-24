@@ -90,7 +90,7 @@ export class DashboardComponent {
         this.currentStreak = String(data.currentStreak);
         this.longestStreak = String(data.longestStreak);
         this.completedCourses = data.completedCourses;
-        this.achievements = data.achievements;
+        this.achievements = data.achievements.map((a) => a.achievement);
       });
 
     //courses available to start
