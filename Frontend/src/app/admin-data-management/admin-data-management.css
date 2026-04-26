@@ -1,0 +1,6 @@
+.entity-results-panel {
+  max-height: min(32rem, calc(100vh - 24rem));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 0.25rem;
+}
