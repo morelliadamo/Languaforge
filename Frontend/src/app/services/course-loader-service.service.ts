@@ -7,6 +7,7 @@ import { Course } from '../interfaces/Course';
 import { UserXCourse } from '../interfaces/UserProfile';
 import { AuthServiceService } from './auth-service.service';
 import { LessonProgress } from '../interfaces/LessonProgress';
+import { Exercise } from '../interfaces/Exercise';
 
 @Injectable({
   providedIn: 'root',
@@ -202,5 +203,131 @@ export class CourseLoaderServiceService {
     return this.http.get<any>('http://localhost:8080/courses/', {
       headers,
     });
+  }
+
+  //-------------------Course------------------
+  updateCourse(id: number, body: Partial<Course>) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.put(
+      `http://localhost:8080/courses/updateCourse/${id}`,
+      body,
+      { headers },
+    );
+  }
+
+  softDeleteCourse(id: number) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.patch(
+      `http://localhost:8080/courses/softDeleteCourse/${id}`,
+      null,
+      { headers },
+    );
+  }
+
+  restoreCourse(id: number) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.patch(
+      `http://localhost:8080/courses/restoreCourse/${id}`,
+      null,
+      { headers },
+    );
+  }
+
+  //-------------------Unit------------------
+  updateUnit(id: number, body: Partial<Unit>) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.put(`http://localhost:8080/units/updateUnit/${id}`, body, {
+      headers,
+    });
+  }
+
+  softDeleteUnit(id: number) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.patch(
+      `http://localhost:8080/units/softDeleteUnit/${id}`,
+      null,
+      {
+        headers,
+      },
+    );
+  }
+
+  restoreUnit(id: number) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.patch(
+      `http://localhost:8080/units/restoreUnit/${id}`,
+      null,
+      {
+        headers,
+      },
+    );
+  }
+
+  //-------------------Lesson------------------
+  updateLesson(id: number, body: Partial<Lesson>) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.put(
+      `http://localhost:8080/lessons/updateLesson/${id}`,
+      body,
+      { headers },
+    );
+  }
+
+  softDeleteLesson(id: number) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.patch(
+      `http://localhost:8080/lessons/softDeleteLesson/${id}`,
+      null,
+      { headers },
+    );
+  }
+
+  restoreLesson(id: number) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.patch(
+      `http://localhost:8080/lessons/restoreLesson/${id}`,
+      null,
+      { headers },
+    );
+  }
+
+  //-------------------Exercise----------------------------
+  updateExercise(id: number, body: Partial<Exercise>) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.put(
+      `http://localhost:8080/exercises/updateExercise/${id}`,
+      body,
+      { headers },
+    );
+  }
+
+  softDeleteExercise(id: number) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.patch(
+      `http://localhost:8080/exercises/softDeleteExercise/${id}`,
+      null,
+      { headers },
+    );
+  }
+
+  restoreExercise(id: number) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.patch(
+      `http://localhost:8080/exercises/restoreExercise/${id}`,
+      null,
+      { headers },
+    );
   }
 }

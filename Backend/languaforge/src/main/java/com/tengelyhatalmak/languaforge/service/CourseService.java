@@ -17,6 +17,9 @@ public interface CourseService {
 
 
 
+    Course softDeleteCourse(Integer id);
+    Course restoreCourse(Integer id);
+
     Course updateCourse(Course course, Integer id);
 
     void deleteCourseById(Integer id);

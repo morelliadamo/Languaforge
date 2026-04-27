@@ -9,6 +9,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -130,11 +132,58 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
+    public Course softDeleteCourse(Integer id) {
+
+        Course courseToSoftDelete = courseRepository.findById(id)
+                    .orElseThrow(()->new RuntimeException("Course not found"));
+
+            courseToSoftDelete.setIsDeleted(true);
+            courseToSoftDelete.setDeletedAt(Timestamp.valueOf(LocalDateTime.now()));
+
+            return courseRepository.save(courseToSoftDelete);
+
+
+
+
+    }
+
+    @Override
+    public Course restoreCourse(Integer id) {
+            Course courseToRestore = courseRepository.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Course not found"));
+
+            courseToRestore.setIsDeleted(false);
+            courseToRestore.setDeletedAt(null);
+
+            return courseRepository.save(courseToRestore);
+        }
+
+    @Override
     public Course updateCourse(Course course, Integer id) {
         Course existingCourse = courseRepository.findById(id).orElseThrow(() -> new RuntimeException("Course not found"));
-        existingCourse.setTitle(course.getTitle());
-        existingCourse.setDescription(course.getDescription());
-        existingCourse.setIsDeleted(course.getIsDeleted());
+        if(course.getTitle() != null){
+            existingCourse.setTitle(course.getTitle());
+        } else{
+            existingCourse.setTitle(existingCourse.getTitle());
+        }
+
+        if(course.getDescription() != null){
+            existingCourse.setDescription(course.getDescription());
+        } else {
+            existingCourse.setDescription(existingCourse.getDescription());
+        }
+
+        if(course.getIsDeleted() != null){
+            existingCourse.setIsDeleted(course.getIsDeleted());
+            if (existingCourse.getIsDeleted()) {
+                existingCourse.setDeletedAt(Timestamp.valueOf(LocalDateTime.now()));
+            } else {
+                existingCourse.setDeletedAt(null);
+            }
+        } else {
+            existingCourse.setIsDeleted(existingCourse.getIsDeleted());
+        }
+
         return courseRepository.save(existingCourse);
     }
 

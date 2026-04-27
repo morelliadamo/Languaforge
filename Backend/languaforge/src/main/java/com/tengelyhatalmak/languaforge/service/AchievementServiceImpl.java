@@ -39,9 +39,24 @@ public class AchievementServiceImpl implements AchievementService{
         Achievement existingAchievement = achievementRepository.findById(id)
                 .orElseThrow(()-> new RuntimeException("Achievement not found"));
 
-        existingAchievement.setName(achievement.getName());
-        existingAchievement.setDescription(achievement.getDescription());
-        existingAchievement.setIconUrl(achievement.getIconUrl());
+
+        if(achievement.getName() != null){
+            existingAchievement.setName(achievement.getName());
+        } else {
+            existingAchievement.setName(existingAchievement.getName());
+        }
+
+        if (achievement.getDescription() != null){
+            existingAchievement.setDescription(achievement.getDescription());
+        } else {
+            existingAchievement.setDescription(existingAchievement.getDescription());
+        }
+
+        if(achievement.getIconUrl() != null){
+            existingAchievement.setIconUrl(achievement.getIconUrl());
+        } else {
+            existingAchievement.setIconUrl(existingAchievement.getIconUrl());
+        }
 
         return achievementRepository.save(existingAchievement);
     }

@@ -1,13 +1,14 @@
+import { Achievement } from './../interfaces/Achievement';
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CourseLoaderServiceService } from '../services/course-loader-service.service';
 import { AchievementService } from '../services/achievement.service';
-import { Achievement } from '../interfaces/Achievement';
 import { Course } from '../interfaces/Course';
+import { AdminSelectedItemData } from '../admin-selected-item-data/admin-selected-item-data';
 
 @Component({
   selector: 'app-admin-data-management',
-  imports: [FormsModule],
+  imports: [FormsModule, AdminSelectedItemData],
   templateUrl: './admin-data-management.html',
   styleUrl: './admin-data-management.css',
 })
@@ -57,6 +58,74 @@ export class AdminDataManagement {
     return items;
   }
 
+  selectItem(selected: Achievement | Course) {
+    this.selectedItem = selected;
+
+    document.getElementById('edit-panel')?.classList.remove('hidden');
+
+    this.scrollToEdit();
+  }
+
+  scrollToEdit(): void {
+    document
+      .getElementById('edit-panel')
+      ?.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  onSave(item: Achievement | Course) {
+    if ('iconUrl' in item) {
+      const original = this.selectedItem as Achievement;
+      const statusChanged = original.isDeleted !== item.isDeleted;
+      const updateFields$ = this.achievementService.updateAchievement(
+        item.id,
+        item as any,
+      );
+
+      const applyUpdate = (updated: Achievement) => {
+        this.allAchievements = this.allAchievements.map((a) =>
+          a.id === updated.id ? updated : a,
+        );
+        this.selectedItem = { ...updated };
+      };
+
+      if (statusChanged) {
+        const statusCall$ = item.isDeleted
+          ? this.achievementService.softDeleteAchievement(item.id)
+          : this.achievementService.restoreAchievement(item.id);
+        statusCall$.subscribe(() =>
+          updateFields$.subscribe(applyUpdate as any),
+        );
+      } else {
+        updateFields$.subscribe(applyUpdate as any);
+      }
+    } else {
+      const original = this.selectedItem as Course;
+      const statusChanged = original.isDeleted !== item.isDeleted;
+      const updateFields$ = this.courseService.updateCourse(
+        item.id,
+        item as Course,
+      );
+
+      const applyUpdate = (updated: Course) => {
+        this.allCourses = this.allCourses.map((c) =>
+          c.id === updated.id ? updated : c,
+        );
+        this.selectedItem = { ...updated };
+      };
+
+      if (statusChanged) {
+        const statusCall$ = item.isDeleted
+          ? this.courseService.softDeleteCourse(item.id)
+          : this.courseService.restoreCourse(item.id);
+        statusCall$.subscribe(() =>
+          updateFields$.subscribe(applyUpdate as any),
+        );
+      } else {
+        updateFields$.subscribe(applyUpdate as any);
+      }
+    }
+  }
+
   ngOnInit() {
     this.achievementService.getAllAchievements().subscribe((achievements) => {
       this.allAchievements = achievements;
@@ -65,11 +134,5 @@ export class AdminDataManagement {
     this.courseService.getAllCourses().subscribe((courses) => {
       this.allCourses = courses;
     });
-  }
-
-  scrollToEdit(): void {
-    document
-      .getElementById('edit-panel')
-      ?.scrollIntoView({ behavior: 'smooth' });
   }
 }

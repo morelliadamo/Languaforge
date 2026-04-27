@@ -129,6 +129,45 @@ export class AchievementService {
       Authorization: `Bearer ${token}`,
     });
 
-    return this.http.get<any>(`${this.apiUrl2}/`);
+    return this.http.get<any>(`${this.apiUrl2}/`, { headers });
+  }
+
+  softDeleteAchievement(id: number) {
+    const token = localStorage.getItem('access-token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.patch<Achievement>(
+      `${this.apiUrl2}/softDeleteAchievement/${id}`,
+      null,
+      { headers },
+    );
+  }
+
+  restoreAchievement(id: number) {
+    const token = localStorage.getItem('access-token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.patch<Achievement>(
+      `${this.apiUrl2}/restoreAchievement/${id}`,
+      null,
+      { headers },
+    );
+  }
+
+  updateAchievement(id: number, body: Achievement) {
+    const token = localStorage.getItem('access-token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.put<Achievement>(
+      `${this.apiUrl2}/updateAchievement/${id}`,
+      body,
+      { headers },
+    );
   }
 }

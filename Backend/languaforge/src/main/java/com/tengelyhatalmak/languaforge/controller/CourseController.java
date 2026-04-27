@@ -63,15 +63,11 @@ public class CourseController {
 
     @PatchMapping("/softDeleteCourse/{id}")
     public Course softDeleteCourse(@PathVariable Integer id){
-        Course course = courseService.findCourseById(id);
-        course.setIsDeleted(true);
-        return courseService.saveCourse(course);
+        return courseService.softDeleteCourse(id);
     }
     @PatchMapping("/restoreCourse/{id}")
     public Course restoreCourse(@PathVariable Integer id) {
-        Course course = courseService.findCourseById(id);
-        course.setIsDeleted(false);
-        return courseService.saveCourse(course);
+        return courseService.restoreCourse(id);
     }
 
     @DeleteMapping("/hardDeleteCourse/{id}")
