@@ -1,13 +1,14 @@
 package com.tengelyhatalmak.languaforge.service;
 
-import com.tengelyhatalmak.languaforge.model.Lesson;
-import com.tengelyhatalmak.languaforge.repository.LessonRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.tengelyhatalmak.languaforge.model.Lesson;
+import com.tengelyhatalmak.languaforge.repository.LessonRepository;
 
 @Service
 public class LessonServiceImpl implements LessonService {
@@ -51,6 +52,13 @@ public class LessonServiceImpl implements LessonService {
         existingLesson.setIsDeleted(true);
         existingLesson.setDeletedAt(Timestamp.valueOf(LocalDateTime.now()));
 
+        existingLesson.getExercises().forEach(exercise -> {
+            exercise.setIsDeleted(true);
+            exercise.setDeletedAt(Timestamp.valueOf(LocalDateTime.now()));
+        });
+
+
+
         return lessonRepository.save(existingLesson);
     }
 
@@ -61,6 +69,11 @@ public class LessonServiceImpl implements LessonService {
 
         lessonToRestore.setIsDeleted(false);
         lessonToRestore.setDeletedAt(null);
+
+        lessonToRestore.getExercises().forEach(exercise -> {
+            exercise.setIsDeleted(false);
+            exercise.setDeletedAt(null);
+        });
 
         return lessonRepository.save(lessonToRestore);
 

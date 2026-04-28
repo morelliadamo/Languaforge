@@ -1,18 +1,25 @@
 package com.tengelyhatalmak.languaforge.service;
 
-import com.tengelyhatalmak.languaforge.model.*;
-import com.tengelyhatalmak.languaforge.repository.CourseRepository;
-import com.tengelyhatalmak.languaforge.repository.LessonRepository;
-import com.tengelyhatalmak.languaforge.repository.UnitRepository;
-import com.tengelyhatalmak.languaforge.repository.UserXCourseRepository;
-import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.tengelyhatalmak.languaforge.model.Course;
+import com.tengelyhatalmak.languaforge.model.Exercise;
+import com.tengelyhatalmak.languaforge.model.Lesson;
+import com.tengelyhatalmak.languaforge.model.Review;
+import com.tengelyhatalmak.languaforge.model.Unit;
+import com.tengelyhatalmak.languaforge.repository.CourseRepository;
+import com.tengelyhatalmak.languaforge.repository.ExerciseRepository;
+import com.tengelyhatalmak.languaforge.repository.LessonRepository;
+import com.tengelyhatalmak.languaforge.repository.UnitRepository;
+import com.tengelyhatalmak.languaforge.repository.UserXCourseRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class CourseServiceImpl implements CourseService{
@@ -25,6 +32,11 @@ public class CourseServiceImpl implements CourseService{
 
     @Autowired
     private LessonRepository lessonRepository;
+
+
+    @Autowired
+    private ExerciseRepository exerciseRepository;
+
     @Autowired
     private UserXCourseRepository userXCourseRepository;
 
@@ -140,6 +152,33 @@ public class CourseServiceImpl implements CourseService{
             courseToSoftDelete.setIsDeleted(true);
             courseToSoftDelete.setDeletedAt(Timestamp.valueOf(LocalDateTime.now()));
 
+
+
+
+            unitRepository.findAll().stream()
+                    .filter(unit -> unit.getCourse().getId().equals(id))
+                    .forEach(unit -> {
+                        unit.setIsDeleted(true);
+                        unit.setDeletedAt(Timestamp.valueOf(LocalDateTime.now()));
+                        unitRepository.save(unit);
+
+                        lessonRepository.findAll().stream()
+                                .filter(lesson -> lesson.getUnit().getId().equals(unit.getId()))
+                                .forEach(lesson -> {
+                                    lesson.setIsDeleted(true);
+                                    lesson.setDeletedAt(Timestamp.valueOf(LocalDateTime.now()));
+                                    lessonRepository.save(lesson);
+
+                                    exerciseRepository.findAll().stream()
+                                            .filter(exercise -> exercise.getLesson().getId().equals(lesson.getId()))
+                                            .forEach(exercise -> {
+                                                exercise.setIsDeleted(true);
+                                                exercise.setDeletedAt(Timestamp.valueOf(LocalDateTime.now()));
+                                                exerciseRepository.save(exercise);
+                                            });
+                                });
+                    });
+
             return courseRepository.save(courseToSoftDelete);
 
 
@@ -154,6 +193,32 @@ public class CourseServiceImpl implements CourseService{
 
             courseToRestore.setIsDeleted(false);
             courseToRestore.setDeletedAt(null);
+
+
+            unitRepository.findAll().stream()
+                    .filter(unit -> unit.getCourse().getId().equals(id))
+                    .forEach(unit -> {
+                        unit.setIsDeleted(false);
+                        unit.setDeletedAt(null);
+                        unitRepository.save(unit);
+
+                        lessonRepository.findAll().stream()
+                                .filter(lesson -> lesson.getUnit().getId().equals(unit.getId()))
+                                .forEach(lesson -> {
+                                    lesson.setIsDeleted(false);
+                                    lesson.setDeletedAt(null);
+                                    lessonRepository.save(lesson);
+
+                                    exerciseRepository.findAll().stream()
+                                            .filter(exercise -> exercise.getLesson().getId().equals(lesson.getId()))
+                                            .forEach(exercise -> {
+                                                exercise.setIsDeleted(false);
+                                                exercise.setDeletedAt(null);
+                                                exerciseRepository.save(exercise);
+                                            });
+                                });
+                    });
+
 
             return courseRepository.save(courseToRestore);
         }

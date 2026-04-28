@@ -51,6 +51,16 @@ public class UnitServiceImpl implements UnitService{
         unit.setIsDeleted(true);
         unit.setDeletedAt(Timestamp.valueOf(LocalDateTime.now()));
 
+            unit.getLessons().forEach(lesson -> {
+                lesson.setIsDeleted(true);
+                lesson.setDeletedAt(Timestamp.valueOf(LocalDateTime.now()));
+                    lesson.getExercises().forEach(exercise -> {
+                        exercise.setIsDeleted(true);
+                        exercise.setDeletedAt(Timestamp.valueOf(LocalDateTime.now()));
+                    });
+                });
+
+
         return unitRepository.save(unit);
     }
 
@@ -62,6 +72,16 @@ public class UnitServiceImpl implements UnitService{
 
         unit.setIsDeleted(false);
         unit.setDeletedAt(null);
+
+
+        unit.getLessons().forEach(lesson -> {
+            lesson.setIsDeleted(false);
+            lesson.setDeletedAt(null);
+                lesson.getExercises().forEach(exercise -> {
+                    exercise.setIsDeleted(false);
+                    exercise.setDeletedAt(null);
+                });
+            });
 
         return unitRepository.save(unit);
     }
