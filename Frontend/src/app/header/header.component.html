@@ -133,8 +133,11 @@
 
   <!-- hamburger menu -->
   <button
-    class="flex flex-col justify-center items-center gap-1.5 w-8 h-8"
+    id="menu-icon"
+    class="flex flex-col justify-center items-center gap-1.5 w-8 h-8 cursor-pointer transition-transform duration-300 ease-in-out"
     (click)="toggleSidebar()"
+    (mouseenter)="animateMenuIcon('enter')"
+    (mouseleave)="animateMenuIcon('leave')"
     aria-label="Open menu"
   >
     <span

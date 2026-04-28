@@ -1,13 +1,14 @@
 package com.tengelyhatalmak.languaforge.service;
 
-import com.tengelyhatalmak.languaforge.model.Exercise;
-import com.tengelyhatalmak.languaforge.repository.ExerciseRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.tengelyhatalmak.languaforge.model.Exercise;
+import com.tengelyhatalmak.languaforge.repository.ExerciseRepository;
 
 @Service
 public class ExerciseServiceImpl implements ExerciseService{
@@ -36,8 +37,13 @@ public class ExerciseServiceImpl implements ExerciseService{
         Exercise existingExercise = exerciseRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Exercise not found"));
 
-        existingExercise.setExerciseContent(exercise.getExerciseContent());
-        existingExercise.setExerciseType(exercise.getExerciseType());
+        if(exercise.getExerciseContent() != null) {
+            existingExercise.setExerciseContent(exercise.getExerciseContent());
+        }
+
+        if(exercise.getExerciseType() != null) {
+            existingExercise.setExerciseType(exercise.getExerciseType());
+        }
 
         return exerciseRepository.save(existingExercise);
     }

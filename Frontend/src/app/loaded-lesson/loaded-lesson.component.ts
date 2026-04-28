@@ -1,4 +1,4 @@
-import { Exercise, MatchPair } from '../interfaces/Exercise';
+import { Exercise } from '../interfaces/Exercise';
 import { LessonProgress } from '../interfaces/LessonProgress';
 import { AuthServiceService } from '../services/auth-service.service';
 import { LessonProgressService } from '../services/lesson-progress.service';
@@ -105,9 +105,9 @@ export class LoadedLessonComponent {
       this.originalExerciseCount = this.lessonContent.length;
       this.initProgress();
 
-      if (this.currentExercise?.exerciseType === 'match') {
-        this.initMatchExercise();
-      }
+      // if (this.currentExercise?.exerciseType === 'match') {
+      //   this.initMatchExercise();
+      // }
     }
 
     const userId = Number(this.authService.getCurrentUserId());
@@ -252,9 +252,9 @@ export class LoadedLessonComponent {
     if (!this.isLast) {
       this.currentIndex++;
       this.resetSelection();
-      if (this.currentExercise?.exerciseType === 'match') {
-        this.initMatchExercise();
-      }
+      // if (this.currentExercise?.exerciseType === 'match') {
+      //   this.initMatchExercise();
+      // }
     }
   }
 
@@ -264,9 +264,9 @@ export class LoadedLessonComponent {
     if (!this.isFirst) {
       this.currentIndex--;
       this.resetSelection();
-      if (this.currentExercise?.exerciseType === 'match') {
-        this.initMatchExercise();
-      }
+      // if (this.currentExercise?.exerciseType === 'match') {
+      //   this.initMatchExercise();
+      // }
     }
   }
 
@@ -285,9 +285,9 @@ export class LoadedLessonComponent {
     this.matchIncorrectPair = null;
     this.matchComplete = false;
 
-    if (this.currentExercise?.exerciseType === 'match') {
-      this.initMatchExercise();
-    }
+    // if (this.currentExercise?.exerciseType === 'match') {
+    //   this.initMatchExercise();
+    // }
   }
 
   closeLesson() {
@@ -352,64 +352,64 @@ export class LoadedLessonComponent {
 
   // ─── Match ───
 
-  initMatchExercise(): void {
-    const pairs = this.currentExercise?.exerciseContent.pairs ?? [];
-    this.shuffledRight = pairs
-      .map((p) => p.right)
-      .sort(() => Math.random() - 0.5);
-    this.matchedPairs = [];
-    this.matchSelectedLeft = null;
-    this.matchSelectedRight = null;
-    this.matchIncorrectPair = null;
-    this.matchComplete = false;
-  }
+  // initMatchExercise(): void {
+  //   const pairs = this.currentExercise?.exerciseContent.pairs ?? [];
+  //   this.shuffledRight = pairs
+  //     .map((p) => p.right)
+  //     .sort(() => Math.random() - 0.5);
+  //   this.matchedPairs = [];
+  //   this.matchSelectedLeft = null;
+  //   this.matchSelectedRight = null;
+  //   this.matchIncorrectPair = null;
+  //   this.matchComplete = false;
+  // }
 
-  selectMatchLeft(word: string): void {
-    if (this.isAnswered || this.isMatchLeftMatched(word)) return;
-    this.matchSelectedLeft = word;
-    this.matchIncorrectPair = null;
-    if (this.matchSelectedRight) {
-      this.tryMatch();
-    }
-  }
+  // selectMatchLeft(word: string): void {
+  //   if (this.isAnswered || this.isMatchLeftMatched(word)) return;
+  //   this.matchSelectedLeft = word;
+  //   this.matchIncorrectPair = null;
+  //   if (this.matchSelectedRight) {
+  //     this.tryMatch();
+  //   }
+  // }
 
-  selectMatchRight(word: string): void {
-    if (this.isAnswered || this.isMatchRightMatched(word)) return;
-    this.matchSelectedRight = word;
-    this.matchIncorrectPair = null;
-    if (this.matchSelectedLeft) {
-      this.tryMatch();
-    }
-  }
+  // selectMatchRight(word: string): void {
+  //   if (this.isAnswered || this.isMatchRightMatched(word)) return;
+  //   this.matchSelectedRight = word;
+  //   this.matchIncorrectPair = null;
+  //   if (this.matchSelectedLeft) {
+  //     this.tryMatch();
+  //   }
+  // }
 
-  private tryMatch(): void {
-    const pairs = this.currentExercise?.exerciseContent.pairs ?? [];
-    const left = this.matchSelectedLeft!;
-    const right = this.matchSelectedRight!;
-    const isCorrectPair = pairs.some(
-      (p) => p.left === left && p.right === right,
-    );
+  // private tryMatch(): void {
+  //   const pairs = this.currentExercise?.exerciseContent.pairs ?? [];
+  //   const left = this.matchSelectedLeft!;
+  //   const right = this.matchSelectedRight!;
+  //   const isCorrectPair = pairs.some(
+  //     (p) => p.left === left && p.right === right,
+  //   );
 
-    if (isCorrectPair) {
-      this.matchedPairs.push({ left, right });
-      this.matchSelectedLeft = null;
-      this.matchSelectedRight = null;
-      this.matchIncorrectPair = null;
+  //   if (isCorrectPair) {
+  //     this.matchedPairs.push({ left, right });
+  //     this.matchSelectedLeft = null;
+  //     this.matchSelectedRight = null;
+  //     this.matchIncorrectPair = null;
 
-      if (this.matchedPairs.length === pairs.length) {
-        this.matchComplete = true;
-        this.isAnswered = true;
-        this.handleAnswerResult(true);
-      }
-    } else {
-      this.matchIncorrectPair = { left, right };
-      setTimeout(() => {
-        this.matchIncorrectPair = null;
-        this.matchSelectedLeft = null;
-        this.matchSelectedRight = null;
-      }, 600);
-    }
-  }
+  //     if (this.matchedPairs.length === pairs.length) {
+  //       this.matchComplete = true;
+  //       this.isAnswered = true;
+  //       this.handleAnswerResult(true);
+  //     }
+  //   } else {
+  //     this.matchIncorrectPair = { left, right };
+  //     setTimeout(() => {
+  //       this.matchIncorrectPair = null;
+  //       this.matchSelectedLeft = null;
+  //       this.matchSelectedRight = null;
+  //     }, 600);
+  //   }
+  // }
 
   isMatchLeftSelected(word: string): boolean {
     return this.matchSelectedLeft === word;

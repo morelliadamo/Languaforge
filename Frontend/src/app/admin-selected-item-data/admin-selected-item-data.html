@@ -372,6 +372,55 @@
       </button>
     </div>
 
+    <div class="mt-6 flex flex-col sm:flex-row gap-3 sm:justify-end">
+      <button
+        type="button"
+        class="rounded-xl border border-gray-200 bg-gray-50 px-5 py-2.5 text-sm font-semibold text-gray-700 hover:bg-gray-100 active:bg-gray-300 transition-colors cursor-pointer"
+        (click)="discardExerciseChanges()"
+      >
+        Elvetés
+      </button>
+      <button
+        type="button"
+        class="rounded-xl bg-sky-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-sky-600 active:bg-sky-700 transition-colors cursor-pointer"
+        (click)="saveExerciseChanges()"
+      >
+        Mentés
+      </button>
+    </div>
+
+    <div class="flex flex-col mt-6 mb-2">
+      <label class="block text-sm font-medium text-gray-600 mb-1">Típus</label>
+
+      <div class="relative">
+        <select
+          [(ngModel)]="editingExercise.exerciseType"
+          class="w-full appearance-none rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 pr-10 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-300 transition-all cursor-pointer"
+        >
+          <option value="choice">Választós</option>
+          <option value="fill_in">Kitöltős</option>
+          <option value="typing">Írásos</option>
+          <option value="listening">Hallás utáni értés</option>
+          <option value="reading">Szövegértés</option>
+          <option value="match">Párosítás</option>
+          <option value="speech">Beszéd</option>
+        </select>
+        <svg
+          class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 9l-7 7-7-7"
+          />
+        </svg>
+      </div>
+    </div>
+
     <div class="flex flex-col gap-4">
       <div>
         <label class="block text-sm font-medium text-gray-600 mb-1"
@@ -379,8 +428,8 @@
         >
         <textarea
           class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-300 transition-all"
+          [(ngModel)]="editingExercise.exerciseContent.description"
         >
-            {{ editingExercise.exerciseContent.description }}
         </textarea>
       </div>
 
@@ -391,7 +440,7 @@
         >
         <div class="flex flex-col gap-2">
           <input
-            [value]="editingExercise.exerciseContent.correctAnswer"
+            [(ngModel)]="editingExercise.exerciseContent.correctAnswer"
             class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-300 transition-all"
           />
         </div>
@@ -403,7 +452,7 @@
           @for (answer of editingExercise.exerciseContent.answers; track $index)
           {
           <input
-            [value]="answer"
+            [(ngModel)]="editingExercise.exerciseContent.answers![$index]"
             class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-300 transition-all"
           />
           }
@@ -416,21 +465,117 @@
         >
         <div class="flex flex-col gap-2">
           <input
-            [value]="editingExercise.exerciseContent.correctAnswer"
+            [(ngModel)]="editingExercise.exerciseContent.correctAnswer"
             class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-300 transition-all"
           />
         </div>
 
-        <label class="block text-sm font-medium text-gray-600 mb-2"
+        <!-- <label class="block text-sm font-medium text-gray-600 mb-2"
           >Válaszlehetőségek</label
         >
         <div class="flex flex-col gap-2">
           @for (answer of editingExercise.exerciseContent.answers; track $index)
           {
           <input
-            [value]="answer"
+            [(ngModel)]="editingExercise.exerciseContent.answers![$index]"
             class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-300 transition-all"
           />
+          }
+        </div> -->
+      </div>
+      } @if(editingExercise.exerciseType === 'typing') {
+      <div>
+        <label class="block text-sm font-medium text-gray-600 mb-2"
+          >Helyes válasz</label
+        >
+        <div class="flex flex-col gap-2">
+          <input
+            [(ngModel)]="editingExercise.exerciseContent.correctAnswer"
+            class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-300 transition-all"
+          />
+        </div>
+      </div>
+      } @if(editingExercise.exerciseType === 'listening') {
+      <div>
+        <label class="block text-sm font-medium text-gray-600 mb-2"
+          >Helyes válasz</label
+        >
+        <div class="flex flex-col gap-2">
+          <input
+            [(ngModel)]="editingExercise.exerciseContent.correctAnswer"
+            class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-300 transition-all"
+          />
+        </div>
+
+        <label class="block text-sm font-medium text-gray-600 mb-2 mt-2"
+          >Válaszlehetőségek</label
+        >
+        <div class="flex flex-col gap-2">
+          @for (answer of editingExercise.exerciseContent.answers; track $index)
+          {
+          <input
+            [(ngModel)]="editingExercise.exerciseContent.answers![$index]"
+            class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-300 transition-all"
+          />
+          }
+        </div>
+      </div>
+      } @if(editingExercise.exerciseType === 'reading') {
+      <div>
+        <label class="block text-sm font-medium text-gray-600 mb-2"
+          >Helyes válasz</label
+        >
+        <div class="flex flex-col gap-2">
+          <input
+            [(ngModel)]="editingExercise.exerciseContent.correctAnswer"
+            class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-300 transition-all"
+          />
+        </div>
+
+        <label class="block text-sm font-medium text-gray-600 mb-2 mt-2"
+          >Válaszlehetőségek</label
+        >
+        <div class="flex flex-col gap-2">
+          @for (answer of editingExercise.exerciseContent.answers; track $index)
+          {
+          <input
+            [(ngModel)]="editingExercise.exerciseContent.answers![$index]"
+            class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-300 transition-all"
+          />
+          }
+        </div>
+      </div>
+      } @if(editingExercise.exerciseType === 'speech') {
+      <div>
+        <label class="block text-sm font-medium text-gray-600 mb-2"
+          >Helyes válasz</label
+        >
+        <div class="flex flex-col gap-2">
+          <input
+            [(ngModel)]="editingExercise.exerciseContent.correctAnswer"
+            class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-300 transition-all"
+          />
+        </div>
+      </div>
+      } @if(editingExercise.exerciseType === 'match') {
+      <div>
+        <label class="block text-sm font-medium text-gray-600 mb-2 mt-2"
+          >Párok</label
+        >
+        <div class="flex flex-col gap-2">
+          @for (answer of editingExercise.exerciseContent.pairs; track $index) {
+          <span>
+            <input
+              [(ngModel)]="editingExercise.exerciseContent.pairs![$index][0]"
+              class="w-1/2 rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-300 transition-all"
+            />
+
+            <input
+              [(ngModel)]="editingExercise.exerciseContent.pairs![$index][1]"
+              class="w-1/2 rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-300 transition-all"
+            />
+          </span>
+
           }
         </div>
       </div>
@@ -439,6 +584,8 @@
       <div>
         @if (!editingExercise.isDeleted) {
         <button
+          type="button"
+          (click)="toggleExerciseDeleted()"
           class="ml-3 p-1.5 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors cursor-pointer flex-shrink-0 w-xs flex items-center justify-center"
         >
           <svg
@@ -457,6 +604,8 @@
         </button>
         } @else{
         <button
+          type="button"
+          (click)="toggleExerciseDeleted()"
           class="ml-3 p-1.5 rounded-lg text-gray-400 hover:text-amber-500 hover:bg-amber-50 transition-colors cursor-pointer flex-shrink-0 w-xs flex items-center justify-center"
         >
           <svg

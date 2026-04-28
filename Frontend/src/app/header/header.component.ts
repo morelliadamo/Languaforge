@@ -32,6 +32,14 @@ export class HeaderComponent {
     this.router.navigate(['/login']);
   }
 
+  animateMenuIcon(enterOrLeave: string) {
+    if (enterOrLeave == 'enter') {
+      document.getElementById('menu-icon')?.classList.add('rotate-90');
+    } else if (enterOrLeave == 'leave') {
+      document.getElementById('menu-icon')?.classList.remove('rotate-90');
+    }
+  }
+
   ngOnInit() {
     this.authService.isAdmin().subscribe((isAdmin) => {
       this.isAdmin = isAdmin;

@@ -5,12 +5,14 @@ import {
   OnChanges,
   Output,
   SimpleChanges,
+  inject,
 } from '@angular/core';
 import { Achievement } from './../interfaces/Achievement';
 import { FormsModule } from '@angular/forms';
 import { Course } from '../interfaces/Course';
 import { Unit } from '../interfaces/Unit';
 import { Exercise } from '../interfaces/Exercise';
+import { CourseLoaderServiceService } from '../services/course-loader-service.service';
 
 interface SelectedItem {
   id: number;
@@ -40,11 +42,14 @@ interface SelectedItem {
   styleUrl: './admin-selected-item-data.css',
 })
 export class AdminSelectedItemData implements OnChanges {
+  private courseService = inject(CourseLoaderServiceService);
+
   @Input() selectedItem: Achievement | Course | null = null;
   @Output() saved = new EventEmitter<Achievement | Course>();
   selectedItemConverted: SelectedItem | null = null;
 
   editingExercise: Exercise | null = null;
+  private originalExercise: Exercise | null = null;
 
   checkType(item: Achievement | Course): 'achievement' | 'course' {
     if ('iconUrl' in item) return 'achievement';
@@ -124,7 +129,54 @@ export class AdminSelectedItemData implements OnChanges {
   }
 
   openEditExerciseModal(exercise: Exercise) {
-    this.editingExercise = exercise;
-    console.log(exercise);
+    this.originalExercise = exercise;
+    this.editingExercise = JSON.parse(JSON.stringify(exercise));
+  }
+
+  discardExerciseChanges() {
+    this.editingExercise = null;
+    this.originalExercise = null;
+  }
+
+  saveExerciseChanges() {
+    if (!this.editingExercise || !this.originalExercise) return;
+    const exercise = this.editingExercise;
+    const original = this.originalExercise;
+    const statusChanged = original.isDeleted !== exercise.isDeleted;
+
+    const updateFields$ = this.courseService.updateExercise(exercise.id, {
+      exerciseContent: exercise.exerciseContent,
+    });
+
+    const applyUpdate = (updated: Exercise) => {
+      if (this.selectedItemConverted) {
+        for (const unit of this.selectedItemConverted.units) {
+          for (const lesson of unit.lessons) {
+            const idx = lesson.exercises.findIndex((e) => e.id === updated.id);
+            if (idx !== -1) {
+              lesson.exercises[idx] = updated;
+            }
+          }
+        }
+      }
+      Object.assign(original, updated);
+      this.editingExercise = null;
+      this.originalExercise = null;
+    };
+
+    if (statusChanged) {
+      const statusCall$ = exercise.isDeleted
+        ? this.courseService.softDeleteExercise(exercise.id)
+        : this.courseService.restoreExercise(exercise.id);
+      statusCall$.subscribe(() => updateFields$.subscribe(applyUpdate as any));
+    } else {
+      updateFields$.subscribe(applyUpdate as any);
+    }
+  }
+
+  toggleExerciseDeleted() {
+    if (this.editingExercise) {
+      this.editingExercise.isDeleted = !this.editingExercise.isDeleted;
+    }
   }
 }

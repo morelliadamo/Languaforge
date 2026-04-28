@@ -321,21 +321,21 @@
           <!-- ═══════════════════════════════════ -->
           <!-- MATCH exercise                      -->
           <!-- ═══════════════════════════════════ -->
-          @if (currentExercise.exerciseType === "match") {
-            <!-- Description -->
-            <app-hoverable-text-component
+          <!-- @if (currentExercise.exerciseType === "match") { -->
+          <!-- Description -->
+          <!-- <app-hoverable-text-component
               [text]="currentExercise.exerciseContent.description"
               [sourceLanguage]="'en'"
               [targetLanguage]="'hu'"
               textClass="text-xl sm:text-2xl font-bold text-gray-800 mb-8 inline"
               [clickToReveal]="true"
               (hintUsed)="onHintUsed()"
-            ></app-hoverable-text-component>
+            ></app-hoverable-text-component> -->
 
-            <!-- Match columns -->
-            <div class="grid grid-cols-2 gap-3 sm:gap-4">
-              <!-- Left column -->
-              <div class="flex flex-col gap-2.5">
+          <!-- Match columns -->
+          <!-- <div class="grid grid-cols-2 gap-3 sm:gap-4"> -->
+          <!-- Left column -->
+          <!-- <div class="flex flex-col gap-2.5">
                 @for (
                   pair of currentExercise.exerciseContent.pairs;
                   track pair.left
@@ -352,8 +352,8 @@
                       !isMatchLeftSelected(pair.left) &&
                       !isMatchLeftMatched(pair.left) &&
                       !isMatchLeftIncorrect(pair.left)
-                    "
-                    [class.border-blue-400]="isMatchLeftSelected(pair.left)"
+                    " -->
+          <!-- [class.border-blue-400]="isMatchLeftSelected(pair.left)"
                     [class.bg-blue-50]="isMatchLeftSelected(pair.left)"
                     [class.shadow-md]="isMatchLeftSelected(pair.left)"
                     [class.border-green-500]="isMatchLeftMatched(pair.left)"
@@ -367,10 +367,10 @@
                     {{ pair.left }}
                   </button>
                 }
-              </div>
+              </div> -->
 
-              <!-- Right column (shuffled) -->
-              <div class="flex flex-col gap-2.5">
+          <!-- Right column (shuffled) -->
+          <!-- <div class="flex flex-col gap-2.5">
                 @for (word of shuffledRight; track word) {
                   <button
                     (click)="selectMatchRight(word)"
@@ -395,21 +395,21 @@
                     [class.cursor-default]="isMatchRightMatched(word)"
                     [class.border-red-400]="isMatchRightIncorrect(word)"
                     [class.bg-red-50]="isMatchRightIncorrect(word)"
-                  >
-                    {{ word }}
-                  </button>
-                }
-              </div>
-            </div>
+                  > -->
+          <!-- {{ word }}
+                  </button> -->
+          <!-- } -->
+          <!-- </div>
+            </div> -->
 
-            <!-- Match progress -->
-            @if (matchedPairs.length > 0 && !matchComplete) {
+          <!-- Match progress -->
+          <!-- @if (matchedPairs.length > 0 && !matchComplete) {
               <p class="mt-4 text-sm text-gray-400">
                 {{ matchedPairs.length }} /
                 {{ currentExercise.exerciseContent.pairs?.length }} párosítva
               </p>
             }
-          }
+          } -->
 
           <!-- ═══════════════════════════════════ -->
           <!-- Feedback message (shared)           -->

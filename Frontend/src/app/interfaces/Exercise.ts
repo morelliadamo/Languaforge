@@ -12,11 +12,6 @@
 //     "createdAt": "2026-02-25T10:00:00.000Z"
 // }
 
-export interface MatchPair {
-  left: string;
-  right: string;
-}
-
 export interface Exercise {
   id: number;
   lessonId: number;
@@ -25,7 +20,7 @@ export interface Exercise {
     description: string;
     correctAnswer?: string;
     sentence?: string;
-    pairs?: MatchPair[];
+    pairs?: [[string, string]];
   };
   exerciseType: string;
   isDeleted: boolean;
