@@ -1,15 +1,14 @@
 package com.tengelyhatalmak.languaforge.service;
 
-import com.tengelyhatalmak.languaforge.model.Unit;
-import com.tengelyhatalmak.languaforge.repository.UnitRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static java.util.Locale.filter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.tengelyhatalmak.languaforge.model.Unit;
+import com.tengelyhatalmak.languaforge.repository.UnitRepository;
 
 @Service
 public class UnitServiceImpl implements UnitService{
@@ -35,8 +34,12 @@ public class UnitServiceImpl implements UnitService{
     @Override
     public Unit updateUnit(Unit unit, Integer id) {
         Unit existingUnit = unitRepository.findById(id).orElseThrow(() -> new RuntimeException("Unit not found"));
-        existingUnit.setTitle(unit.getTitle());
-        existingUnit.setOrderIndex(unit.getOrderIndex());
+        if(unit.getTitle() != null) {
+            existingUnit.setTitle(unit.getTitle());
+        }
+        if(unit.getOrderIndex() != null) {
+            existingUnit.setOrderIndex(unit.getOrderIndex());
+        }
         return unitRepository.save(existingUnit);
     }
 

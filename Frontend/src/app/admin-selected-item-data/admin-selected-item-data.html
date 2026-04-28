@@ -260,9 +260,24 @@
       <div class="rounded-xl border border-gray-200 bg-gray-50 overflow-hidden">
         <!-- Unit header -->
         <div
-          class="flex flex-wrap items-center gap-x-4 gap-y-1 px-4 py-3 border-b border-gray-200 bg-white"
+          class="flex flex-wrap items-center gap-x-3 gap-y-1 px-4 py-3 border-b border-gray-200 bg-white cursor-pointer select-none hover:bg-gray-50 transition-colors"
+          (click)="toggleUnit(unit.id)"
         >
-          <span class="text-sm font-semibold text-gray-800"
+          <svg
+            class="w-4 h-4 text-gray-400 flex-shrink-0 transition-transform duration-200"
+            [class.rotate-90]="expandedUnitIds.has(unit.id)"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+          <span class="text-sm font-semibold text-gray-800 flex-1 min-w-0"
             >{{ unit.title }}</span
           >
           <span class="text-xs text-gray-400">{{ unit.createdAt }}</span>
@@ -277,10 +292,30 @@
             >Aktív</span
           >
           }
+          <button
+            type="button"
+            (click)="$event.stopPropagation(); openEditUnitModal(unit)"
+            class="p-1 rounded-lg text-gray-400 hover:text-sky-500 hover:bg-sky-50 transition-colors cursor-pointer flex-shrink-0"
+            aria-label="Egység szerkesztése"
+          >
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+              />
+            </svg>
+          </button>
         </div>
 
         <!-- Lessons -->
-        @if(unit.lessons.length) {
+        @if(expandedUnitIds.has(unit.id) && unit.lessons.length) {
         <div class="px-4 py-3 flex flex-col gap-2">
           @for (lesson of unit.lessons; track lesson.id) {
           <div
@@ -288,9 +323,24 @@
           >
             <!-- Lesson header -->
             <div
-              class="flex flex-wrap items-center gap-x-4 gap-y-1 px-3 py-2 border-b border-gray-100"
+              class="flex flex-wrap items-center gap-x-3 gap-y-1 px-3 py-2 border-b border-gray-100 cursor-pointer select-none hover:bg-gray-50 transition-colors"
+              (click)="toggleLesson(lesson.id)"
             >
-              <span class="text-sm font-medium text-gray-700"
+              <svg
+                class="w-3.5 h-3.5 text-gray-400 flex-shrink-0 transition-transform duration-200"
+                [class.rotate-90]="expandedLessonIds.has(lesson.id)"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+              <span class="text-sm font-medium text-gray-700 flex-1 min-w-0"
                 >{{ lesson.title }}</span
               >
               <span class="text-xs text-gray-400">{{ lesson.createdAt }}</span>
@@ -305,10 +355,30 @@
                 >Aktív</span
               >
               }
+              <button
+                type="button"
+                (click)="$event.stopPropagation(); openEditLessonModal(lesson)"
+                class="p-1 rounded-lg text-gray-400 hover:text-sky-500 hover:bg-sky-50 transition-colors cursor-pointer flex-shrink-0"
+                aria-label="Lecke szerkesztése"
+              >
+                <svg
+                  class="w-3.5 h-3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                  />
+                </svg>
+              </button>
             </div>
 
             <!-- Exercises -->
-            @if(lesson.exercises.length) {
+            @if(expandedLessonIds.has(lesson.id) && lesson.exercises.length) {
             <div class="px-3 py-2 flex flex-col gap-1.5">
               @for (exercise of lesson.exercises; track exercise.id) {
               <div
@@ -624,6 +694,222 @@
         </button>
         }
       </div>
+    </div>
+  </div>
+</div>
+} @if(editingUnit) {
+<div class="overlay-backdrop" (click)="editingUnit = null">
+  <div class="overlay-card" (click)="$event.stopPropagation()">
+    <div class="flex items-center justify-between mb-5">
+      <div class="flex items-center gap-2">
+        <div
+          class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-base"
+        >
+          📦
+        </div>
+        <h4 class="text-base font-semibold text-gray-800">
+          Egység szerkesztése
+        </h4>
+      </div>
+      <button
+        type="button"
+        (click)="editingUnit = null"
+        class="p-1.5 rounded-lg hover:bg-gray-100 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
+        aria-label="Bezárás"
+      >
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <div class="flex flex-col gap-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-600 mb-1">Cím</label>
+        <input
+          [(ngModel)]="editingUnit.title"
+          class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-300 transition-all"
+        />
+      </div>
+
+      <div>
+        @if (!editingUnit.isDeleted) {
+        <button
+          type="button"
+          (click)="toggleUnitDeleted()"
+          class="ml-3 p-1.5 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors cursor-pointer flex-shrink-0 w-xs flex items-center justify-center"
+        >
+          <svg
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            class="w-4 h-4"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+            ></path>
+          </svg>
+        </button>
+        } @else {
+        <button
+          type="button"
+          (click)="toggleUnitDeleted()"
+          class="ml-3 p-1.5 rounded-lg text-gray-400 hover:text-amber-500 hover:bg-amber-50 transition-colors cursor-pointer flex-shrink-0 w-xs flex items-center justify-center"
+        >
+          <svg
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            class="w-4 h-4"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"
+            ></path>
+          </svg>
+        </button>
+        }
+      </div>
+    </div>
+
+    <div class="mt-6 flex flex-col sm:flex-row gap-3 sm:justify-end">
+      <button
+        type="button"
+        class="rounded-xl border border-gray-200 bg-gray-50 px-5 py-2.5 text-sm font-semibold text-gray-700 hover:bg-gray-100 active:bg-gray-300 transition-colors cursor-pointer"
+        (click)="discardUnitChanges()"
+      >
+        Elvetés
+      </button>
+      <button
+        type="button"
+        class="rounded-xl bg-sky-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-sky-600 active:bg-sky-700 transition-colors cursor-pointer"
+        (click)="saveUnitChanges()"
+      >
+        Mentés
+      </button>
+    </div>
+  </div>
+</div>
+} @if(editingLesson) {
+<div class="overlay-backdrop" (click)="editingLesson = null">
+  <div class="overlay-card" (click)="$event.stopPropagation()">
+    <div class="flex items-center justify-between mb-5">
+      <div class="flex items-center gap-2">
+        <div
+          class="w-8 h-8 rounded-lg bg-sky-50 flex items-center justify-center text-base"
+        >
+          📖
+        </div>
+        <h4 class="text-base font-semibold text-gray-800">
+          Lecke szerkesztése
+        </h4>
+      </div>
+      <button
+        type="button"
+        (click)="editingLesson = null"
+        class="p-1.5 rounded-lg hover:bg-gray-100 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
+        aria-label="Bezárás"
+      >
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <div class="flex flex-col gap-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-600 mb-1">Cím</label>
+        <input
+          [(ngModel)]="editingLesson.title"
+          class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-300 transition-all"
+        />
+      </div>
+
+      <div>
+        @if (!editingLesson.isDeleted) {
+        <button
+          type="button"
+          (click)="toggleLessonDeleted()"
+          class="ml-3 p-1.5 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors cursor-pointer flex-shrink-0 w-xs flex items-center justify-center"
+        >
+          <svg
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            class="w-4 h-4"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+            ></path>
+          </svg>
+        </button>
+        } @else {
+        <button
+          type="button"
+          (click)="toggleLessonDeleted()"
+          class="ml-3 p-1.5 rounded-lg text-gray-400 hover:text-amber-500 hover:bg-amber-50 transition-colors cursor-pointer flex-shrink-0 w-xs flex items-center justify-center"
+        >
+          <svg
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            class="w-4 h-4"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"
+            ></path>
+          </svg>
+        </button>
+        }
+      </div>
+    </div>
+
+    <div class="mt-6 flex flex-col sm:flex-row gap-3 sm:justify-end">
+      <button
+        type="button"
+        class="rounded-xl border border-gray-200 bg-gray-50 px-5 py-2.5 text-sm font-semibold text-gray-700 hover:bg-gray-100 active:bg-gray-300 transition-colors cursor-pointer"
+        (click)="discardLessonChanges()"
+      >
+        Elvetés
+      </button>
+      <button
+        type="button"
+        class="rounded-xl bg-sky-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-sky-600 active:bg-sky-700 transition-colors cursor-pointer"
+        (click)="saveLessonChanges()"
+      >
+        Mentés
+      </button>
     </div>
   </div>
 </div>

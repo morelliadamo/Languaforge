@@ -11,6 +11,7 @@ import { Achievement } from './../interfaces/Achievement';
 import { FormsModule } from '@angular/forms';
 import { Course } from '../interfaces/Course';
 import { Unit } from '../interfaces/Unit';
+import { Lesson } from '../interfaces/Lesson';
 import { Exercise } from '../interfaces/Exercise';
 import { CourseLoaderServiceService } from '../services/course-loader-service.service';
 
@@ -50,6 +51,15 @@ export class AdminSelectedItemData implements OnChanges {
 
   editingExercise: Exercise | null = null;
   private originalExercise: Exercise | null = null;
+
+  editingUnit: Unit | null = null;
+  private originalUnit: Unit | null = null;
+
+  editingLesson: Lesson | null = null;
+  private originalLesson: Lesson | null = null;
+
+  expandedUnitIds = new Set<number>();
+  expandedLessonIds = new Set<number>();
 
   checkType(item: Achievement | Course): 'achievement' | 'course' {
     if ('iconUrl' in item) return 'achievement';
@@ -101,6 +111,24 @@ export class AdminSelectedItemData implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['selectedItem']) {
       this.selectedItemConverted = this.asSelectedItem;
+      this.expandedUnitIds.clear();
+      this.expandedLessonIds.clear();
+    }
+  }
+
+  toggleUnit(unitId: number) {
+    if (this.expandedUnitIds.has(unitId)) {
+      this.expandedUnitIds.delete(unitId);
+    } else {
+      this.expandedUnitIds.add(unitId);
+    }
+  }
+
+  toggleLesson(lessonId: number) {
+    if (this.expandedLessonIds.has(lessonId)) {
+      this.expandedLessonIds.delete(lessonId);
+    } else {
+      this.expandedLessonIds.add(lessonId);
     }
   }
 
@@ -177,6 +205,108 @@ export class AdminSelectedItemData implements OnChanges {
   toggleExerciseDeleted() {
     if (this.editingExercise) {
       this.editingExercise.isDeleted = !this.editingExercise.isDeleted;
+    }
+  }
+
+  openEditUnitModal(unit: Unit) {
+    this.originalUnit = unit;
+    this.editingUnit = JSON.parse(JSON.stringify(unit));
+  }
+
+  discardUnitChanges() {
+    this.editingUnit = null;
+    this.originalUnit = null;
+  }
+
+  saveUnitChanges() {
+    if (!this.editingUnit || !this.originalUnit) return;
+    const unit = this.editingUnit;
+    const original = this.originalUnit;
+    const statusChanged = original.isDeleted !== unit.isDeleted;
+
+    const updateFields$ = this.courseService.updateUnit(unit.id, {
+      title: unit.title,
+    });
+
+    const applyUpdate = (updated: Unit) => {
+      if (this.selectedItemConverted) {
+        const idx = this.selectedItemConverted.units.findIndex(
+          (u) => u.id === updated.id,
+        );
+        if (idx !== -1) {
+          const lessons = this.selectedItemConverted.units[idx].lessons;
+          this.selectedItemConverted.units[idx] = { ...updated, lessons };
+        }
+      }
+      Object.assign(original, updated);
+      this.editingUnit = null;
+      this.originalUnit = null;
+    };
+
+    if (statusChanged) {
+      const statusCall$ = unit.isDeleted
+        ? this.courseService.softDeleteUnit(unit.id)
+        : this.courseService.restoreUnit(unit.id);
+      statusCall$.subscribe(() => updateFields$.subscribe(applyUpdate as any));
+    } else {
+      updateFields$.subscribe(applyUpdate as any);
+    }
+  }
+
+  toggleUnitDeleted() {
+    if (this.editingUnit) {
+      this.editingUnit.isDeleted = !this.editingUnit.isDeleted;
+    }
+  }
+
+  openEditLessonModal(lesson: Lesson) {
+    this.originalLesson = lesson;
+    this.editingLesson = JSON.parse(JSON.stringify(lesson));
+  }
+
+  discardLessonChanges() {
+    this.editingLesson = null;
+    this.originalLesson = null;
+  }
+
+  saveLessonChanges() {
+    if (!this.editingLesson || !this.originalLesson) return;
+    const lesson = this.editingLesson;
+    const original = this.originalLesson;
+    const statusChanged = original.isDeleted !== lesson.isDeleted;
+
+    const updateFields$ = this.courseService.updateLesson(lesson.id, {
+      title: lesson.title,
+    });
+
+    const applyUpdate = (updated: Lesson) => {
+      if (this.selectedItemConverted) {
+        for (const unit of this.selectedItemConverted.units) {
+          const idx = unit.lessons.findIndex((l) => l.id === updated.id);
+          if (idx !== -1) {
+            const exercises = unit.lessons[idx].exercises;
+            unit.lessons[idx] = { ...updated, exercises };
+          }
+        }
+      }
+      Object.assign(original, updated);
+      this.editingLesson = null;
+      this.originalLesson = null;
+    };
+
+    if (statusChanged) {
+      const statusCall$ = lesson.isDeleted
+        ? this.courseService.softDeleteLesson(lesson.id)
+        : this.courseService.restoreLesson(lesson.id);
+      statusCall$.subscribe(() => updateFields$.subscribe(applyUpdate as any));
+    } else {
+      updateFields$.subscribe(applyUpdate as any);
+    }
+  }
+
+  toggleLessonDeleted() {
+    if (this.editingLesson) {
+      this.editingLesson.isDeleted = !this.editingLesson.isDeleted;
     }
   }
 }
