@@ -114,6 +114,7 @@
           <button
             type="button"
             class="flex-1 rounded-xl bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-600 active:bg-emerald-700 transition-colors cursor-pointer"
+            (click)="createNew()"
           >
             Új elem
           </button>
@@ -366,7 +367,7 @@
         </div>
 
         <h3
-          [textContent]="this.selectedCategory == 'achievements' ? 'Teljesítmény szerkesztése' : 'Kurzus szerkesztése'"
+          [textContent]="isCreating ? (selectedCategory === 'achievements' ? 'Új teljesítmény' : 'Új kurzus') : (selectedCategory === 'achievements' ? 'Teljesítmény szerkesztése' : 'Kurzus szerkesztése')"
           class="text-xl sm:text-2xl font-semibold text-gray-900"
         >
           <!-- -->
@@ -377,6 +378,7 @@
         <app-admin-selected-item-data
           #itemDataRef
           [selectedItem]="this.selectedItem"
+          [isCreating]="isCreating"
           (saved)="onSave($event)"
         ></app-admin-selected-item-data>
 
@@ -384,6 +386,7 @@
           <button
             type="button"
             class="rounded-xl border border-gray-200 bg-gray-50 px-5 py-2.5 text-sm font-semibold text-gray-700 hover:bg-gray-100 active:bg-gray-300 transition-colors cursor-pointer"
+            (click)="discardEdit()"
           >
             Elvetés
           </button>

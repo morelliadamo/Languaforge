@@ -46,8 +46,13 @@ export class AdminSelectedItemData implements OnChanges {
   private courseService = inject(CourseLoaderServiceService);
 
   @Input() selectedItem: Achievement | Course | null = null;
+  @Input() isCreating = false;
   @Output() saved = new EventEmitter<Achievement | Course>();
   selectedItemConverted: SelectedItem | null = null;
+
+  createError: string | null = null;
+  private tempIdCounter = -1;
+  addingExerciseForLessonId: number | null = null;
 
   editingExercise: Exercise | null = null;
   private originalExercise: Exercise | null = null;
@@ -113,7 +118,94 @@ export class AdminSelectedItemData implements OnChanges {
       this.selectedItemConverted = this.asSelectedItem;
       this.expandedUnitIds.clear();
       this.expandedLessonIds.clear();
+      this.createError = null;
+      this.tempIdCounter = -1;
     }
+  }
+
+  // ---- Create-mode helpers ----
+
+  private findLessonById(lessonId: number): Lesson | null {
+    if (!this.selectedItemConverted) return null;
+    for (const unit of this.selectedItemConverted.units) {
+      const lesson = unit.lessons.find((l) => l.id === lessonId);
+      if (lesson) return lesson;
+    }
+    return null;
+  }
+
+  addUnitToNew() {
+    if (!this.selectedItemConverted) return;
+    const newUnit: Unit = {
+      id: this.tempIdCounter--,
+      courseId: 0,
+      title: '',
+      orderIndex: this.selectedItemConverted.units.length,
+      createdAt: new Date().toISOString(),
+      isDeleted: false,
+      deletedAt: null,
+      lessons: [],
+    };
+    this.selectedItemConverted.units.push(newUnit);
+    this.expandedUnitIds.add(newUnit.id);
+  }
+
+  addLessonToNewUnit(unitId: number) {
+    if (!this.selectedItemConverted) return;
+    const unit = this.selectedItemConverted.units.find((u) => u.id === unitId);
+    if (!unit) return;
+    const newLesson: Lesson = {
+      id: this.tempIdCounter--,
+      courseId: 0,
+      title: '',
+      orderIndex: unit.lessons.length,
+      createdAt: new Date().toISOString(),
+      isDeleted: false,
+      deletedAt: null,
+      exercises: [],
+      type: null,
+    };
+    unit.lessons.push(newLesson);
+    this.expandedLessonIds.add(newLesson.id);
+  }
+
+  openAddExerciseForLesson(lessonId: number) {
+    this.addingExerciseForLessonId = lessonId;
+    this.originalExercise = null;
+    this.editingExercise = {
+      id: this.tempIdCounter--,
+      lessonId,
+      exerciseType: 'choice',
+      exerciseContent: {
+        description: '',
+        correctAnswer: '',
+        answers: ['', ''],
+      },
+      isDeleted: false,
+      deletedAt: null,
+      createdAt: new Date().toISOString(),
+    };
+  }
+
+  removeNewUnit(unitId: number) {
+    if (!this.selectedItemConverted) return;
+    this.selectedItemConverted.units = this.selectedItemConverted.units.filter(
+      (u) => u.id !== unitId,
+    );
+    this.expandedUnitIds.delete(unitId);
+  }
+
+  removeNewLesson(unitId: number, lessonId: number) {
+    if (!this.selectedItemConverted) return;
+    const unit = this.selectedItemConverted.units.find((u) => u.id === unitId);
+    if (unit) unit.lessons = unit.lessons.filter((l) => l.id !== lessonId);
+    this.expandedLessonIds.delete(lessonId);
+  }
+
+  removeNewExercise(lessonId: number, exerciseId: number) {
+    const lesson = this.findLessonById(lessonId);
+    if (lesson)
+      lesson.exercises = lesson.exercises.filter((e) => e.id !== exerciseId);
   }
 
   toggleUnit(unitId: number) {
@@ -146,11 +238,30 @@ export class AdminSelectedItemData implements OnChanges {
       };
       this.saved.emit(updated);
     } else {
+      if (this.isCreating) {
+        const hasEmptyFields = !c.title?.trim() || !c.description?.trim();
+        const hasMinStructure =
+          (c.units?.length ?? 0) > 0 &&
+          c.units.every(
+            (u) =>
+              u.title?.trim() &&
+              (u.lessons?.length ?? 0) > 0 &&
+              u.lessons.every(
+                (l) => l.title?.trim() && (l.exercises?.length ?? 0) > 0,
+              ),
+          );
+        if (hasEmptyFields || !hasMinStructure) {
+          this.createError = 'Nem menthetsz el egy üres kurzust.';
+          return;
+        }
+        this.createError = null;
+      }
       const updated: Course = {
         ...(this.selectedItem as Course),
         title: c.title!,
         description: c.description,
         isDeleted: c.isDeleted,
+        units: c.units,
       };
       this.saved.emit(updated);
     }
@@ -164,10 +275,22 @@ export class AdminSelectedItemData implements OnChanges {
   discardExerciseChanges() {
     this.editingExercise = null;
     this.originalExercise = null;
+    this.addingExerciseForLessonId = null;
   }
 
   saveExerciseChanges() {
-    if (!this.editingExercise || !this.originalExercise) return;
+    if (!this.editingExercise) return;
+
+    // Add-mode: push to in-memory lesson, no API call
+    if (this.addingExerciseForLessonId !== null) {
+      const lesson = this.findLessonById(this.addingExerciseForLessonId);
+      if (lesson) lesson.exercises.push({ ...this.editingExercise });
+      this.editingExercise = null;
+      this.addingExerciseForLessonId = null;
+      return;
+    }
+
+    if (!this.originalExercise) return;
     const exercise = this.editingExercise;
     const original = this.originalExercise;
     const statusChanged = original.isDeleted !== exercise.isDeleted;
@@ -206,6 +329,14 @@ export class AdminSelectedItemData implements OnChanges {
     if (this.editingExercise) {
       this.editingExercise.isDeleted = !this.editingExercise.isDeleted;
     }
+  }
+
+  addAnswer() {
+    this.editingExercise?.exerciseContent.answers?.push('');
+  }
+
+  removeAnswer(index: number) {
+    this.editingExercise?.exerciseContent.answers?.splice(index, 1);
   }
 
   openEditUnitModal(unit: Unit) {

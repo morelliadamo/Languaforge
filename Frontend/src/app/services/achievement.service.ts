@@ -170,4 +170,16 @@ export class AchievementService {
       { headers },
     );
   }
+
+  createAchievement(body: Achievement) {
+    const token = localStorage.getItem('access-token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.post<Achievement>(
+      `${this.apiUrl2}/createAchievement`,
+      body,
+      { headers },
+    );
+  }
 }

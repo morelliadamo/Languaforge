@@ -27,6 +27,7 @@ export class AdminDataManagement {
   searchTerm: string = '';
 
   selectedItem: Achievement | Course | null = null;
+  isCreating = false;
 
   get filteredAchievements(): Achievement[] {
     let items = this.allAchievements;
@@ -60,10 +61,47 @@ export class AdminDataManagement {
 
   selectItem(selected: Achievement | Course) {
     this.selectedItem = selected;
-
+    this.isCreating = false;
     document.getElementById('edit-panel')?.classList.remove('hidden');
-
     this.scrollToEdit();
+  }
+
+  createNew() {
+    if (this.selectedCategory === 'achievements') {
+      this.selectedItem = {
+        id: 0,
+        name: '',
+        description: '',
+        iconUrl: '',
+        createdAt: '',
+        isDeleted: false,
+        deletedAt: null,
+        earnCondition: { condition: '', value: '' },
+      } as Achievement;
+    } else {
+      this.selectedItem = {
+        id: 0,
+        title: '',
+        description: '',
+        difficulty: null,
+        createdAt: '',
+        isDeleted: false,
+        deletedAt: null,
+        units: [],
+        color: null,
+        progress: 0,
+        reviews: null,
+      } as Course;
+    }
+    this.isCreating = true;
+    document.getElementById('edit-panel')?.classList.remove('hidden');
+    this.scrollToEdit();
+  }
+
+  discardEdit() {
+    this.selectedItem = null;
+    this.isCreating = false;
+    document.getElementById('edit-panel')?.classList.add('hidden');
   }
 
   scrollToEdit(): void {
@@ -73,6 +111,36 @@ export class AdminDataManagement {
   }
 
   onSave(item: Achievement | Course) {
+    if (this.isCreating) {
+      if ('iconUrl' in item) {
+        const { id: _id, createdAt: _ca, ...achievementPayload } = item as any;
+        this.achievementService
+          .createAchievement(achievementPayload)
+          .subscribe({
+            next: (created: any) => {
+              this.allAchievements.push(created);
+              this.isCreating = false;
+              this.selectedItem = null;
+              document.getElementById('edit-panel')?.classList.add('hidden');
+            },
+            error: (err: any) =>
+              console.error('Error creating achievement', err),
+          });
+      } else {
+        const course = item as Course;
+        this.courseService.createCourse(course as any).subscribe({
+          next: (created: any) => {
+            this.allCourses.push(created);
+            this.isCreating = false;
+            this.selectedItem = null;
+            document.getElementById('edit-panel')?.classList.add('hidden');
+          },
+          error: (err: any) => console.error('Error creating course', err),
+        });
+      }
+      return;
+    }
+
     if ('iconUrl' in item) {
       const original = this.selectedItem as Achievement;
       const statusChanged = original.isDeleted !== item.isDeleted;

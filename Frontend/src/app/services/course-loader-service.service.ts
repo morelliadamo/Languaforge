@@ -215,6 +215,13 @@ export class CourseLoaderServiceService {
       { headers },
     );
   }
+  createCourse(body: Partial<Course>) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.post(`http://localhost:8080/courses/createCourse`, body, {
+      headers,
+    });
+  }
 
   softDeleteCourse(id: number) {
     const token = localStorage.getItem('access_token');
@@ -241,6 +248,14 @@ export class CourseLoaderServiceService {
     const token = localStorage.getItem('access_token');
     const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
     return this.http.put(`http://localhost:8080/units/updateUnit/${id}`, body, {
+      headers,
+    });
+  }
+
+  createUnit(body: Partial<Unit>) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.post(`http://localhost:8080/units/createUnit`, body, {
       headers,
     });
   }
@@ -280,6 +295,14 @@ export class CourseLoaderServiceService {
     );
   }
 
+  createLesson(body: Partial<Lesson>) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.post(`http://localhost:8080/lessons/createLesson`, body, {
+      headers,
+    });
+  }
+
   softDeleteLesson(id: number) {
     const token = localStorage.getItem('access_token');
     const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
@@ -308,6 +331,18 @@ export class CourseLoaderServiceService {
       `http://localhost:8080/exercises/updateExercise/${id}`,
       body,
       { headers },
+    );
+  }
+
+  createExercise(body: Partial<Exercise>) {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.post(
+      `http://localhost:8080/exercises/createExercise`,
+      body,
+      {
+        headers,
+      },
     );
   }
 
