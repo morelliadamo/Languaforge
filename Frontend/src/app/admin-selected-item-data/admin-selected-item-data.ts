@@ -296,6 +296,7 @@ export class AdminSelectedItemData implements OnChanges {
     const statusChanged = original.isDeleted !== exercise.isDeleted;
 
     const updateFields$ = this.courseService.updateExercise(exercise.id, {
+      exerciseType: exercise.exerciseType,
       exerciseContent: exercise.exerciseContent,
     });
 
@@ -337,6 +338,22 @@ export class AdminSelectedItemData implements OnChanges {
 
   removeAnswer(index: number) {
     this.editingExercise?.exerciseContent.answers?.splice(index, 1);
+  }
+
+  addPair() {
+    if (!this.editingExercise) return;
+    if (!this.editingExercise.exerciseContent.pairs) {
+      this.editingExercise.exerciseContent.pairs = [['', '']];
+    } else {
+      (this.editingExercise.exerciseContent.pairs as [string, string][]).push([
+        '',
+        '',
+      ]);
+    }
+  }
+
+  removePair(index: number) {
+    this.editingExercise?.exerciseContent.pairs?.splice(index, 1);
   }
 
   openEditUnitModal(unit: Unit) {

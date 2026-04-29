@@ -321,60 +321,69 @@
           <!-- ═══════════════════════════════════ -->
           <!-- MATCH exercise                      -->
           <!-- ═══════════════════════════════════ -->
-          <!-- @if (currentExercise.exerciseType === "match") { -->
-          <!-- Description -->
-          <!-- <app-hoverable-text-component
+          @if (currentExercise.exerciseType === "match") {
+            <!-- Description -->
+            <app-hoverable-text-component
               [text]="currentExercise.exerciseContent.description"
               [sourceLanguage]="'en'"
               [targetLanguage]="'hu'"
-              textClass="text-xl sm:text-2xl font-bold text-gray-800 mb-8 inline"
+              textClass="text-xl sm:text-2xl font-bold text-gray-800 mb-6 inline"
               [clickToReveal]="true"
               (hintUsed)="onHintUsed()"
-            ></app-hoverable-text-component> -->
+            ></app-hoverable-text-component>
 
-          <!-- Match columns -->
-          <!-- <div class="grid grid-cols-2 gap-3 sm:gap-4"> -->
-          <!-- Left column -->
-          <!-- <div class="flex flex-col gap-2.5">
+            <!-- Match columns -->
+            <div class="grid grid-cols-2 gap-3 sm:gap-4 mt-6">
+              <!-- Left column (original order) -->
+              <div class="flex flex-col gap-2.5">
                 @for (
                   pair of currentExercise.exerciseContent.pairs;
-                  track pair.left
+                  track $index
                 ) {
                   <button
-                    (click)="selectMatchLeft(pair.left)"
-                    class="w-full px-4 py-3 sm:px-5 sm:py-4 rounded-xl border-2 font-medium text-sm sm:text-base text-left transition-all duration-200 cursor-pointer"
+                    (click)="selectMatchLeft(pair[0])"
+                    class="w-full px-4 py-3 sm:px-5 sm:py-4 rounded-xl border-2 font-medium text-sm sm:text-base text-left transition-all duration-200"
                     [class.border-gray-200]="
-                      !isMatchLeftSelected(pair.left) &&
-                      !isMatchLeftMatched(pair.left) &&
-                      !isMatchLeftIncorrect(pair.left)
+                      !isMatchLeftSelected(pair[0]) &&
+                      !isMatchLeftMatched(pair[0]) &&
+                      !isMatchLeftIncorrect(pair[0])
                     "
                     [class.bg-white]="
-                      !isMatchLeftSelected(pair.left) &&
-                      !isMatchLeftMatched(pair.left) &&
-                      !isMatchLeftIncorrect(pair.left)
-                    " -->
-          <!-- [class.border-blue-400]="isMatchLeftSelected(pair.left)"
-                    [class.bg-blue-50]="isMatchLeftSelected(pair.left)"
-                    [class.shadow-md]="isMatchLeftSelected(pair.left)"
-                    [class.border-green-500]="isMatchLeftMatched(pair.left)"
-                    [class.bg-green-50]="isMatchLeftMatched(pair.left)"
-                    [class.text-green-700]="isMatchLeftMatched(pair.left)"
-                    [class.opacity-60]="isMatchLeftMatched(pair.left)"
-                    [class.cursor-default]="isMatchLeftMatched(pair.left)"
-                    [class.border-red-400]="isMatchLeftIncorrect(pair.left)"
-                    [class.bg-red-50]="isMatchLeftIncorrect(pair.left)"
+                      !isMatchLeftSelected(pair[0]) &&
+                      !isMatchLeftMatched(pair[0]) &&
+                      !isMatchLeftIncorrect(pair[0])
+                    "
+                    [class.hover:border-gray-400]="
+                      !isMatchLeftMatched(pair[0]) && !isAnswered
+                    "
+                    [class.cursor-pointer]="
+                      !isMatchLeftMatched(pair[0]) && !isAnswered
+                    "
+                    [class.border-blue-400]="isMatchLeftSelected(pair[0])"
+                    [class.bg-blue-50]="isMatchLeftSelected(pair[0])"
+                    [class.shadow-md]="isMatchLeftSelected(pair[0])"
+                    [class.border-green-500]="isMatchLeftMatched(pair[0])"
+                    [class.bg-green-50]="isMatchLeftMatched(pair[0])"
+                    [class.text-green-700]="isMatchLeftMatched(pair[0])"
+                    [class.border-red-400]="isMatchLeftIncorrect(pair[0])"
+                    [class.bg-red-50]="isMatchLeftIncorrect(pair[0])"
+                    [class.text-red-700]="isMatchLeftIncorrect(pair[0])"
+                    [class.cursor-default]="
+                      isMatchLeftMatched(pair[0]) || isAnswered
+                    "
+                    [disabled]="isMatchLeftMatched(pair[0]) || isAnswered"
                   >
-                    {{ pair.left }}
+                    {{ pair[0] }}
                   </button>
                 }
-              </div> -->
+              </div>
 
-          <!-- Right column (shuffled) -->
-          <!-- <div class="flex flex-col gap-2.5">
+              <!-- Right column (shuffled) -->
+              <div class="flex flex-col gap-2.5">
                 @for (word of shuffledRight; track word) {
                   <button
                     (click)="selectMatchRight(word)"
-                    class="w-full px-4 py-3 sm:px-5 sm:py-4 rounded-xl border-2 font-medium text-sm sm:text-base text-left transition-all duration-200 cursor-pointer"
+                    class="w-full px-4 py-3 sm:px-5 sm:py-4 rounded-xl border-2 font-medium text-sm sm:text-base text-left transition-all duration-200"
                     [class.border-gray-200]="
                       !isMatchRightSelected(word) &&
                       !isMatchRightMatched(word) &&
@@ -384,6 +393,12 @@
                       !isMatchRightSelected(word) &&
                       !isMatchRightMatched(word) &&
                       !isMatchRightIncorrect(word)
+                    "
+                    [class.hover:border-gray-400]="
+                      !isMatchRightMatched(word) && !isAnswered
+                    "
+                    [class.cursor-pointer]="
+                      !isMatchRightMatched(word) && !isAnswered
                     "
                     [class.border-blue-400]="isMatchRightSelected(word)"
                     [class.bg-blue-50]="isMatchRightSelected(word)"
@@ -391,25 +406,312 @@
                     [class.border-green-500]="isMatchRightMatched(word)"
                     [class.bg-green-50]="isMatchRightMatched(word)"
                     [class.text-green-700]="isMatchRightMatched(word)"
-                    [class.opacity-60]="isMatchRightMatched(word)"
-                    [class.cursor-default]="isMatchRightMatched(word)"
                     [class.border-red-400]="isMatchRightIncorrect(word)"
                     [class.bg-red-50]="isMatchRightIncorrect(word)"
-                  > -->
-          <!-- {{ word }}
-                  </button> -->
-          <!-- } -->
-          <!-- </div>
-            </div> -->
+                    [class.text-red-700]="isMatchRightIncorrect(word)"
+                    [class.cursor-default]="
+                      isMatchRightMatched(word) || isAnswered
+                    "
+                    [disabled]="isMatchRightMatched(word) || isAnswered"
+                  >
+                    {{ word }}
+                  </button>
+                }
+              </div>
+            </div>
 
-          <!-- Match progress -->
-          <!-- @if (matchedPairs.length > 0 && !matchComplete) {
+            <!-- Match progress -->
+            @if (matchedPairs.length > 0 && !matchComplete && !matchFailed) {
               <p class="mt-4 text-sm text-gray-400">
                 {{ matchedPairs.length }} /
                 {{ currentExercise.exerciseContent.pairs?.length }} párosítva
               </p>
             }
-          } -->
+          }
+
+          <!-- ═══════════════════════════════════ -->
+          <!-- LISTENING exercise                  -->
+          <!-- ═══════════════════════════════════ -->
+          @if (currentExercise.exerciseType === "listening") {
+            <!-- Play button -->
+            <div class="flex justify-center mb-6">
+              <button
+                (click)="playListeningAudio()"
+                class="flex items-center gap-3 px-8 py-5 rounded-2xl border-2 font-semibold text-gray-700 bg-white transition-all hover:shadow-md cursor-pointer"
+                [style.border-color]="courseColor"
+              >
+                <svg
+                  class="w-10 h-10 transition-transform hover:scale-110"
+                  [style.color]="courseColor"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+                <span>Hallgasd meg</span>
+              </button>
+            </div>
+
+            <!-- Optional question text -->
+            @if (listeningDescription) {
+              <app-hoverable-text-component
+                [text]="listeningDescription"
+                [sourceLanguage]="'en'"
+                [targetLanguage]="'hu'"
+                textClass="text-lg sm:text-xl font-bold text-gray-800 mb-6 inline"
+                [clickToReveal]="true"
+                (hintUsed)="onHintUsed()"
+              ></app-hoverable-text-component>
+            }
+
+            <!-- Answer options -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
+              @for (
+                answer of currentExercise.exerciseContent.answers;
+                track $index
+              ) {
+                <button
+                  (click)="selectAnswer(answer)"
+                  class="answer-btn w-full text-left px-5 py-4 rounded-xl border-2 font-medium transition-all duration-200 cursor-pointer"
+                  [class.border-gray-200]="
+                    !isAnswered || selectedAnswer !== answer
+                  "
+                  [class.bg-white]="!isAnswered || selectedAnswer !== answer"
+                  [class.hover:border-gray-400]="!isAnswered"
+                  [class.hover:shadow-md]="!isAnswered"
+                  [class.border-green-500]="isAnswered && isCorrect(answer)"
+                  [class.bg-green-50]="isAnswered && isCorrect(answer)"
+                  [class.text-green-700]="isAnswered && isCorrect(answer)"
+                  [class.border-red-400]="
+                    isAnswered &&
+                    selectedAnswer === answer &&
+                    !isCorrect(answer)
+                  "
+                  [class.bg-red-50]="
+                    isAnswered &&
+                    selectedAnswer === answer &&
+                    !isCorrect(answer)
+                  "
+                  [class.text-red-700]="
+                    isAnswered &&
+                    selectedAnswer === answer &&
+                    !isCorrect(answer)
+                  "
+                  [class.cursor-not-allowed]="isAnswered"
+                >
+                  {{ answer }}
+                </button>
+              }
+            </div>
+          }
+
+          <!-- ═══════════════════════════════════ -->
+          <!-- READING exercise                    -->
+          <!-- ═══════════════════════════════════ -->
+          @if (currentExercise.exerciseType === "reading") {
+            @for (part of readingParts; track $index) {
+              @if (part.type === "reading") {
+                <!-- Reading text block -->
+                <div
+                  class="mb-5 p-4 rounded-xl bg-blue-50 border-l-4 border-blue-400"
+                >
+                  <p
+                    class="text-xs font-semibold text-blue-500 mb-2 uppercase tracking-wide"
+                  >
+                    📖 Olvasd el
+                  </p>
+                  <p class="text-base text-gray-800 leading-relaxed">
+                    {{ part.content }}
+                  </p>
+                </div>
+              } @else {
+                <!-- Question text -->
+                <app-hoverable-text-component
+                  [text]="part.content"
+                  [sourceLanguage]="'en'"
+                  [targetLanguage]="'hu'"
+                  textClass="text-xl sm:text-2xl font-bold text-gray-800 mb-6 inline"
+                  [clickToReveal]="true"
+                  (hintUsed)="onHintUsed()"
+                ></app-hoverable-text-component>
+              }
+            }
+
+            <!-- Answer options -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
+              @for (
+                answer of currentExercise.exerciseContent.answers;
+                track $index
+              ) {
+                <button
+                  (click)="selectAnswer(answer)"
+                  class="answer-btn w-full text-left px-5 py-4 rounded-xl border-2 font-medium transition-all duration-200 cursor-pointer"
+                  [class.border-gray-200]="
+                    !isAnswered || selectedAnswer !== answer
+                  "
+                  [class.bg-white]="!isAnswered || selectedAnswer !== answer"
+                  [class.hover:border-gray-400]="!isAnswered"
+                  [class.hover:shadow-md]="!isAnswered"
+                  [class.border-green-500]="isAnswered && isCorrect(answer)"
+                  [class.bg-green-50]="isAnswered && isCorrect(answer)"
+                  [class.text-green-700]="isAnswered && isCorrect(answer)"
+                  [class.border-red-400]="
+                    isAnswered &&
+                    selectedAnswer === answer &&
+                    !isCorrect(answer)
+                  "
+                  [class.bg-red-50]="
+                    isAnswered &&
+                    selectedAnswer === answer &&
+                    !isCorrect(answer)
+                  "
+                  [class.text-red-700]="
+                    isAnswered &&
+                    selectedAnswer === answer &&
+                    !isCorrect(answer)
+                  "
+                  [class.cursor-not-allowed]="isAnswered"
+                >
+                  {{ answer }}
+                </button>
+              }
+            </div>
+          }
+
+          <!-- ═══════════════════════════════════ -->
+          <!-- SPEECH exercise                     -->
+          <!-- ═══════════════════════════════════ -->
+          @if (currentExercise.exerciseType === "speech") {
+            <!-- Description / prompt -->
+            <app-hoverable-text-component
+              [text]="currentExercise.exerciseContent.description"
+              [sourceLanguage]="'en'"
+              [targetLanguage]="'hu'"
+              textClass="text-xl sm:text-2xl font-bold text-gray-800 mb-6 inline"
+              [clickToReveal]="true"
+              (hintUsed)="onHintUsed()"
+            ></app-hoverable-text-component>
+
+            <!-- Recording controls (hidden once answered) -->
+            @if (!isAnswered) {
+              <div class="flex flex-col items-center gap-4 py-4">
+                <!-- Mic / stop button -->
+                <button
+                  (click)="speechRecording ? stopRecording() : startRecording()"
+                  class="relative flex items-center justify-center w-20 h-20 rounded-full border-4 transition-all duration-200 cursor-pointer shadow-md"
+                  [class.border-red-500]="speechRecording"
+                  [class.bg-red-50]="speechRecording"
+                  [class.mic-pulse]="speechRecording"
+                  [class.border-gray-300]="!speechRecording && !speechBlob"
+                  [class.bg-white]="!speechRecording && !speechBlob"
+                  [style.border-color]="
+                    !speechRecording && speechBlob ? courseColor : ''
+                  "
+                  [style.background-color]="
+                    !speechRecording && speechBlob ? courseColor + '1a' : ''
+                  "
+                >
+                  @if (speechRecording) {
+                    <!-- Stop icon -->
+                    <svg
+                      class="w-8 h-8 text-red-500"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <rect x="6" y="6" width="12" height="12" />
+                    </svg>
+                  } @else {
+                    <!-- Mic icon -->
+                    <svg
+                      class="w-8 h-8 transition-colors"
+                      [style.color]="speechBlob ? courseColor : '#9ca3af'"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.91-3c-.49 0-.9.36-.98.85C16.52 14.2 14.47 16 12 16s-4.52-1.8-4.93-4.15c-.08-.49-.49-.85-.98-.85-.61 0-1.09.54-1 1.14.49 3 2.89 5.35 5.91 5.78V20c0 .55.45 1 1 1s1-.45 1-1v-2.08c3.02-.43 5.42-2.78 5.91-5.78.1-.6-.39-1.14-1-1.14z"
+                      />
+                    </svg>
+                  }
+                </button>
+
+                <p class="text-sm text-gray-500 text-center">
+                  @if (speechRecording) {
+                    🔴 Felvétel folyamatban… kattints a leállításhoz
+                  } @else if (speechBlob) {
+                    ✅ Felvétel kész – küldd be értékelésre
+                  } @else {
+                    Kattints a mikrofonra a felvétel indításához
+                  }
+                </p>
+
+                <!-- Submit button -->
+                @if (speechBlob && !speechRecording) {
+                  <button
+                    (click)="submitSpeech()"
+                    [disabled]="speechSubmitting"
+                    class="flex items-center gap-2 px-6 py-2.5 rounded-xl text-white font-semibold transition-all cursor-pointer"
+                    [style.background-color]="
+                      speechSubmitting ? '#d1d5db' : courseColor
+                    "
+                    [class.cursor-not-allowed]="speechSubmitting"
+                  >
+                    @if (speechSubmitting) {
+                      <svg
+                        class="w-4 h-4 animate-spin"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          class="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          stroke-width="4"
+                        ></circle>
+                        <path
+                          class="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8v8H4z"
+                        ></path>
+                      </svg>
+                      Értékelés…
+                    } @else {
+                      Ellenőrzés
+                    }
+                  </button>
+                }
+              </div>
+            }
+
+            <!-- Result card -->
+            @if (speechResult) {
+              <div class="mt-4 space-y-3">
+                <div class="p-3 rounded-xl bg-gray-50 border border-gray-200">
+                  <p
+                    class="text-xs font-semibold text-gray-500 mb-1 uppercase tracking-wide"
+                  >
+                    Felismert szöveg
+                  </p>
+                  <p class="text-base text-gray-800">
+                    {{ speechResult.transcript }}
+                  </p>
+                </div>
+                <div
+                  class="p-3 rounded-xl border text-sm leading-relaxed"
+                  [class.bg-green-50]="speechPassed"
+                  [class.border-green-300]="speechPassed"
+                  [class.text-green-800]="speechPassed"
+                  [class.bg-red-50]="!speechPassed"
+                  [class.border-red-300]="!speechPassed"
+                  [class.text-red-800]="!speechPassed"
+                >
+                  {{ speechResult.feedback }}
+                </div>
+              </div>
+            }
+          }
 
           <!-- ═══════════════════════════════════ -->
           <!-- Feedback message (shared)           -->
@@ -417,31 +719,22 @@
           @if (isAnswered) {
             <div
               class="mt-6 px-4 py-3 rounded-xl text-sm font-semibold"
-              [class.bg-green-100]="
-                currentExercise.exerciseType === 'match' ||
-                isCorrect(selectedAnswer!)
-              "
-              [class.text-green-800]="
-                currentExercise.exerciseType === 'match' ||
-                isCorrect(selectedAnswer!)
-              "
-              [class.bg-red-100]="
-                currentExercise.exerciseType !== 'match' &&
-                !isCorrect(selectedAnswer!)
-              "
-              [class.text-red-800]="
-                currentExercise.exerciseType !== 'match' &&
-                !isCorrect(selectedAnswer!)
-              "
+              [class.bg-green-100]="isCurrentAnswerCorrect"
+              [class.text-green-800]="isCurrentAnswerCorrect"
+              [class.bg-red-100]="!isCurrentAnswerCorrect"
+              [class.text-red-800]="!isCurrentAnswerCorrect"
             >
-              @if (
-                currentExercise.exerciseType === "match" ||
-                isCorrect(selectedAnswer!)
-              ) {
+              @if (isCurrentAnswerCorrect) {
                 ✅ Helyes válasz!
               } @else {
-                ❌ Helytelen! A helyes válasz:
-                {{ currentExercise.exerciseContent.correctAnswer }}
+                ❌ Helytelen!
+                @if (
+                  currentExercise.exerciseType !== "match" &&
+                  currentExercise.exerciseType !== "speech"
+                ) {
+                  A helyes válasz:
+                  {{ currentExercise.exerciseContent.correctAnswer }}
+                }
                 <span class="block text-xs mt-1 font-normal opacity-75">
                   Ez a feladat újra megjelenik a végén.
                 </span>
@@ -451,36 +744,7 @@
         </div>
       }
 
-      <!-- Navigation buttons -->
       <div class="flex items-center justify-between">
-        <button
-          (click)="previousExercise()"
-          [disabled]="isFirst"
-          class="flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold transition-all cursor-pointer"
-          [class.bg-white]="!isFirst"
-          [class.shadow-md]="!isFirst"
-          [class.text-gray-700]="!isFirst"
-          [class.hover:bg-gray-100]="!isFirst"
-          [class.bg-gray-100]="isFirst"
-          [class.text-gray-400]="isFirst"
-          [class.cursor-not-allowed]="isFirst"
-        >
-          <svg
-            class="w-4 h-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-          Előző
-        </button>
-
         @if (isLast && isAnswered) {
           <button
             (click)="goBack()"

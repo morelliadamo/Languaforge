@@ -101,6 +101,18 @@ export class LoadedCourseComponent {
             this.lessonProgresses = progresses;
             this.progressLoaded = true;
             this.isLoading = false;
+
+            const allLessons = this.units.flatMap((u) => u.lessons ?? []);
+            const totalLessons = allLessons.length;
+            if (totalLessons > 0 && this.course) {
+              const completedLessons = allLessons.filter((l) => {
+                const p = progresses.find((pr) => pr.lessonId === l.id);
+                return p && p.completedExercises >= p.exerciseCount;
+              }).length;
+              this.course.progress = Math.round(
+                (completedLessons / totalLessons) * 100,
+              );
+            }
           });
       });
 
@@ -166,6 +178,19 @@ export class LoadedCourseComponent {
       .subscribe((progresses) => {
         this.lessonProgresses = progresses;
         this.progressLoaded = true;
+
+        if (this.course && this.units.length > 0) {
+          const allLessons = this.units.flatMap((u) => u.lessons ?? []);
+          const totalLessons = allLessons.length;
+          const completedLessons = allLessons.filter((l) => {
+            const p = progresses.find((pr) => pr.lessonId === l.id);
+            return p && p.completedExercises >= p.exerciseCount;
+          }).length;
+          this.course.progress =
+            totalLessons > 0
+              ? Math.round((completedLessons / totalLessons) * 100)
+              : 0;
+        }
       });
   }
 

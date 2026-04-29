@@ -30,7 +30,7 @@ export class CourseHubComponent implements OnInit {
   courseLogicService = inject(CourseLogicService);
 
   isLoading = true;
-  maxCourseSlots = 1; //course slot system to be implemented later
+  maxCourseSlots = 1;
   startedCourses: Course[] = [];
   completedCourses: Course[] = [];
   allCourses: Course[] = [];
@@ -89,23 +89,44 @@ export class CourseHubComponent implements OnInit {
     this.courseLoader
       .loadUserXCoursesByUserId(userId)
       .subscribe((userXCourses: UserXCourse[]) => {
-        const mapped = userXCourses.map((uxc) => {
-          const course: Course = {
-            ...uxc.course,
-            units: [],
-            progress: Math.floor(uxc.progress * 100),
-            difficulty: null,
-            reviews: null,
-            color: null,
-          };
-          course.difficulty = this.mapDifficulty(course.difficulty);
-          course.color = this.utilService.stringToColor(course.title);
-          return course;
-        });
-        this.completedCourses = mapped.filter((c) => c.progress >= 100);
-        this.startedCourses = mapped.filter((c) => c.progress < 100);
-        startedLoaded = true;
-        checkDone();
+        this.courseLoader
+          .getLessonProgressesByUserId(userId)
+          .subscribe((lessonProgresses) => {
+            const mapped = userXCourses.map((uxc) => {
+              const units: any[] = (uxc.course as any)?.units ?? [];
+              const allLessons: any[] = units.flatMap(
+                (u: any) => u.lessons ?? [],
+              );
+              const totalLessons = allLessons.length;
+              let computedProgress: number;
+              if (totalLessons > 0) {
+                const completedLessons = allLessons.filter((l: any) => {
+                  const p = lessonProgresses.find((pr) => pr.lessonId === l.id);
+                  return p && p.completedExercises >= p.exerciseCount;
+                }).length;
+                computedProgress = Math.round(
+                  (completedLessons / totalLessons) * 100,
+                );
+              } else {
+                computedProgress = Math.floor(uxc.progress * 100);
+              }
+              const course: Course = {
+                ...uxc.course,
+                units: [],
+                progress: computedProgress,
+                difficulty: null,
+                reviews: null,
+                color: null,
+              };
+              course.difficulty = this.mapDifficulty(course.difficulty);
+              course.color = this.utilService.stringToColor(course.title);
+              return course;
+            });
+            this.completedCourses = mapped.filter((c) => c.progress >= 100);
+            this.startedCourses = mapped.filter((c) => c.progress < 100);
+            startedLoaded = true;
+            checkDone();
+          });
       });
 
     this.courseLoader.loadAllCourses().subscribe((courses) => {
